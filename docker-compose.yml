@@ -1,223 +1,71 @@
 version: '3.8'
 
-
-# Common environment variables used by Kong services (bootstrap and CP)
-x-kong-config: &kong-env
-  KONG_DATABASE: postgres             # Use Postgres as the backing database
-  KONG_PG_HOST: kong-ee-database      # Hostname of the Postgres service
-  KONG_PG_PORT: 5433                  # Port of the Postgres service
-  KONG_PG_DATABASE: kong              # Name of the database to connect to
-  KONG_PG_USER: kong                  # Database username
-  KONG_PG_PASSWORD: kong              # Database password
-  KONG_LICENSE_DATA: "${KONG_LICENSE_DATA}"  # Kong Enterprise license passed via environment variable
-
 services:
-
-  kong-ee-database:
-    container_name: kong-ee-database
-    image: postgres:latest           # Official Postgres image
-    restart: on-failure              # Restart if the container fails
-    volumes:
-      - kong_db_data:/var/lib/postgresql/data  # Mount the volume for persistent data
-    networks:
-      - kong-ee-net                  # Connect to the shared Kong network
+  # Kong API Gateway with Manager OSS (DB-less mode)
+  kong:
+    image: kong:3.9
+    container_name: kong
     environment:
-      POSTGRES_USER: kong            # Set DB user inside the container
-      POSTGRES_DB: kong              # Create this database on first run
-      POSTGRES_PASSWORD: kong        # Set the password for the DB user
-    healthcheck:                     # Ensure the DB is ready before starting dependent services
-      test: ["CMD", "pg_isready", "-U", "kong"]
-      interval: 5s
-      timeout: 10s
-      retries: 10
-    command: -p 5433
-    ports:
-      - '5433:5433'                  # Optional: expose Postgres on localhost for debugging
-
-  kong-bootstrap:
-    image: 'kong/kong-gateway:3.11.0.1'  # Kong Gateway image (default to latest version)
-    container_name: kong-bootstrap
-    networks:
-      - kong-ee-net
-    depends_on:
-      kong-ee-database:
-        condition: service_healthy   # Wait until Postgres is up and healthy
-    restart: on-failure
-    environment:
-      <<: *kong-env                 # Reuse environment config from x-kong-config
-      KONG_PASSWORD: handyshake    # Admin GUI password (required for RBAC)
-    command: kong migrations bootstrap  # Run DB migrations to initialize Kong schema
-
-  kong-cp:
-    image: 'kong/kong-gateway:3.11.0.1'  # Main Kong Gateway Control Plane (default to latest version)
-    container_name: kong-cp
-    restart: on-failure
-    networks:
-      - kong-ee-net
-    environment:
-      <<: *kong-env
-      KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444 ssl  # Admin API on HTTP + HTTPS
-      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002, 0.0.0.0:8445 ssl  # Kong Manager on HTTP + HTTPS
-      KONG_ADMIN_GUI_URL: http://$\{GW_HOST:-localhost\}:8002  # URL for GUI links
-      KONG_PASSWORD: handyshake  # Required for logging in to Kong Manager (RBAC)
-    depends_on:
-      kong-bootstrap:
-        condition: service_completed_successfully  # Start only after bootstrap has succeeded
+      # DB-less mode configuration
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
+      KONG_ADMIN_GUI_URL: http://localhost:8002
+      KONG_ANONYMOUS_REPORTS: false
+      # Переменные для канареечного развертывания (автоматически используются в шаблоне)
+      MIGRATE_TO_MOVIES: "${MIGRATE_TO_MOVIES:-false}"
+      NEW_MOVIE_SERVICE_PERCENT: "${NEW_MOVIE_SERVICE_PERCENT:-0}"
+      OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
+      NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
     ports:
       - "8000:8000"  # Proxy HTTP
       - "8443:8443"  # Proxy HTTPS
-      - "8001:8001"  # Admin API HTTP
+      - "8001:8001"  # Admin API
+      - "8002:8002"  # Kong Manager OSS Web UI
       - "8444:8444"  # Admin API HTTPS
-      - "8002:8002"  # Kong Manager HTTP
-      - "8445:8445"  # Kong Manager HTTPS
-
-
-
-  # PostgreSQL Database
-  postgres:
-    image: postgres:14
-    container_name: cinemaabyss-postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres_password
-      POSTGRES_DB: cinemaabyss
-    ports:
-      - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ./src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./kong.yml.template:/etc/kong/kong.yml.template:ro  # Template file
+      - ./kong-entrypoint.sh:/usr/local/bin/kong-entrypoint.sh:ro  # Custom entrypoint
+      - ./canary-control.sh:/usr/local/bin/canary-control.sh:ro
+    entrypoint: ["bash", "/usr/local/bin/kong-entrypoint.sh"]  # Use bash to execute the script
+    networks:
+      - kong-net
+    restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
+      test: ["CMD", "kong", "health"]
+      interval: 30s
+      timeout: 10s
       retries: 5
-    networks:
-      - cinemaabyss-network
 
-  # ZooKeeper for Kafka
-  zookeeper:
-    image: wurstmeister/zookeeper:latest
-    container_name: cinemaabyss-zookeeper
+  # Пример старого сервиса фильмов для тестирования
+  old-movie-service:
+    image: nginx:alpine
+    container_name: old-movie-service
     ports:
-      - "2181:2181"
-    networks:
-      - cinemaabyss-network
-
-  # Kafka
-  kafka:
-    image: wurstmeister/kafka:2.13-2.7.0
-    container_name: cinemaabyss-kafka
-    depends_on:
-      - zookeeper
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CREATE_TOPICS: "movie-events:1:1,user-events:1:1,payment-events:1:1"
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      - "8201:80"  # Direct access to old movie service
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./old_movies_response.html:/usr/share/nginx/html/index.html:ro
     networks:
-      - cinemaabyss-network
+      - kong-net
+    restart: unless-stopped
 
-  # Monolith Service
-  monolith:
-    build:
-      context: ./src/monolith
-      dockerfile: Dockerfile
-    container_name: cinemaabyss-monolith
-    depends_on:
-      - postgres
+  # Пример нового сервиса фильмов для тестирования
+  new-movie-service:
+    image: nginx:alpine
+    container_name: new-movie-service
     ports:
-      - "8080:8080"
-    environment:
-      PORT: 8080
-      DB_CONNECTION_STRING: postgres://postgres:postgres_password@postgres:5432/cinemaabyss?sslmode=disable
+      - "8202:80"  # Direct access to new movie service
+    volumes:
+      - ./new_movies_response.html:/usr/share/nginx/html/index.html:ro
     networks:
-      - cinemaabyss-network
-
-  # Movies Microservice
-  movies-service:
-    build:
-      context: ./src/microservices/movies
-      dockerfile: Dockerfile
-    container_name: cinemaabyss-movies-service
-    depends_on:
-      - postgres
-    ports:
-      - "8081:8081"
-    environment:
-      PORT: 8081
-      DB_CONNECTION_STRING: postgres://postgres:postgres_password@postgres:5432/cinemaabyss?sslmode=disable
-    networks:
-      - cinemaabyss-network
-
-  # Events Microservice
-#   events-service:
-#     build:
-#       context: ./src/microservices/events
-#       dockerfile: Dockerfile
-#     container_name: cinemaabyss-events-service
-#     depends_on:
-#       - postgres
-#       - kafka
-#     ports:
-#       - "8082:8082"
-#     environment:
-#       PORT: 8082
-#       KAFKA_BROKERS: kafka:9092
-#     networks:
-#       - cinemaabyss-network
-
-  # Proxy Service (API Gateway)
-#   proxy-service:
-#     build:
-#       context: ./src/microservices/proxy
-#       dockerfile: Dockerfile
-#     container_name: cinemaabyss-proxy-service
-#     depends_on:
-#       - monolith
-#       - movies-service
-# #       - events-service
-#     ports:
-#       - "8000:8000"
-#     environment:
-#       PORT: 8000
-#       MONOLITH_URL: http://monolith:8080
-#       MOVIES_SERVICE_URL: http://movies-service:8081
-#       EVENTS_SERVICE_URL: http://events-service:8082
-#       GRADUAL_MIGRATION: "true"
-#       MOVIES_MIGRATION_PERCENT: "50"
-#     networks:
-#       - cinemaabyss-network
-
-  # Kafka UI for monitoring Kafka
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    container_name: cinemaabyss-kafka-ui
-    depends_on:
-      - kafka
-    ports:
-      - "8090:8080"
-    environment:
-      KAFKA_CLUSTERS_0_NAME: cinemaabyss
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
-      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
-    networks:
-      - cinemaabyss-network
-
-
-volumes:
-  postgres-data:
-
-  kong_db_data: {}  # Named volume to persist Postgres data across container restarts
+      - kong-net
+    restart: unless-stopped
 
 networks:
-  cinemaabyss-network:
-    name: cinemaabyss-network
-    driver: bridge
-
-  kong-ee-net:      # Custom bridge network for isolated Kong and Postgres communication
+  kong-net:
     driver: bridge

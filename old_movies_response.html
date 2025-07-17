@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Старый Сервис Фильмов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .version {
+            background: #ff6b6b;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .movie-list {
+            text-align: left;
+            margin: 30px 0;
+        }
+        .movie-item {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+        }
+        .timestamp {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Сервис Фильмов</h1>
+        <div class="version">СТАРЫЙ СЕРВИС v1.0</div>
+        
+        <p>Добро пожаловать в старый сервис фильмов! Здесь вы найдете классические фильмы.</p>
+        
+        <div class="movie-list">
+            <h3>Популярные фильмы:</h3>
+            <div class="movie-item">
+                <strong>Крестный отец</strong> (1972)<br>
+                <em>Драма, Криминал</em>
+            </div>
+            <div class="movie-item">
+                <strong>Касабланка</strong> (1942)<br>
+                <em>Драма, Романтика</em>
+            </div>
+            <div class="movie-item">
+                <strong>Гражданин Кейн</strong> (1941)<br>
+                <em>Драма, Мистика</em>
+            </div>
+            <div class="movie-item">
+                <strong>Список Шиндлера</strong> (1993)<br>
+                <em>Драма, История</em>
+            </div>
+        </div>
+        
+        <p><strong>Статус системы:</strong> ✅ Стабильная версия</p>
+        <p><strong>Канареечное развертывание:</strong> ❌ Неактивно</p>
+        
+        <div class="timestamp">
+            Запрос обработан: <span id="timestamp"></span><br>
+            Сервер: OLD-MOVIE-SERVICE-v1.0
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('ru-RU');
+    </script>
+</body>
+</html>

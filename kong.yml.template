@@ -1,0 +1,333 @@
+# Kong конфигурация для канареечного развертывания (шаблон)
+# Этот файл будет обработан для замены переменных окружения
+
+_format_version: "3.0"
+_transform: true
+
+# Определение апстрима с весовой балансировкой
+upstreams:
+  - name: movie-upstream
+    algorithm: round-robin
+    # Настройки healthcheck
+    healthchecks:
+      active:
+        type: http
+        http_path: /
+        healthy:
+          interval: 30
+          successes: 2
+        unhealthy:
+          interval: 30
+          http_failures: 3
+    tags:
+      - movies
+      - canary
+
+# Цели с весами для канареечного развертывания
+# Веса будут заменены на основе переменных окружения
+targets:
+  # Старый сервис - вес зависит от NEW_MOVIE_SERVICE_PERCENT
+  - target: old-movie-service:80
+    upstream: movie-upstream
+    weight: OLD_SERVICE_WEIGHT_PLACEHOLDER
+    tags:
+      - legacy
+
+  # Новый сервис - вес = NEW_MOVIE_SERVICE_PERCENT
+  - target: new-movie-service:80
+    upstream: movie-upstream
+    weight: NEW_SERVICE_WEIGHT_PLACEHOLDER
+    tags:
+      - canary
+
+# Определение сервиса
+services:
+  - name: movie-service
+    host: movie-upstream
+    port: 80
+    protocol: http
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    retries: 5
+    tags:
+      - movies
+
+# Определение маршрута
+routes:
+  - name: movie-route
+    service: movie-service
+    paths:
+      - /kong_requests_movies
+    strip_path: true
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    preserve_host: false
+    tags:
+      - movies
+
+# Простые плагины (без Lua)
+plugins:
+  # Добавление заголовков для отладки
+  - name: response-transformer
+    route: movie-route
+    config:
+      add:
+        headers:
+          - "X-Kong-Upstream:movie-upstream"
+          - "X-API-Version:v1"
+          - "X-Canary-Enabled:MIGRATE_TO_MOVIES_PLACEHOLDER"
+          - "X-Canary-Percent:NEW_MOVIE_SERVICE_PERCENT_PLACEHOLDER"
+    tags:
+      - headers
+
+  # Логирование запросов
+  - name: file-log
+    route: movie-route
+    config:
+      path: /tmp/kong-movie-requests.log
+    tags:
+      - logging
+
+  # Уникальный ID запроса
+  - name: correlation-id
+    route: movie-route
+    config:
+      header_name: X-Request-ID
+      generator: uuid
+      echo_downstream: true
+    tags:
+      - tracing
+
+  # Ограничение частоты запросов (защита от перегрузки)
+  - name: rate-limiting
+    route: movie-route
+    config:
+      minute: 1000
+      hour: 10000
+      policy: local
+      fault_tolerant: true
+      hide_client_headers: false
+    tags:
+      - protection# Kong конфигурация для канареечного развертывания (Kong OSS)
+# Простая версия без Lua скриптов, использующая только weighted upstreams
+# Этот файл будет сгенерирован из kong.yml.template
+
+_format_version: "3.0"
+_transform: true
+
+# Определение апстрима с весовой балансировкой
+upstreams:
+  - name: movie-upstream
+    algorithm: round-robin
+    # Настройки healthcheck
+    healthchecks:
+      active:
+        type: http
+        http_path: /
+        healthy:
+          interval: 30
+          successes: 2
+        unhealthy:
+          interval: 30
+          http_failures: 3
+    tags:
+      - movies
+      - canary
+
+# Цели с весами для канареечного развертывания
+# Веса автоматически рассчитываются на основе переменных окружения
+targets:
+  # Старый сервис - вес = 100 - NEW_MOVIE_SERVICE_PERCENT
+  - target: old-movie-service:80
+    upstream: movie-upstream
+    weight: 100
+    tags:
+      - legacy
+
+  # Новый сервис - вес = NEW_MOVIE_SERVICE_PERCENT
+  - target: new-movie-service:80
+    upstream: movie-upstream
+    weight: 0
+    tags:
+      - canary
+
+# Определение сервиса
+services:
+  - name: movie-service
+    host: movie-upstream
+    port: 80
+    protocol: http
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    retries: 5
+    tags:
+      - movies
+
+# Определение маршрута
+routes:
+  - name: movie-route
+    service: movie-service
+    paths:
+      - /kong_requests_movies
+    strip_path: true
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    preserve_host: false
+    tags:
+      - movies
+
+# Простые плагины (без Lua)
+plugins:
+  # Добавление заголовков для отладки
+  - name: response-transformer
+    route: movie-route
+    config:
+      add:
+        headers:
+          - "X-Kong-Upstream:movie-upstream"
+          - "X-API-Version:v1"
+          - "X-Canary-Enabled:false"
+          - "X-Canary-Percent:0"
+    tags:
+      - headers
+
+  # Логирование запросов
+  - name: file-log
+    route: movie-route
+    config:
+      path: /tmp/kong-movie-requests.log
+    tags:
+      - logging
+
+  # Уникальный ID запроса
+  - name: correlation-id
+    route: movie-route
+    config:
+      header_name: X-Request-ID
+      generator: uuid
+      echo_downstream: true
+    tags:
+      - tracing
+
+  # Ограничение частоты запросов (защита от перегрузки)
+  - name: rate-limiting
+    route: movie-route
+    config:
+      minute: 1000
+      hour: 10000
+      policy: local
+      fault_tolerant: true
+      hide_client_headers: false
+    tags:
+      - protection# Kong конфигурация для канареечного развертывания (Kong OSS)
+# Простая версия без Lua скриптов, использующая только weighted upstreams
+
+_format_version: "3.0"
+_transform: true
+
+# Определение апстрима с весовой балансировкой
+upstreams:
+  - name: movie-upstream
+    algorithm: round-robin
+    # Настройки healthcheck
+    healthchecks:
+      active:
+        type: http
+        http_path: /
+        healthy:
+          interval: 30
+          successes: 2
+        unhealthy:
+          interval: 30
+          http_failures: 3
+    tags:
+      - movies
+      - canary
+
+# Цели с весами для канареечного развертывания
+targets:
+  # Старый сервис - изначально 100% трафика (вес 100)
+  - target: old-movie-service:80
+    upstream: movie-upstream
+    weight: 100
+    tags:
+      - legacy
+
+  # Новый сервис - изначально 0% трафика (вес 0)
+  - target: new-movie-service:80
+    upstream: movie-upstream
+    weight: 0
+    tags:
+      - canary
+
+# Определение сервиса
+services:
+  - name: movie-service
+    host: movie-upstream
+    port: 80
+    protocol: http
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    retries: 5
+    tags:
+      - movies
+
+# Определение маршрута
+routes:
+  - name: movie-route
+    service: movie-service
+    paths:
+      - /kong_requests_movies
+    strip_path: true
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    preserve_host: false
+    tags:
+      - movies
+
+# Простые плагины без Lua
+plugins:
+  # Добавление заголовков для отладки
+  - name: response-transformer
+    route: movie-route
+    config:
+      add:
+        headers:
+          - "X-Kong-Upstream:movie-upstream"
+          - "X-API-Version:v1"
+          - "X-Served-By:kong-gateway"
+    tags:
+      - headers
+
+  # Логирование запросов
+  - name: file-log
+    route: movie-route
+    config:
+      path: /tmp/kong-movie-requests.log
+    tags:
+      - logging
+
+  # Уникальный ID запроса
+  - name: correlation-id
+    route: movie-route
+    config:
+      header_name: X-Request-ID
+      generator: uuid
+      echo_downstream: true
+    tags:
+      - tracing
