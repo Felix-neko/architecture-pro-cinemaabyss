@@ -1,0 +1,122 @@
+@startuml
+'!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include ../../../C4-PlantUML/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/python.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS/react.puml
+!include FONTAWESOME/users.puml
+!include FONTAWESOME/mobile_alt.puml
+!include DEVICONS/redis.puml
+!include FONTAWESOME/exchange_alt.puml
+!include FONTAWESOME/database.puml
+
+AddElementTag("third-party", $bgColor="#f5f5f5", $borderColor="DarkGray", $fontColor="Black", $legendText="Компоненты сторонних производителей")
+
+
+title Онлайн-кинотеатр: диаграмма контейнеров
+
+Person(user, "Пользователь", "Пользователь/администратор")
+
+System_Boundary(frontend_systems, "Фронтэнд-системы") {
+    Container(web_app, "Веб-приложение", "JavaScript, React", $sprite="react")
+    Container(phone_app, "Мобильное приложение", "React Native", $sprite="mobile_alt")
+}
+System_Boundary(server_systems, Серверные системы на Kubernetes-кластере) {
+    Container(api_gateway, "API-шлюз")
+    Rel(web_app, api_gateway, "REST", "HTTPS")
+    Rel(phone_app, api_gateway, "REST", "HTTPS")
+
+    Container(auth_service, "Сервис аутентификации и авторизации")
+    Rel(api_gateway, auth_service, "REST", "HTTPS")
+
+    System_Boundary(bff_system, "BFF-сервисы") {
+        Container(bff_mobile, "BFF Mobile", для телефонов)
+        Container(bff_web, "BFF Web", для веб-сайта)
+    }
+
+    Rel(api_gateway, bff_mobile, "REST", "HTTP")
+    Rel(api_gateway, bff_web, "REST", "HTTP")
+
+
+'    System_Boundary(movie_info_system, "Информация о фильмах") {
+
+        Container(movie_info_service, "Сервис информации о фильмах")
+'        Rel(bff_mobile, movie_info_service, "REST", "HTTP")
+'        Rel(bff_web, movie_info_service, "REST", "HTTP")
+        Rel(bff_system, movie_info_service, "REST", "HTTP")
+'    }
+
+'    System_Boundary(rating_and_comment_system, "Система оценок и комментов") {
+        Container(rating_and_comment_service, "Сервис оценок и комментов")
+'        Rel(bff_web, rating_and_comment_service, REST, HTTP)
+'        Rel(bff_mobile, rating_and_comment_service, REST, HTTP)
+        Rel(bff_system, rating_and_comment_service, "REST", "HTTP")
+'    }
+
+    Container(recommendation_service, "Сервис рекомендаций")
+    Rel(bff_system, recommendation_service, "REST", "HTTP")
+
+
+
+'    System_Boundary(video_content_system, Сервисы работы с видеоконтентом) {
+        Container(video_service, "Сервис видеоконтента")
+'        Rel(bff_web, video_service, "REST", "HTTP")
+'        Rel(bff_mobile, video_service, "REST", "HTTP")
+        Rel(bff_system, video_service, "REST", "HTTP")
+        Container(video_storage_service, "Сервис хранения видеоконтента")
+'    }
+
+    Container(video_storage_service, "Сервис хранения видеоконтента")
+    Rel(video_service, video_storage_service, "REST", "HTTP")
+
+
+    Container(subscription_service, "Сервис подписок")
+    Rel(auth_service, subscription_service, "REST", "HTTP")
+    Rel(bff_system, subscription_service, "REST", "HTTP")
+
+
+'    System_Boundary(payment_system, "Оплата") {
+        Container(payment_service, "Сервис оплаты")
+        Rel(bff_system, payment_service, "REST", "HTTP")
+'    }
+
+}
+
+Container(video_storage_db, "Внутреннее хранилище видеоконтента", "S3")
+Rel(video_storage_service, video_storage_db, "")
+
+System_Ext(external_video_content_services, "Внешние онлайн-кинотеатры", <<external>>) {
+    Container_Ext(netflix_video_content_service, "Netflix")
+    Container_Ext(amazon_prome_video_content_service, "Amazon Prime")
+    Container_Ext(tencent_video_content_service, "Tencent")
+    Container_Ext(ivi_video_content_service, "ИВИ")
+    Container_Ext(okko_video_content_service, "ОККО")
+    Container_Ext(wink_video_content_service, "Wink")
+}
+
+Rel(video_service, external_video_content_services, "REST", "HTTPS")
+Rel(movie_info_service, external_video_content_services, "REST", "HTTPS")
+
+System_Ext(external_payment_processing_services, "Внешние сервисы обработки платежей", "<<external>>") {
+    Container_Ext(stripe_payment_processor, "Stipe")
+    Container_Ext(robokassa_payment_processor, "РобоКасса")
+    Container_Ext(cloudpayments_payment_processor, "CloudPayments")
+}
+Rel(payment_service, external_payment_processing_services, "REST", HTTPS)
+
+Container_Ext(external_recommendation_system, "Внешний сервис рекомендаций", "<<external>>")
+Rel(recommendation_service, external_recommendation_system, "REST", "HTTPS")
+
+
+Rel(user, web_app, "")
+Rel(user, phone_app, "")
+
+
+
+LAYOUT_TOP_DOWN()
+SHOW_LEGEND()
+
+@enduml
