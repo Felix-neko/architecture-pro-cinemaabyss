@@ -59,9 +59,7 @@ System_Boundary(server_systems, Серверные системы на Kubernete
     Container(recommendation_service, "Сервис рекомендаций")
     Rel(bff_system, recommendation_service, "REST", "HTTP")
 
-
-
-'    System_Boundary(video_content_system, Сервисы работы с видеоконтентом) {
+'    System_Boundary(video_content_system, Сервисы работы с видеоконтентом, "<<external>>") {
         Container(video_service, "Сервис видеоконтента")
 '        Rel(bff_web, video_service, "REST", "HTTP")
 '        Rel(bff_mobile, video_service, "REST", "HTTP")
@@ -77,37 +75,48 @@ System_Boundary(server_systems, Серверные системы на Kubernete
     Rel(auth_service, subscription_service, "REST", "HTTP")
     Rel(bff_system, subscription_service, "REST", "HTTP")
 
+    Container(payment_service, "Сервис оплаты")
+    Rel(bff_system, payment_service, "REST", "HTTP")
 
-'    System_Boundary(payment_system, "Оплата") {
-        Container(payment_service, "Сервис оплаты")
-        Rel(bff_system, payment_service, "REST", "HTTP")
-'    }
 
+    Container(kafka_broker, "Kafka-брокер", third-party)
+    Rel(kafka_broker, subscription_service, "")
+    Rel(payment_service, kafka_broker, "")
 }
+
 
 Container(video_storage_db, "Внутреннее хранилище видеоконтента", "S3")
 Rel(video_storage_service, video_storage_db, "")
 
-System_Ext(external_video_content_services, "Внешние онлайн-кинотеатры", <<external>>) {
-    Container_Ext(netflix_video_content_service, "Netflix")
-    Container_Ext(amazon_prome_video_content_service, "Amazon Prime")
-    Container_Ext(tencent_video_content_service, "Tencent")
-    Container_Ext(ivi_video_content_service, "ИВИ")
-    Container_Ext(okko_video_content_service, "ОККО")
-    Container_Ext(wink_video_content_service, "Wink")
+
+
+' Внешние сервисы
+System_Boundary(external_services, "Внешние сервисы") {
+
+
+    System_Ext(external_video_content_services, "Внешние онлайн-кинотеатры", <<external>>) {
+        Container_Ext(netflix_video_content_service, "Netflix")
+        Container_Ext(amazon_prome_video_content_service, "Amazon Prime")
+        Container_Ext(tencent_video_content_service, "Tencent")
+        Container_Ext(ivi_video_content_service, "ИВИ")
+        Container_Ext(okko_video_content_service, "ОККО")
+        Container_Ext(wink_video_content_service, "Wink")
+    }
+
+    System_Ext(external_payment_processing_services, "Внешние сервисы обработки платежей", "<<external>>") {
+        Container_Ext(stripe_payment_processor, "Stipe")
+        Container_Ext(robokassa_payment_processor, "РобоКасса")
+        Container_Ext(cloudpayments_payment_processor, "CloudPayments")
+    }
+
+    Container_Ext(external_recommendation_system, "Внешний сервис рекомендаций", "<<external>>")
 }
 
+
+' Связи с внешними сервисами
 Rel(video_service, external_video_content_services, "REST", "HTTPS")
 Rel(movie_info_service, external_video_content_services, "REST", "HTTPS")
-
-System_Ext(external_payment_processing_services, "Внешние сервисы обработки платежей", "<<external>>") {
-    Container_Ext(stripe_payment_processor, "Stipe")
-    Container_Ext(robokassa_payment_processor, "РобоКасса")
-    Container_Ext(cloudpayments_payment_processor, "CloudPayments")
-}
-Rel(payment_service, external_payment_processing_services, "REST", HTTPS)
-
-Container_Ext(external_recommendation_system, "Внешний сервис рекомендаций", "<<external>>")
+Rel(payment_service, external_payment_processing_services, "REST", "HTTPS")
 Rel(recommendation_service, external_recommendation_system, "REST", "HTTPS")
 
 
