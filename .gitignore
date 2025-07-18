@@ -154,3 +154,5 @@ go.work
 
 # Postman tests reports
 tests/postman/reports/
+/src/microservices/events/.venv/
+/src/microservices/events/uv.lock

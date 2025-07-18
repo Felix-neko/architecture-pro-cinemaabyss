@@ -1,0 +1,206 @@
+import logging
+from contextlib import asynccontextmanager
+from typing import Optional, List, Union, AsyncGenerator
+import json
+
+import uvicorn
+from fastapi import FastAPI, APIRouter, HTTPException, status as status_codes, Body
+from aiokafka.consumer import AIOKafkaConsumer
+from aiokafka.producer import AIOKafkaProducer
+
+from event_service.config import settings
+from event_service.dto import (
+    PaymentEvent,
+    MovieEvent,
+    UserEvent,
+    MovieEventRegisterResponseInfo,
+    UserEventRegisterResponseInfo,
+    PaymentEventRegisterResponseInfo,
+)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
+
+class NotImplementedHttpError(HTTPException):
+    def __init__(self, detail: str = "This feature is not yet implemented"):
+        super().__init__(status_code=status_codes.HTTP_501_NOT_IMPLEMENTED, detail=detail)
+
+
+class EventServiceAPI(FastAPI):
+    """
+    Роутер для сервиса создания Kakfa-событий
+    """
+
+    def __init__(self, kafka_url: str = settings.kafka_url, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._kafka_url = kafka_url
+        self._kafka_producer: Optional[AIOKafkaProducer] = None
+        self._kafka_movies_consumer: Optional[AIOKafkaConsumer] = None
+        self._kafka_users_consumer: Optional[AIOKafkaConsumer] = None
+        self._kafka_payments_consumer: Optional[AIOKafkaConsumer] = None
+        self._kafka_initialized: bool = False
+        self._kafka_err_msg: Optional[str] = None
+
+        @self.get("/health_check")
+        async def health_check() -> Optional[bool]:
+            """Проверка состояния сервиса"""
+            return await self.health_check()
+
+        @self.post("/events/movie", status_code=status_codes.HTTP_201_CREATED)
+        async def register_movie_event(event: MovieEvent = Body(embed=False)) -> MovieEventRegisterResponseInfo:
+            """Регистрация события фильма"""
+            return await self.register_movie_event(event)
+
+        @self.post("/events/user", status_code=status_codes.HTTP_201_CREATED)
+        async def register_user_event(event: UserEvent = Body(embed=False)) -> UserEventRegisterResponseInfo:
+            """Регистрация события пользователя"""
+            return await self.register_user_event(event)
+
+        @self.post("/events/payment", status_code=status_codes.HTTP_201_CREATED)
+        async def register_payment_event(event: PaymentEvent = Body(embed=False)) -> PaymentEventRegisterResponseInfo:
+            """Регистрация события платежа"""
+            return await self.register_payment_event(event)
+
+    async def health_check(self) -> Optional[bool]:
+        return True
+
+    async def register_movie_event(self, event: MovieEvent) -> MovieEventRegisterResponseInfo:
+        """Публикация события фильма в Kafka"""
+        if not self._kafka_initialized or not self._kafka_producer:
+            raise HTTPException(
+                status_code=status_codes.HTTP_503_SERVICE_UNAVAILABLE, detail="Kafka producer not initialized"
+            )
+
+        try:
+            # Сериализуем событие в JSON
+            event_json = json.dumps(event.model_dump(), ensure_ascii=False)
+
+            # Отправляем в Kafka топик
+            result = await self._kafka_producer.send_and_wait(settings.movies_event_topic, event_json.encode("utf-8"))
+
+            logging.info(f"Movie event published to Kafka: {event.title}")
+            return MovieEventRegisterResponseInfo(
+                status="success", partition=result.partition, offset=result.offset, event=event
+            )
+
+        except Exception as e:
+            logging.error(f"Failed to publish movie event: {e}")
+            raise HTTPException(
+                status_code=status_codes.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to publish event: {str(e)}"
+            )
+
+    async def register_payment_event(self, event: PaymentEvent) -> PaymentEventRegisterResponseInfo:
+        """Публикация события платежа в Kafka"""
+        if not self._kafka_initialized or not self._kafka_producer:
+            raise HTTPException(
+                status_code=status_codes.HTTP_503_SERVICE_UNAVAILABLE, detail="Kafka producer not initialized"
+            )
+
+        try:
+            # Сериализуем событие в JSON
+            event_json = json.dumps(event.model_dump(), ensure_ascii=False)
+
+            # Отправляем в Kafka топик
+            result = await self._kafka_producer.send_and_wait(settings.payments_event_topic, event_json.encode("utf-8"))
+
+            logging.info(f"Payment event published to Kafka: {event.payment_id}")
+            return PaymentEventRegisterResponseInfo(
+                status="success", partition=result.partition, offset=result.offset, event=event
+            )
+
+        except Exception as e:
+            logging.error(f"Failed to publish payment event: {e}")
+            raise HTTPException(
+                status_code=status_codes.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to publish event: {str(e)}"
+            )
+
+    async def register_user_event(self, event: UserEvent) -> UserEventRegisterResponseInfo:
+        """Публикация события пользователя в Kafka"""
+        if not self._kafka_initialized or not self._kafka_producer:
+            raise HTTPException(
+                status_code=status_codes.HTTP_503_SERVICE_UNAVAILABLE, detail="Kafka producer not initialized"
+            )
+
+        try:
+            # Сериализуем событие в JSON
+            event_json = json.dumps(event.model_dump(), ensure_ascii=False)
+
+            # Отправляем в Kafka топик
+            result = await self._kafka_producer.send_and_wait(settings.users_event_topic, event_json.encode("utf-8"))
+
+            logging.info(f"User event published to Kafka: {event.user_id}")
+            return UserEventRegisterResponseInfo(
+                status="success", partition=result.partition, offset=result.offset, event=event
+            )
+
+        except Exception as e:
+            logging.error(f"Failed to publish user event: {e}")
+            raise HTTPException(
+                status_code=status_codes.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Failed to publish event: {str(e)}"
+            )
+
+    async def process_payment_event(self, payment_event: PaymentEvent):
+        pass
+
+    async def process_user_event(self, user_event: UserEvent):
+        pass
+
+    async def process_movie_event(self, movie_event: MovieEvent):
+        pass
+
+    async def _initialize(self):
+        """
+        Инициализация kafka
+        """
+        try:
+            logging.info("Initializing Kafka...")
+            self._kafka_producer = AIOKafkaProducer(bootstrap_servers=self._kafka_url)
+            self._kafka_movies_consumer = AIOKafkaConsumer(
+                settings.movies_event_topic,
+                bootstrap_servers=self._kafka_url,
+                group_id=settings.movies_consumer_group,
+                enable_auto_commit=True,
+                auto_offset_reset="earliest",
+            )
+            self._kafka_users_consumer = AIOKafkaConsumer(
+                settings.users_event_topic,
+                bootstrap_servers=self._kafka_url,
+                group_id=settings.users_consumer_group,
+                enable_auto_commit=True,
+                auto_offset_reset="earliest",
+            )
+            self._kafka_payments_consumer = AIOKafkaConsumer(
+                settings.payments_event_topic,
+                bootstrap_servers=self._kafka_url,
+                group_id=settings.payments_consumer_group,
+                enable_auto_commit=True,
+                auto_offset_reset="earliest",
+            )
+            logging.info("Kafka initialized successfully")
+        except Exception as e:
+            logging.error(e)
+            self._kafka_err_msg = str(e)
+        self._kafka_initialized = True
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Initialize router and Kafka on startup
+    await app._initialize()
+    yield
+    # Cleanup on shutdown
+    if app._kafka_producer:
+        await app._kafka_producer.stop()
+    if app._kafka_movies_consumer:
+        await app._kafka_movies_consumer.stop()
+    if app._kafka_users_consumer:
+        await app._kafka_users_consumer.stop()
+    if app._kafka_payments_consumer:
+        await app._kafka_payments_consumer.stop()
+
+
+app = EventServiceAPI(title="Event Service", description="Сервис kafka-событий", lifespan=lifespan)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host=settings.host, port=settings.port, log_level="info")
