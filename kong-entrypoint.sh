@@ -1,69 +1,42 @@
 #!/bin/bash
 
-# Kong entrypoint script с автоматической генерацией kong.yml из шаблона
+# Kong entrypoint script для генерации kong.yml
 # Этот скрипт выполняется при каждом запуске контейнера Kong
 
-set -e
-
-echo "[Kong Entrypoint] Начинаем инициализацию Kong..."
+echo "Generating Kong config..."
 
 # Получаем переменные окружения
-MIGRATE_TO_MOVIES="${MIGRATE_TO_MOVIES:-false}"
-NEW_MOVIE_SERVICE_PERCENT="${NEW_MOVIE_SERVICE_PERCENT:-0}"
-
-echo "[Kong Entrypoint] Переменные окружения:"
-echo "  MIGRATE_TO_MOVIES=${MIGRATE_TO_MOVIES}"
-echo "  NEW_MOVIE_SERVICE_PERCENT=${NEW_MOVIE_SERVICE_PERCENT}"
+# Убедимся, что значение числовое
+export NEW_MOVIE_SERVICE_PERCENT=$((${NEW_MOVIE_SERVICE_PERCENT:-0}))
 
 # Проверяем процент
 if [ "$NEW_MOVIE_SERVICE_PERCENT" -lt 0 ] || [ "$NEW_MOVIE_SERVICE_PERCENT" -gt 100 ]; then
     echo "[Kong Entrypoint] ПРЕДУПРЕЖДЕНИЕ: NEW_MOVIE_SERVICE_PERCENT должен быть от 0 до 100, установлен в 0"
-    NEW_MOVIE_SERVICE_PERCENT=0
+    export NEW_MOVIE_SERVICE_PERCENT=0
 fi
+export OLD_MOVIE_SERVICE_PERCENT=$((100 - $NEW_MOVIE_SERVICE_PERCENT))
 
-# Вычисляем веса
-if [ "$MIGRATE_TO_MOVIES" = "true" ]; then
-    NEW_SERVICE_WEIGHT="$NEW_MOVIE_SERVICE_PERCENT"
-    OLD_SERVICE_WEIGHT=$((100 - NEW_MOVIE_SERVICE_PERCENT))
-    echo "[Kong Entrypoint] Канареечное развертывание ВКЛЮЧЕНО: ${OLD_SERVICE_WEIGHT}% старый, ${NEW_SERVICE_WEIGHT}% новый"
-else
-    NEW_SERVICE_WEIGHT=0
-    OLD_SERVICE_WEIGHT=100
-    echo "[Kong Entrypoint] Канареечное развертывание ОТКЛЮЧЕНО: 100% старый сервис"
-fi
+#export NEW_MOVIE_SERVICE_URL=$((${NEW_MOVIE_SERVICE_URL:-http://new-movie-service:80}))
+#export OLD_MOVIE_SERVICE_URL=$((${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}))
 
-# Проверяем наличие шаблона
-if [ ! -f "/etc/kong/kong.yml.template" ]; then
-    echo "[Kong Entrypoint] ОШИБКА: файл kong.yml.template не найден в /etc/kong/"
-    exit 1
-fi
+# И подставляем нужные переменные окружения в шаблон kong-конфигурации
+sed -e "s|\${OLD_MOVIE_SERVICE_PERCENT}|$OLD_MOVIE_SERVICE_PERCENT|g" \
+    -e "s|\${NEW_MOVIE_SERVICE_PERCENT}|$NEW_MOVIE_SERVICE_PERCENT|g" \
+    -e "s|\${OLD_MOVIE_SERVICE_URL}|$OLD_MOVIE_SERVICE_URL|g" \
+    -e "s|\${NEW_MOVIE_SERVICE_URL}|$NEW_MOVIE_SERVICE_URL|g" \
+    /etc/kong/kong.yml.template > /tmp/kong.yml
 
-echo "[Kong Entrypoint] Генерируем kong.yml из шаблона..."
+# Перемещаем сгенерированный конфиг на место
+mv /tmp/kong.yml /etc/kong/kong.yml
 
-# Генерируем kong.yml из шаблона
-sed -e "s/OLD_SERVICE_WEIGHT_PLACEHOLDER/${OLD_SERVICE_WEIGHT}/g" \
-    -e "s/NEW_SERVICE_WEIGHT_PLACEHOLDER/${NEW_SERVICE_WEIGHT}/g" \
-    -e "s/MIGRATE_TO_MOVIES_PLACEHOLDER/${MIGRATE_TO_MOVIES}/g" \
-    -e "s/NEW_MOVIE_SERVICE_PERCENT_PLACEHOLDER/${NEW_MOVIE_SERVICE_PERCENT}/g" \
-    /etc/kong/kong.yml.template > /etc/kong/kong.yml
-
-echo "[Kong Entrypoint] kong.yml успешно сгенерирован"
-
-# Показываем информацию о весах
-echo "[Kong Entrypoint] Текущие веса в kong.yml:"
-echo "  old-movie-service: ${OLD_SERVICE_WEIGHT}"
-echo "  new-movie-service: ${NEW_SERVICE_WEIGHT}"
-
-# Проверяем корректность сгенерированного файла
-echo "[Kong Entrypoint] Проверяем корректность kong.yml..."
-if kong config parse /etc/kong/kong.yml; then
-    echo "[Kong Entrypoint] kong.yml прошел валидацию успешно"
-else
-    echo "[Kong Entrypoint] ОШИБКА: kong.yml содержит ошибки конфигурации"
+# Проверяем корректность конфигурации
+echo "[Kong Entrypoint] Проверяем конфигурацию..."
+if ! kong config parse /etc/kong/kong.yml; then
+    echo "[Kong Entrypoint] ОШИБКА: Невалидная конфигурация Kong"
     exit 1
 fi
 
 echo "[Kong Entrypoint] Запускаем Kong..."
 
-# Запускаем Kong с оригинальными аргументами
-exec kong docker-start "$@"
+# Запускаем Kong с помощью стандартного entrypoint
+exec /docker-entrypoint.sh kong start

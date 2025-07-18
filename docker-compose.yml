@@ -18,10 +18,9 @@ services:
       KONG_ADMIN_GUI_URL: http://localhost:8002
       KONG_ANONYMOUS_REPORTS: false
       # Переменные для канареечного развертывания (автоматически используются в шаблоне)
-      MIGRATE_TO_MOVIES: "${MIGRATE_TO_MOVIES:-false}"
       NEW_MOVIE_SERVICE_PERCENT: "${NEW_MOVIE_SERVICE_PERCENT:-0}"
-      OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
-      NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
+#       OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
+#       NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
     ports:
       - "8000:8000"  # Proxy HTTP
       - "8443:8443"  # Proxy HTTPS
