@@ -2,6 +2,7 @@ import logging
 from contextlib import asynccontextmanager
 from typing import Optional, List, Union, AsyncGenerator
 import json
+import asyncio
 
 import uvicorn
 from fastapi import FastAPI, APIRouter, HTTPException, status as status_codes, Body
@@ -141,13 +142,55 @@ class EventServiceAPI(FastAPI):
             )
 
     async def process_payment_event(self, payment_event: PaymentEvent):
-        pass
+        """Process payment event and log it"""
+        logging.info(f"Processing payment event: {payment_event.model_dump()}")
 
     async def process_user_event(self, user_event: UserEvent):
-        pass
+        """Process user event and log it"""
+        logging.info(f"Processing user event: {user_event.model_dump()}")
 
     async def process_movie_event(self, movie_event: MovieEvent):
-        pass
+        """Process movie event and log it"""
+        logging.info(f"Processing movie event: {movie_event.model_dump()}")
+
+    async def _consume_movie_events(self):
+        """Background task to consume movie events"""
+        try:
+            async for message in self._kafka_movies_consumer:
+                try:
+                    event_data = json.loads(message.value.decode('utf-8'))
+                    movie_event = MovieEvent(**event_data)
+                    await self.process_movie_event(movie_event)
+                except Exception as e:
+                    logging.error(f"Error processing movie event: {e}")
+        except Exception as e:
+            logging.error(f"Error in movie events consumer: {e}")
+
+    async def _consume_user_events(self):
+        """Background task to consume user events"""
+        try:
+            async for message in self._kafka_users_consumer:
+                try:
+                    event_data = json.loads(message.value.decode('utf-8'))
+                    user_event = UserEvent(**event_data)
+                    await self.process_user_event(user_event)
+                except Exception as e:
+                    logging.error(f"Error processing user event: {e}")
+        except Exception as e:
+            logging.error(f"Error in user events consumer: {e}")
+
+    async def _consume_payment_events(self):
+        """Background task to consume payment events"""
+        try:
+            async for message in self._kafka_payments_consumer:
+                try:
+                    event_data = json.loads(message.value.decode('utf-8'))
+                    payment_event = PaymentEvent(**event_data)
+                    await self.process_payment_event(payment_event)
+                except Exception as e:
+                    logging.error(f"Error processing payment event: {e}")
+        except Exception as e:
+            logging.error(f"Error in payment events consumer: {e}")
 
     async def _initialize(self):
         """
@@ -188,6 +231,12 @@ class EventServiceAPI(FastAPI):
 
             self._kafka_initialized = True
             logging.info("Kafka initialized successfully")
+
+            # Start background consumer tasks
+            asyncio.create_task(self._consume_movie_events())
+            asyncio.create_task(self._consume_user_events())
+            asyncio.create_task(self._consume_payment_events())
+            logging.info("Background consumer tasks started")
 
         except Exception as e:
             logging.error(e)
