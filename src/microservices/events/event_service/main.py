@@ -155,7 +155,10 @@ class EventServiceAPI(FastAPI):
         """
         try:
             logging.info("Initializing Kafka...")
+
             self._kafka_producer = AIOKafkaProducer(bootstrap_servers=self._kafka_url)
+            await self._kafka_producer.start()
+
             self._kafka_movies_consumer = AIOKafkaConsumer(
                 settings.movies_event_topic,
                 bootstrap_servers=self._kafka_url,
@@ -163,6 +166,8 @@ class EventServiceAPI(FastAPI):
                 enable_auto_commit=True,
                 auto_offset_reset="earliest",
             )
+            await self._kafka_movies_consumer.start()
+
             self._kafka_users_consumer = AIOKafkaConsumer(
                 settings.users_event_topic,
                 bootstrap_servers=self._kafka_url,
@@ -170,6 +175,8 @@ class EventServiceAPI(FastAPI):
                 enable_auto_commit=True,
                 auto_offset_reset="earliest",
             )
+            await self._kafka_users_consumer.start()
+
             self._kafka_payments_consumer = AIOKafkaConsumer(
                 settings.payments_event_topic,
                 bootstrap_servers=self._kafka_url,
@@ -177,11 +184,15 @@ class EventServiceAPI(FastAPI):
                 enable_auto_commit=True,
                 auto_offset_reset="earliest",
             )
+            await self._kafka_payments_consumer.start()
+
+            self._kafka_initialized = True
             logging.info("Kafka initialized successfully")
+
         except Exception as e:
             logging.error(e)
             self._kafka_err_msg = str(e)
-        self._kafka_initialized = True
+            raise e
 
 
 @asynccontextmanager
