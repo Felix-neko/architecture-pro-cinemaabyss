@@ -2,9 +2,9 @@ name: API Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, sandboxing ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, sandboxing ]
   workflow_dispatch:
     inputs:
       environment:
