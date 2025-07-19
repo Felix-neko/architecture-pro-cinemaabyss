@@ -10,7 +10,7 @@
 
 ### Основные настройки сервисов
 - `MONOLITH_SERVICE_URL` - URL моносервиса (по умолчанию: `localhost:8080`)
-- `MOVIE_SERVICE_URL` - URL сервиса фильмов (по умолчанию: `localhost:8081`)
+- `MOVIES_SERVICE_URL` - URL сервиса фильмов (по умолчанию: `localhost:8081`)
 - `EVENTS_SERVICE_URL` - URL сервиса событий (по умолчанию: `localhost:8082`)
 
 ### Настройки канареечного развертывания
@@ -18,7 +18,6 @@
   - `0` - Весь трафик идёт на старый сервис (моносервис)
   - `100` - Весь трафик идёт на новый сервис фильмов
   - `50` - Трафик распределяется поровну между старым и новым сервисами
-- `OLD_MOVIE_SERVICE_PERCENT` - Автоматически рассчитываемый процент трафика для старого сервиса фильмов. Рассчитывается как `100 - NEW_MOVIE_SERVICE_PERCENT`.
 
 ## Пример использования
 
@@ -29,7 +28,7 @@ docker run -p 8000:8000 proxy-service
 # Запуск с кастомными настройками
 docker run -p 8000:8000 \
   -e MONOLITH_SERVICE_URL=loclahost:8080 \
-  -e MOVIE_SERVICE_URL=localhost:8081 \
+  -e MOVIES_SERVICE_URL=localhost:8081 \
   -e EVENTS_SERVICE_URL=localhost:8082 \
   -e MOVIES_MIGRATION_PERCENT=50 \
   proxy-service

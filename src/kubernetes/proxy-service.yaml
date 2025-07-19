@@ -25,16 +25,21 @@ spec:
         image: ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         env:
         - name: PORT
-          value: "8080"
-        - name: MONOLITH_URL
+          value: "8000"
+        - name: MONOLITH_SERVICE_URL
           value: "monolith:8080"
         - name: MOVIES_SERVICE_URL
           value: "movies-service:8081"
         - name: EVENTS_SERVICE_URL
           value: "events-service:8082"
+        - name: MOVIES_MIGRATION_PERCENT
+          valueFrom:
+            configMapKeyRef:
+              name: cinemaabyss-config
+              key: MOVIES_MIGRATION_PERCENT
         resources:
           limits:
             cpu: "500m"
@@ -45,13 +50,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8000
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8000
           initialDelaySeconds: 15
           periodSeconds: 20
       restartPolicy: Always

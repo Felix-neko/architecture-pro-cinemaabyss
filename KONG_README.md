@@ -22,7 +22,7 @@
 ```bash
 # Значения по умолчанию в .env файле
 MIGRATE_TO_MOVIES=false          # Канареечное развертывание отключено
-NEW_MOVIE_SERVICE_PERCENT=0      # 0% трафика на новый сервис
+NEW_MOVIES_SERVICE_PERCENT=0      # 0% трафика на новый сервис
 ```
 
 ### 2. Автоматическая генерация kong.yml
@@ -74,15 +74,15 @@ Kong **автоматически** генерирует новую конфиг
 ```bash
 # Изменить переменные и перезапустить Kong
 export MIGRATE_TO_MOVIES=true
-export NEW_MOVIE_SERVICE_PERCENT=30
+export NEW_MOVIES_SERVICE_PERCENT=30
 docker-compose restart kong
 
 # Или в одну команду
-MIGRATE_TO_MOVIES=true NEW_MOVIE_SERVICE_PERCENT=50 docker-compose restart kong
+MIGRATE_TO_MOVIES=true NEW_MOVIES_SERVICE_PERCENT=50 docker-compose restart kong
 
 # Или изменить .env файл и перезапустить
 echo "MIGRATE_TO_MOVIES=true" > .env
-echo "NEW_MOVIE_SERVICE_PERCENT=75" >> .env
+echo "NEW_MOVIES_SERVICE_PERCENT=75" >> .env
 docker-compose restart kong
 ```
 
@@ -166,7 +166,7 @@ X-Request-ID: uuid-запроса
 **Сценарий 1: Тестирование с 25% канареечного трафика**
 ```bash
 # Автоматическая генерация при перезапуске
-MIGRATE_TO_MOVIES=true NEW_MOVIE_SERVICE_PERCENT=25 docker-compose restart kong
+MIGRATE_TO_MOVIES=true NEW_MOVIES_SERVICE_PERCENT=25 docker-compose restart kong
 
 # Альтернативно: временное изменение через Admin API (без перезапуска)
 ./canary-control.sh set 25
@@ -181,7 +181,7 @@ done
 ```bash
 # Отредактировать .env файл
 echo "MIGRATE_TO_MOVIES=true" > .env
-echo "NEW_MOVIE_SERVICE_PERCENT=50" >> .env
+echo "NEW_MOVIES_SERVICE_PERCENT=50" >> .env
 
 # Kong автоматически сгенерирует новую конфигурацию при перезапуске
 docker-compose restart kong
@@ -195,19 +195,19 @@ done
 **Сценарий 3: Пошаговое увеличение канареечного трафика**
 ```bash
 # 10% канареечного трафика
-MIGRATE_TO_MOVIES=true NEW_MOVIE_SERVICE_PERCENT=10 docker-compose restart kong
+MIGRATE_TO_MOVIES=true NEW_MOVIES_SERVICE_PERCENT=10 docker-compose restart kong
 sleep 30
 
 # 25% канареечного трафика  
-NEW_MOVIE_SERVICE_PERCENT=25 docker-compose restart kong
+NEW_MOVIES_SERVICE_PERCENT=25 docker-compose restart kong
 sleep 30
 
 # 50% канареечного трафика
-NEW_MOVIE_SERVICE_PERCENT=50 docker-compose restart kong
+NEW_MOVIES_SERVICE_PERCENT=50 docker-compose restart kong
 sleep 30
 
 # 100% канареечного трафика (полное переключение)
-NEW_MOVIE_SERVICE_PERCENT=100 docker-compose restart kong
+NEW_MOVIES_SERVICE_PERCENT=100 docker-compose restart kong
 ```
 
 ### Проверка распределения трафика

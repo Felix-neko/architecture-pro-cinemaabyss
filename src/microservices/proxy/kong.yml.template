@@ -42,28 +42,28 @@ upstreams:
 targets:
 #  - target: test-old-movie-service:80
 #    upstream: test-movie-upstream
-#    weight: ${OLD_MOVIE_SERVICE_PERCENT}
+#    weight: ${OLD_MOVIES_SERVICE_PERCENT}
 #    tags:
 #      - legacy
 #      - test
 #
 #  - target: test-new-movie-service:80
 #    upstream: test-movie-upstream
-#    weight: ${NEW_MOVIE_SERVICE_PERCENT}
+#    weight: ${NEW_MOVIES_SERVICE_PERCENT}
 #    tags:
 #      - canary
 #      - test
 
   - target: ${MONOLITH_SERVICE_URL}
     upstream: movie-upstream
-    weight: ${OLD_MOVIE_SERVICE_PERCENT}
+    weight: ${OLD_MOVIES_SERVICE_PERCENT}
     tags:
       - legacy
       - movies
 
-  - target: ${MOVIE_SERVICE_URL}
+  - target: ${MOVIES_SERVICE_URL}
     upstream: movie-upstream
-    weight: ${NEW_MOVIE_SERVICE_PERCENT}
+    weight: ${NEW_MOVIES_SERVICE_PERCENT}
     tags:
       - canary
       - movies
@@ -193,7 +193,7 @@ plugins:
           - "X-Kong-Upstream:movie-upstream"
           - "X-API-Version:v1"
           - "X-Canary-Enabled:true"
-          - "X-Canary-Percent:${NEW_MOVIE_SERVICE_PERCENT}"
+          - "X-Canary-Percent:${NEW_MOVIES_SERVICE_PERCENT}"
           - "X-Served-By:kong-gateway"
     tags:
       - headers
