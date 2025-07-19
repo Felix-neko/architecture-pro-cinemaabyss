@@ -74,7 +74,7 @@ targets:
     tags:
       - events
 
-  - target: ${MONOLITH_SERVICE_URL}:8080
+  - target: ${MONOLITH_SERVICE_URL}
     upstream: monolith-upstream
     weight: 100
     tags:
