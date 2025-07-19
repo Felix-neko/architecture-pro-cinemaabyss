@@ -115,25 +115,15 @@ services:
       - cinemaabyss-network
 
   proxy-service:
-    image: kong:3.9
+    build:
+      context: ./src/microservices/proxy
+      dockerfile: Dockerfile
     container_name: cinemaabyss-proxy-service
     depends_on:
       - monolith
       - movies-service
       - events-service
     environment:
-      # DB-less mode configuration
-      KONG_DATABASE: "off"
-      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_LISTEN: 0.0.0.0:8001
-      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
-      KONG_ADMIN_GUI_URL: http://localhost:8002
-      KONG_ANONYMOUS_REPORTS: false
-      # Переменные для канареечного развертывания (автоматически используются в шаблоне)
       NEW_MOVIE_SERVICE_PERCENT: "${MOVIES_MIGRATION_PERCENT:-0}"
 #       OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
 #       NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
@@ -143,19 +133,9 @@ services:
       - "8001:8001"  # Admin API
       - "8002:8002"  # Kong Manager OSS Web UI
       - "8444:8444"  # Admin API HTTPS
-    volumes:
-      - ./kong.yml.template:/etc/kong/kong.yml.template:ro  # Template file
-      - ./kong-entrypoint.sh:/usr/local/bin/kong-entrypoint.sh:ro  # Custom entrypoint
-      - ./canary-control.sh:/usr/local/bin/canary-control.sh:ro
-    entrypoint: ["bash", "/usr/local/bin/kong-entrypoint.sh"]  # Use bash to execute the script
     networks:
       - cinemaabyss-network
     restart: unless-stopped
-#     healthcheck:
-#       test: ["CMD", "kong", "health"]
-#       interval: 30s
-#       timeout: 10s
-#       retries: 5
 
   # Пример старого сервиса фильмов для тестирования
   test-old-movie-service:
@@ -181,28 +161,6 @@ services:
       - cinemaabyss-network
     restart: unless-stopped
 
-#   # Proxy Service (API Gateway)
-#   proxy-service:
-#     build:
-#       context: ./src/microservices/proxy
-#       dockerfile: Dockerfile
-#     container_name: cinemaabyss-proxy-service
-#     depends_on:
-#       - monolith
-#       - movies-service
-#       - events-service
-#     ports:
-#       - "8000:8000"
-#     environment:
-#       PORT: 8000
-#       MONOLITH_URL: http://monolith:8080
-#       MOVIES_SERVICE_URL: http://movies-service:8081
-#       EVENTS_SERVICE_URL: http://events-service:8082
-#       GRADUAL_MIGRATION: "true"
-#       MOVIES_MIGRATION_PERCENT: "50"
-#     networks:
-#       - cinemaabyss-network
-
   # Kafka UI for monitoring Kafka
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -226,14 +184,3 @@ networks:
   cinemaabyss-network:
     name: cinemaabyss-network
     driver: bridge
-
-
-# version: '3.8'
-#
-# services:
-#   # Kong API Gateway with Manager OSS (DB-less mode)
-
-#
-# networks:
-#   kong-net:
-#     driver: bridge
