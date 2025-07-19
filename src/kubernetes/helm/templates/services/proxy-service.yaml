@@ -31,7 +31,7 @@ spec:
         - containerPort: 8000
         env:
         - name: PORT
-          value: "8000"
+          value: "{{ .Values.proxyService.service.targetPort }}"
         - name: MONOLITH_SERVICE_URL
           value: "monolith:8080"
         - name: MOVIES_SERVICE_URL
@@ -44,22 +44,17 @@ spec:
               name: cinemaabyss-config
               key: MOVIES_MIGRATION_PERCENT
         resources:
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
+          {{- toYaml .Values.proxyService.resources | nindent 10 }}
         readinessProbe:
           httpGet:
             path: /health
-            port: 8000
+            port: {{ .Values.proxyService.service.targetPort }}
           initialDelaySeconds: 5
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /health
-            port: 8000
+            port: {{ .Values.proxyService.service.targetPort }}
           initialDelaySeconds: 15
           periodSeconds: 20
       restartPolicy: Always
