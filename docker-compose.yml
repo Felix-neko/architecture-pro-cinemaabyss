@@ -87,21 +87,88 @@ services:
       - cinemaabyss-network
 
   # Events Microservice
-#   events-service:
-#     build:
-#       context: ./src/microservices/events
-#       dockerfile: Dockerfile
-#     container_name: cinemaabyss-events-service
-#     depends_on:
-#       - postgres
-#       - kafka
-#     ports:
-#       - "8082:8082"
-#     environment:
-#       PORT: 8082
-#       KAFKA_BROKERS: kafka:9092
-#     networks:
-#       - cinemaabyss-network
+  events-service:
+    build:
+      context: ./src/microservices/events
+      dockerfile: Dockerfile
+    container_name: cinemaabyss-events-service
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8082"
+    environment:
+      HOST: "0.0.0.0"
+      PORT: 8082
+      KAFKA_URL: kafka:29092
+    networks:
+      - cinemaabyss-network
+
+  kong:
+    image: kong:3.9
+    container_name: kong
+    depends_on:
+      - monolith
+      - movies-service
+      - events-service
+    environment:
+      # DB-less mode configuration
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
+      KONG_ADMIN_GUI_URL: http://localhost:8002
+      KONG_ANONYMOUS_REPORTS: false
+      # Переменные для канареечного развертывания (автоматически используются в шаблоне)
+      NEW_MOVIE_SERVICE_PERCENT: "${MOVIES_MIGRATION_PERCENT:-0}"
+#       OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
+#       NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
+    ports:
+      - "8000:8000"  # Proxy HTTP
+      - "8443:8443"  # Proxy HTTPS
+      - "8001:8001"  # Admin API
+      - "8002:8002"  # Kong Manager OSS Web UI
+      - "8444:8444"  # Admin API HTTPS
+    volumes:
+      - ./kong.yml.template:/etc/kong/kong.yml.template:ro  # Template file
+      - ./kong-entrypoint.sh:/usr/local/bin/kong-entrypoint.sh:ro  # Custom entrypoint
+      - ./canary-control.sh:/usr/local/bin/canary-control.sh:ro
+    entrypoint: ["bash", "/usr/local/bin/kong-entrypoint.sh"]  # Use bash to execute the script
+    networks:
+      - cinemaabyss-network
+    restart: unless-stopped
+#     healthcheck:
+#       test: ["CMD", "kong", "health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 5
+
+  # Пример старого сервиса фильмов для тестирования
+  old-movie-service:
+    image: nginx:alpine
+    container_name: old-movie-service
+    ports:
+      - "8201:80"  # Direct access to old movie service
+    volumes:
+      - ./old_movies_response.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - cinemaabyss-network
+    restart: unless-stopped
+
+  # Пример нового сервиса фильмов для тестирования
+  new-movie-service:
+    image: nginx:alpine
+    container_name: new-movie-service
+    ports:
+      - "8202:80"  # Direct access to new movie service
+    volumes:
+      - ./new_movies_response.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - cinemaabyss-network
+    restart: unless-stopped
 
 #   # Proxy Service (API Gateway)
 #   proxy-service:
@@ -153,68 +220,7 @@ networks:
 #
 # services:
 #   # Kong API Gateway with Manager OSS (DB-less mode)
-#   kong:
-#     image: kong:3.9
-#     container_name: kong
-#     environment:
-#       # DB-less mode configuration
-#       KONG_DATABASE: "off"
-#       KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yml
-#       KONG_PROXY_ACCESS_LOG: /dev/stdout
-#       KONG_ADMIN_ACCESS_LOG: /dev/stdout
-#       KONG_PROXY_ERROR_LOG: /dev/stderr
-#       KONG_ADMIN_ERROR_LOG: /dev/stderr
-#       KONG_ADMIN_LISTEN: 0.0.0.0:8001
-#       KONG_ADMIN_GUI_LISTEN: 0.0.0.0:8002
-#       KONG_ADMIN_GUI_URL: http://localhost:8002
-#       KONG_ANONYMOUS_REPORTS: false
-#       # Переменные для канареечного развертывания (автоматически используются в шаблоне)
-#       NEW_MOVIE_SERVICE_PERCENT: "${NEW_MOVIE_SERVICE_PERCENT:-0}"
-# #       OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
-# #       NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
-#     ports:
-#       - "8000:8000"  # Proxy HTTP
-#       - "8443:8443"  # Proxy HTTPS
-#       - "8001:8001"  # Admin API
-#       - "8002:8002"  # Kong Manager OSS Web UI
-#       - "8444:8444"  # Admin API HTTPS
-#     volumes:
-#       - ./kong.yml.template:/etc/kong/kong.yml.template:ro  # Template file
-#       - ./kong-entrypoint.sh:/usr/local/bin/kong-entrypoint.sh:ro  # Custom entrypoint
-#       - ./canary-control.sh:/usr/local/bin/canary-control.sh:ro
-#     entrypoint: ["bash", "/usr/local/bin/kong-entrypoint.sh"]  # Use bash to execute the script
-#     networks:
-#       - kong-net
-#     restart: unless-stopped
-#     healthcheck:
-#       test: ["CMD", "kong", "health"]
-#       interval: 30s
-#       timeout: 10s
-#       retries: 5
-#
-#   # Пример старого сервиса фильмов для тестирования
-#   old-movie-service:
-#     image: nginx:alpine
-#     container_name: old-movie-service
-#     ports:
-#       - "8201:80"  # Direct access to old movie service
-#     volumes:
-#       - ./old_movies_response.html:/usr/share/nginx/html/index.html:ro
-#     networks:
-#       - kong-net
-#     restart: unless-stopped
-#
-#   # Пример нового сервиса фильмов для тестирования
-#   new-movie-service:
-#     image: nginx:alpine
-#     container_name: new-movie-service
-#     ports:
-#       - "8202:80"  # Direct access to new movie service
-#     volumes:
-#       - ./new_movies_response.html:/usr/share/nginx/html/index.html:ro
-#     networks:
-#       - kong-net
-#     restart: unless-stopped
+
 #
 # networks:
 #   kong-net:
