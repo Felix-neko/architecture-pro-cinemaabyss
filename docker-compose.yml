@@ -103,9 +103,9 @@ services:
     networks:
       - cinemaabyss-network
 
-  kong:
+  proxy-service:
     image: kong:3.9
-    container_name: kong
+    container_name: cinemaabyss-proxy-service
     depends_on:
       - monolith
       - movies-service
@@ -147,9 +147,9 @@ services:
 #       retries: 5
 
   # Пример старого сервиса фильмов для тестирования
-  old-movie-service:
+  test-old-movie-service:
     image: nginx:alpine
-    container_name: old-movie-service
+    container_name: test-old-movie-service
     ports:
       - "8201:80"  # Direct access to old movie service
     volumes:
@@ -159,9 +159,9 @@ services:
     restart: unless-stopped
 
   # Пример нового сервиса фильмов для тестирования
-  new-movie-service:
+  test-new-movie-service:
     image: nginx:alpine
-    container_name: new-movie-service
+    container_name: test-new-movie-service
     ports:
       - "8202:80"  # Direct access to new movie service
     volumes:
