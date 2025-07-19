@@ -17,7 +17,7 @@ spec:
               service:
                 name: events-service
                 port:
-                  number: 8082
+                  number: 8001
           - path: /
             pathType: Prefix
             backend:
