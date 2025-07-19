@@ -7,10 +7,10 @@ WORKDIR /app
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 # Copy dependency files
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 
 # Install dependencies
-RUN uv sync --frozen --no-cache
+RUN uv sync
 
 # Copy application code
 COPY event_service/ ./event_service/
