@@ -6,21 +6,21 @@ _transform: true
 
 # Определение апстрима с весовой балансировкой
 upstreams:
-  - name: test-movie-upstream
-    algorithm: round-robin
-    healthchecks:
-      active:
-        type: http
-        http_path: /
-        healthy:
-          interval: 30
-          successes: 2
-        unhealthy:
-          interval: 30
-          http_failures: 3
-    tags:
-      - movies
-      - canary
+#  - name: test-movie-upstream
+#    algorithm: round-robin
+#    healthchecks:
+#      active:
+#        type: http
+#        http_path: /
+#        healthy:
+#          interval: 30
+#          successes: 2
+#        unhealthy:
+#          interval: 30
+#          http_failures: 3
+#    tags:
+#      - movies
+#      - canary
 
   - name: movie-upstream
     algorithm: round-robin
@@ -40,19 +40,19 @@ upstreams:
 
 # Цели с весами для канареечного развертывания
 targets:
-  - target: test-old-movie-service:80
-    upstream: test-movie-upstream
-    weight: ${OLD_MOVIE_SERVICE_PERCENT}
-    tags:
-      - legacy
-      - test
-
-  - target: test-new-movie-service:80
-    upstream: test-movie-upstream
-    weight: ${NEW_MOVIE_SERVICE_PERCENT}
-    tags:
-      - canary
-      - test
+#  - target: test-old-movie-service:80
+#    upstream: test-movie-upstream
+#    weight: ${OLD_MOVIE_SERVICE_PERCENT}
+#    tags:
+#      - legacy
+#      - test
+#
+#  - target: test-new-movie-service:80
+#    upstream: test-movie-upstream
+#    weight: ${NEW_MOVIE_SERVICE_PERCENT}
+#    tags:
+#      - canary
+#      - test
 
   - target: cinemaabyss-monolith:8080
     upstream: movie-upstream
@@ -83,15 +83,15 @@ targets:
 
 # Определение сервиса
 services:
-  - name: test-movie-service
-    url: http://test-movie-upstream
-    retries: 5
-    connect_timeout: 60000
-    write_timeout: 60000
-    read_timeout: 60000
-    tags:
-      - movies
-      - test
+#  - name: test-movie-service
+#    url: http://test-movie-upstream
+#    retries: 5
+#    connect_timeout: 60000
+#    write_timeout: 60000
+#    read_timeout: 60000
+#    tags:
+#      - movies
+#      - test
 
   - name: movie-service
     url: http://movie-upstream
@@ -121,21 +121,21 @@ services:
 
 # Определение маршрута
 routes:
-  - name: test-movie-route
-    service: test-movie-service
-    paths:
-      - /kong_requests_movies
-    strip_path: true
-    methods:
-      - GET
-      - POST
-      - PUT
-      - DELETE
-      - PATCH
-    preserve_host: false
-    tags:
-      - movies
-      - test
+#  - name: test-movie-route
+#    service: test-movie-service
+#    paths:
+#      - /kong_requests_movies
+#    strip_path: true
+#    methods:
+#      - GET
+#      - POST
+#      - PUT
+#      - DELETE
+#      - PATCH
+#    preserve_host: false
+#    tags:
+#      - movies
+#      - test
 
   - name: movie-route
     service: movie-service
@@ -186,7 +186,7 @@ routes:
 plugins:
   # Добавление заголовков для отладки
   - name: response-transformer
-    route: test-movie-route
+#    route: movie-route
     config:
       add:
         headers:
@@ -200,15 +200,15 @@ plugins:
 
   # Логирование запросов
   - name: file-log
-    route: test-movie-route
+#    route: movie-route
     config:
-      path: /tmp/kong-movie-requests.log
+      path: /tmp/kong-requests.log
     tags:
       - logging
 
   # Уникальный ID запроса
   - name: correlation-id
-    route: test-movie-route
+#    route: movie-route
     config:
       header_name: X-Request-ID
       generator: uuid
@@ -218,7 +218,7 @@ plugins:
 
   # Ограничение частоты запросов (защита от перегрузки)
   - name: rate-limiting
-    route: test-movie-route
+#    route: movie-route
     config:
       minute: 1000
       hour: 10000

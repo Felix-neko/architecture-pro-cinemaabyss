@@ -137,7 +137,7 @@ services:
       - cinemaabyss-network
     restart: unless-stopped
 
-  # Пример старого сервиса фильмов для тестирования
+  # Пример старого сервиса для тестирования
   test-old-movie-service:
     image: nginx:alpine
     container_name: test-old-movie-service
@@ -149,7 +149,7 @@ services:
       - cinemaabyss-network
     restart: unless-stopped
 
-  # Пример нового сервиса фильмов для тестирования
+  # Пример нового сервиса для тестирования
   test-new-movie-service:
     image: nginx:alpine
     container_name: test-new-movie-service
