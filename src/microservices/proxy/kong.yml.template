@@ -54,27 +54,27 @@ targets:
 #      - canary
 #      - test
 
-  - target: cinemaabyss-monolith:8080
+  - target: ${MONOLITH_SERVICE_URL}
     upstream: movie-upstream
     weight: ${OLD_MOVIE_SERVICE_PERCENT}
     tags:
       - legacy
       - movies
 
-  - target: cinemaabyss-movies-service:8081
+  - target: ${MOVIE_SERVICE_URL}
     upstream: movie-upstream
     weight: ${NEW_MOVIE_SERVICE_PERCENT}
     tags:
       - canary
       - movies
 
-  - target: cinemaabyss-events-service:8082
+  - target: ${EVENTS_SERVICE_URL}
     upstream: events-upstream
     weight: 100
     tags:
       - events
 
-  - target: cinemaabyss-monolith:8080
+  - target: ${MONOLITH_SERVICE_URL}:8080
     upstream: monolith-upstream
     weight: 100
     tags:

@@ -125,8 +125,9 @@ services:
       - events-service
     environment:
       NEW_MOVIE_SERVICE_PERCENT: "${MOVIES_MIGRATION_PERCENT:-0}"
-#       OLD_MOVIE_SERVICE_URL: "${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}"
-#       NEW_MOVIES_SERVICE_URL: "${NEW_MOVIES_SERVICE_URL:-http://new-movie-service:80}"
+      MONOLITH_SERVICE_URL: cinemaabyss-monolith:8080
+      MOVIE_SERVICE_URL: cinemaabyss-movies-service:8081
+      EVENTS_SERVICE_URL: cinemaabyss-events-service:8082
     ports:
       - "8000:8000"  # Proxy HTTP
       - "8443:8443"  # Proxy HTTPS

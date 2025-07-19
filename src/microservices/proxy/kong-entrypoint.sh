@@ -16,14 +16,25 @@ if [ "$NEW_MOVIE_SERVICE_PERCENT" -lt 0 ] || [ "$NEW_MOVIE_SERVICE_PERCENT" -gt 
 fi
 export OLD_MOVIE_SERVICE_PERCENT=$((100 - $NEW_MOVIE_SERVICE_PERCENT))
 
-#export NEW_MOVIE_SERVICE_URL=$((${NEW_MOVIE_SERVICE_URL:-http://new-movie-service:80}))
-#export OLD_MOVIE_SERVICE_URL=$((${OLD_MOVIE_SERVICE_URL:-http://old-movie-service:80}))
+# Устанавливаем значения по умолчанию для URL сервисов
+export MONOLITH_SERVICE_URL=${MONOLITH_SERVICE_URL:-localhost:8080}
+export MOVIE_SERVICE_URL=${MOVIE_SERVICE_URL:-localhost:8081}
+export EVENTS_SERVICE_URL=${EVENTS_SERVICE_URL:-localhost:8082}
+
+echo "[Kong Entrypoint] Настройки сервисов:"
+echo "- MONOLITH_SERVICE_URL: $MONOLITH_SERVICE_URL"
+echo "- MOVIE_SERVICE_URL: $MOVIE_SERVICE_URL"
+echo "- EVENTS_SERVICE_URL: $EVENTS_SERVICE_URL"
+echo "- NEW_MOVIE_SERVICE_PERCENT: $NEW_MOVIE_SERVICE_PERCENT%"
+echo "- OLD_MOVIE_SERVICE_PERCENT: $OLD_MOVIE_SERVICE_PERCENT%"
 
 # И подставляем нужные переменные окружения в шаблон kong-конфигурации
+echo "[Kong Entrypoint] Генерация конфигурации Kong..."
 sed -e "s|\${OLD_MOVIE_SERVICE_PERCENT}|$OLD_MOVIE_SERVICE_PERCENT|g" \
     -e "s|\${NEW_MOVIE_SERVICE_PERCENT}|$NEW_MOVIE_SERVICE_PERCENT|g" \
-    -e "s|\${OLD_MOVIE_SERVICE_URL}|$OLD_MOVIE_SERVICE_URL|g" \
-    -e "s|\${NEW_MOVIE_SERVICE_URL}|$NEW_MOVIE_SERVICE_URL|g" \
+    -e "s|\${MONOLITH_SERVICE_URL}|$MONOLITH_SERVICE_URL|g" \
+    -e "s|\${MOVIE_SERVICE_URL}|$MOVIE_SERVICE_URL|g" \
+    -e "s|\${EVENTS_SERVICE_URL}|$EVENTS_SERVICE_URL|g" \
     /etc/kong/kong.yml.template > /tmp/kong.yml
 
 # Перемещаем сгенерированный конфиг на место
