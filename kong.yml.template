@@ -28,6 +28,16 @@ upstreams:
       - movies
       - canary
 
+  - name: events-upstream
+    algorithm: round-robin
+    tags:
+      - events
+
+  - name: monolith-upstream
+    algorithm: round-robin
+    tags:
+      - events
+
 # Цели с весами для канареечного развертывания
 targets:
   - target: test-old-movie-service:80
@@ -49,13 +59,26 @@ targets:
     weight: ${OLD_MOVIE_SERVICE_PERCENT}
     tags:
       - legacy
+      - movies
 
-  - target: new-movie-service:80
+  - target: cinemaabyss-movies-service:8081
     upstream: movie-upstream
     weight: ${NEW_MOVIE_SERVICE_PERCENT}
     tags:
       - canary
+      - movies
 
+  - target: cinemaabyss-events-service:8082
+    upstream: events-upstream
+    weight: 100
+    tags:
+      - events
+
+  - target: cinemaabyss-monolith:8080
+    upstream: monolith-upstream
+    weight: 100
+    tags:
+      - monolith
 
 
 # Определение сервиса
@@ -79,6 +102,23 @@ services:
     tags:
       - movies
 
+  - name: events-service
+    url: http://events-upstream
+    retries: 5
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    tags:
+      - events
+
+  - name: monolith-service
+    url: http://monolith-upstream
+    retries: 5
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+
+
 # Определение маршрута
 routes:
   - name: test-movie-route
@@ -101,7 +141,7 @@ routes:
     service: movie-service
     paths:
       - /api/movies
-    strip_path: true
+    strip_path: false
     methods:
       - GET
       - POST
@@ -111,6 +151,36 @@ routes:
     preserve_host: false
     tags:
       - movies
+
+  - name: events-route
+    service: events-service
+    paths:
+      - /api/events
+    strip_path: false
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    preserve_host: false
+    tags:
+      - events
+
+  - name: monolith-route
+    service: monolith-service
+    paths:
+      - /
+    strip_path: false
+    methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - PATCH
+    preserve_host: false
+    tags:
+      - monolith
 
 # Простые плагины (без Lua)
 plugins:
