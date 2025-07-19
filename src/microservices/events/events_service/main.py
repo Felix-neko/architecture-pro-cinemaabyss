@@ -9,8 +9,8 @@ from fastapi import FastAPI, APIRouter, HTTPException, status as status_codes, B
 from aiokafka.consumer import AIOKafkaConsumer
 from aiokafka.producer import AIOKafkaProducer
 
-from event_service.config import settings
-from event_service.dto import (
+from events_service.config import settings
+from events_service.dto import (
     PaymentEvent,
     MovieEvent,
     UserEvent,
@@ -193,12 +193,58 @@ class EventServiceAPI(FastAPI):
         except Exception as e:
             logging.error(f"Error in payment events consumer: {e}")
 
+    async def _check_kafka_ready(self, max_retries: int = 20, initial_delay: float = 10.0) -> bool:
+        """
+        Проверяет доступность Kafka-брокера с экспоненциальной задержкой между попытками.
+
+        Args:
+            max_retries: Максимальное количество попыток подключения
+            initial_delay: Начальная задержка в секундах перед следующей попыткой
+
+        Returns:
+            bool: True если Kafka доступен, иначе False
+        """
+
+        delay = initial_delay
+        for attempt in range(max_retries):
+            try:
+                # Пробуем создать временного продюсера для проверки подключения
+                temp_producer = AIOKafkaProducer(bootstrap_servers=self._kafka_url)
+                await temp_producer.start()
+                await temp_producer.stop()
+                logging.info("Successfully connected to Kafka broker")
+                return True
+            except Exception as e:
+                if attempt == max_retries - 1:  # Последняя попытка
+                    logging.error(f"Failed to connect to Kafka after {max_retries} attempts: {e}")
+                    return False
+
+                # Экспоненциальная задержка с джиттером для избежания "толпы"
+                jitter = 1 + (0.1 * (1 - 2 * (hash(f"{id(self)}{attempt}") % 2) / 10.0))
+                sleep_time = min(delay * jitter, 30)  # Максимальная задержка 30 секунд
+
+                logging.warning(
+                    f"Attempt {attempt + 1}/{max_retries} - Could not connect to Kafka at {self._kafka_url}. "
+                    f"Retrying in {sleep_time:.2f} seconds... Error: {str(e)}"
+                )
+
+                await asyncio.sleep(sleep_time)
+                delay *= 2  # Увеличиваем задержку в 2 раза для следующей попытки
+
+        return False
+
     async def _initialize(self):
         """
         Инициализация kafka
         """
         try:
             logging.info("Initializing Kafka...")
+
+            # Проверяем доступность Kafka брокера
+            if not await self._check_kafka_ready():
+                self._kafka_err_msg = "Failed to connect to Kafka broker after multiple attempts"
+                logging.error(self._kafka_err_msg)
+                raise ConnectionError(self._kafka_err_msg)
 
             self._kafka_producer = AIOKafkaProducer(bootstrap_servers=self._kafka_url)
             await self._kafka_producer.start()

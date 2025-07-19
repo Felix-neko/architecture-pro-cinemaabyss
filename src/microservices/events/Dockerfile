@@ -13,7 +13,7 @@ COPY pyproject.toml ./
 RUN uv sync
 
 # Copy application code
-COPY event_service/ ./event_service/
+COPY events_service/ ./events_service/
 
 # Expose port
 #EXPOSE 8001
@@ -30,4 +30,4 @@ ENV KAFKA_URL=kafka:29092
 #    CMD curl -f http://localhost:8001/health_check || exit 1
 
 # Run the application
-CMD ["uv", "run", "python", "-m", "event_service.main"]
+CMD ["uv", "run", "python", "-m", "events_service.main"]
