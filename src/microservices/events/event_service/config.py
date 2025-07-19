@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     host: str = "0.0.0.0"
-    port: int = 8001
+    port: int = 8082
     kafka_url: str = "localhost:9092"
 
     movies_event_topic: str = "movie-events"

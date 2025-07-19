@@ -1,6 +1,6 @@
 import logging
 from contextlib import asynccontextmanager
-from typing import Optional, List, Union, AsyncGenerator
+from typing import Optional
 import json
 import asyncio
 
@@ -17,6 +17,7 @@ from event_service.dto import (
     MovieEventRegisterResponseInfo,
     UserEventRegisterResponseInfo,
     PaymentEventRegisterResponseInfo,
+    HealthCheckResponseInfo,
 )
 
 # Configure logging
@@ -43,28 +44,28 @@ class EventServiceAPI(FastAPI):
         self._kafka_initialized: bool = False
         self._kafka_err_msg: Optional[str] = None
 
-        @self.get("/health_check")
-        async def health_check() -> Optional[bool]:
+        @self.get("/api/events/health", tags=["health"])
+        async def health_check() -> HealthCheckResponseInfo:
             """Проверка состояния сервиса"""
             return await self.health_check()
 
-        @self.post("/events/movie", status_code=status_codes.HTTP_201_CREATED)
+        @self.post("/api/events/movie", status_code=status_codes.HTTP_201_CREATED, tags=["events"])
         async def register_movie_event(event: MovieEvent = Body(embed=False)) -> MovieEventRegisterResponseInfo:
             """Регистрация события фильма"""
             return await self.register_movie_event(event)
 
-        @self.post("/events/user", status_code=status_codes.HTTP_201_CREATED)
+        @self.post("/api/events/user", status_code=status_codes.HTTP_201_CREATED, tags=["events"])
         async def register_user_event(event: UserEvent = Body(embed=False)) -> UserEventRegisterResponseInfo:
             """Регистрация события пользователя"""
             return await self.register_user_event(event)
 
-        @self.post("/events/payment", status_code=status_codes.HTTP_201_CREATED)
+        @self.post("/api/events/payment", status_code=status_codes.HTTP_201_CREATED, tags=["events"])
         async def register_payment_event(event: PaymentEvent = Body(embed=False)) -> PaymentEventRegisterResponseInfo:
             """Регистрация события платежа"""
             return await self.register_payment_event(event)
 
-    async def health_check(self) -> Optional[bool]:
-        return True
+    async def health_check(self) -> HealthCheckResponseInfo:
+        return HealthCheckResponseInfo(status=self._kafka_initialized)
 
     async def register_movie_event(self, event: MovieEvent) -> MovieEventRegisterResponseInfo:
         """Публикация события фильма в Kafka"""
@@ -158,7 +159,7 @@ class EventServiceAPI(FastAPI):
         try:
             async for message in self._kafka_movies_consumer:
                 try:
-                    event_data = json.loads(message.value.decode('utf-8'))
+                    event_data = json.loads(message.value.decode("utf-8"))
                     movie_event = MovieEvent(**event_data)
                     await self.process_movie_event(movie_event)
                 except Exception as e:
@@ -171,7 +172,7 @@ class EventServiceAPI(FastAPI):
         try:
             async for message in self._kafka_users_consumer:
                 try:
-                    event_data = json.loads(message.value.decode('utf-8'))
+                    event_data = json.loads(message.value.decode("utf-8"))
                     user_event = UserEvent(**event_data)
                     await self.process_user_event(user_event)
                 except Exception as e:
@@ -184,7 +185,7 @@ class EventServiceAPI(FastAPI):
         try:
             async for message in self._kafka_payments_consumer:
                 try:
-                    event_data = json.loads(message.value.decode('utf-8'))
+                    event_data = json.loads(message.value.decode("utf-8"))
                     payment_event = PaymentEvent(**event_data)
                     await self.process_payment_event(payment_event)
                 except Exception as e:
@@ -260,7 +261,15 @@ async def lifespan(app: FastAPI):
         await app._kafka_payments_consumer.stop()
 
 
-app = EventServiceAPI(title="Event Service", description="Сервис kafka-событий", lifespan=lifespan)
+app = EventServiceAPI(
+    title="Event Service",
+    description="Сервис kafka-событий",
+    lifespan=lifespan,
+    openapi_tags=[
+        {"name": "events", "description": "Эндпоинты для регистрации событий"},
+        {"name": "health", "description": "Проверки работоспособности"},
+    ],
+)
 
 if __name__ == "__main__":
     uvicorn.run(app, host=settings.host, port=settings.port, log_level="info")

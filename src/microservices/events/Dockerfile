@@ -16,16 +16,18 @@ RUN uv sync --frozen --no-cache
 COPY event_service/ ./event_service/
 
 # Expose port
-EXPOSE 8001
+#EXPOSE 8001
 
 # Set environment variables
 ENV PYTHONPATH=/app
 ENV HOST=0.0.0.0
 ENV PORT=8001
+ENV KAFKA_URL=kafka:29092
+
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8001/health_check || exit 1
+#HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+#    CMD curl -f http://localhost:8001/health_check || exit 1
 
 # Run the application
 CMD ["uv", "run", "python", "-m", "event_service.main"]
