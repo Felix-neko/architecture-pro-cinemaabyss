@@ -7,7 +7,7 @@ echo "Generating Kong config..."
 
 # Получаем переменные окружения
 # Убедимся, что значение числовое
-export NEW_MOVIE_SERVICE_PERCENT=$((${NEW_MOVIE_SERVICE_PERCENT:-0}))
+export NEW_MOVIE_SERVICE_PERCENT=$((${MOVIES_MIGRATION_PERCENT:-0}))
 
 # Проверяем процент
 if [ "$NEW_MOVIE_SERVICE_PERCENT" -lt 0 ] || [ "$NEW_MOVIE_SERVICE_PERCENT" -gt 100 ]; then
