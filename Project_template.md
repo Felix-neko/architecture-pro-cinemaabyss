@@ -37,70 +37,63 @@ P.S. Для ручного тестирования я ещё риспользо
 
 ### 2. Kafka
 
- Вам как архитектуру нужно также проверить гипотезу насколько просто реализовать применение Kafka в данной архитектуре.
+В этой задаче я сделал небольшой сервис на `FastAPI` + `aiokafka`
+Там есть 3 эндпоинта регистрации событий, которые пишут события в kafka-топики (см. [OpenAPI-спецификацию](./src/microservices/openapi.yaml)).
 
-Для этого нужно сделать MVP сервис events, который будет при вызове API создавать и сам же читать сообщения в топике Kafka.
+И там есть 3 метода-обработчика, которые вызываются, когда один из kafka consumer'ов, слушающих соответствующиий топик,
+получает и обрабатывает там сообщение (уже в виде pydantic-объекта). Сейчас я просто печатаю в логи, что именно мы получили через kafka.
 
-    - Разработайте сервис на любом языке программирования с consumer'ами и producer'ами.
-    - Реализуйте простой API, при вызове которого будут создаваться события User/Payment/Movie и обрабатываться внутри сервиса с записью в лог
-    - Добавьте в docker-compose новый сервис, kafka там уже есть
+![Скриншот: логирование событий в kafka](./screenshots/event_service_logging.png)
+Скриншот: регистрируем событие через kafka и смотрим логи kafka consumer'ов...
 
-Необходимые тесты для проверки этого API вызываются при запуске npm run test:local из папки tests/postman 
-Приложите скриншот тестов и скриншот состояния топиков Kafka http://localhost:8090 
+
+![Скриншот: смотрим Kafka Web UI и проверяем, что события в топиках точно появились](./screenshots/kafka_gui.png)
+Скриншот: смотрим Kafka Web UI и проверяем, что события в топиках точно появились
+
+![Скриншот: запускаем postman-тесты (environment: local)](./screenshots/running_events_service_tests_local.png)
+Скриншот: запускаем postman-тесты (environment: local)
+
+
+P.S. AsyncAPI в этот раз не делал. Если есть средства, как его генерировать автоматом из Python-кода, то дайте знать, буду признателен.
 
 
 ## Задание 3
 
-Команда начала переезд в Kubernetes для лучшего масштабирования и повышения надежности. 
-Вам, как архитектору осталось самое сложное:
- - реализовать CI/CD для сборки прокси сервиса
- - реализовать необходимые конфигурационные файлы для переключения трафика.
-
-
 ### CI/CD
 
- В папке .github/worflows доработайте деплой новых сервисов proxy и events в docker-build-push.yml , чтобы api-tests при сборке отрабатывали корректно при отправке коммита в вашу новую ветку.
+Я доработал пайплайн сборки [docker-build-push.yml](./.github/workflows/docker-build-push.yml):
+- чтобы он отрабатывал при коммите не только в main, но и в sandboxing
+- чтобы он заливал в Docker Registry туда не только образа `monolith` и `movies-service`, но и `events-service` и `proxy-service`.
 
-Нужно доработать 
-```yaml
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'src/**'
-      - '.github/workflows/docker-build-push.yml'
-  release:
-    types: [published]
-```
-и добавить необходимые шаги в блок
-```yaml
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+И я немножко доработал пайплайн сборки [api-tests.yml](./.github/workflows/api-tests.yml), чтобы он отрабатывал на каждый коммит нне только в `main`, но и в `sandboxing`.
+Что там доработать ещё, я не особо понял: вроде там и собирается весь `docker-compose.yaml` и честно тестируется под `newman`. 
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+"Зелёные" сборки и тесты вроде появились = )
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+![Скриншот: зелёные сборки и тесты](./screenshots/green_github_actions.png)
+Скриншот: зелёные сборки и тесты
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-```
-Как только сборка отработает и в github registry появятся ваши образы, можно переходить к блоку настройки Kubernetes
-Успешным результатом данного шага является "зеленая" сборка и "зеленые" тесты
-
+Логи с последней сборки -- [пригалаю](./ci_cd_logs).
 
 ### Proxy в Kubernetes
+
+- Кубер-конфиги я заполнил, см. [`src/kubernetes/`](./src/kubernetes)
+
+- minikube создавал со следующими параметрами: [`create_minikube.sh`](./src/kubernetes/create_minikube.sh) 
+- также добавил в `/etc/hosts` на хост-машине тот IP, что выдал мне `minkube ip` под именем `cinemaabyss.example.com`
+- установка кубер-ресурсов: см. [`kube_install_cinemaabyss.sh`](./src/kubernetes/kube_install_cinemaabyss.sh)
+
+`http://cinemaabyss.example.com/api/movies` теперь возвращает список фильмов:
+
+![Скриншот: вывод списка фильмов из кубера](./screenshots/movies_from_kube.png)
+Скриншот: вывод списка фильмов из кубера
+
+![Скриншот: поды в Lens](./screenshots/lens_pods_and_kong_config.png)
+Поды в Lens появились, Kong-конфиг у `proxy-service` при перезапуске пода параметризуется в соответствие 
+с `MOVIES_MIGRATION_PERCENT` из конфиг-мапа...
+
+Тесты с environment=kubernetes запустил, вроде всё проходит, см. логи.
+
 
 #### Шаг 1
 Для деплоя в kubernetes необходимо залогиниться в docker registry Github'а.

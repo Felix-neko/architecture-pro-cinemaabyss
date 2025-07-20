@@ -1,0 +1,2503 @@
+2025-07-20T17:00:28.5883159Z Current runner version: '2.326.0'
+2025-07-20T17:00:28.5908638Z ##[group]Runner Image Provisioner
+2025-07-20T17:00:28.5909522Z Hosted Compute Agent
+2025-07-20T17:00:28.5910096Z Version: 20250711.363
+2025-07-20T17:00:28.5910643Z Commit: 6785254374ce925a23743850c1cb91912ce5c14c
+2025-07-20T17:00:28.5911370Z Build Date: 2025-07-11T20:04:25Z
+2025-07-20T17:00:28.5911970Z ##[endgroup]
+2025-07-20T17:00:28.5912485Z ##[group]Operating System
+2025-07-20T17:00:28.5913074Z Ubuntu
+2025-07-20T17:00:28.5913531Z 24.04.2
+2025-07-20T17:00:28.5913987Z LTS
+2025-07-20T17:00:28.5914375Z ##[endgroup]
+2025-07-20T17:00:28.5915274Z ##[group]Runner Image
+2025-07-20T17:00:28.5915871Z Image: ubuntu-24.04
+2025-07-20T17:00:28.5916402Z Version: 20250710.1.0
+2025-07-20T17:00:28.5917529Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250710.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-07-20T17:00:28.5919067Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250710.1
+2025-07-20T17:00:28.5920132Z ##[endgroup]
+2025-07-20T17:00:28.5921190Z ##[group]GITHUB_TOKEN Permissions
+2025-07-20T17:00:28.5923267Z Contents: read
+2025-07-20T17:00:28.5923816Z Metadata: read
+2025-07-20T17:00:28.5924274Z Packages: write
+2025-07-20T17:00:28.5925008Z ##[endgroup]
+2025-07-20T17:00:28.5927205Z Secret source: Actions
+2025-07-20T17:00:28.5928179Z Prepare workflow directory
+2025-07-20T17:00:28.6474358Z Prepare all required actions
+2025-07-20T17:00:28.6513116Z Getting action download info
+2025-07-20T17:00:29.1181225Z ##[group]Download immutable action package 'actions/checkout@v3'
+2025-07-20T17:00:29.1182477Z Version: 3.6.0
+2025-07-20T17:00:29.1183413Z Digest: sha256:942562b9c7d4b1f2557f1da21f4d3eb4eb4fd01f2ad78b2a6e187d1b193e0a0f
+2025-07-20T17:00:29.1184671Z Source commit SHA: f43a0e5ff2bd294095638e18286ca9a3d1956744
+2025-07-20T17:00:29.1185502Z ##[endgroup]
+2025-07-20T17:00:29.2309020Z ##[group]Download immutable action package 'docker/setup-buildx-action@v2'
+2025-07-20T17:00:29.2309906Z Version: 2.10.0
+2025-07-20T17:00:29.2310698Z Digest: sha256:0246269ef10a0a489293f9b45667dd6d87c500232734ddff4402cd9b375fa186
+2025-07-20T17:00:29.2311622Z Source commit SHA: 885d1462b80bc1c1c7f0b00334ad271f09369c55
+2025-07-20T17:00:29.2312317Z ##[endgroup]
+2025-07-20T17:00:29.5727306Z ##[group]Download immutable action package 'docker/login-action@v2'
+2025-07-20T17:00:29.5728162Z Version: 2.2.0
+2025-07-20T17:00:29.5728935Z Digest: sha256:074da69a9e77797ae469f40db0f64632c02629b61bfa229f2fa803f41a464283
+2025-07-20T17:00:29.5729960Z Source commit SHA: 465a07811f14bebb1938fbed4728c6a1ff8901fc
+2025-07-20T17:00:29.5730684Z ##[endgroup]
+2025-07-20T17:00:29.8242219Z ##[group]Download immutable action package 'docker/metadata-action@v4'
+2025-07-20T17:00:29.8243159Z Version: 4.6.0
+2025-07-20T17:00:29.8243887Z Digest: sha256:c9456035657d68bd66e405c89595576fea0acde807e08878e257d19c7ed29659
+2025-07-20T17:00:29.8245126Z Source commit SHA: 818d4b7b91585d195f67373fd9cb0332e31a7175
+2025-07-20T17:00:29.8245899Z ##[endgroup]
+2025-07-20T17:00:30.1692451Z ##[group]Download immutable action package 'docker/build-push-action@v4'
+2025-07-20T17:00:30.1693301Z Version: 4.2.1
+2025-07-20T17:00:30.1694168Z Digest: sha256:295ced658312cfbe602d510dde94b23d332ec7b392ba1ce218956952bcec0d6e
+2025-07-20T17:00:30.1695423Z Source commit SHA: 0a97817b6ade9f46837855d676c4cca3a2471fc9
+2025-07-20T17:00:30.1696142Z ##[endgroup]
+2025-07-20T17:00:30.6548355Z Complete job name: build-and-push
+2025-07-20T17:00:30.7353904Z ##[group]Run actions/checkout@v3
+2025-07-20T17:00:30.7355473Z with:
+2025-07-20T17:00:30.7356407Z   repository: Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:30.7357839Z   token: ***
+2025-07-20T17:00:30.7358579Z   ssh-strict: true
+2025-07-20T17:00:30.7359383Z   persist-credentials: true
+2025-07-20T17:00:30.7360235Z   clean: true
+2025-07-20T17:00:30.7361016Z   sparse-checkout-cone-mode: true
+2025-07-20T17:00:30.7361950Z   fetch-depth: 1
+2025-07-20T17:00:30.7362693Z   fetch-tags: false
+2025-07-20T17:00:30.7363430Z   lfs: false
+2025-07-20T17:00:30.7364133Z   submodules: false
+2025-07-20T17:00:30.7365404Z   set-safe-directory: true
+2025-07-20T17:00:30.7366523Z env:
+2025-07-20T17:00:30.7367203Z   REGISTRY: ghcr.io
+2025-07-20T17:00:30.7368343Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:30.7370121Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:00:30.7372070Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:00:30.7373962Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:00:30.7375564Z ##[endgroup]
+2025-07-20T17:00:30.8232826Z Syncing repository: Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:30.8235943Z ##[group]Getting Git version info
+2025-07-20T17:00:30.8237884Z Working directory is '/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss'
+2025-07-20T17:00:30.8240231Z [command]/usr/bin/git version
+2025-07-20T17:00:30.8276809Z git version 2.50.1
+2025-07-20T17:00:30.8305156Z ##[endgroup]
+2025-07-20T17:00:30.8318390Z Temporarily overriding HOME='/home/runner/work/_temp/bb73935f-007d-4628-b65a-2f875dad3a15' before making global git config changes
+2025-07-20T17:00:30.8321393Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-20T17:00:30.8324050Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:00:30.8356615Z Deleting the contents of '/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss'
+2025-07-20T17:00:30.8360950Z ##[group]Initializing the repository
+2025-07-20T17:00:30.8364177Z [command]/usr/bin/git init /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:00:30.8438672Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-07-20T17:00:30.8440931Z hint: is subject to change. To configure the initial branch name to use in all
+2025-07-20T17:00:30.8443427Z hint: of your new repositories, which will suppress this warning, call:
+2025-07-20T17:00:30.8445916Z hint:
+2025-07-20T17:00:30.8447525Z hint: 	git config --global init.defaultBranch <name>
+2025-07-20T17:00:30.8449517Z hint:
+2025-07-20T17:00:30.8451348Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-07-20T17:00:30.8454697Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-07-20T17:00:30.8457074Z hint:
+2025-07-20T17:00:30.8458293Z hint: 	git branch -m <name>
+2025-07-20T17:00:30.8459287Z hint:
+2025-07-20T17:00:30.8460415Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-07-20T17:00:30.8463126Z Initialized empty Git repository in /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss/.git/
+2025-07-20T17:00:30.8469137Z [command]/usr/bin/git remote add origin https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:30.8485499Z ##[endgroup]
+2025-07-20T17:00:30.8487968Z ##[group]Disabling automatic garbage collection
+2025-07-20T17:00:30.8490070Z [command]/usr/bin/git config --local gc.auto 0
+2025-07-20T17:00:30.8516353Z ##[endgroup]
+2025-07-20T17:00:30.8518622Z ##[group]Setting up auth
+2025-07-20T17:00:30.8521683Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-20T17:00:30.8551116Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-20T17:00:30.8847894Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-20T17:00:30.8876704Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-20T17:00:30.9090854Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-07-20T17:00:30.9133666Z ##[endgroup]
+2025-07-20T17:00:30.9136271Z ##[group]Fetching the repository
+2025-07-20T17:00:30.9143306Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +5142a677bcb5df094e9f365f1b1fafa9afe30030:refs/remotes/origin/sandboxing
+2025-07-20T17:00:31.2570707Z remote: Enumerating objects: 101, done.
+2025-07-20T17:00:31.2572545Z remote: Counting objects:   0% (1/101)
+2025-07-20T17:00:31.2573733Z remote: Counting objects:   1% (2/101)
+2025-07-20T17:00:31.2575132Z remote: Counting objects:   2% (3/101)
+2025-07-20T17:00:31.2576279Z remote: Counting objects:   3% (4/101)
+2025-07-20T17:00:31.2577420Z remote: Counting objects:   4% (5/101)
+2025-07-20T17:00:31.2578565Z remote: Counting objects:   5% (6/101)
+2025-07-20T17:00:31.2579659Z remote: Counting objects:   6% (7/101)
+2025-07-20T17:00:31.2580673Z remote: Counting objects:   7% (8/101)
+2025-07-20T17:00:31.2581703Z remote: Counting objects:   8% (9/101)
+2025-07-20T17:00:31.2583075Z remote: Counting objects:   9% (10/101)
+2025-07-20T17:00:31.2584776Z remote: Counting objects:  10% (11/101)
+2025-07-20T17:00:31.2585824Z remote: Counting objects:  11% (12/101)
+2025-07-20T17:00:31.2586861Z remote: Counting objects:  12% (13/101)
+2025-07-20T17:00:31.2587886Z remote: Counting objects:  13% (14/101)
+2025-07-20T17:00:31.2588923Z remote: Counting objects:  14% (15/101)
+2025-07-20T17:00:31.2589943Z remote: Counting objects:  15% (16/101)
+2025-07-20T17:00:31.2590945Z remote: Counting objects:  16% (17/101)
+2025-07-20T17:00:31.2591952Z remote: Counting objects:  17% (18/101)
+2025-07-20T17:00:31.2592952Z remote: Counting objects:  18% (19/101)
+2025-07-20T17:00:31.2593963Z remote: Counting objects:  19% (20/101)
+2025-07-20T17:00:31.2595175Z remote: Counting objects:  20% (21/101)
+2025-07-20T17:00:31.2596223Z remote: Counting objects:  21% (22/101)
+2025-07-20T17:00:31.2597346Z remote: Counting objects:  22% (23/101)
+2025-07-20T17:00:31.2598358Z remote: Counting objects:  23% (24/101)
+2025-07-20T17:00:31.2599554Z remote: Counting objects:  24% (25/101)
+2025-07-20T17:00:31.2601044Z remote: Counting objects:  25% (26/101)
+2025-07-20T17:00:31.2602249Z remote: Counting objects:  26% (27/101)
+2025-07-20T17:00:31.2603271Z remote: Counting objects:  27% (28/101)
+2025-07-20T17:00:31.2604344Z remote: Counting objects:  28% (29/101)
+2025-07-20T17:00:31.2605552Z remote: Counting objects:  29% (30/101)
+2025-07-20T17:00:31.2606572Z remote: Counting objects:  30% (31/101)
+2025-07-20T17:00:31.2607581Z remote: Counting objects:  31% (32/101)
+2025-07-20T17:00:31.2608608Z remote: Counting objects:  32% (33/101)
+2025-07-20T17:00:31.2609628Z remote: Counting objects:  33% (34/101)
+2025-07-20T17:00:31.2610644Z remote: Counting objects:  34% (35/101)
+2025-07-20T17:00:31.2611649Z remote: Counting objects:  35% (36/101)
+2025-07-20T17:00:31.2612664Z remote: Counting objects:  36% (37/101)
+2025-07-20T17:00:31.2613677Z remote: Counting objects:  37% (38/101)
+2025-07-20T17:00:31.2614880Z remote: Counting objects:  38% (39/101)
+2025-07-20T17:00:31.2616179Z remote: Counting objects:  39% (40/101)
+2025-07-20T17:00:31.2617214Z remote: Counting objects:  40% (41/101)
+2025-07-20T17:00:31.2618225Z remote: Counting objects:  41% (42/101)
+2025-07-20T17:00:31.2619244Z remote: Counting objects:  42% (43/101)
+2025-07-20T17:00:31.2620242Z remote: Counting objects:  43% (44/101)
+2025-07-20T17:00:31.2621247Z remote: Counting objects:  44% (45/101)
+2025-07-20T17:00:31.2622256Z remote: Counting objects:  45% (46/101)
+2025-07-20T17:00:31.2623258Z remote: Counting objects:  46% (47/101)
+2025-07-20T17:00:31.2624246Z remote: Counting objects:  47% (48/101)
+2025-07-20T17:00:31.2625640Z remote: Counting objects:  48% (49/101)
+2025-07-20T17:00:31.2626646Z remote: Counting objects:  49% (50/101)
+2025-07-20T17:00:31.2628206Z remote: Counting objects:  50% (51/101)
+2025-07-20T17:00:31.2629312Z remote: Counting objects:  51% (52/101)
+2025-07-20T17:00:31.2630580Z remote: Counting objects:  52% (53/101)
+2025-07-20T17:00:31.2631835Z remote: Counting objects:  53% (54/101)
+2025-07-20T17:00:31.2632838Z remote: Counting objects:  54% (55/101)
+2025-07-20T17:00:31.2633829Z remote: Counting objects:  55% (56/101)
+2025-07-20T17:00:31.2634986Z remote: Counting objects:  56% (57/101)
+2025-07-20T17:00:31.2636039Z remote: Counting objects:  57% (58/101)
+2025-07-20T17:00:31.2637684Z remote: Counting objects:  58% (59/101)
+2025-07-20T17:00:31.2639348Z remote: Counting objects:  59% (60/101)
+2025-07-20T17:00:31.2640362Z remote: Counting objects:  60% (61/101)
+2025-07-20T17:00:31.2641388Z remote: Counting objects:  61% (62/101)
+2025-07-20T17:00:31.2642400Z remote: Counting objects:  62% (63/101)
+2025-07-20T17:00:31.2643402Z remote: Counting objects:  63% (64/101)
+2025-07-20T17:00:31.2644540Z remote: Counting objects:  64% (65/101)
+2025-07-20T17:00:31.2645555Z remote: Counting objects:  65% (66/101)
+2025-07-20T17:00:31.2646729Z remote: Counting objects:  66% (67/101)
+2025-07-20T17:00:31.2647747Z remote: Counting objects:  67% (68/101)
+2025-07-20T17:00:31.2648745Z remote: Counting objects:  68% (69/101)
+2025-07-20T17:00:31.2649751Z remote: Counting objects:  69% (70/101)
+2025-07-20T17:00:31.2650756Z remote: Counting objects:  70% (71/101)
+2025-07-20T17:00:31.2651758Z remote: Counting objects:  71% (72/101)
+2025-07-20T17:00:31.2652758Z remote: Counting objects:  72% (73/101)
+2025-07-20T17:00:31.2653752Z remote: Counting objects:  73% (74/101)
+2025-07-20T17:00:31.2654876Z remote: Counting objects:  74% (75/101)
+2025-07-20T17:00:31.2655883Z remote: Counting objects:  75% (76/101)
+2025-07-20T17:00:31.2656903Z remote: Counting objects:  76% (77/101)
+2025-07-20T17:00:31.2657922Z remote: Counting objects:  77% (78/101)
+2025-07-20T17:00:31.2658918Z remote: Counting objects:  78% (79/101)
+2025-07-20T17:00:31.2659974Z remote: Counting objects:  79% (80/101)
+2025-07-20T17:00:31.2660980Z remote: Counting objects:  80% (81/101)
+2025-07-20T17:00:31.2661985Z remote: Counting objects:  81% (82/101)
+2025-07-20T17:00:31.2662985Z remote: Counting objects:  82% (83/101)
+2025-07-20T17:00:31.2663993Z remote: Counting objects:  83% (84/101)
+2025-07-20T17:00:31.2665080Z remote: Counting objects:  84% (85/101)
+2025-07-20T17:00:31.2666093Z remote: Counting objects:  85% (86/101)
+2025-07-20T17:00:31.2667101Z remote: Counting objects:  86% (87/101)
+2025-07-20T17:00:31.2668116Z remote: Counting objects:  87% (88/101)
+2025-07-20T17:00:31.2669116Z remote: Counting objects:  88% (89/101)
+2025-07-20T17:00:31.2670114Z remote: Counting objects:  89% (90/101)
+2025-07-20T17:00:31.2671116Z remote: Counting objects:  90% (91/101)
+2025-07-20T17:00:31.2672113Z remote: Counting objects:  91% (92/101)
+2025-07-20T17:00:31.2673280Z remote: Counting objects:  92% (93/101)
+2025-07-20T17:00:31.2674310Z remote: Counting objects:  93% (94/101)
+2025-07-20T17:00:31.2675415Z remote: Counting objects:  94% (95/101)
+2025-07-20T17:00:31.2676423Z remote: Counting objects:  95% (96/101)
+2025-07-20T17:00:31.2677417Z remote: Counting objects:  96% (97/101)
+2025-07-20T17:00:31.2678425Z remote: Counting objects:  97% (98/101)
+2025-07-20T17:00:31.2679426Z remote: Counting objects:  98% (99/101)
+2025-07-20T17:00:31.2680439Z remote: Counting objects:  99% (100/101)
+2025-07-20T17:00:31.2681451Z remote: Counting objects: 100% (101/101)
+2025-07-20T17:00:31.2682663Z remote: Counting objects: 100% (101/101), done.
+2025-07-20T17:00:31.2683748Z remote: Compressing objects:   1% (1/83)
+2025-07-20T17:00:31.2684874Z remote: Compressing objects:   2% (2/83)
+2025-07-20T17:00:31.2685919Z remote: Compressing objects:   3% (3/83)
+2025-07-20T17:00:31.2686942Z remote: Compressing objects:   4% (4/83)
+2025-07-20T17:00:31.2687968Z remote: Compressing objects:   6% (5/83)
+2025-07-20T17:00:31.2688993Z remote: Compressing objects:   7% (6/83)
+2025-07-20T17:00:31.2690032Z remote: Compressing objects:   8% (7/83)
+2025-07-20T17:00:31.2691051Z remote: Compressing objects:   9% (8/83)
+2025-07-20T17:00:31.2692084Z remote: Compressing objects:  10% (9/83)
+2025-07-20T17:00:31.2693117Z remote: Compressing objects:  12% (10/83)
+2025-07-20T17:00:31.2694143Z remote: Compressing objects:  13% (11/83)
+2025-07-20T17:00:31.2695276Z remote: Compressing objects:  14% (12/83)
+2025-07-20T17:00:31.2696320Z remote: Compressing objects:  15% (13/83)
+2025-07-20T17:00:31.2697355Z remote: Compressing objects:  16% (14/83)
+2025-07-20T17:00:31.2698391Z remote: Compressing objects:  18% (15/83)
+2025-07-20T17:00:31.2699431Z remote: Compressing objects:  19% (16/83)
+2025-07-20T17:00:31.2700465Z remote: Compressing objects:  20% (17/83)
+2025-07-20T17:00:31.2701501Z remote: Compressing objects:  21% (18/83)
+2025-07-20T17:00:31.2702595Z remote: Compressing objects:  22% (19/83)
+2025-07-20T17:00:31.2703643Z remote: Compressing objects:  24% (20/83)
+2025-07-20T17:00:31.2704778Z remote: Compressing objects:  25% (21/83)
+2025-07-20T17:00:31.2705818Z remote: Compressing objects:  26% (22/83)
+2025-07-20T17:00:31.2706848Z remote: Compressing objects:  27% (23/83)
+2025-07-20T17:00:31.2707880Z remote: Compressing objects:  28% (24/83)
+2025-07-20T17:00:31.2708904Z remote: Compressing objects:  30% (25/83)
+2025-07-20T17:00:31.2709943Z remote: Compressing objects:  31% (26/83)
+2025-07-20T17:00:31.2710977Z remote: Compressing objects:  32% (27/83)
+2025-07-20T17:00:31.2712021Z remote: Compressing objects:  33% (28/83)
+2025-07-20T17:00:31.2713053Z remote: Compressing objects:  34% (29/83)
+2025-07-20T17:00:31.2714093Z remote: Compressing objects:  36% (30/83)
+2025-07-20T17:00:31.2715230Z remote: Compressing objects:  37% (31/83)
+2025-07-20T17:00:31.2716268Z remote: Compressing objects:  38% (32/83)
+2025-07-20T17:00:31.2717309Z remote: Compressing objects:  39% (33/83)
+2025-07-20T17:00:31.2718344Z remote: Compressing objects:  40% (34/83)
+2025-07-20T17:00:31.2719382Z remote: Compressing objects:  42% (35/83)
+2025-07-20T17:00:31.2720428Z remote: Compressing objects:  43% (36/83)
+2025-07-20T17:00:31.2721464Z remote: Compressing objects:  44% (37/83)
+2025-07-20T17:00:31.2722494Z remote: Compressing objects:  45% (38/83)
+2025-07-20T17:00:31.2723526Z remote: Compressing objects:  46% (39/83)
+2025-07-20T17:00:31.2724646Z remote: Compressing objects:  48% (40/83)
+2025-07-20T17:00:31.2725670Z remote: Compressing objects:  49% (41/83)
+2025-07-20T17:00:31.2726734Z remote: Compressing objects:  50% (42/83)
+2025-07-20T17:00:31.2727897Z remote: Compressing objects:  51% (43/83)
+2025-07-20T17:00:31.2728944Z remote: Compressing objects:  53% (44/83)
+2025-07-20T17:00:31.2729989Z remote: Compressing objects:  54% (45/83)
+2025-07-20T17:00:31.2731020Z remote: Compressing objects:  55% (46/83)
+2025-07-20T17:00:31.2732056Z remote: Compressing objects:  56% (47/83)
+2025-07-20T17:00:31.2733087Z remote: Compressing objects:  57% (48/83)
+2025-07-20T17:00:31.2734118Z remote: Compressing objects:  59% (49/83)
+2025-07-20T17:00:31.2735246Z remote: Compressing objects:  60% (50/83)
+2025-07-20T17:00:31.2736275Z remote: Compressing objects:  61% (51/83)
+2025-07-20T17:00:31.2737445Z remote: Compressing objects:  62% (52/83)
+2025-07-20T17:00:31.2738470Z remote: Compressing objects:  63% (53/83)
+2025-07-20T17:00:31.2739493Z remote: Compressing objects:  65% (54/83)
+2025-07-20T17:00:31.2740525Z remote: Compressing objects:  66% (55/83)
+2025-07-20T17:00:31.2741564Z remote: Compressing objects:  67% (56/83)
+2025-07-20T17:00:31.2742594Z remote: Compressing objects:  68% (57/83)
+2025-07-20T17:00:31.2743626Z remote: Compressing objects:  69% (58/83)
+2025-07-20T17:00:31.2744754Z remote: Compressing objects:  71% (59/83)
+2025-07-20T17:00:31.2745793Z remote: Compressing objects:  72% (60/83)
+2025-07-20T17:00:31.2746831Z remote: Compressing objects:  73% (61/83)
+2025-07-20T17:00:31.2747866Z remote: Compressing objects:  74% (62/83)
+2025-07-20T17:00:31.2748942Z remote: Compressing objects:  75% (63/83)
+2025-07-20T17:00:31.2750293Z remote: Compressing objects:  77% (64/83)
+2025-07-20T17:00:31.2751349Z remote: Compressing objects:  78% (65/83)
+2025-07-20T17:00:31.2752375Z remote: Compressing objects:  79% (66/83)
+2025-07-20T17:00:31.2753622Z remote: Compressing objects:  80% (67/83)
+2025-07-20T17:00:31.2754976Z remote: Compressing objects:  81% (68/83)
+2025-07-20T17:00:31.2756029Z remote: Compressing objects:  83% (69/83)
+2025-07-20T17:00:31.2757073Z remote: Compressing objects:  84% (70/83)
+2025-07-20T17:00:31.2758101Z remote: Compressing objects:  85% (71/83)
+2025-07-20T17:00:31.2759134Z remote: Compressing objects:  86% (72/83)
+2025-07-20T17:00:31.2760194Z remote: Compressing objects:  87% (73/83)
+2025-07-20T17:00:31.2761232Z remote: Compressing objects:  89% (74/83)
+2025-07-20T17:00:31.2762261Z remote: Compressing objects:  90% (75/83)
+2025-07-20T17:00:31.2763289Z remote: Compressing objects:  91% (76/83)
+2025-07-20T17:00:31.2764312Z remote: Compressing objects:  92% (77/83)
+2025-07-20T17:00:31.2765475Z remote: Compressing objects:  93% (78/83)
+2025-07-20T17:00:31.2766787Z remote: Compressing objects:  95% (79/83)
+2025-07-20T17:00:31.2768005Z remote: Compressing objects:  96% (80/83)
+2025-07-20T17:00:31.2769038Z remote: Compressing objects:  97% (81/83)
+2025-07-20T17:00:31.2770078Z remote: Compressing objects:  98% (82/83)
+2025-07-20T17:00:31.2771109Z remote: Compressing objects: 100% (83/83)
+2025-07-20T17:00:31.2772217Z remote: Compressing objects: 100% (83/83), done.
+2025-07-20T17:00:31.2779511Z Receiving objects:   0% (1/101)
+2025-07-20T17:00:31.2780900Z Receiving objects:   1% (2/101)
+2025-07-20T17:00:31.2782230Z Receiving objects:   2% (3/101)
+2025-07-20T17:00:31.2783063Z Receiving objects:   3% (4/101)
+2025-07-20T17:00:31.2784299Z Receiving objects:   4% (5/101)
+2025-07-20T17:00:31.2785628Z Receiving objects:   5% (6/101)
+2025-07-20T17:00:31.2786757Z Receiving objects:   6% (7/101)
+2025-07-20T17:00:31.2787584Z Receiving objects:   7% (8/101)
+2025-07-20T17:00:31.2824963Z Receiving objects:   8% (9/101)
+2025-07-20T17:00:31.2826729Z Receiving objects:   9% (10/101)
+2025-07-20T17:00:31.2828406Z Receiving objects:  10% (11/101)
+2025-07-20T17:00:31.2829263Z Receiving objects:  11% (12/101)
+2025-07-20T17:00:31.2938619Z Receiving objects:  12% (13/101)
+2025-07-20T17:00:31.2954821Z Receiving objects:  13% (14/101)
+2025-07-20T17:00:31.2956164Z Receiving objects:  14% (15/101)
+2025-07-20T17:00:31.2957052Z Receiving objects:  15% (16/101)
+2025-07-20T17:00:31.2971061Z Receiving objects:  16% (17/101)
+2025-07-20T17:00:31.2972732Z Receiving objects:  17% (18/101)
+2025-07-20T17:00:31.2974245Z Receiving objects:  18% (19/101)
+2025-07-20T17:00:31.2975837Z Receiving objects:  19% (20/101)
+2025-07-20T17:00:31.2977121Z Receiving objects:  20% (21/101)
+2025-07-20T17:00:31.2977999Z Receiving objects:  21% (22/101)
+2025-07-20T17:00:31.2978859Z Receiving objects:  22% (23/101)
+2025-07-20T17:00:31.2979922Z Receiving objects:  23% (24/101)
+2025-07-20T17:00:31.2980761Z Receiving objects:  24% (25/101)
+2025-07-20T17:00:31.2981613Z Receiving objects:  25% (26/101)
+2025-07-20T17:00:31.2982428Z Receiving objects:  26% (27/101)
+2025-07-20T17:00:31.2983249Z Receiving objects:  27% (28/101)
+2025-07-20T17:00:31.2984261Z Receiving objects:  28% (29/101)
+2025-07-20T17:00:31.2985226Z Receiving objects:  29% (30/101)
+2025-07-20T17:00:31.2986060Z Receiving objects:  30% (31/101)
+2025-07-20T17:00:31.2986878Z Receiving objects:  31% (32/101)
+2025-07-20T17:00:31.2987696Z Receiving objects:  32% (33/101)
+2025-07-20T17:00:31.2988519Z Receiving objects:  33% (34/101)
+2025-07-20T17:00:31.3008830Z Receiving objects:  34% (35/101)
+2025-07-20T17:00:31.3011918Z Receiving objects:  35% (36/101)
+2025-07-20T17:00:31.3013585Z Receiving objects:  36% (37/101)
+2025-07-20T17:00:31.3015355Z Receiving objects:  37% (38/101)
+2025-07-20T17:00:31.3016972Z Receiving objects:  38% (39/101)
+2025-07-20T17:00:31.3018572Z Receiving objects:  39% (40/101)
+2025-07-20T17:00:31.3020165Z Receiving objects:  40% (41/101)
+2025-07-20T17:00:31.3021634Z Receiving objects:  41% (42/101)
+2025-07-20T17:00:31.3022584Z Receiving objects:  42% (43/101)
+2025-07-20T17:00:31.3023431Z Receiving objects:  43% (44/101)
+2025-07-20T17:00:31.3024258Z Receiving objects:  44% (45/101)
+2025-07-20T17:00:31.3025304Z Receiving objects:  45% (46/101)
+2025-07-20T17:00:31.3026147Z Receiving objects:  46% (47/101)
+2025-07-20T17:00:31.3026967Z Receiving objects:  47% (48/101)
+2025-07-20T17:00:31.3027772Z Receiving objects:  48% (49/101)
+2025-07-20T17:00:31.3028630Z Receiving objects:  49% (50/101)
+2025-07-20T17:00:31.3029451Z Receiving objects:  50% (51/101)
+2025-07-20T17:00:31.3030261Z Receiving objects:  51% (52/101)
+2025-07-20T17:00:31.3031072Z Receiving objects:  52% (53/101)
+2025-07-20T17:00:31.3031883Z Receiving objects:  53% (54/101)
+2025-07-20T17:00:31.3032694Z Receiving objects:  54% (55/101)
+2025-07-20T17:00:31.3033504Z Receiving objects:  55% (56/101)
+2025-07-20T17:00:31.3034316Z Receiving objects:  56% (57/101)
+2025-07-20T17:00:31.3035246Z Receiving objects:  57% (58/101)
+2025-07-20T17:00:31.3036055Z Receiving objects:  58% (59/101)
+2025-07-20T17:00:31.3036870Z Receiving objects:  59% (60/101)
+2025-07-20T17:00:31.3037686Z Receiving objects:  60% (61/101)
+2025-07-20T17:00:31.3038498Z Receiving objects:  61% (62/101)
+2025-07-20T17:00:31.3039348Z Receiving objects:  62% (63/101)
+2025-07-20T17:00:31.3040172Z Receiving objects:  63% (64/101)
+2025-07-20T17:00:31.3040996Z Receiving objects:  64% (65/101)
+2025-07-20T17:00:31.3041813Z Receiving objects:  65% (66/101)
+2025-07-20T17:00:31.3042624Z Receiving objects:  66% (67/101)
+2025-07-20T17:00:31.3043430Z Receiving objects:  67% (68/101)
+2025-07-20T17:00:31.3044237Z Receiving objects:  68% (69/101)
+2025-07-20T17:00:31.3045159Z Receiving objects:  69% (70/101)
+2025-07-20T17:00:31.3045981Z Receiving objects:  70% (71/101)
+2025-07-20T17:00:31.3046797Z Receiving objects:  71% (72/101)
+2025-07-20T17:00:31.3047614Z Receiving objects:  72% (73/101)
+2025-07-20T17:00:31.3048441Z Receiving objects:  73% (74/101)
+2025-07-20T17:00:31.3049255Z Receiving objects:  74% (75/101)
+2025-07-20T17:00:31.3050067Z Receiving objects:  75% (76/101)
+2025-07-20T17:00:31.3050867Z Receiving objects:  76% (77/101)
+2025-07-20T17:00:31.3051674Z Receiving objects:  77% (78/101)
+2025-07-20T17:00:31.3052478Z Receiving objects:  78% (79/101)
+2025-07-20T17:00:31.3053443Z Receiving objects:  79% (80/101)
+2025-07-20T17:00:31.3054270Z Receiving objects:  80% (81/101)
+2025-07-20T17:00:31.3055196Z Receiving objects:  81% (82/101)
+2025-07-20T17:00:31.3055999Z Receiving objects:  82% (83/101)
+2025-07-20T17:00:31.3123472Z Receiving objects:  83% (84/101)
+2025-07-20T17:00:31.3125653Z Receiving objects:  84% (85/101)
+2025-07-20T17:00:31.3127634Z Receiving objects:  85% (86/101)
+2025-07-20T17:00:31.3129514Z Receiving objects:  86% (87/101)
+2025-07-20T17:00:31.3130446Z Receiving objects:  87% (88/101)
+2025-07-20T17:00:31.3131276Z Receiving objects:  88% (89/101)
+2025-07-20T17:00:31.3132097Z Receiving objects:  89% (90/101)
+2025-07-20T17:00:31.3133300Z Receiving objects:  90% (91/101)
+2025-07-20T17:00:31.3135596Z remote: Total 101 (delta 19), reused 62 (delta 11), pack-reused 0 (from 0)
+2025-07-20T17:00:31.3137817Z Receiving objects:  91% (92/101)
+2025-07-20T17:00:31.3139271Z Receiving objects:  92% (93/101)
+2025-07-20T17:00:31.3140694Z Receiving objects:  93% (94/101)
+2025-07-20T17:00:31.3142128Z Receiving objects:  94% (95/101)
+2025-07-20T17:00:31.3143549Z Receiving objects:  95% (96/101)
+2025-07-20T17:00:31.3145223Z Receiving objects:  96% (97/101)
+2025-07-20T17:00:31.3146674Z Receiving objects:  97% (98/101)
+2025-07-20T17:00:31.3147953Z Receiving objects:  98% (99/101)
+2025-07-20T17:00:31.3148785Z Receiving objects:  99% (100/101)
+2025-07-20T17:00:31.3149607Z Receiving objects: 100% (101/101)
+2025-07-20T17:00:31.3150678Z Receiving objects: 100% (101/101), 105.74 KiB | 2.86 MiB/s, done.
+2025-07-20T17:00:31.3152175Z Resolving deltas:   0% (0/19)
+2025-07-20T17:00:31.3153517Z Resolving deltas:   5% (1/19)
+2025-07-20T17:00:31.3155011Z Resolving deltas:  10% (2/19)
+2025-07-20T17:00:31.3156301Z Resolving deltas:  15% (3/19)
+2025-07-20T17:00:31.3157574Z Resolving deltas:  21% (4/19)
+2025-07-20T17:00:31.3158891Z Resolving deltas:  26% (5/19)
+2025-07-20T17:00:31.3160270Z Resolving deltas:  31% (6/19)
+2025-07-20T17:00:31.3161577Z Resolving deltas:  36% (7/19)
+2025-07-20T17:00:31.3162897Z Resolving deltas:  42% (8/19)
+2025-07-20T17:00:31.3163691Z Resolving deltas:  47% (9/19)
+2025-07-20T17:00:31.3164647Z Resolving deltas:  52% (10/19)
+2025-07-20T17:00:31.3165444Z Resolving deltas:  57% (11/19)
+2025-07-20T17:00:31.3166236Z Resolving deltas:  63% (12/19)
+2025-07-20T17:00:31.3167026Z Resolving deltas:  68% (13/19)
+2025-07-20T17:00:31.3167814Z Resolving deltas:  73% (14/19)
+2025-07-20T17:00:31.3168594Z Resolving deltas:  78% (15/19)
+2025-07-20T17:00:31.3169403Z Resolving deltas:  84% (16/19)
+2025-07-20T17:00:31.3170389Z Resolving deltas:  89% (17/19)
+2025-07-20T17:00:31.3171494Z Resolving deltas:  94% (18/19)
+2025-07-20T17:00:31.3172446Z Resolving deltas: 100% (19/19)
+2025-07-20T17:00:31.3173243Z Resolving deltas: 100% (19/19), done.
+2025-07-20T17:00:31.3234949Z From https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:31.3236651Z  * [new ref]         5142a677bcb5df094e9f365f1b1fafa9afe30030 -> origin/sandboxing
+2025-07-20T17:00:31.3262626Z ##[endgroup]
+2025-07-20T17:00:31.3264111Z ##[group]Determining the checkout info
+2025-07-20T17:00:31.3265794Z ##[endgroup]
+2025-07-20T17:00:31.3266864Z ##[group]Checking out the ref
+2025-07-20T17:00:31.3268895Z [command]/usr/bin/git checkout --progress --force -B sandboxing refs/remotes/origin/sandboxing
+2025-07-20T17:00:31.3349873Z Switched to a new branch 'sandboxing'
+2025-07-20T17:00:31.3352866Z branch 'sandboxing' set up to track 'origin/sandboxing'.
+2025-07-20T17:00:31.3359787Z ##[endgroup]
+2025-07-20T17:00:31.3390501Z [command]/usr/bin/git log -1 --format='%H'
+2025-07-20T17:00:31.3410758Z '5142a677bcb5df094e9f365f1b1fafa9afe30030'
+2025-07-20T17:00:31.3640194Z ##[group]Run docker/setup-buildx-action@v2
+2025-07-20T17:00:31.3641115Z with:
+2025-07-20T17:00:31.3641744Z   driver: docker-container
+2025-07-20T17:00:31.3643287Z   buildkitd-flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2025-07-20T17:00:31.3645268Z   install: false
+2025-07-20T17:00:31.3645911Z   use: true
+2025-07-20T17:00:31.3646589Z   cleanup: true
+2025-07-20T17:00:31.3647215Z env:
+2025-07-20T17:00:31.3647786Z   REGISTRY: ghcr.io
+2025-07-20T17:00:31.3648790Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:31.3650421Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:00:31.3652176Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:00:31.3653908Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:00:31.3655288Z ##[endgroup]
+2025-07-20T17:00:31.5065259Z ##[group]Docker info
+2025-07-20T17:00:31.5091790Z [command]/usr/bin/docker version
+2025-07-20T17:00:31.5863436Z Client: Docker Engine - Community
+2025-07-20T17:00:31.5867398Z  Version:           28.0.4
+2025-07-20T17:00:31.5868486Z  API version:       1.48
+2025-07-20T17:00:31.5869229Z  Go version:        go1.23.7
+2025-07-20T17:00:31.5869986Z  Git commit:        b8034c0
+2025-07-20T17:00:31.5870751Z  Built:             Tue Mar 25 15:07:16 2025
+2025-07-20T17:00:31.5871608Z  OS/Arch:           linux/amd64
+2025-07-20T17:00:31.5872347Z  Context:           default
+2025-07-20T17:00:31.5872806Z
+2025-07-20T17:00:31.5873119Z Server: Docker Engine - Community
+2025-07-20T17:00:31.5873882Z  Engine:
+2025-07-20T17:00:31.5874892Z   Version:          28.0.4
+2025-07-20T17:00:31.5875713Z   API version:      1.48 (minimum version 1.24)
+2025-07-20T17:00:31.5876621Z   Go version:       go1.23.7
+2025-07-20T17:00:31.5877361Z   Git commit:       6430e49
+2025-07-20T17:00:31.5878126Z   Built:            Tue Mar 25 15:07:16 2025
+2025-07-20T17:00:31.5879029Z   OS/Arch:          linux/amd64
+2025-07-20T17:00:31.5879780Z   Experimental:     false
+2025-07-20T17:00:31.5880480Z  containerd:
+2025-07-20T17:00:31.5881082Z   Version:          1.7.27
+2025-07-20T17:00:31.5881971Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:00:31.5882925Z  runc:
+2025-07-20T17:00:31.5883500Z   Version:          1.2.5
+2025-07-20T17:00:31.5884223Z   GitCommit:        v1.2.5-0-g59923ef
+2025-07-20T17:00:31.5885316Z  docker-init:
+2025-07-20T17:00:31.5885927Z   Version:          0.19.0
+2025-07-20T17:00:31.5886646Z   GitCommit:        de40ad0
+2025-07-20T17:00:31.5912335Z [command]/usr/bin/docker info
+2025-07-20T17:00:31.8196586Z Client: Docker Engine - Community
+2025-07-20T17:00:31.8198146Z  Version:    28.0.4
+2025-07-20T17:00:31.8198842Z  Context:    default
+2025-07-20T17:00:31.8199522Z  Debug Mode: false
+2025-07-20T17:00:31.8200176Z  Plugins:
+2025-07-20T17:00:31.8200819Z   buildx: Docker Buildx (Docker Inc.)
+2025-07-20T17:00:31.8201711Z     Version:  v0.25.0
+2025-07-20T17:00:31.8202634Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-07-20T17:00:31.8203675Z   compose: Docker Compose (Docker Inc.)
+2025-07-20T17:00:31.8204777Z     Version:  v2.36.2
+2025-07-20T17:00:31.8205666Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-07-20T17:00:31.8206403Z
+2025-07-20T17:00:31.8206665Z Server:
+2025-07-20T17:00:31.8207465Z  Containers: 0
+2025-07-20T17:00:31.8208119Z   Running: 0
+2025-07-20T17:00:31.8208729Z   Paused: 0
+2025-07-20T17:00:31.8209325Z   Stopped: 0
+2025-07-20T17:00:31.8209957Z  Images: 0
+2025-07-20T17:00:31.8210561Z  Server Version: 28.0.4
+2025-07-20T17:00:31.8211272Z  Storage Driver: overlay2
+2025-07-20T17:00:31.8212214Z   Backing Filesystem: extfs
+2025-07-20T17:00:31.8213127Z   Supports d_type: true
+2025-07-20T17:00:31.8213839Z   Using metacopy: false
+2025-07-20T17:00:31.8214871Z   Native Overlay Diff: false
+2025-07-20T17:00:31.8215825Z   userxattr: false
+2025-07-20T17:00:31.8216635Z  Logging Driver: json-file
+2025-07-20T17:00:31.8217944Z  Cgroup Driver: systemd
+2025-07-20T17:00:31.8218672Z  Cgroup Version: 2
+2025-07-20T17:00:31.8219318Z  Plugins:
+2025-07-20T17:00:31.8219906Z   Volume: local
+2025-07-20T17:00:31.8220690Z   Network: bridge host ipvlan macvlan null overlay
+2025-07-20T17:00:31.8222102Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-07-20T17:00:31.8223267Z  Swarm: inactive
+2025-07-20T17:00:31.8224031Z  Runtimes: runc io.containerd.runc.v2
+2025-07-20T17:00:31.8225281Z  Default Runtime: runc
+2025-07-20T17:00:31.8226009Z  Init Binary: docker-init
+2025-07-20T17:00:31.8226975Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:00:31.8228213Z  runc version: v1.2.5-0-g59923ef
+2025-07-20T17:00:31.8228994Z  init version: de40ad0
+2025-07-20T17:00:31.8229676Z  Security Options:
+2025-07-20T17:00:31.8230510Z   apparmor
+2025-07-20T17:00:31.8231451Z   seccomp
+2025-07-20T17:00:31.8232261Z    Profile: builtin
+2025-07-20T17:00:31.8232913Z   cgroupns
+2025-07-20T17:00:31.8233553Z  Kernel Version: 6.11.0-1018-azure
+2025-07-20T17:00:31.8234844Z  Operating System: Ubuntu 24.04.2 LTS
+2025-07-20T17:00:31.8235809Z  OSType: linux
+2025-07-20T17:00:31.8236455Z  Architecture: x86_64
+2025-07-20T17:00:31.8237131Z  CPUs: 4
+2025-07-20T17:00:31.8237723Z  Total Memory: 15.62GiB
+2025-07-20T17:00:31.8238425Z  Name: pkrvmq0rgcvqdmg
+2025-07-20T17:00:31.8239169Z  ID: 59ce2f9e-8373-49df-b904-c97e78d80d7f
+2025-07-20T17:00:31.8240151Z  Docker Root Dir: /var/lib/docker
+2025-07-20T17:00:31.8240952Z  Debug Mode: false
+2025-07-20T17:00:31.8241616Z  Username: githubactions
+2025-07-20T17:00:31.8242423Z  Experimental: false
+2025-07-20T17:00:31.8243112Z  Insecure Registries:
+2025-07-20T17:00:31.8248393Z   ::1/128
+2025-07-20T17:00:31.8249033Z   127.0.0.0/8
+2025-07-20T17:00:31.8249693Z  Live Restore Enabled: false
+2025-07-20T17:00:31.8250200Z
+2025-07-20T17:00:31.8251254Z ##[endgroup]
+2025-07-20T17:00:31.8704777Z ##[group]Buildx version
+2025-07-20T17:00:31.8736811Z [command]/usr/bin/docker buildx version
+2025-07-20T17:00:31.9128740Z github.com/docker/buildx v0.25.0 faaea65da4ba0e58a13cd9cadcb950c51cf3b3c9
+2025-07-20T17:00:31.9159389Z ##[endgroup]
+2025-07-20T17:00:31.9166782Z ##[group]Creating a new builder instance
+2025-07-20T17:00:31.9671505Z [command]/usr/bin/docker buildx create --name builder-fb0caa2e-b341-4470-b725-6e57dadbe123 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+2025-07-20T17:00:32.0118833Z builder-fb0caa2e-b341-4470-b725-6e57dadbe123
+2025-07-20T17:00:32.0151072Z ##[endgroup]
+2025-07-20T17:00:32.0152935Z ##[group]Booting builder
+2025-07-20T17:00:32.0182537Z [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-fb0caa2e-b341-4470-b725-6e57dadbe123
+2025-07-20T17:00:32.0595898Z #1 [internal] booting buildkit
+2025-07-20T17:00:32.2098636Z #1 pulling image moby/buildkit:buildx-stable-1
+2025-07-20T17:00:35.8605901Z #1 pulling image moby/buildkit:buildx-stable-1 3.8s done
+2025-07-20T17:00:36.0113536Z #1 creating container buildx_buildkit_builder-fb0caa2e-b341-4470-b725-6e57dadbe1230
+2025-07-20T17:00:36.1376766Z #1 creating container buildx_buildkit_builder-fb0caa2e-b341-4470-b725-6e57dadbe1230 0.3s done
+2025-07-20T17:00:36.1393601Z #1 DONE 4.1s
+2025-07-20T17:00:36.1704086Z Name:          builder-fb0caa2e-b341-4470-b725-6e57dadbe123
+2025-07-20T17:00:36.1708331Z Driver:        docker-container
+2025-07-20T17:00:36.1740831Z Last Activity: 2025-07-20 17:00:32 +0000 UTC
+2025-07-20T17:00:36.1741154Z
+2025-07-20T17:00:36.1741265Z Nodes:
+2025-07-20T17:00:36.1741671Z Name:                  builder-fb0caa2e-b341-4470-b725-6e57dadbe1230
+2025-07-20T17:00:36.1742211Z Endpoint:              unix:///var/run/docker.sock
+2025-07-20T17:00:36.1742684Z Status:                running
+2025-07-20T17:00:36.1743490Z BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+2025-07-20T17:00:36.1744303Z BuildKit version:      v0.22.0
+2025-07-20T17:00:36.1745399Z Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/386
+2025-07-20T17:00:36.1759475Z Labels:
+2025-07-20T17:00:36.1759965Z  org.mobyproject.buildkit.worker.executor:         oci
+2025-07-20T17:00:36.1760653Z  org.mobyproject.buildkit.worker.hostname:         84dc31169fa8
+2025-07-20T17:00:36.1761326Z  org.mobyproject.buildkit.worker.network:          host
+2025-07-20T17:00:36.1762025Z  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+2025-07-20T17:00:36.1772554Z  org.mobyproject.buildkit.worker.selinux.enabled:  false
+2025-07-20T17:00:36.1773322Z  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+2025-07-20T17:00:36.1773870Z GC Policy rule#0:
+2025-07-20T17:00:36.1774232Z  All:            false
+2025-07-20T17:00:36.1775064Z  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+2025-07-20T17:00:36.1775786Z  Keep Duration:  48h0m0s
+2025-07-20T17:00:36.1776208Z  Max Used Space: 488.3MiB
+2025-07-20T17:00:36.1776801Z GC Policy rule#1:
+2025-07-20T17:00:36.1777178Z  All:            false
+2025-07-20T17:00:36.1778000Z  Keep Duration:  1440h0m0s
+2025-07-20T17:00:36.1778447Z  Reserved Space: 7.451GiB
+2025-07-20T17:00:36.1778859Z  Max Used Space: 54.02GiB
+2025-07-20T17:00:36.1779258Z  Min Free Space: 13.97GiB
+2025-07-20T17:00:36.1779629Z GC Policy rule#2:
+2025-07-20T17:00:36.1779975Z  All:            false
+2025-07-20T17:00:36.1780349Z  Reserved Space: 7.451GiB
+2025-07-20T17:00:36.1780730Z  Max Used Space: 54.02GiB
+2025-07-20T17:00:36.1781105Z  Min Free Space: 13.97GiB
+2025-07-20T17:00:36.1781470Z GC Policy rule#3:
+2025-07-20T17:00:36.1781793Z  All:            true
+2025-07-20T17:00:36.1782153Z  Reserved Space: 7.451GiB
+2025-07-20T17:00:36.1782534Z  Max Used Space: 54.02GiB
+2025-07-20T17:00:36.1782903Z  Min Free Space: 13.97GiB
+2025-07-20T17:00:36.1784176Z ##[endgroup]
+2025-07-20T17:00:36.2520363Z ##[group]Inspect builder
+2025-07-20T17:00:36.2522701Z {
+2025-07-20T17:00:36.2523065Z   "nodes": [
+2025-07-20T17:00:36.2523395Z     {
+2025-07-20T17:00:36.2523851Z       "name": "builder-fb0caa2e-b341-4470-b725-6e57dadbe1230",
+2025-07-20T17:00:36.2524702Z       "endpoint": "unix:///var/run/docker.sock",
+2025-07-20T17:00:36.2525191Z       "status": "running",
+2025-07-20T17:00:36.2525747Z       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/386",
+2025-07-20T17:00:36.2526333Z       "labels": {
+2025-07-20T17:00:36.2526787Z         "org.mobyproject.buildkit.worker.executor": "oci",
+2025-07-20T17:00:36.2527472Z         "org.mobyproject.buildkit.worker.hostname": "84dc31169fa8",
+2025-07-20T17:00:36.2528148Z         "org.mobyproject.buildkit.worker.network": "host",
+2025-07-20T17:00:36.2528875Z         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+2025-07-20T17:00:36.2529646Z         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+2025-07-20T17:00:36.2530379Z         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+2025-07-20T17:00:36.2530948Z       },
+2025-07-20T17:00:36.2531249Z       "gcPolicy": [
+2025-07-20T17:00:36.2531567Z         {
+2025-07-20T17:00:36.2531922Z           "all": false,
+2025-07-20T17:00:36.2532282Z           "filter": [
+2025-07-20T17:00:36.2532651Z             "type==source.local",
+2025-07-20T17:00:36.2533074Z             "type==exec.cachemount",
+2025-07-20T17:00:36.2533504Z             "type==source.git.checkout"
+2025-07-20T17:00:36.2533930Z           ],
+2025-07-20T17:00:36.2534269Z           "keepDuration": "48h0m0s"
+2025-07-20T17:00:36.2534965Z         },
+2025-07-20T17:00:36.2535236Z         {
+2025-07-20T17:00:36.2535510Z           "all": false,
+2025-07-20T17:00:36.2535851Z           "keepDuration": "1440h0m0s"
+2025-07-20T17:00:36.2536268Z         },
+2025-07-20T17:00:36.2536556Z         {
+2025-07-20T17:00:36.2536953Z           "all": false
+2025-07-20T17:00:36.2537297Z         },
+2025-07-20T17:00:36.2537586Z         {
+2025-07-20T17:00:36.2537887Z           "all": true
+2025-07-20T17:00:36.2538220Z         }
+2025-07-20T17:00:36.2538517Z       ]
+2025-07-20T17:00:36.2538807Z     }
+2025-07-20T17:00:36.2539101Z   ],
+2025-07-20T17:00:36.2539838Z   "name": "builder-fb0caa2e-b341-4470-b725-6e57dadbe123",
+2025-07-20T17:00:36.2540450Z   "driver": "docker-container",
+2025-07-20T17:00:36.2540903Z   "lastActivity": "2025-07-20T17:00:32.000Z"
+2025-07-20T17:00:36.2541340Z }
+2025-07-20T17:00:36.2541944Z ##[endgroup]
+2025-07-20T17:00:36.2542571Z ##[group]BuildKit version
+2025-07-20T17:00:36.4934094Z builder-fb0caa2e-b341-4470-b725-6e57dadbe1230: moby/buildkit:buildx-stable-1 => buildkitd github.com/moby/buildkit v0.22.0 13cf07c97baebd3d5603feecc03f5a46ac98d2a5
+2025-07-20T17:00:36.4935836Z ##[endgroup]
+2025-07-20T17:00:36.5054755Z ##[group]Run docker/login-action@v2
+2025-07-20T17:00:36.5055030Z with:
+2025-07-20T17:00:36.5055192Z   registry: ghcr.io
+2025-07-20T17:00:36.5055384Z   username: Felix-neko
+2025-07-20T17:00:36.5055922Z   password: ***
+2025-07-20T17:00:36.5056103Z   ecr: auto
+2025-07-20T17:00:36.5056251Z   logout: true
+2025-07-20T17:00:36.5056407Z env:
+2025-07-20T17:00:36.5056552Z   REGISTRY: ghcr.io
+2025-07-20T17:00:36.5056844Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:36.5057526Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:00:36.5058034Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:00:36.5058512Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:00:36.5058851Z ##[endgroup]
+2025-07-20T17:00:36.5970484Z Logging into ghcr.io...
+2025-07-20T17:00:37.2024727Z Login Succeeded!
+2025-07-20T17:00:37.2104127Z ##[group]Run docker/metadata-action@v4
+2025-07-20T17:00:37.2104616Z with:
+2025-07-20T17:00:37.2104945Z   images: ghcr.io/Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:37.2105511Z   tags: type=semver,pattern={{version}}
+type=semver,pattern={{major}}.{{minor}}
+type=sha,format=short
+type=ref,event=branch
+latest
+
+2025-07-20T17:00:37.2105967Z   context: workflow
+2025-07-20T17:00:37.2106275Z   github-token: ***
+2025-07-20T17:00:37.2106445Z env:
+2025-07-20T17:00:37.2106613Z   REGISTRY: ghcr.io
+2025-07-20T17:00:37.2106893Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:37.2107345Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:00:37.2107828Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:00:37.2108301Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:00:37.2108659Z ##[endgroup]
+2025-07-20T17:00:37.6940145Z ##[group]Context info
+2025-07-20T17:00:37.6940537Z eventName: push
+2025-07-20T17:00:37.6940940Z sha: 5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:00:37.6941361Z ref: refs/heads/sandboxing
+2025-07-20T17:00:37.6941691Z workflow: Docker Build and Push
+2025-07-20T17:00:37.6941995Z action: meta-monolith
+2025-07-20T17:00:37.6942210Z actor: Felix-neko
+2025-07-20T17:00:37.6942491Z runNumber: 16
+2025-07-20T17:00:37.6942791Z runId: 16402196253
+2025-07-20T17:00:37.6943200Z ##[endgroup]
+2025-07-20T17:00:37.6949271Z ##[group]Processing images input
+2025-07-20T17:00:37.6950131Z name=ghcr.io/Felix-neko/architecture-pro-cinemaabyss/monolith,enable=true
+2025-07-20T17:00:37.6950757Z ##[endgroup]
+2025-07-20T17:00:37.6963170Z ##[group]Processing tags input
+2025-07-20T17:00:37.6963838Z type=semver,pattern={{version}},value=,enable=true,priority=900
+2025-07-20T17:00:37.6964788Z type=semver,pattern={{major}}.{{minor}},value=,enable=true,priority=900
+2025-07-20T17:00:37.6965448Z type=ref,event=branch,enable=true,priority=600
+2025-07-20T17:00:37.6965993Z type=raw,value=latest,enable=true,priority=200
+2025-07-20T17:00:37.6966597Z type=sha,format=short,prefix=sha-,enable=true,priority=100
+2025-07-20T17:00:37.6967366Z ##[endgroup]
+2025-07-20T17:00:37.6968682Z ##[group]Processing flavor input
+2025-07-20T17:00:37.6969065Z latest=auto
+2025-07-20T17:00:37.6969363Z prefix=
+2025-07-20T17:00:37.6969641Z prefixLatest=false
+2025-07-20T17:00:37.6969940Z suffix=
+2025-07-20T17:00:37.6970214Z suffixLatest=false
+2025-07-20T17:00:37.6970800Z ##[endgroup]
+2025-07-20T17:00:37.7014815Z ##[group]Docker image version
+2025-07-20T17:00:37.7015244Z sandboxing
+2025-07-20T17:00:37.7015786Z ##[endgroup]
+2025-07-20T17:00:37.7020710Z ##[group]Docker tags
+2025-07-20T17:00:37.7021275Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing
+2025-07-20T17:00:37.7022020Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest
+2025-07-20T17:00:37.7022789Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67
+2025-07-20T17:00:37.7023681Z ##[endgroup]
+2025-07-20T17:00:37.7097476Z ##[group]Docker labels
+2025-07-20T17:00:37.7097965Z org.opencontainers.image.created=2025-07-20T17:00:37.696Z
+2025-07-20T17:00:37.7100036Z org.opencontainers.image.description=
+2025-07-20T17:00:37.7100642Z org.opencontainers.image.licenses=
+2025-07-20T17:00:37.7101424Z org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:00:37.7102309Z org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:37.7103274Z org.opencontainers.image.title=architecture-pro-cinemaabyss
+2025-07-20T17:00:37.7104193Z org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:37.7105347Z org.opencontainers.image.version=sandboxing
+2025-07-20T17:00:37.7106127Z ##[endgroup]
+2025-07-20T17:00:37.7106759Z ##[group]JSON output
+2025-07-20T17:00:37.7107140Z {
+2025-07-20T17:00:37.7107437Z   "tags": [
+2025-07-20T17:00:37.7108077Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing",
+2025-07-20T17:00:37.7108709Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest",
+2025-07-20T17:00:37.7109506Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67"
+2025-07-20T17:00:37.7110226Z   ],
+2025-07-20T17:00:37.7110546Z   "labels": {
+2025-07-20T17:00:37.7110993Z     "org.opencontainers.image.created": "2025-07-20T17:00:37.696Z",
+2025-07-20T17:00:37.7111404Z     "org.opencontainers.image.description": "",
+2025-07-20T17:00:37.7111710Z     "org.opencontainers.image.licenses": "",
+2025-07-20T17:00:37.7112170Z     "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:00:37.7113039Z     "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7113598Z     "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7114176Z     "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7114824Z     "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:00:37.7115083Z   }
+2025-07-20T17:00:37.7115229Z }
+2025-07-20T17:00:37.7115592Z ##[endgroup]
+2025-07-20T17:00:37.7115934Z ##[group]Bake file definition
+2025-07-20T17:00:37.7116141Z {
+2025-07-20T17:00:37.7116281Z   "target": {
+2025-07-20T17:00:37.7116462Z     "docker-metadata-action": {
+2025-07-20T17:00:37.7116671Z       "tags": [
+2025-07-20T17:00:37.7116954Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing",
+2025-07-20T17:00:37.7117398Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest",
+2025-07-20T17:00:37.7117822Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67"
+2025-07-20T17:00:37.7118153Z       ],
+2025-07-20T17:00:37.7118307Z       "labels": {
+2025-07-20T17:00:37.7118565Z         "org.opencontainers.image.created": "2025-07-20T17:00:37.696Z",
+2025-07-20T17:00:37.7118920Z         "org.opencontainers.image.description": "",
+2025-07-20T17:00:37.7119234Z         "org.opencontainers.image.licenses": "",
+2025-07-20T17:00:37.7119625Z         "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:00:37.7120232Z         "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7120780Z         "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7121299Z         "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:00:37.7121763Z         "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:00:37.7122011Z       },
+2025-07-20T17:00:37.7122171Z       "args": {
+2025-07-20T17:00:37.7122471Z         "DOCKER_META_IMAGES": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith",
+2025-07-20T17:00:37.7122846Z         "DOCKER_META_VERSION": "sandboxing"
+2025-07-20T17:00:37.7123069Z       }
+2025-07-20T17:00:37.7123220Z     }
+2025-07-20T17:00:37.7123356Z   }
+2025-07-20T17:00:37.7123498Z }
+2025-07-20T17:00:37.7123773Z ##[endgroup]
+2025-07-20T17:00:37.7244727Z ##[group]Run docker/build-push-action@v4
+2025-07-20T17:00:37.7245014Z with:
+2025-07-20T17:00:37.7245181Z   context: ./src/monolith
+2025-07-20T17:00:37.7245377Z   push: true
+2025-07-20T17:00:37.7246124Z   tags: ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67
+2025-07-20T17:00:37.7248624Z   labels: org.opencontainers.image.created=2025-07-20T17:00:37.696Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:00:37.7250371Z   cache-from: type=gha
+2025-07-20T17:00:37.7250590Z   cache-to: type=gha,mode=max
+2025-07-20T17:00:37.7250795Z   load: false
+2025-07-20T17:00:37.7250957Z   no-cache: false
+2025-07-20T17:00:37.7251122Z   pull: false
+2025-07-20T17:00:37.7251415Z   github-token: ***
+2025-07-20T17:00:37.7251582Z env:
+2025-07-20T17:00:37.7251735Z   REGISTRY: ghcr.io
+2025-07-20T17:00:37.7252010Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:00:37.7252481Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:00:37.7252969Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:00:37.7253435Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:00:37.7253809Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:00:37.7254888Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67
+2025-07-20T17:00:37.7257349Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:00:37.696Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:00:37.7261470Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:00:37.696Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:00:37.7264211Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-4WZYCf/docker-metadata-action-bake.json
+2025-07-20T17:00:37.7264835Z ##[endgroup]
+2025-07-20T17:00:37.8663800Z ##[group]GitHub Actions runtime token ACs
+2025-07-20T17:00:37.8677484Z refs/heads/sandboxing: read/write
+2025-07-20T17:00:37.8678190Z refs/heads/main: read
+2025-07-20T17:00:37.8679666Z ##[endgroup]
+2025-07-20T17:00:37.8680426Z ##[group]Docker info
+2025-07-20T17:00:37.8728484Z [command]/usr/bin/docker version
+2025-07-20T17:00:37.8933665Z Client: Docker Engine - Community
+2025-07-20T17:00:37.8934939Z  Version:           28.0.4
+2025-07-20T17:00:37.8936466Z  API version:       1.48
+2025-07-20T17:00:37.8937496Z  Go version:        go1.23.7
+2025-07-20T17:00:37.8938138Z  Git commit:        b8034c0
+2025-07-20T17:00:37.8938901Z  Built:             Tue Mar 25 15:07:16 2025
+2025-07-20T17:00:37.8939436Z  OS/Arch:           linux/amd64
+2025-07-20T17:00:37.8939782Z  Context:           default
+2025-07-20T17:00:37.8940359Z
+2025-07-20T17:00:37.8940515Z Server: Docker Engine - Community
+2025-07-20T17:00:37.8941026Z  Engine:
+2025-07-20T17:00:37.8941295Z   Version:          28.0.4
+2025-07-20T17:00:37.8941737Z   API version:      1.48 (minimum version 1.24)
+2025-07-20T17:00:37.8942159Z   Go version:       go1.23.7
+2025-07-20T17:00:37.8942496Z   Git commit:       6430e49
+2025-07-20T17:00:37.8942842Z   Built:            Tue Mar 25 15:07:16 2025
+2025-07-20T17:00:37.8943225Z   OS/Arch:          linux/amd64
+2025-07-20T17:00:37.8943571Z   Experimental:     false
+2025-07-20T17:00:37.8943875Z  containerd:
+2025-07-20T17:00:37.8944173Z   Version:          1.7.27
+2025-07-20T17:00:37.8944964Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:00:37.8945630Z  runc:
+2025-07-20T17:00:37.8945808Z   Version:          1.2.5
+2025-07-20T17:00:37.8946028Z   GitCommit:        v1.2.5-0-g59923ef
+2025-07-20T17:00:37.8946267Z  docker-init:
+2025-07-20T17:00:37.8946436Z   Version:          0.19.0
+2025-07-20T17:00:37.8946647Z   GitCommit:        de40ad0
+2025-07-20T17:00:37.8997961Z [command]/usr/bin/docker info
+2025-07-20T17:00:37.9516445Z Client: Docker Engine - Community
+2025-07-20T17:00:37.9519989Z  Version:    28.0.4
+2025-07-20T17:00:37.9520305Z  Context:    default
+2025-07-20T17:00:37.9520600Z  Debug Mode: false
+2025-07-20T17:00:37.9520884Z  Plugins:
+2025-07-20T17:00:37.9521181Z   buildx: Docker Buildx (Docker Inc.)
+2025-07-20T17:00:37.9521567Z     Version:  v0.25.0
+2025-07-20T17:00:37.9521955Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-07-20T17:00:37.9522443Z   compose: Docker Compose (Docker Inc.)
+2025-07-20T17:00:37.9522837Z     Version:  v2.36.2
+2025-07-20T17:00:37.9523229Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-07-20T17:00:37.9523577Z
+2025-07-20T17:00:37.9523688Z Server:
+2025-07-20T17:00:37.9523923Z  Containers: 1
+2025-07-20T17:00:37.9524195Z   Running: 1
+2025-07-20T17:00:37.9524958Z   Paused: 0
+2025-07-20T17:00:37.9525236Z   Stopped: 0
+2025-07-20T17:00:37.9525487Z  Images: 1
+2025-07-20T17:00:37.9525804Z  Server Version: 28.0.4
+2025-07-20T17:00:37.9526115Z  Storage Driver: overlay2
+2025-07-20T17:00:37.9526441Z   Backing Filesystem: extfs
+2025-07-20T17:00:37.9526770Z   Supports d_type: true
+2025-07-20T17:00:37.9527082Z   Using metacopy: false
+2025-07-20T17:00:37.9527389Z   Native Overlay Diff: false
+2025-07-20T17:00:37.9527700Z   userxattr: false
+2025-07-20T17:00:37.9527998Z  Logging Driver: json-file
+2025-07-20T17:00:37.9528322Z  Cgroup Driver: systemd
+2025-07-20T17:00:37.9528640Z  Cgroup Version: 2
+2025-07-20T17:00:37.9528923Z  Plugins:
+2025-07-20T17:00:37.9529178Z   Volume: local
+2025-07-20T17:00:37.9529528Z   Network: bridge host ipvlan macvlan null overlay
+2025-07-20T17:00:37.9530163Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-07-20T17:00:37.9530700Z  Swarm: inactive
+2025-07-20T17:00:37.9531010Z  Runtimes: io.containerd.runc.v2 runc
+2025-07-20T17:00:37.9531381Z  Default Runtime: runc
+2025-07-20T17:00:37.9531680Z  Init Binary: docker-init
+2025-07-20T17:00:37.9532148Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:00:37.9532663Z  runc version: v1.2.5-0-g59923ef
+2025-07-20T17:00:37.9532902Z  init version: de40ad0
+2025-07-20T17:00:37.9533085Z  Security Options:
+2025-07-20T17:00:37.9533303Z   apparmor
+2025-07-20T17:00:37.9533514Z   seccomp
+2025-07-20T17:00:37.9533672Z    Profile: builtin
+2025-07-20T17:00:37.9533842Z   cgroupns
+2025-07-20T17:00:37.9534007Z  Kernel Version: 6.11.0-1018-azure
+2025-07-20T17:00:37.9534251Z  Operating System: Ubuntu 24.04.2 LTS
+2025-07-20T17:00:37.9534647Z  OSType: linux
+2025-07-20T17:00:37.9535091Z  Architecture: x86_64
+2025-07-20T17:00:37.9535286Z  CPUs: 4
+2025-07-20T17:00:37.9535445Z  Total Memory: 15.62GiB
+2025-07-20T17:00:37.9535631Z  Name: pkrvmq0rgcvqdmg
+2025-07-20T17:00:37.9535840Z  ID: 59ce2f9e-8373-49df-b904-c97e78d80d7f
+2025-07-20T17:00:37.9536075Z  Docker Root Dir: /var/lib/docker
+2025-07-20T17:00:37.9536283Z  Debug Mode: false
+2025-07-20T17:00:37.9536457Z  Username: githubactions
+2025-07-20T17:00:37.9536797Z  Experimental: false
+2025-07-20T17:00:37.9536982Z  Insecure Registries:
+2025-07-20T17:00:37.9537189Z   ::1/128
+2025-07-20T17:00:37.9537337Z   127.0.0.0/8
+2025-07-20T17:00:37.9537568Z  Live Restore Enabled: false
+2025-07-20T17:00:37.9538039Z
+2025-07-20T17:00:37.9538510Z ##[endgroup]
+2025-07-20T17:00:37.9539071Z ##[group]Proxy configuration
+2025-07-20T17:00:37.9543372Z No proxy configuration found
+2025-07-20T17:00:37.9543933Z ##[endgroup]
+2025-07-20T17:00:38.0016880Z ##[group]Buildx version
+2025-07-20T17:00:38.0046122Z [command]/usr/bin/docker buildx version
+2025-07-20T17:00:38.0447261Z github.com/docker/buildx v0.25.0 faaea65da4ba0e58a13cd9cadcb950c51cf3b3c9
+2025-07-20T17:00:38.0483869Z ##[endgroup]
+2025-07-20T17:00:38.4337116Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /tmp/docker-actions-toolkit-iii2xo/iidfile --label org.opencontainers.image.created=2025-07-20T17:00:37.696Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030 --label org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.title=architecture-pro-cinemaabyss --label org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.version=sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67 --metadata-file /tmp/docker-actions-toolkit-iii2xo/metadata-file --push ./src/monolith
+2025-07-20T17:00:38.6898521Z #0 building with "builder-fb0caa2e-b341-4470-b725-6e57dadbe123" instance using docker-container driver
+2025-07-20T17:00:38.6899068Z
+2025-07-20T17:00:38.6899211Z #1 [internal] load build definition from Dockerfile
+2025-07-20T17:00:38.6899576Z #1 transferring dockerfile: 601B done
+2025-07-20T17:00:38.6899839Z #1 DONE 0.0s
+2025-07-20T17:00:38.6899953Z
+2025-07-20T17:00:38.6900144Z #2 [internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:00:38.9622167Z #2 ...
+2025-07-20T17:00:38.9622363Z
+2025-07-20T17:00:38.9622617Z #3 [auth] library/golang:pull token for registry-1.docker.io
+2025-07-20T17:00:38.9623106Z #3 DONE 0.0s
+2025-07-20T17:00:38.9623267Z
+2025-07-20T17:00:38.9623485Z #4 [auth] library/alpine:pull token for registry-1.docker.io
+2025-07-20T17:00:38.9623960Z #4 DONE 0.0s
+2025-07-20T17:00:39.1117924Z
+2025-07-20T17:00:39.1118494Z #5 [internal] load metadata for docker.io/library/alpine:latest
+2025-07-20T17:00:39.5822037Z #5 DONE 1.0s
+2025-07-20T17:00:39.5822264Z
+2025-07-20T17:00:39.5822562Z #2 [internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:00:39.7893768Z #2 DONE 1.1s
+2025-07-20T17:00:39.7893940Z
+2025-07-20T17:00:39.7894033Z #6 [internal] load .dockerignore
+2025-07-20T17:00:39.7894304Z #6 transferring context: 2B done
+2025-07-20T17:00:39.7894807Z #6 DONE 0.0s
+2025-07-20T17:00:39.7894978Z
+2025-07-20T17:00:39.7895100Z #7 [internal] load build context
+2025-07-20T17:00:39.7895426Z #7 DONE 0.0s
+2025-07-20T17:00:39.7895573Z
+2025-07-20T17:00:39.7896052Z #8 [builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:39.7896852Z #8 resolve docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a 0.0s done
+2025-07-20T17:00:39.7897340Z #8 DONE 0.0s
+2025-07-20T17:00:39.7897430Z
+2025-07-20T17:00:39.7898069Z #9 [stage-1 1/4] FROM docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
+2025-07-20T17:00:39.7898836Z #9 resolve docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 0.0s done
+2025-07-20T17:00:39.7899306Z #9 DONE 0.0s
+2025-07-20T17:00:39.7899401Z
+2025-07-20T17:00:39.7899679Z #10 importing cache manifest from gha:13223623531842276908
+2025-07-20T17:00:40.2880956Z #10 DONE 0.7s
+2025-07-20T17:00:40.3897808Z
+2025-07-20T17:00:40.3899090Z #8 [builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:40.3900064Z #8 DONE 0.0s
+2025-07-20T17:00:40.3900260Z
+2025-07-20T17:00:40.3900482Z #11 [stage-1 2/4] RUN apk --no-cache add ca-certificates
+2025-07-20T17:00:40.3900970Z #11 CACHED
+2025-07-20T17:00:40.3901151Z
+2025-07-20T17:00:40.3901311Z #7 [internal] load build context
+2025-07-20T17:00:40.3901776Z #7 transferring context: 13.69kB done
+2025-07-20T17:00:40.3902087Z #7 DONE 0.0s
+2025-07-20T17:00:40.3902269Z
+2025-07-20T17:00:40.3902420Z #12 [stage-1 3/4] WORKDIR /root/
+2025-07-20T17:00:40.3902798Z #12 CACHED
+2025-07-20T17:00:40.3902968Z
+2025-07-20T17:00:40.3903113Z #13 [builder 2/6] WORKDIR /app
+2025-07-20T17:00:40.6961894Z #13 sha256:19019e91951cdc21745695d149727a7b87d9e16076424635dc0dc588f867aeff 0B / 93B 0.2s
+2025-07-20T17:00:40.8479598Z #13 sha256:19019e91951cdc21745695d149727a7b87d9e16076424635dc0dc588f867aeff 93B / 93B 0.3s done
+2025-07-20T17:00:40.9918235Z #13 sha256:ee9845387c02a126a1445919d1bdd58a0d336ffb6b4264f3f4eba77a3713cee5 125B / 125B 0.3s done
+2025-07-20T17:00:40.9919219Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 0B / 74.06MB 0.2s
+2025-07-20T17:00:41.1424542Z #13 sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711 0B / 282.43kB 0.2s
+2025-07-20T17:00:41.3003723Z #13 sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711 282.43kB / 282.43kB 0.2s done
+2025-07-20T17:00:41.7490236Z #13 ...
+2025-07-20T17:00:41.7490836Z
+2025-07-20T17:00:41.7491038Z #12 [stage-1 3/4] WORKDIR /root/
+2025-07-20T17:00:41.7491816Z #12 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 0.3s done
+2025-07-20T17:00:41.7492576Z #12 sha256:72694e0ea86bcdbf9c8b6537bba0a593ff353551da2b30385571da3c423d5e69 282.44kB / 282.44kB 0.7s done
+2025-07-20T17:00:41.7493389Z #12 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 3.80MB / 3.80MB 1.3s done
+2025-07-20T17:00:41.7493822Z #12 DONE 1.5s
+2025-07-20T17:00:41.7494176Z
+2025-07-20T17:00:41.7494319Z #13 [builder 2/6] WORKDIR /app
+2025-07-20T17:00:41.9047709Z #13 extracting sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711 0.1s done
+2025-07-20T17:00:42.1149517Z #13 ...
+2025-07-20T17:00:42.1149814Z
+2025-07-20T17:00:42.1150160Z #12 [stage-1 3/4] WORKDIR /root/
+2025-07-20T17:00:42.1151238Z #12 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0.1s done
+2025-07-20T17:00:42.1162681Z #12 extracting sha256:72694e0ea86bcdbf9c8b6537bba0a593ff353551da2b30385571da3c423d5e69 0.1s done
+2025-07-20T17:00:42.1163582Z #12 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+2025-07-20T17:00:42.1164245Z #12 DONE 1.6s
+2025-07-20T17:00:42.1164609Z
+2025-07-20T17:00:42.1164761Z #13 [builder 2/6] WORKDIR /app
+2025-07-20T17:00:42.4150009Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 5.24MB / 74.06MB 1.7s
+2025-07-20T17:00:42.7156014Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 10.49MB / 74.06MB 2.0s
+2025-07-20T17:00:42.8648672Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 15.73MB / 74.06MB 2.1s
+2025-07-20T17:00:43.0146658Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 19.92MB / 74.06MB 2.3s
+2025-07-20T17:00:43.1652540Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 25.17MB / 74.06MB 2.4s
+2025-07-20T17:00:43.3151420Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 29.36MB / 74.06MB 2.6s
+2025-07-20T17:00:43.4645664Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 34.60MB / 74.06MB 2.7s
+2025-07-20T17:00:43.6154960Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 38.80MB / 74.06MB 2.9s
+2025-07-20T17:00:43.7648049Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 47.19MB / 74.06MB 3.0s
+2025-07-20T17:00:44.8150197Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 51.38MB / 74.06MB 4.1s
+2025-07-20T17:00:45.5651503Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 55.57MB / 74.06MB 4.8s
+2025-07-20T17:00:45.8654692Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 60.82MB / 74.06MB 5.1s
+2025-07-20T17:00:46.0155349Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 66.06MB / 74.06MB 5.3s
+2025-07-20T17:00:46.1697437Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 70.25MB / 74.06MB 5.4s
+2025-07-20T17:00:46.4885225Z #13 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 74.06MB / 74.06MB 5.6s done
+2025-07-20T17:00:46.4886273Z #13 extracting sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1
+2025-07-20T17:00:49.0512054Z #13 extracting sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 2.7s done
+2025-07-20T17:00:49.0513017Z #13 DONE 8.7s
+2025-07-20T17:00:49.2254824Z
+2025-07-20T17:00:49.2255406Z #13 [builder 2/6] WORKDIR /app
+2025-07-20T17:00:49.2255995Z #13 extracting sha256:ee9845387c02a126a1445919d1bdd58a0d336ffb6b4264f3f4eba77a3713cee5 0.0s done
+2025-07-20T17:00:49.2256650Z #13 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+2025-07-20T17:00:49.2257283Z #13 extracting sha256:19019e91951cdc21745695d149727a7b87d9e16076424635dc0dc588f867aeff done
+2025-07-20T17:00:49.2257695Z #13 DONE 8.8s
+2025-07-20T17:00:49.2257804Z
+2025-07-20T17:00:49.2257892Z #14 [builder 3/6] COPY go.mod ./
+2025-07-20T17:00:49.5570204Z #14 DONE 0.5s
+2025-07-20T17:00:49.7082200Z
+2025-07-20T17:00:49.7082417Z #15 [builder 4/6] RUN go mod download
+2025-07-20T17:00:49.8594272Z #15 DONE 0.3s
+2025-07-20T17:00:50.0225424Z
+2025-07-20T17:00:50.0227343Z #16 [builder 5/6] COPY . .
+2025-07-20T17:00:50.0228592Z #16 DONE 0.0s
+2025-07-20T17:00:50.0229142Z
+2025-07-20T17:00:50.0229831Z #17 [builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o monolith .
+2025-07-20T17:00:59.0641849Z #17 DONE 9.2s
+2025-07-20T17:00:59.2424617Z
+2025-07-20T17:00:59.2425009Z #18 [stage-1 4/4] COPY --from=builder /app/monolith .
+2025-07-20T17:00:59.2425495Z #18 DONE 0.0s
+2025-07-20T17:00:59.2425657Z
+2025-07-20T17:00:59.2425775Z #19 exporting to image
+2025-07-20T17:00:59.2426088Z #19 exporting layers
+2025-07-20T17:00:59.4204941Z #19 exporting layers 0.3s done
+2025-07-20T17:00:59.5680179Z #19 exporting manifest sha256:1594a053ed560dc668401c610efe635aa0025bf12381e7be463f90575440e03a done
+2025-07-20T17:00:59.5681201Z #19 exporting config sha256:788a599a2f57af6a8b220a235da9c46890784aff4dc17d90f64c2aa4cccf82d4 done
+2025-07-20T17:00:59.5682299Z #19 exporting attestation manifest sha256:379344a72107d050f928149832207363947dea74c6d6ebd219f4e93fdada1ab4 done
+2025-07-20T17:00:59.5683307Z #19 exporting manifest list sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106 done
+2025-07-20T17:00:59.7188549Z #19 pushing layers
+2025-07-20T17:00:59.7188787Z #19 ...
+2025-07-20T17:00:59.7188909Z
+2025-07-20T17:00:59.7189214Z #20 [auth] felix-neko/architecture-pro-cinemaabyss/monolith:pull,push token for ghcr.io
+2025-07-20T17:00:59.7189715Z #20 DONE 0.0s
+2025-07-20T17:00:59.8687110Z
+2025-07-20T17:00:59.8687376Z #19 exporting to image
+2025-07-20T17:01:01.6530489Z #19 pushing layers 2.2s done
+2025-07-20T17:01:01.6531679Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106
+2025-07-20T17:01:03.0118772Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106 1.4s done
+2025-07-20T17:01:03.2118193Z #19 pushing layers 0.2s done
+2025-07-20T17:01:03.2119545Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106
+2025-07-20T17:01:03.8074035Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106 0.6s done
+2025-07-20T17:01:04.0001610Z #19 pushing layers 0.2s done
+2025-07-20T17:01:04.0002828Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106
+2025-07-20T17:01:04.6195544Z #19 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67@sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106 0.6s done
+2025-07-20T17:01:04.6196373Z #19 DONE 5.5s
+2025-07-20T17:01:04.6196486Z
+2025-07-20T17:01:04.6196587Z #21 exporting to GitHub Actions Cache
+2025-07-20T17:01:04.6196858Z #21 preparing build cache for export
+2025-07-20T17:01:07.5593574Z #21 writing layer sha256:3459b977abf6c4ffc1015ee2c64850d76c346fbf9963ad7d0be91dea90658034
+2025-07-20T17:01:08.0753284Z #21 writing layer sha256:3459b977abf6c4ffc1015ee2c64850d76c346fbf9963ad7d0be91dea90658034 0.5s done
+2025-07-20T17:01:08.3221011Z #21 writing layer sha256:58a1652f6e0c9f3f34bccea51b3bab158a6cd0e9ff6e0a39361874b1503e2e74
+2025-07-20T17:01:09.1154328Z #21 writing layer sha256:58a1652f6e0c9f3f34bccea51b3bab158a6cd0e9ff6e0a39361874b1503e2e74 0.8s done
+2025-07-20T17:01:09.3463009Z #21 writing layer sha256:59f52c3e13f7a7142cf41897cb7dc2f96fdefce035c933b00278b37798b6c320
+2025-07-20T17:01:09.4560634Z #21 writing layer sha256:59f52c3e13f7a7142cf41897cb7dc2f96fdefce035c933b00278b37798b6c320 0.3s done
+2025-07-20T17:01:09.6190052Z #21 writing layer sha256:7e603c3cb33ea3d3ac6745a85789ec1c6bb20e475d7beabd08a8f536900e51f4
+2025-07-20T17:01:13.3294714Z #21 writing layer sha256:7e603c3cb33ea3d3ac6745a85789ec1c6bb20e475d7beabd08a8f536900e51f4 3.7s done
+2025-07-20T17:01:13.6320770Z #21 writing layer sha256:d05e0d5391e3686482c5e6491797906a1237aac00f7cecd00a9c666c40cf9063
+2025-07-20T17:01:15.0385510Z #21 writing layer sha256:d05e0d5391e3686482c5e6491797906a1237aac00f7cecd00a9c666c40cf9063 1.4s done
+2025-07-20T17:01:15.5598653Z #21 preparing build cache for export 10.9s done
+2025-07-20T17:01:15.5599738Z #21 DONE 10.9s
+2025-07-20T17:01:15.5990239Z
+2025-07-20T17:01:15.5990643Z #22 resolving provenance for metadata file
+2025-07-20T17:01:15.5991006Z #22 DONE 0.0s
+2025-07-20T17:01:15.6063021Z ##[group]ImageID
+2025-07-20T17:01:15.6063529Z sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106
+2025-07-20T17:01:15.6067119Z ##[endgroup]
+2025-07-20T17:01:15.6067603Z ##[group]Digest
+2025-07-20T17:01:15.6068061Z sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106
+2025-07-20T17:01:15.6068790Z ##[endgroup]
+2025-07-20T17:01:15.6069236Z ##[group]Metadata
+2025-07-20T17:01:15.6069523Z {
+2025-07-20T17:01:15.6069793Z   "buildx.build.provenance": {
+2025-07-20T17:01:15.6070270Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2025-07-20T17:01:15.6070755Z     "materials": [
+2025-07-20T17:01:15.6071012Z       {
+2025-07-20T17:01:15.6071362Z         "uri": "pkg:docker/alpine@latest?platform=linux%2Famd64",
+2025-07-20T17:01:15.6071813Z         "digest": {
+2025-07-20T17:01:15.6072297Z           "sha256": "4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1"
+2025-07-20T17:01:15.6072872Z         }
+2025-07-20T17:01:15.6073111Z       },
+2025-07-20T17:01:15.6073354Z       {
+2025-07-20T17:01:15.6073712Z         "uri": "pkg:docker/golang@1.23-alpine?platform=linux%2Famd64",
+2025-07-20T17:01:15.6074298Z         "digest": {
+2025-07-20T17:01:15.6074817Z           "sha256": "ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a"
+2025-07-20T17:01:15.6075146Z         }
+2025-07-20T17:01:15.6075292Z       }
+2025-07-20T17:01:15.6075428Z     ],
+2025-07-20T17:01:15.6075580Z     "invocation": {
+2025-07-20T17:01:15.6075756Z       "configSource": {},
+2025-07-20T17:01:15.6075951Z       "parameters": {
+2025-07-20T17:01:15.6076313Z         "frontend": "dockerfile.v0",
+2025-07-20T17:01:15.6076532Z         "args": {
+2025-07-20T17:01:15.6076811Z           "label:org.opencontainers.image.created": "2025-07-20T17:00:37.696Z",
+2025-07-20T17:01:15.6077185Z           "label:org.opencontainers.image.description": "",
+2025-07-20T17:01:15.6077504Z           "label:org.opencontainers.image.licenses": "",
+2025-07-20T17:01:15.6077909Z           "label:org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:15.6078510Z           "label:org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:15.6079071Z           "label:org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:15.6079598Z           "label:org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:15.6080075Z           "label:org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:15.6080350Z         },
+2025-07-20T17:01:15.6080506Z         "locals": [
+2025-07-20T17:01:15.6080667Z           {
+2025-07-20T17:01:15.6080826Z             "name": "context"
+2025-07-20T17:01:15.6081009Z           },
+2025-07-20T17:01:15.6081159Z           {
+2025-07-20T17:01:15.6081314Z             "name": "dockerfile"
+2025-07-20T17:01:15.6081512Z           }
+2025-07-20T17:01:15.6081653Z         ]
+2025-07-20T17:01:15.6081796Z       },
+2025-07-20T17:01:15.6081948Z       "environment": {
+2025-07-20T17:01:15.6082138Z         "platform": "linux/amd64"
+2025-07-20T17:01:15.6082342Z       }
+2025-07-20T17:01:15.6082484Z     }
+2025-07-20T17:01:15.6082631Z   },
+2025-07-20T17:01:15.6083108Z   "buildx.build.ref": "builder-fb0caa2e-b341-4470-b725-6e57dadbe123/builder-fb0caa2e-b341-4470-b725-6e57dadbe1230/oisj7j04n4pimrf8lnq5fma9r",
+2025-07-20T17:01:15.6083671Z   "containerimage.descriptor": {
+2025-07-20T17:01:15.6083948Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-07-20T17:01:15.6084527Z     "digest": "sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106",
+2025-07-20T17:01:15.6084917Z     "size": 856
+2025-07-20T17:01:15.6085074Z   },
+2025-07-20T17:01:15.6085417Z   "containerimage.digest": "sha256:44b8ba3f4f484e67df30b5f4c9d70d062e7f6b8d98864f09fb75dd42a782b106",
+2025-07-20T17:01:15.6086443Z   "image.name": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing,ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest,ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67"
+2025-07-20T17:01:15.6087245Z }
+2025-07-20T17:01:15.6087528Z ##[endgroup]
+2025-07-20T17:01:15.6159080Z ##[group]Run docker/metadata-action@v4
+2025-07-20T17:01:15.6159346Z with:
+2025-07-20T17:01:15.6159620Z   images: ghcr.io/Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:15.6160201Z   tags: type=semver,pattern={{version}}
+type=semver,pattern={{major}}.{{minor}}
+type=sha,format=short
+type=ref,event=branch
+latest
+
+2025-07-20T17:01:15.6160665Z   context: workflow
+2025-07-20T17:01:15.6160986Z   github-token: ***
+2025-07-20T17:01:15.6161164Z env:
+2025-07-20T17:01:15.6161411Z   REGISTRY: ghcr.io
+2025-07-20T17:01:15.6161755Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:15.6162289Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:15.6162819Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:15.6163497Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:15.6163902Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:15.6165019Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67
+2025-07-20T17:01:15.6167456Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:00:37.696Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:15.6171718Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/monolith:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:00:37.696Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:15.6174635Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-4WZYCf/docker-metadata-action-bake.json
+2025-07-20T17:01:15.6175085Z ##[endgroup]
+2025-07-20T17:01:16.0476213Z ##[group]Context info
+2025-07-20T17:01:16.0476710Z eventName: push
+2025-07-20T17:01:16.0477162Z sha: 5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:16.0477644Z ref: refs/heads/sandboxing
+2025-07-20T17:01:16.0477947Z workflow: Docker Build and Push
+2025-07-20T17:01:16.0478399Z action: meta-movies
+2025-07-20T17:01:16.0478652Z actor: Felix-neko
+2025-07-20T17:01:16.0478905Z runNumber: 16
+2025-07-20T17:01:16.0479133Z runId: 16402196253
+2025-07-20T17:01:16.0479558Z ##[endgroup]
+2025-07-20T17:01:16.0485991Z ##[group]Processing images input
+2025-07-20T17:01:16.0486716Z name=ghcr.io/Felix-neko/architecture-pro-cinemaabyss/movies-service,enable=true
+2025-07-20T17:01:16.0487634Z ##[endgroup]
+2025-07-20T17:01:16.0500961Z ##[group]Processing tags input
+2025-07-20T17:01:16.0501506Z type=semver,pattern={{version}},value=,enable=true,priority=900
+2025-07-20T17:01:16.0502218Z type=semver,pattern={{major}}.{{minor}},value=,enable=true,priority=900
+2025-07-20T17:01:16.0502839Z type=ref,event=branch,enable=true,priority=600
+2025-07-20T17:01:16.0503381Z type=raw,value=latest,enable=true,priority=200
+2025-07-20T17:01:16.0503969Z type=sha,format=short,prefix=sha-,enable=true,priority=100
+2025-07-20T17:01:16.0505331Z ##[endgroup]
+2025-07-20T17:01:16.0506161Z ##[group]Processing flavor input
+2025-07-20T17:01:16.0506564Z latest=auto
+2025-07-20T17:01:16.0506841Z prefix=
+2025-07-20T17:01:16.0507115Z prefixLatest=false
+2025-07-20T17:01:16.0507427Z suffix=
+2025-07-20T17:01:16.0507691Z suffixLatest=false
+2025-07-20T17:01:16.0508219Z ##[endgroup]
+2025-07-20T17:01:16.0552553Z ##[group]Docker image version
+2025-07-20T17:01:16.0552962Z sandboxing
+2025-07-20T17:01:16.0553464Z ##[endgroup]
+2025-07-20T17:01:16.0558586Z ##[group]Docker tags
+2025-07-20T17:01:16.0559179Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing
+2025-07-20T17:01:16.0559997Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest
+2025-07-20T17:01:16.0560834Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67
+2025-07-20T17:01:16.0561712Z ##[endgroup]
+2025-07-20T17:01:16.0634958Z ##[group]Docker labels
+2025-07-20T17:01:16.0635444Z org.opencontainers.image.created=2025-07-20T17:01:16.050Z
+2025-07-20T17:01:16.0636032Z org.opencontainers.image.description=
+2025-07-20T17:01:16.0636499Z org.opencontainers.image.licenses=
+2025-07-20T17:01:16.0637131Z org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:16.0638098Z org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:16.0638984Z org.opencontainers.image.title=architecture-pro-cinemaabyss
+2025-07-20T17:01:16.0640148Z org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:16.0640906Z org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:16.0641602Z ##[endgroup]
+2025-07-20T17:01:16.0642152Z ##[group]JSON output
+2025-07-20T17:01:16.0642630Z {
+2025-07-20T17:01:16.0642976Z   "tags": [
+2025-07-20T17:01:16.0643462Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing",
+2025-07-20T17:01:16.0644338Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest",
+2025-07-20T17:01:16.0645309Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67"
+2025-07-20T17:01:16.0645831Z   ],
+2025-07-20T17:01:16.0646011Z   "labels": {
+2025-07-20T17:01:16.0646329Z     "org.opencontainers.image.created": "2025-07-20T17:01:16.050Z",
+2025-07-20T17:01:16.0646783Z     "org.opencontainers.image.description": "",
+2025-07-20T17:01:16.0647151Z     "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:16.0647649Z     "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:16.0648646Z     "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0649471Z     "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0650112Z     "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0650684Z     "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:16.0651003Z   }
+2025-07-20T17:01:16.0651197Z }
+2025-07-20T17:01:16.0651637Z ##[endgroup]
+2025-07-20T17:01:16.0652015Z ##[group]Bake file definition
+2025-07-20T17:01:16.0652270Z {
+2025-07-20T17:01:16.0652444Z   "target": {
+2025-07-20T17:01:16.0652665Z     "docker-metadata-action": {
+2025-07-20T17:01:16.0652917Z       "tags": [
+2025-07-20T17:01:16.0653301Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing",
+2025-07-20T17:01:16.0653957Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest",
+2025-07-20T17:01:16.0654686Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67"
+2025-07-20T17:01:16.0655120Z       ],
+2025-07-20T17:01:16.0655312Z       "labels": {
+2025-07-20T17:01:16.0655638Z         "org.opencontainers.image.created": "2025-07-20T17:01:16.050Z",
+2025-07-20T17:01:16.0656074Z         "org.opencontainers.image.description": "",
+2025-07-20T17:01:16.0656442Z         "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:16.0657045Z         "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:16.0657612Z         "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0658122Z         "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0658622Z         "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:16.0659065Z         "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:16.0659305Z       },
+2025-07-20T17:01:16.0659450Z       "args": {
+2025-07-20T17:01:16.0659762Z         "DOCKER_META_IMAGES": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service",
+2025-07-20T17:01:16.0660147Z         "DOCKER_META_VERSION": "sandboxing"
+2025-07-20T17:01:16.0660358Z       }
+2025-07-20T17:01:16.0660508Z     }
+2025-07-20T17:01:16.0660641Z   }
+2025-07-20T17:01:16.0660781Z }
+2025-07-20T17:01:16.0661038Z ##[endgroup]
+2025-07-20T17:01:16.0768438Z ##[group]Run docker/build-push-action@v4
+2025-07-20T17:01:16.0768700Z with:
+2025-07-20T17:01:16.0768876Z   context: ./src/microservices/movies
+2025-07-20T17:01:16.0769105Z   push: true
+2025-07-20T17:01:16.0769913Z   tags: ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67
+2025-07-20T17:01:16.0772487Z   labels: org.opencontainers.image.created=2025-07-20T17:01:16.050Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:16.0774262Z   cache-from: type=gha
+2025-07-20T17:01:16.0774709Z   cache-to: type=gha,mode=max
+2025-07-20T17:01:16.0775057Z   load: false
+2025-07-20T17:01:16.0775228Z   no-cache: false
+2025-07-20T17:01:16.0775399Z   pull: false
+2025-07-20T17:01:16.0775717Z   github-token: ***
+2025-07-20T17:01:16.0775894Z env:
+2025-07-20T17:01:16.0776051Z   REGISTRY: ghcr.io
+2025-07-20T17:01:16.0776329Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:16.0776805Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:16.0777294Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:16.0777777Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:16.0778152Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:16.0779095Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67
+2025-07-20T17:01:16.0781603Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:01:16.050Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:16.0786595Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:01:16.050Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:16.0789464Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-sGwq8y/docker-metadata-action-bake.json
+2025-07-20T17:01:16.0789892Z ##[endgroup]
+2025-07-20T17:01:16.2201643Z ##[group]GitHub Actions runtime token ACs
+2025-07-20T17:01:16.2214733Z refs/heads/sandboxing: read/write
+2025-07-20T17:01:16.2215492Z refs/heads/main: read
+2025-07-20T17:01:16.2216997Z ##[endgroup]
+2025-07-20T17:01:16.2217892Z ##[group]Docker info
+2025-07-20T17:01:16.2268693Z [command]/usr/bin/docker version
+2025-07-20T17:01:16.2447475Z Client: Docker Engine - Community
+2025-07-20T17:01:16.2449679Z  Version:           28.0.4
+2025-07-20T17:01:16.2450054Z  API version:       1.48
+2025-07-20T17:01:16.2450381Z  Go version:        go1.23.7
+2025-07-20T17:01:16.2450716Z  Git commit:        b8034c0
+2025-07-20T17:01:16.2450949Z  Built:             Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:16.2451226Z  OS/Arch:           linux/amd64
+2025-07-20T17:01:16.2451451Z  Context:           default
+2025-07-20T17:01:16.2451788Z
+2025-07-20T17:01:16.2451886Z Server: Docker Engine - Community
+2025-07-20T17:01:16.2452118Z  Engine:
+2025-07-20T17:01:16.2452289Z   Version:          28.0.4
+2025-07-20T17:01:16.2452522Z   API version:      1.48 (minimum version 1.24)
+2025-07-20T17:01:16.2452789Z   Go version:       go1.23.7
+2025-07-20T17:01:16.2453001Z   Git commit:       6430e49
+2025-07-20T17:01:16.2453227Z   Built:            Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:16.2453480Z   OS/Arch:          linux/amd64
+2025-07-20T17:01:16.2453696Z   Experimental:     false
+2025-07-20T17:01:16.2453907Z  containerd:
+2025-07-20T17:01:16.2454079Z   Version:          1.7.27
+2025-07-20T17:01:16.2454337Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:16.2454894Z  runc:
+2025-07-20T17:01:16.2455080Z   Version:          1.2.5
+2025-07-20T17:01:16.2455292Z   GitCommit:        v1.2.5-0-g59923ef
+2025-07-20T17:01:16.2455531Z  docker-init:
+2025-07-20T17:01:16.2455708Z   Version:          0.19.0
+2025-07-20T17:01:16.2455929Z   GitCommit:        de40ad0
+2025-07-20T17:01:16.2493267Z [command]/usr/bin/docker info
+2025-07-20T17:01:16.2892017Z Client: Docker Engine - Community
+2025-07-20T17:01:16.2892458Z  Version:    28.0.4
+2025-07-20T17:01:16.2892805Z  Context:    default
+2025-07-20T17:01:16.2893116Z  Debug Mode: false
+2025-07-20T17:01:16.2893398Z  Plugins:
+2025-07-20T17:01:16.2893683Z   buildx: Docker Buildx (Docker Inc.)
+2025-07-20T17:01:16.2894069Z     Version:  v0.25.0
+2025-07-20T17:01:16.2894341Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-07-20T17:01:16.2894919Z   compose: Docker Compose (Docker Inc.)
+2025-07-20T17:01:16.2895172Z     Version:  v2.36.2
+2025-07-20T17:01:16.2895444Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-07-20T17:01:16.2895675Z
+2025-07-20T17:01:16.2895749Z Server:
+2025-07-20T17:01:16.2895911Z  Containers: 1
+2025-07-20T17:01:16.2896090Z   Running: 1
+2025-07-20T17:01:16.2896256Z   Paused: 0
+2025-07-20T17:01:16.2896425Z   Stopped: 0
+2025-07-20T17:01:16.2896598Z  Images: 1
+2025-07-20T17:01:16.2896772Z  Server Version: 28.0.4
+2025-07-20T17:01:16.2896976Z  Storage Driver: overlay2
+2025-07-20T17:01:16.2897195Z   Backing Filesystem: extfs
+2025-07-20T17:01:16.2897412Z   Supports d_type: true
+2025-07-20T17:01:16.2897620Z   Using metacopy: false
+2025-07-20T17:01:16.2897822Z   Native Overlay Diff: false
+2025-07-20T17:01:16.2898045Z   userxattr: false
+2025-07-20T17:01:16.2898238Z  Logging Driver: json-file
+2025-07-20T17:01:16.2898455Z  Cgroup Driver: systemd
+2025-07-20T17:01:16.2898655Z  Cgroup Version: 2
+2025-07-20T17:01:16.2898839Z  Plugins:
+2025-07-20T17:01:16.2899007Z   Volume: local
+2025-07-20T17:01:16.2899226Z   Network: bridge host ipvlan macvlan null overlay
+2025-07-20T17:01:16.2899620Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-07-20T17:01:16.2899974Z  Swarm: inactive
+2025-07-20T17:01:16.2900182Z  Runtimes: io.containerd.runc.v2 runc
+2025-07-20T17:01:16.2900413Z  Default Runtime: runc
+2025-07-20T17:01:16.2900605Z  Init Binary: docker-init
+2025-07-20T17:01:16.2900890Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:16.2901184Z  runc version: v1.2.5-0-g59923ef
+2025-07-20T17:01:16.2901396Z  init version: de40ad0
+2025-07-20T17:01:16.2901574Z  Security Options:
+2025-07-20T17:01:16.2901740Z   apparmor
+2025-07-20T17:01:16.2901886Z   seccomp
+2025-07-20T17:01:16.2902042Z    Profile: builtin
+2025-07-20T17:01:16.2902206Z   cgroupns
+2025-07-20T17:01:16.2902373Z  Kernel Version: 6.11.0-1018-azure
+2025-07-20T17:01:16.2902599Z  Operating System: Ubuntu 24.04.2 LTS
+2025-07-20T17:01:16.2903101Z  OSType: linux
+2025-07-20T17:01:16.2903384Z  Architecture: x86_64
+2025-07-20T17:01:16.2903693Z  CPUs: 4
+2025-07-20T17:01:16.2903978Z  Total Memory: 15.62GiB
+2025-07-20T17:01:16.2904301Z  Name: pkrvmq0rgcvqdmg
+2025-07-20T17:01:16.2904824Z  ID: 59ce2f9e-8373-49df-b904-c97e78d80d7f
+2025-07-20T17:01:16.2905255Z  Docker Root Dir: /var/lib/docker
+2025-07-20T17:01:16.2905636Z  Debug Mode: false
+2025-07-20T17:01:16.2906233Z  Username: githubactions
+2025-07-20T17:01:16.2906582Z  Experimental: false
+2025-07-20T17:01:16.2906903Z  Insecure Registries:
+2025-07-20T17:01:16.2907217Z   ::1/128
+2025-07-20T17:01:16.2907458Z   127.0.0.0/8
+2025-07-20T17:01:16.2907742Z  Live Restore Enabled: false
+2025-07-20T17:01:16.2907963Z
+2025-07-20T17:01:16.2908833Z ##[endgroup]
+2025-07-20T17:01:16.2909342Z ##[group]Proxy configuration
+2025-07-20T17:01:16.2913179Z No proxy configuration found
+2025-07-20T17:01:16.2913810Z ##[endgroup]
+2025-07-20T17:01:16.3367030Z ##[group]Buildx version
+2025-07-20T17:01:16.3391158Z [command]/usr/bin/docker buildx version
+2025-07-20T17:01:16.3837444Z github.com/docker/buildx v0.25.0 faaea65da4ba0e58a13cd9cadcb950c51cf3b3c9
+2025-07-20T17:01:16.3868171Z ##[endgroup]
+2025-07-20T17:01:16.7966900Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /tmp/docker-actions-toolkit-FwCtdR/iidfile --label org.opencontainers.image.created=2025-07-20T17:01:16.050Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030 --label org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.title=architecture-pro-cinemaabyss --label org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.version=sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67 --metadata-file /tmp/docker-actions-toolkit-FwCtdR/metadata-file --push ./src/microservices/movies
+2025-07-20T17:01:17.0476627Z #0 building with "builder-fb0caa2e-b341-4470-b725-6e57dadbe123" instance using docker-container driver
+2025-07-20T17:01:17.0477114Z
+2025-07-20T17:01:17.0477259Z #1 [internal] load build definition from Dockerfile
+2025-07-20T17:01:17.0477623Z #1 transferring dockerfile: 619B done
+2025-07-20T17:01:17.0477883Z #1 DONE 0.0s
+2025-07-20T17:01:17.0477996Z
+2025-07-20T17:01:17.0478177Z #2 [internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:01:17.2156946Z #2 ...
+2025-07-20T17:01:17.2157137Z
+2025-07-20T17:01:17.2157406Z #3 [internal] load metadata for docker.io/library/alpine:latest
+2025-07-20T17:01:17.2157949Z #3 DONE 0.3s
+2025-07-20T17:01:17.4132069Z
+2025-07-20T17:01:17.4132536Z #2 [internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:01:17.4133162Z #2 DONE 0.3s
+2025-07-20T17:01:17.4133366Z
+2025-07-20T17:01:17.4133515Z #4 [internal] load .dockerignore
+2025-07-20T17:01:17.4133947Z #4 transferring context: 2B done
+2025-07-20T17:01:17.4134346Z #4 DONE 0.0s
+2025-07-20T17:01:17.4134748Z
+2025-07-20T17:01:17.4134905Z #5 [internal] load build context
+2025-07-20T17:01:17.4135303Z #5 DONE 0.0s
+2025-07-20T17:01:17.4135482Z
+2025-07-20T17:01:17.4136207Z #6 [builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:01:17.4137416Z #6 resolve docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a done
+2025-07-20T17:01:17.4138043Z #6 DONE 0.0s
+2025-07-20T17:01:17.4138161Z
+2025-07-20T17:01:17.4138587Z #7 [stage-1 1/4] FROM docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
+2025-07-20T17:01:17.4139771Z #7 resolve docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 done
+2025-07-20T17:01:17.4140388Z #7 DONE 0.0s
+2025-07-20T17:01:17.4140502Z
+2025-07-20T17:01:17.4140658Z #8 importing cache manifest from gha:13223623531842276908
+2025-07-20T17:01:17.4204006Z #8 DONE 0.2s
+2025-07-20T17:01:17.5327091Z
+2025-07-20T17:01:17.5328162Z #6 [builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:01:17.5329285Z #6 DONE 0.0s
+2025-07-20T17:01:17.5329396Z
+2025-07-20T17:01:17.5329485Z #5 [internal] load build context
+2025-07-20T17:01:17.5330536Z #5 transferring context: 5.72kB done
+2025-07-20T17:01:17.5330913Z #5 DONE 0.0s
+2025-07-20T17:01:17.5331082Z
+2025-07-20T17:01:17.5331212Z #9 [stage-1 3/4] WORKDIR /root/
+2025-07-20T17:01:17.5331544Z #9 CACHED
+2025-07-20T17:01:17.5331687Z
+2025-07-20T17:01:17.5331807Z #10 [builder 5/6] COPY . .
+2025-07-20T17:01:17.5332125Z #10 CACHED
+2025-07-20T17:01:17.5332232Z
+2025-07-20T17:01:17.5332328Z #11 [builder 3/6] COPY go.mod ./
+2025-07-20T17:01:17.5332582Z #11 CACHED
+2025-07-20T17:01:17.5332734Z
+2025-07-20T17:01:17.5332825Z #12 [builder 4/6] RUN go mod download
+2025-07-20T17:01:17.5333059Z #12 CACHED
+2025-07-20T17:01:17.5333149Z
+2025-07-20T17:01:17.5333543Z #13 [builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o movies-service .
+2025-07-20T17:01:17.5334192Z #13 CACHED
+2025-07-20T17:01:17.5334344Z
+2025-07-20T17:01:17.5334658Z #14 [builder 2/6] WORKDIR /app
+2025-07-20T17:01:17.5335005Z #14 CACHED
+2025-07-20T17:01:17.5335157Z
+2025-07-20T17:01:17.5335375Z #15 [stage-1 2/4] RUN apk --no-cache add ca-certificates
+2025-07-20T17:01:17.5335821Z #15 CACHED
+2025-07-20T17:01:17.5335989Z
+2025-07-20T17:01:17.5336202Z #16 [stage-1 4/4] COPY --from=builder /app/movies-service .
+2025-07-20T17:01:17.5336663Z #16 CACHED
+2025-07-20T17:01:17.6358619Z
+2025-07-20T17:01:17.6359547Z #17 [auth] felix-neko/architecture-pro-cinemaabyss/movies-service:pull,push token for ghcr.io
+2025-07-20T17:01:17.7863602Z #17 DONE 0.0s
+2025-07-20T17:01:17.7863866Z
+2025-07-20T17:01:17.7863986Z #18 exporting to image
+2025-07-20T17:01:17.7864246Z #18 exporting layers done
+2025-07-20T17:01:17.7865035Z #18 exporting manifest sha256:0e2a9e67814999aecab354802cd8c716a14fd63e203568d24bc883a21e2de315 done
+2025-07-20T17:01:17.7866112Z #18 exporting config sha256:e9cdea9c201a6d3d438e9fe6b262dd4914e3bf52229117831ef7d2952c3d3dce done
+2025-07-20T17:01:17.7866920Z #18 exporting attestation manifest sha256:8ba82e8a448e541a6409000e316b524e1d4232764c57fe2fc5fd2a75317fa6bd done
+2025-07-20T17:01:17.7867861Z #18 exporting manifest list sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa done
+2025-07-20T17:01:17.7868393Z #18 pushing layers
+2025-07-20T17:01:19.1078300Z #18 pushing layers 1.5s done
+2025-07-20T17:01:19.1079366Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa
+2025-07-20T17:01:20.5861344Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa 1.5s done
+2025-07-20T17:01:20.8035233Z #18 pushing layers 0.2s done
+2025-07-20T17:01:20.8036619Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa
+2025-07-20T17:01:21.4227128Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa 0.6s done
+2025-07-20T17:01:21.6200129Z #18 pushing layers 0.2s done
+2025-07-20T17:01:21.6201393Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa
+2025-07-20T17:01:22.2126249Z #18 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67@sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa 0.6s done
+2025-07-20T17:01:22.2127348Z #18 DONE 4.7s
+2025-07-20T17:01:22.2127474Z
+2025-07-20T17:01:22.2127581Z #19 exporting to GitHub Actions Cache
+2025-07-20T17:01:22.2128375Z #19 preparing build cache for export
+2025-07-20T17:01:24.4433713Z #19 preparing build cache for export 2.2s done
+2025-07-20T17:01:24.4434856Z #19 DONE 2.2s
+2025-07-20T17:01:24.4692648Z
+2025-07-20T17:01:24.4693290Z #20 resolving provenance for metadata file
+2025-07-20T17:01:24.4693680Z #20 DONE 0.0s
+2025-07-20T17:01:24.4760797Z ##[group]ImageID
+2025-07-20T17:01:24.4761192Z sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa
+2025-07-20T17:01:24.4810271Z ##[endgroup]
+2025-07-20T17:01:24.4810882Z ##[group]Digest
+2025-07-20T17:01:24.4811402Z sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa
+2025-07-20T17:01:24.4811994Z ##[endgroup]
+2025-07-20T17:01:24.4812456Z ##[group]Metadata
+2025-07-20T17:01:24.4812634Z {
+2025-07-20T17:01:24.4812848Z   "buildx.build.provenance": {
+2025-07-20T17:01:24.4813296Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2025-07-20T17:01:24.4813607Z     "materials": [
+2025-07-20T17:01:24.4813771Z       {
+2025-07-20T17:01:24.4813979Z         "uri": "pkg:docker/alpine@latest?platform=linux%2Famd64",
+2025-07-20T17:01:24.4814247Z         "digest": {
+2025-07-20T17:01:24.4814742Z           "sha256": "4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1"
+2025-07-20T17:01:24.4815080Z         }
+2025-07-20T17:01:24.4815223Z       },
+2025-07-20T17:01:24.4815357Z       {
+2025-07-20T17:01:24.4815567Z         "uri": "pkg:docker/golang@1.23-alpine?platform=linux%2Famd64",
+2025-07-20T17:01:24.4815831Z         "digest": {
+2025-07-20T17:01:24.4816118Z           "sha256": "ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a"
+2025-07-20T17:01:24.4816442Z         }
+2025-07-20T17:01:24.4816575Z       }
+2025-07-20T17:01:24.4816734Z     ],
+2025-07-20T17:01:24.4816875Z     "invocation": {
+2025-07-20T17:01:24.4817051Z       "configSource": {},
+2025-07-20T17:01:24.4817237Z       "parameters": {
+2025-07-20T17:01:24.4817534Z         "frontend": "dockerfile.v0",
+2025-07-20T17:01:24.4817905Z         "args": {
+2025-07-20T17:01:24.4818343Z           "label:org.opencontainers.image.created": "2025-07-20T17:01:16.050Z",
+2025-07-20T17:01:24.4818883Z           "label:org.opencontainers.image.description": "",
+2025-07-20T17:01:24.4819388Z           "label:org.opencontainers.image.licenses": "",
+2025-07-20T17:01:24.4820063Z           "label:org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:24.4820684Z           "label:org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:24.4821236Z           "label:org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:24.4821751Z           "label:org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:24.4822218Z           "label:org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:24.4822487Z         },
+2025-07-20T17:01:24.4822637Z         "locals": [
+2025-07-20T17:01:24.4822802Z           {
+2025-07-20T17:01:24.4822952Z             "name": "context"
+2025-07-20T17:01:24.4823135Z           },
+2025-07-20T17:01:24.4823277Z           {
+2025-07-20T17:01:24.4823431Z             "name": "dockerfile"
+2025-07-20T17:01:24.4823621Z           }
+2025-07-20T17:01:24.4823763Z         ]
+2025-07-20T17:01:24.4823900Z       },
+2025-07-20T17:01:24.4824052Z       "environment": {
+2025-07-20T17:01:24.4824245Z         "platform": "linux/amd64"
+2025-07-20T17:01:24.4824655Z       }
+2025-07-20T17:01:24.4824857Z     }
+2025-07-20T17:01:24.4824993Z   },
+2025-07-20T17:01:24.4825476Z   "buildx.build.ref": "builder-fb0caa2e-b341-4470-b725-6e57dadbe123/builder-fb0caa2e-b341-4470-b725-6e57dadbe1230/sfvv9dc4uujm375j3o8fpg7kq",
+2025-07-20T17:01:24.4826034Z   "containerimage.descriptor": {
+2025-07-20T17:01:24.4826509Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-07-20T17:01:24.4826932Z     "digest": "sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa",
+2025-07-20T17:01:24.4827288Z     "size": 856
+2025-07-20T17:01:24.4827439Z   },
+2025-07-20T17:01:24.4827783Z   "containerimage.digest": "sha256:fd71d2e785ce9ff9d0ee7f09c09ef4ff1ea73ba1d127e2a41059c10de57cdfaa",
+2025-07-20T17:01:24.4828853Z   "image.name": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing,ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest,ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67"
+2025-07-20T17:01:24.4829857Z }
+2025-07-20T17:01:24.4830136Z ##[endgroup]
+2025-07-20T17:01:24.4864995Z ##[group]Run docker/metadata-action@v4
+2025-07-20T17:01:24.4865280Z with:
+2025-07-20T17:01:24.4865567Z   images: ghcr.io/Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:24.4866150Z   tags: type=semver,pattern={{version}}
+type=semver,pattern={{major}}.{{minor}}
+type=sha,format=short
+type=ref,event=branch
+latest
+
+2025-07-20T17:01:24.4866609Z   context: workflow
+2025-07-20T17:01:24.4866908Z   github-token: ***
+2025-07-20T17:01:24.4867083Z env:
+2025-07-20T17:01:24.4867230Z   REGISTRY: ghcr.io
+2025-07-20T17:01:24.4867508Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:24.4867959Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:24.4868457Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:24.4868939Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:24.4869327Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:24.4870274Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67
+2025-07-20T17:01:24.4872802Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:01:16.050Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:24.4877307Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/movies-service:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:01:16.050Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:24.4880109Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-sGwq8y/docker-metadata-action-bake.json
+2025-07-20T17:01:24.4880573Z ##[endgroup]
+2025-07-20T17:01:25.0185654Z ##[group]Context info
+2025-07-20T17:01:25.0186122Z eventName: push
+2025-07-20T17:01:25.0186487Z sha: 5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:25.0186959Z ref: refs/heads/sandboxing
+2025-07-20T17:01:25.0187322Z workflow: Docker Build and Push
+2025-07-20T17:01:25.0187692Z action: meta-events
+2025-07-20T17:01:25.0188001Z actor: Felix-neko
+2025-07-20T17:01:25.0188233Z runNumber: 16
+2025-07-20T17:01:25.0188516Z runId: 16402196253
+2025-07-20T17:01:25.0189019Z ##[endgroup]
+2025-07-20T17:01:25.0194803Z ##[group]Processing images input
+2025-07-20T17:01:25.0195708Z name=ghcr.io/Felix-neko/architecture-pro-cinemaabyss/events-service,enable=true
+2025-07-20T17:01:25.0196583Z ##[endgroup]
+2025-07-20T17:01:25.0209037Z ##[group]Processing tags input
+2025-07-20T17:01:25.0209554Z type=semver,pattern={{version}},value=,enable=true,priority=900
+2025-07-20T17:01:25.0210257Z type=semver,pattern={{major}}.{{minor}},value=,enable=true,priority=900
+2025-07-20T17:01:25.0211186Z type=ref,event=branch,enable=true,priority=600
+2025-07-20T17:01:25.0211696Z type=raw,value=latest,enable=true,priority=200
+2025-07-20T17:01:25.0212509Z type=sha,format=short,prefix=sha-,enable=true,priority=100
+2025-07-20T17:01:25.0213076Z ##[endgroup]
+2025-07-20T17:01:25.0213861Z ##[group]Processing flavor input
+2025-07-20T17:01:25.0214245Z latest=auto
+2025-07-20T17:01:25.0214652Z prefix=
+2025-07-20T17:01:25.0214914Z prefixLatest=false
+2025-07-20T17:01:25.0215107Z suffix=
+2025-07-20T17:01:25.0215281Z suffixLatest=false
+2025-07-20T17:01:25.0215610Z ##[endgroup]
+2025-07-20T17:01:25.0259349Z ##[group]Docker image version
+2025-07-20T17:01:25.0259758Z sandboxing
+2025-07-20T17:01:25.0260290Z ##[endgroup]
+2025-07-20T17:01:25.0264959Z ##[group]Docker tags
+2025-07-20T17:01:25.0265529Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing
+2025-07-20T17:01:25.0266343Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest
+2025-07-20T17:01:25.0266879Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67
+2025-07-20T17:01:25.0267437Z ##[endgroup]
+2025-07-20T17:01:25.0341315Z ##[group]Docker labels
+2025-07-20T17:01:25.0341846Z org.opencontainers.image.created=2025-07-20T17:01:25.021Z
+2025-07-20T17:01:25.0342489Z org.opencontainers.image.description=
+2025-07-20T17:01:25.0342945Z org.opencontainers.image.licenses=
+2025-07-20T17:01:25.0343394Z org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:25.0344227Z org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:25.0345353Z org.opencontainers.image.title=architecture-pro-cinemaabyss
+2025-07-20T17:01:25.0345892Z org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:25.0346389Z org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:25.0346820Z ##[endgroup]
+2025-07-20T17:01:25.0347480Z ##[group]JSON output
+2025-07-20T17:01:25.0347904Z {
+2025-07-20T17:01:25.0348154Z   "tags": [
+2025-07-20T17:01:25.0348683Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing",
+2025-07-20T17:01:25.0349367Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest",
+2025-07-20T17:01:25.0350089Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67"
+2025-07-20T17:01:25.0350707Z   ],
+2025-07-20T17:01:25.0350879Z   "labels": {
+2025-07-20T17:01:25.0351161Z     "org.opencontainers.image.created": "2025-07-20T17:01:25.021Z",
+2025-07-20T17:01:25.0351556Z     "org.opencontainers.image.description": "",
+2025-07-20T17:01:25.0351880Z     "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:25.0352320Z     "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:25.0353153Z     "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0354084Z     "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0355116Z     "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0355629Z     "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:25.0355929Z   }
+2025-07-20T17:01:25.0356076Z }
+2025-07-20T17:01:25.0356516Z ##[endgroup]
+2025-07-20T17:01:25.0356973Z ##[group]Bake file definition
+2025-07-20T17:01:25.0357268Z {
+2025-07-20T17:01:25.0357411Z   "target": {
+2025-07-20T17:01:25.0357579Z     "docker-metadata-action": {
+2025-07-20T17:01:25.0357783Z       "tags": [
+2025-07-20T17:01:25.0358079Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing",
+2025-07-20T17:01:25.0358559Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest",
+2025-07-20T17:01:25.0359019Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67"
+2025-07-20T17:01:25.0359344Z       ],
+2025-07-20T17:01:25.0359493Z       "labels": {
+2025-07-20T17:01:25.0359918Z         "org.opencontainers.image.created": "2025-07-20T17:01:25.021Z",
+2025-07-20T17:01:25.0360253Z         "org.opencontainers.image.description": "",
+2025-07-20T17:01:25.0360536Z         "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:25.0361024Z         "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:25.0361575Z         "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0362099Z         "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0362595Z         "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:25.0363028Z         "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:25.0363276Z       },
+2025-07-20T17:01:25.0363413Z       "args": {
+2025-07-20T17:01:25.0363732Z         "DOCKER_META_IMAGES": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service",
+2025-07-20T17:01:25.0364121Z         "DOCKER_META_VERSION": "sandboxing"
+2025-07-20T17:01:25.0364333Z       }
+2025-07-20T17:01:25.0364717Z     }
+2025-07-20T17:01:25.0364886Z   }
+2025-07-20T17:01:25.0365024Z }
+2025-07-20T17:01:25.0365287Z ##[endgroup]
+2025-07-20T17:01:25.0467197Z ##[group]Run docker/build-push-action@v4
+2025-07-20T17:01:25.0467453Z with:
+2025-07-20T17:01:25.0467633Z   context: ./src/microservices/events
+2025-07-20T17:01:25.0467858Z   push: true
+2025-07-20T17:01:25.0468669Z   tags: ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67
+2025-07-20T17:01:25.0471048Z   labels: org.opencontainers.image.created=2025-07-20T17:01:25.021Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:25.0472865Z   cache-from: type=gha
+2025-07-20T17:01:25.0473066Z   cache-to: type=gha,mode=max
+2025-07-20T17:01:25.0473274Z   load: false
+2025-07-20T17:01:25.0473432Z   no-cache: false
+2025-07-20T17:01:25.0473603Z   pull: false
+2025-07-20T17:01:25.0473894Z   github-token: ***
+2025-07-20T17:01:25.0474065Z env:
+2025-07-20T17:01:25.0474222Z   REGISTRY: ghcr.io
+2025-07-20T17:01:25.0474649Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:25.0475127Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:25.0475622Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:25.0476102Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:25.0476503Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:25.0477462Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67
+2025-07-20T17:01:25.0479995Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:01:25.021Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:25.0484193Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:01:25.021Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:25.0487321Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-ReqNhi/docker-metadata-action-bake.json
+2025-07-20T17:01:25.0487755Z ##[endgroup]
+2025-07-20T17:01:25.1889100Z ##[group]GitHub Actions runtime token ACs
+2025-07-20T17:01:25.1908186Z refs/heads/sandboxing: read/write
+2025-07-20T17:01:25.1909808Z refs/heads/main: read
+2025-07-20T17:01:25.1910488Z ##[endgroup]
+2025-07-20T17:01:25.1911106Z ##[group]Docker info
+2025-07-20T17:01:25.1966317Z [command]/usr/bin/docker version
+2025-07-20T17:01:25.2147564Z Client: Docker Engine - Community
+2025-07-20T17:01:25.2150046Z  Version:           28.0.4
+2025-07-20T17:01:25.2150936Z  API version:       1.48
+2025-07-20T17:01:25.2151673Z  Go version:        go1.23.7
+2025-07-20T17:01:25.2152441Z  Git commit:        b8034c0
+2025-07-20T17:01:25.2152920Z  Built:             Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:25.2153188Z  OS/Arch:           linux/amd64
+2025-07-20T17:01:25.2153394Z  Context:           default
+2025-07-20T17:01:25.2153544Z
+2025-07-20T17:01:25.2153637Z Server: Docker Engine - Community
+2025-07-20T17:01:25.2153855Z  Engine:
+2025-07-20T17:01:25.2154011Z   Version:          28.0.4
+2025-07-20T17:01:25.2154240Z   API version:      1.48 (minimum version 1.24)
+2025-07-20T17:01:25.2154753Z   Go version:       go1.23.7
+2025-07-20T17:01:25.2155078Z   Git commit:       6430e49
+2025-07-20T17:01:25.2155293Z   Built:            Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:25.2155531Z   OS/Arch:          linux/amd64
+2025-07-20T17:01:25.2155734Z   Experimental:     false
+2025-07-20T17:01:25.2155932Z  containerd:
+2025-07-20T17:01:25.2156094Z   Version:          1.7.27
+2025-07-20T17:01:25.2156346Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:25.2156609Z  runc:
+2025-07-20T17:01:25.2156764Z   Version:          1.2.5
+2025-07-20T17:01:25.2156965Z   GitCommit:        v1.2.5-0-g59923ef
+2025-07-20T17:01:25.2157188Z  docker-init:
+2025-07-20T17:01:25.2157362Z   Version:          0.19.0
+2025-07-20T17:01:25.2157554Z   GitCommit:        de40ad0
+2025-07-20T17:01:25.2198062Z [command]/usr/bin/docker info
+2025-07-20T17:01:25.2538085Z Client: Docker Engine - Community
+2025-07-20T17:01:25.2538638Z  Version:    28.0.4
+2025-07-20T17:01:25.2538943Z  Context:    default
+2025-07-20T17:01:25.2539225Z  Debug Mode: false
+2025-07-20T17:01:25.2539524Z  Plugins:
+2025-07-20T17:01:25.2539803Z   buildx: Docker Buildx (Docker Inc.)
+2025-07-20T17:01:25.2540174Z     Version:  v0.25.0
+2025-07-20T17:01:25.2540549Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-07-20T17:01:25.2541070Z   compose: Docker Compose (Docker Inc.)
+2025-07-20T17:01:25.2541440Z     Version:  v2.36.2
+2025-07-20T17:01:25.2541810Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-07-20T17:01:25.2542146Z
+2025-07-20T17:01:25.2542245Z Server:
+2025-07-20T17:01:25.2542482Z  Containers: 1
+2025-07-20T17:01:25.2542743Z   Running: 1
+2025-07-20T17:01:25.2542987Z   Paused: 0
+2025-07-20T17:01:25.2543241Z   Stopped: 0
+2025-07-20T17:01:25.2543488Z  Images: 1
+2025-07-20T17:01:25.2543746Z  Server Version: 28.0.4
+2025-07-20T17:01:25.2544054Z  Storage Driver: overlay2
+2025-07-20T17:01:25.2544372Z   Backing Filesystem: extfs
+2025-07-20T17:01:25.2544889Z   Supports d_type: true
+2025-07-20T17:01:25.2545162Z   Using metacopy: false
+2025-07-20T17:01:25.2545603Z   Native Overlay Diff: false
+2025-07-20T17:01:25.2545802Z   userxattr: false
+2025-07-20T17:01:25.2545981Z  Logging Driver: json-file
+2025-07-20T17:01:25.2546168Z  Cgroup Driver: systemd
+2025-07-20T17:01:25.2546353Z  Cgroup Version: 2
+2025-07-20T17:01:25.2546518Z  Plugins:
+2025-07-20T17:01:25.2546685Z   Volume: local
+2025-07-20T17:01:25.2546891Z   Network: bridge host ipvlan macvlan null overlay
+2025-07-20T17:01:25.2547251Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-07-20T17:01:25.2547568Z  Swarm: inactive
+2025-07-20T17:01:25.2547752Z  Runtimes: io.containerd.runc.v2 runc
+2025-07-20T17:01:25.2547980Z  Default Runtime: runc
+2025-07-20T17:01:25.2548160Z  Init Binary: docker-init
+2025-07-20T17:01:25.2548424Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:25.2548722Z  runc version: v1.2.5-0-g59923ef
+2025-07-20T17:01:25.2548929Z  init version: de40ad0
+2025-07-20T17:01:25.2549107Z  Security Options:
+2025-07-20T17:01:25.2549269Z   apparmor
+2025-07-20T17:01:25.2549422Z   seccomp
+2025-07-20T17:01:25.2549568Z    Profile: builtin
+2025-07-20T17:01:25.2549743Z   cgroupns
+2025-07-20T17:01:25.2549903Z  Kernel Version: 6.11.0-1018-azure
+2025-07-20T17:01:25.2550128Z  Operating System: Ubuntu 24.04.2 LTS
+2025-07-20T17:01:25.2550490Z  OSType: linux
+2025-07-20T17:01:25.2550663Z  Architecture: x86_64
+2025-07-20T17:01:25.2550830Z  CPUs: 4
+2025-07-20T17:01:25.2550983Z  Total Memory: 15.62GiB
+2025-07-20T17:01:25.2551164Z  Name: pkrvmq0rgcvqdmg
+2025-07-20T17:01:25.2551361Z  ID: 59ce2f9e-8373-49df-b904-c97e78d80d7f
+2025-07-20T17:01:25.2551600Z  Docker Root Dir: /var/lib/docker
+2025-07-20T17:01:25.2551801Z  Debug Mode: false
+2025-07-20T17:01:25.2551977Z  Username: githubactions
+2025-07-20T17:01:25.2552162Z  Experimental: false
+2025-07-20T17:01:25.2552345Z  Insecure Registries:
+2025-07-20T17:01:25.2552533Z   ::1/128
+2025-07-20T17:01:25.2552675Z   127.0.0.0/8
+2025-07-20T17:01:25.2552836Z  Live Restore Enabled: false
+2025-07-20T17:01:25.2552969Z
+2025-07-20T17:01:25.2561118Z ##[endgroup]
+2025-07-20T17:01:25.2561647Z ##[group]Proxy configuration
+2025-07-20T17:01:25.2565073Z No proxy configuration found
+2025-07-20T17:01:25.2565737Z ##[endgroup]
+2025-07-20T17:01:25.3081921Z ##[group]Buildx version
+2025-07-20T17:01:25.3111133Z [command]/usr/bin/docker buildx version
+2025-07-20T17:01:25.3568756Z github.com/docker/buildx v0.25.0 faaea65da4ba0e58a13cd9cadcb950c51cf3b3c9
+2025-07-20T17:01:25.3598682Z ##[endgroup]
+2025-07-20T17:01:25.7171550Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /tmp/docker-actions-toolkit-nyFxUi/iidfile --label org.opencontainers.image.created=2025-07-20T17:01:25.021Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030 --label org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.title=architecture-pro-cinemaabyss --label org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.version=sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67 --metadata-file /tmp/docker-actions-toolkit-nyFxUi/metadata-file --push ./src/microservices/events
+2025-07-20T17:01:26.0441105Z #0 building with "builder-fb0caa2e-b341-4470-b725-6e57dadbe123" instance using docker-container driver
+2025-07-20T17:01:26.0441866Z
+2025-07-20T17:01:26.0442017Z #1 [internal] load build definition from Dockerfile
+2025-07-20T17:01:26.0442365Z #1 transferring dockerfile: 579B done
+2025-07-20T17:01:26.0442627Z #1 DONE 0.0s
+2025-07-20T17:01:26.0442739Z
+2025-07-20T17:01:26.0442863Z #2 [auth] astral-sh/uv:pull token for ghcr.io
+2025-07-20T17:01:26.0443159Z #2 DONE 0.0s
+2025-07-20T17:01:26.0443279Z
+2025-07-20T17:01:26.0443763Z #3 [auth] library/python:pull token for registry-1.docker.io
+2025-07-20T17:01:26.0444099Z #3 DONE 0.0s
+2025-07-20T17:01:26.0444217Z
+2025-07-20T17:01:26.0444602Z #4 [internal] load metadata for docker.io/library/python:3.11-slim
+2025-07-20T17:01:26.6176927Z #4 DONE 0.8s
+2025-07-20T17:01:26.6177409Z
+2025-07-20T17:01:26.6177713Z #5 [internal] load metadata for ghcr.io/astral-sh/uv:latest
+2025-07-20T17:01:26.8181680Z #5 DONE 1.0s
+2025-07-20T17:01:26.9870656Z
+2025-07-20T17:01:26.9871061Z #6 [internal] load .dockerignore
+2025-07-20T17:01:26.9871476Z #6 transferring context: 2B done
+2025-07-20T17:01:26.9871779Z #6 DONE 0.0s
+2025-07-20T17:01:26.9871916Z
+2025-07-20T17:01:26.9872028Z #7 [internal] load build context
+2025-07-20T17:01:26.9872329Z #7 DONE 0.0s
+2025-07-20T17:01:26.9873388Z
+2025-07-20T17:01:26.9873997Z #8 FROM ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd
+2025-07-20T17:01:26.9875178Z #8 resolve ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd done
+2025-07-20T17:01:26.9875863Z #8 DONE 0.0s
+2025-07-20T17:01:26.9876000Z
+2025-07-20T17:01:26.9876788Z #9 [stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:01:26.9877889Z #9 resolve docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30 done
+2025-07-20T17:01:26.9878587Z #9 DONE 0.0s
+2025-07-20T17:01:26.9878721Z
+2025-07-20T17:01:26.9878899Z #10 importing cache manifest from gha:13223623531842276908
+2025-07-20T17:01:26.9909921Z #10 DONE 0.2s
+2025-07-20T17:01:27.1715618Z
+2025-07-20T17:01:27.1716065Z #7 [internal] load build context
+2025-07-20T17:01:27.1716614Z #7 transferring context: 19.88kB done
+2025-07-20T17:01:27.1716891Z #7 DONE 0.0s
+2025-07-20T17:01:27.1716992Z
+2025-07-20T17:01:27.1717346Z #9 [stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:01:27.1718040Z #9 sha256:471797cdda8c4cd4a9795c8cb56078e627b3fc7486fd8574804ec7d5f1676b9b 249B / 249B 0.1s done
+2025-07-20T17:01:27.3249221Z #9 sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1 5.24MB / 16.21MB 0.2s
+2025-07-20T17:01:27.3250357Z #9 sha256:483d0dd375188d7d3b2d66116d5974d2b67e6988c6146eb2c6a3e2bc33a92121 3.51MB / 3.51MB 0.2s done
+2025-07-20T17:01:27.3251299Z #9 sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 0B / 28.23MB 0.2s
+2025-07-20T17:01:27.4767394Z #9 sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1 16.21MB / 16.21MB 0.3s done
+2025-07-20T17:01:27.4768592Z #9 sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 8.39MB / 28.23MB 0.3s
+2025-07-20T17:01:27.6269667Z #9 sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 11.53MB / 28.23MB 0.5s
+2025-07-20T17:01:27.7768237Z #9 sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 18.87MB / 28.23MB 0.6s
+2025-07-20T17:01:27.8872113Z #9 sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 28.23MB / 28.23MB 0.7s done
+2025-07-20T17:01:27.8874216Z #9 extracting sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d
+2025-07-20T17:01:28.1391074Z #9 ...
+2025-07-20T17:01:28.1392468Z
+2025-07-20T17:01:28.1393020Z #8 FROM ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd
+2025-07-20T17:01:28.1394621Z #8 sha256:6e51fd89ece4545c4f42d08ff0855c081617358f192d3428a10b08b2c43792bf 98B / 98B 0.3s done
+2025-07-20T17:01:28.1395662Z #8 sha256:0a1924118ff80fe7249e9e70be4ec51d9dc2432dc37d4cd4fb7bf9c575f12673 19.04MB / 19.04MB 0.9s done
+2025-07-20T17:01:28.1396710Z #8 extracting sha256:0a1924118ff80fe7249e9e70be4ec51d9dc2432dc37d4cd4fb7bf9c575f12673 0.2s done
+2025-07-20T17:01:28.1397413Z #8 DONE 1.1s
+2025-07-20T17:01:28.2963822Z
+2025-07-20T17:01:28.2964685Z #8 FROM ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd
+2025-07-20T17:01:28.2966017Z #8 extracting sha256:6e51fd89ece4545c4f42d08ff0855c081617358f192d3428a10b08b2c43792bf done
+2025-07-20T17:01:28.2966700Z #8 DONE 1.2s
+2025-07-20T17:01:28.2966872Z
+2025-07-20T17:01:28.2967460Z #9 [stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:01:28.5408667Z #9 extracting sha256:3da95a905ed546f99c4564407923a681757d89651a388ec3f1f5e9bf5ed0b39d 0.7s done
+2025-07-20T17:01:28.5409353Z #9 DONE 1.6s
+2025-07-20T17:01:28.7837200Z
+2025-07-20T17:01:28.7837890Z #9 [stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:01:28.7839045Z #9 extracting sha256:483d0dd375188d7d3b2d66116d5974d2b67e6988c6146eb2c6a3e2bc33a92121 0.1s done
+2025-07-20T17:01:28.7839832Z #9 extracting sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1
+2025-07-20T17:01:29.0631933Z #9 extracting sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1 0.4s done
+2025-07-20T17:01:29.0632732Z #9 DONE 2.1s
+2025-07-20T17:01:29.2223602Z
+2025-07-20T17:01:29.2225225Z #9 [stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:01:29.2226080Z #9 extracting sha256:471797cdda8c4cd4a9795c8cb56078e627b3fc7486fd8574804ec7d5f1676b9b done
+2025-07-20T17:01:29.2226542Z #9 DONE 2.1s
+2025-07-20T17:01:29.2226662Z
+2025-07-20T17:01:29.2226751Z #11 [stage-0 2/6] WORKDIR /app
+2025-07-20T17:01:29.2970771Z #11 DONE 0.2s
+2025-07-20T17:01:29.4037145Z
+2025-07-20T17:01:29.4038139Z #12 [stage-0 3/6] COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+2025-07-20T17:01:29.4039031Z #12 DONE 0.1s
+2025-07-20T17:01:29.4039922Z
+2025-07-20T17:01:29.4040378Z #13 [stage-0 4/6] COPY pyproject.toml ./
+2025-07-20T17:01:29.4040700Z #13 DONE 0.0s
+2025-07-20T17:01:29.5551185Z
+2025-07-20T17:01:29.5551643Z #14 [stage-0 5/6] RUN uv sync
+2025-07-20T17:01:29.5920380Z #14 0.187 Using CPython 3.11.13 interpreter at: /usr/local/bin/python3
+2025-07-20T17:01:29.5922007Z #14 0.187 Creating virtual environment at: .venv
+2025-07-20T17:01:29.7015408Z #14 0.297 Resolved 20 packages in 107ms
+2025-07-20T17:01:29.8118639Z #14 0.314 Downloading aiokafka (1.1MiB)
+2025-07-20T17:01:29.8119201Z #14 0.314 Downloading pydantic-core (1.9MiB)
+2025-07-20T17:01:29.8119662Z #14 0.358  Downloading pydantic-core
+2025-07-20T17:01:29.8120061Z #14 0.407  Downloading aiokafka
+2025-07-20T17:01:30.0360552Z #14 0.408 Prepared 18 packages in 108ms
+2025-07-20T17:01:30.0361330Z #14 0.418 Installed 18 packages in 10ms
+2025-07-20T17:01:30.0361747Z #14 0.418  + aiokafka==0.12.0
+2025-07-20T17:01:30.0362101Z #14 0.418  + annotated-types==0.7.0
+2025-07-20T17:01:30.0362461Z #14 0.418  + anyio==4.9.0
+2025-07-20T17:01:30.0362771Z #14 0.418  + async-timeout==5.0.1
+2025-07-20T17:01:30.0363258Z #14 0.418  + click==8.2.1
+2025-07-20T17:01:30.0363558Z #14 0.418  + fastapi==0.116.1
+2025-07-20T17:01:30.0363874Z #14 0.418  + h11==0.16.0
+2025-07-20T17:01:30.0364198Z #14 0.418  + idna==3.10
+2025-07-20T17:01:30.0364646Z #14 0.418  + packaging==25.0
+2025-07-20T17:01:30.0364967Z #14 0.418  + pydantic==2.11.7
+2025-07-20T17:01:30.0365314Z #14 0.418  + pydantic-core==2.33.2
+2025-07-20T17:01:30.0365690Z #14 0.418  + pydantic-settings==2.10.1
+2025-07-20T17:01:30.0366076Z #14 0.418  + python-dotenv==1.1.1
+2025-07-20T17:01:30.0366420Z #14 0.418  + sniffio==1.3.1
+2025-07-20T17:01:30.0366733Z #14 0.418  + starlette==0.47.1
+2025-07-20T17:01:30.0367075Z #14 0.419  + typing-extensions==4.14.1
+2025-07-20T17:01:30.0367457Z #14 0.419  + typing-inspection==0.4.1
+2025-07-20T17:01:30.0367822Z #14 0.419  + uvicorn==0.35.0
+2025-07-20T17:01:30.0368125Z #14 DONE 0.5s
+2025-07-20T17:01:30.0368293Z
+2025-07-20T17:01:30.0368483Z #15 [stage-0 6/6] COPY events_service/ ./events_service/
+2025-07-20T17:01:30.0368904Z #15 DONE 0.0s
+2025-07-20T17:01:30.0369069Z
+2025-07-20T17:01:30.0369183Z #16 exporting to image
+2025-07-20T17:01:30.0369480Z #16 exporting layers
+2025-07-20T17:01:31.6016508Z #16 exporting layers 1.7s done
+2025-07-20T17:01:31.7058567Z #16 exporting manifest sha256:b2705e70ce16dd6e7cd3a9ba6f6ffc0c06f1281f4b297dad6aa7b207d0323838 done
+2025-07-20T17:01:31.7059331Z #16 exporting config sha256:07c0dd9ea7f39dcd79f7d127de0a9277be405255299043f5b5915e427bd294cb done
+2025-07-20T17:01:31.7060050Z #16 exporting attestation manifest sha256:b43fbb11b3c5dbc6e36c488ecae13c89bb83040615ad5a97aba68cb4da9a2c02 done
+2025-07-20T17:01:31.7060787Z #16 exporting manifest list sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa done
+2025-07-20T17:01:31.7061258Z #16 pushing layers
+2025-07-20T17:01:31.8559282Z #16 ...
+2025-07-20T17:01:31.8559515Z
+2025-07-20T17:01:31.8560074Z #17 [auth] felix-neko/architecture-pro-cinemaabyss/events-service:pull,push token for ghcr.io
+2025-07-20T17:01:31.8560790Z #17 DONE 0.0s
+2025-07-20T17:01:32.0063016Z
+2025-07-20T17:01:32.0063430Z #16 exporting to image
+2025-07-20T17:01:34.9675773Z #16 pushing layers 3.3s done
+2025-07-20T17:01:34.9676756Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa
+2025-07-20T17:01:36.2631086Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa 1.3s done
+2025-07-20T17:01:36.5666619Z #16 pushing layers 0.3s done
+2025-07-20T17:01:36.5667849Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa
+2025-07-20T17:01:37.1637345Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa 0.6s done
+2025-07-20T17:01:37.4661646Z #16 pushing layers 0.3s done
+2025-07-20T17:01:37.4662885Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa
+2025-07-20T17:01:38.0558089Z #16 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67@sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa 0.6s done
+2025-07-20T17:01:38.0558991Z #16 DONE 8.2s
+2025-07-20T17:01:38.0559117Z
+2025-07-20T17:01:38.0559224Z #18 exporting to GitHub Actions Cache
+2025-07-20T17:01:38.0559507Z #18 preparing build cache for export
+2025-07-20T17:01:38.5001910Z #18 writing layer sha256:51b86f3739cff93882aeda242e85349a9f727b257b09129028a35919328ab7a4
+2025-07-20T17:01:40.2078916Z #18 writing layer sha256:51b86f3739cff93882aeda242e85349a9f727b257b09129028a35919328ab7a4 1.7s done
+2025-07-20T17:01:40.4385819Z #18 writing layer sha256:69a14c3929f743e506506eb76babcc2b4c65dbd6c8d6b730aa2f1a7b74d34f89
+2025-07-20T17:01:40.5599499Z #18 writing layer sha256:69a14c3929f743e506506eb76babcc2b4c65dbd6c8d6b730aa2f1a7b74d34f89 0.3s done
+2025-07-20T17:01:40.7913031Z #18 writing layer sha256:91eec72a8877c02e68606ef5d9f1ae94eb3bb86032d3ccfc209c4ffeeaea006d
+2025-07-20T17:01:40.9016065Z #18 writing layer sha256:91eec72a8877c02e68606ef5d9f1ae94eb3bb86032d3ccfc209c4ffeeaea006d 0.3s done
+2025-07-20T17:01:41.1355317Z #18 writing layer sha256:a3558ff1bc933a358a58045106eb7e57efe13fff7e00c5992afb1d4f3accecbb
+2025-07-20T17:01:43.8202821Z #18 writing layer sha256:a3558ff1bc933a358a58045106eb7e57efe13fff7e00c5992afb1d4f3accecbb 2.8s done
+2025-07-20T17:01:43.9456219Z #18 writing layer sha256:cccd6081bdb9dda4dcf8c14b10788161b4290cbff626f597e04210288d6deb6b
+2025-07-20T17:01:44.2027374Z #18 writing layer sha256:cccd6081bdb9dda4dcf8c14b10788161b4290cbff626f597e04210288d6deb6b 0.3s done
+2025-07-20T17:01:44.6505632Z #18 preparing build cache for export 6.6s done
+2025-07-20T17:01:44.6506125Z #18 DONE 6.6s
+2025-07-20T17:01:44.6821667Z
+2025-07-20T17:01:44.6823972Z #19 resolving provenance for metadata file
+2025-07-20T17:01:44.6824298Z #19 DONE 0.0s
+2025-07-20T17:01:44.6894942Z ##[group]ImageID
+2025-07-20T17:01:44.6895596Z sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa
+2025-07-20T17:01:44.6899216Z ##[endgroup]
+2025-07-20T17:01:44.6899764Z ##[group]Digest
+2025-07-20T17:01:44.6900423Z sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa
+2025-07-20T17:01:44.6901144Z ##[endgroup]
+2025-07-20T17:01:44.6901615Z ##[group]Metadata
+2025-07-20T17:01:44.6901803Z {
+2025-07-20T17:01:44.6901975Z   "buildx.build.provenance": {
+2025-07-20T17:01:44.6902358Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2025-07-20T17:01:44.6902641Z     "materials": [
+2025-07-20T17:01:44.6902806Z       {
+2025-07-20T17:01:44.6903027Z         "uri": "pkg:docker/python@3.11-slim?platform=linux%2Famd64",
+2025-07-20T17:01:44.6903311Z         "digest": {
+2025-07-20T17:01:44.6903596Z           "sha256": "139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30"
+2025-07-20T17:01:44.6903927Z         }
+2025-07-20T17:01:44.6904068Z       },
+2025-07-20T17:01:44.6904219Z       {
+2025-07-20T17:01:44.6904643Z         "uri": "pkg:docker/ghcr.io/astral-sh/uv@latest?platform=linux%2Famd64",
+2025-07-20T17:01:44.6904967Z         "digest": {
+2025-07-20T17:01:44.6905437Z           "sha256": "5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd"
+2025-07-20T17:01:44.6905770Z         }
+2025-07-20T17:01:44.6905911Z       }
+2025-07-20T17:01:44.6906052Z     ],
+2025-07-20T17:01:44.6906197Z     "invocation": {
+2025-07-20T17:01:44.6906377Z       "configSource": {},
+2025-07-20T17:01:44.6906569Z       "parameters": {
+2025-07-20T17:01:44.6906755Z         "frontend": "dockerfile.v0",
+2025-07-20T17:01:44.6906968Z         "args": {
+2025-07-20T17:01:44.6907229Z           "label:org.opencontainers.image.created": "2025-07-20T17:01:25.021Z",
+2025-07-20T17:01:44.6907598Z           "label:org.opencontainers.image.description": "",
+2025-07-20T17:01:44.6907906Z           "label:org.opencontainers.image.licenses": "",
+2025-07-20T17:01:44.6908313Z           "label:org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:44.6908904Z           "label:org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:44.6909482Z           "label:org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:44.6920833Z           "label:org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:44.6921341Z           "label:org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:44.6921721Z         },
+2025-07-20T17:01:44.6921974Z         "locals": [
+2025-07-20T17:01:44.6922256Z           {
+2025-07-20T17:01:44.6922519Z             "name": "context"
+2025-07-20T17:01:44.6922770Z           },
+2025-07-20T17:01:44.6922919Z           {
+2025-07-20T17:01:44.6923084Z             "name": "dockerfile"
+2025-07-20T17:01:44.6923272Z           }
+2025-07-20T17:01:44.6923417Z         ]
+2025-07-20T17:01:44.6923559Z       },
+2025-07-20T17:01:44.6923705Z       "environment": {
+2025-07-20T17:01:44.6923910Z         "platform": "linux/amd64"
+2025-07-20T17:01:44.6924105Z       }
+2025-07-20T17:01:44.6924249Z     }
+2025-07-20T17:01:44.6924544Z   },
+2025-07-20T17:01:44.6925079Z   "buildx.build.ref": "builder-fb0caa2e-b341-4470-b725-6e57dadbe123/builder-fb0caa2e-b341-4470-b725-6e57dadbe1230/k3k9vvxs227cfk3z8m8mcfay6",
+2025-07-20T17:01:44.6925654Z   "containerimage.descriptor": {
+2025-07-20T17:01:44.6925937Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-07-20T17:01:44.6926374Z     "digest": "sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa",
+2025-07-20T17:01:44.6926731Z     "size": 856
+2025-07-20T17:01:44.6926889Z   },
+2025-07-20T17:01:44.6927220Z   "containerimage.digest": "sha256:8e7790ebe919de86315923f2050919394b240ea79c43bdfe8cfec6b8c691a3aa",
+2025-07-20T17:01:44.6928799Z   "image.name": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing,ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest,ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67"
+2025-07-20T17:01:44.6930017Z }
+2025-07-20T17:01:44.6930305Z ##[endgroup]
+2025-07-20T17:01:44.6981860Z ##[group]Run docker/metadata-action@v4
+2025-07-20T17:01:44.6982124Z with:
+2025-07-20T17:01:44.6982406Z   images: ghcr.io/Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:44.6982994Z   tags: type=semver,pattern={{version}}
+type=semver,pattern={{major}}.{{minor}}
+type=sha,format=short
+type=ref,event=branch
+latest
+
+2025-07-20T17:01:44.6983465Z   context: workflow
+2025-07-20T17:01:44.6983750Z   github-token: ***
+2025-07-20T17:01:44.6983924Z env:
+2025-07-20T17:01:44.6984074Z   REGISTRY: ghcr.io
+2025-07-20T17:01:44.6984353Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:44.6985051Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:44.6985529Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:44.6986009Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:44.6986413Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:44.6987355Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67
+2025-07-20T17:01:44.6989847Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:01:25.021Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:44.6994034Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/events-service:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:01:25.021Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:44.6997044Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-ReqNhi/docker-metadata-action-bake.json
+2025-07-20T17:01:44.6997475Z ##[endgroup]
+2025-07-20T17:01:45.1637371Z ##[group]Context info
+2025-07-20T17:01:45.1637706Z eventName: push
+2025-07-20T17:01:45.1638026Z sha: 5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:45.1638469Z ref: refs/heads/sandboxing
+2025-07-20T17:01:45.1638826Z workflow: Docker Build and Push
+2025-07-20T17:01:45.1639204Z action: meta-proxy
+2025-07-20T17:01:45.1639532Z actor: Felix-neko
+2025-07-20T17:01:45.1639837Z runNumber: 16
+2025-07-20T17:01:45.1640098Z runId: 16402196253
+2025-07-20T17:01:45.1640655Z ##[endgroup]
+2025-07-20T17:01:45.1648516Z ##[group]Processing images input
+2025-07-20T17:01:45.1649198Z name=ghcr.io/Felix-neko/architecture-pro-cinemaabyss/proxy-service,enable=true
+2025-07-20T17:01:45.1650032Z ##[endgroup]
+2025-07-20T17:01:45.1662742Z ##[group]Processing tags input
+2025-07-20T17:01:45.1663264Z type=semver,pattern={{version}},value=,enable=true,priority=900
+2025-07-20T17:01:45.1663961Z type=semver,pattern={{major}}.{{minor}},value=,enable=true,priority=900
+2025-07-20T17:01:45.1664712Z type=ref,event=branch,enable=true,priority=600
+2025-07-20T17:01:45.1665531Z type=raw,value=latest,enable=true,priority=200
+2025-07-20T17:01:45.1666330Z type=sha,format=short,prefix=sha-,enable=true,priority=100
+2025-07-20T17:01:45.1666894Z ##[endgroup]
+2025-07-20T17:01:45.1667630Z ##[group]Processing flavor input
+2025-07-20T17:01:45.1668004Z latest=auto
+2025-07-20T17:01:45.1668275Z prefix=
+2025-07-20T17:01:45.1668522Z prefixLatest=false
+2025-07-20T17:01:45.1668718Z suffix=
+2025-07-20T17:01:45.1668893Z suffixLatest=false
+2025-07-20T17:01:45.1669208Z ##[endgroup]
+2025-07-20T17:01:45.1713551Z ##[group]Docker image version
+2025-07-20T17:01:45.1713885Z sandboxing
+2025-07-20T17:01:45.1714314Z ##[endgroup]
+2025-07-20T17:01:45.1719395Z ##[group]Docker tags
+2025-07-20T17:01:45.1719920Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing
+2025-07-20T17:01:45.1720632Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest
+2025-07-20T17:01:45.1721142Z ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67
+2025-07-20T17:01:45.1721655Z ##[endgroup]
+2025-07-20T17:01:45.1795020Z ##[group]Docker labels
+2025-07-20T17:01:45.1795682Z org.opencontainers.image.created=2025-07-20T17:01:45.166Z
+2025-07-20T17:01:45.1796328Z org.opencontainers.image.description=
+2025-07-20T17:01:45.1796828Z org.opencontainers.image.licenses=
+2025-07-20T17:01:45.1797265Z org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+2025-07-20T17:01:45.1798093Z org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:45.1799080Z org.opencontainers.image.title=architecture-pro-cinemaabyss
+2025-07-20T17:01:45.1799643Z org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:01:45.1800155Z org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:45.1800631Z ##[endgroup]
+2025-07-20T17:01:45.1802144Z ##[group]JSON output
+2025-07-20T17:01:45.1802535Z {
+2025-07-20T17:01:45.1802824Z   "tags": [
+2025-07-20T17:01:45.1803410Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing",
+2025-07-20T17:01:45.1804143Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest",
+2025-07-20T17:01:45.1805307Z     "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67"
+2025-07-20T17:01:45.1805910Z   ],
+2025-07-20T17:01:45.1806167Z   "labels": {
+2025-07-20T17:01:45.1806593Z     "org.opencontainers.image.created": "2025-07-20T17:01:45.166Z",
+2025-07-20T17:01:45.1807198Z     "org.opencontainers.image.description": "",
+2025-07-20T17:01:45.1807708Z     "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:45.1808386Z     "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:45.1809386Z     "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1810070Z     "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1810699Z     "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1811507Z     "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:45.1811888Z   }
+2025-07-20T17:01:45.1812068Z }
+2025-07-20T17:01:45.1812434Z ##[endgroup]
+2025-07-20T17:01:45.1812769Z ##[group]Bake file definition
+2025-07-20T17:01:45.1813003Z {
+2025-07-20T17:01:45.1813178Z   "target": {
+2025-07-20T17:01:45.1813383Z     "docker-metadata-action": {
+2025-07-20T17:01:45.1813615Z       "tags": [
+2025-07-20T17:01:45.1813973Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing",
+2025-07-20T17:01:45.1814712Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest",
+2025-07-20T17:01:45.1815264Z         "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67"
+2025-07-20T17:01:45.1815663Z       ],
+2025-07-20T17:01:45.1815832Z       "labels": {
+2025-07-20T17:01:45.1816125Z         "org.opencontainers.image.created": "2025-07-20T17:01:45.166Z",
+2025-07-20T17:01:45.1816466Z         "org.opencontainers.image.description": "",
+2025-07-20T17:01:45.1816926Z         "org.opencontainers.image.licenses": "",
+2025-07-20T17:01:45.1817422Z         "org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:45.1817969Z         "org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1818470Z         "org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1818946Z         "org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:45.1819377Z         "org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:45.1819619Z       },
+2025-07-20T17:01:45.1819765Z       "args": {
+2025-07-20T17:01:45.1820074Z         "DOCKER_META_IMAGES": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service",
+2025-07-20T17:01:45.1820455Z         "DOCKER_META_VERSION": "sandboxing"
+2025-07-20T17:01:45.1820673Z       }
+2025-07-20T17:01:45.1820818Z     }
+2025-07-20T17:01:45.1820960Z   }
+2025-07-20T17:01:45.1821093Z }
+2025-07-20T17:01:45.1821355Z ##[endgroup]
+2025-07-20T17:01:45.1925051Z ##[group]Run docker/build-push-action@v4
+2025-07-20T17:01:45.1925325Z with:
+2025-07-20T17:01:45.1925511Z   context: ./src/microservices/proxy
+2025-07-20T17:01:45.1925733Z   push: true
+2025-07-20T17:01:45.1926532Z   tags: ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67
+2025-07-20T17:01:45.1928893Z   labels: org.opencontainers.image.created=2025-07-20T17:01:45.166Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:45.1930661Z   cache-from: type=gha
+2025-07-20T17:01:45.1930859Z   cache-to: type=gha,mode=max
+2025-07-20T17:01:45.1931065Z   load: false
+2025-07-20T17:01:45.1931223Z   no-cache: false
+2025-07-20T17:01:45.1931418Z   pull: false
+2025-07-20T17:01:45.1931718Z   github-token: ***
+2025-07-20T17:01:45.1931891Z env:
+2025-07-20T17:01:45.1932046Z   REGISTRY: ghcr.io
+2025-07-20T17:01:45.1932342Z   MONOLITH_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/monolith
+2025-07-20T17:01:45.1932815Z   MOVIES_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/movies-service
+2025-07-20T17:01:45.1933305Z   EVENTS_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/events-service
+2025-07-20T17:01:45.1933782Z   PROXY_SERVICE_IMAGE_NAME: Felix-neko/architecture-pro-cinemaabyss/proxy-service
+2025-07-20T17:01:45.1934156Z   DOCKER_METADATA_OUTPUT_VERSION: sandboxing
+2025-07-20T17:01:45.1935387Z   DOCKER_METADATA_OUTPUT_TAGS: ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest
+ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67
+2025-07-20T17:01:45.1937962Z   DOCKER_METADATA_OUTPUT_LABELS: org.opencontainers.image.created=2025-07-20T17:01:45.166Z
+org.opencontainers.image.description=
+org.opencontainers.image.licenses=
+org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030
+org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.title=architecture-pro-cinemaabyss
+org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss
+org.opencontainers.image.version=sandboxing
+2025-07-20T17:01:45.1942151Z   DOCKER_METADATA_OUTPUT_JSON: {"tags":["ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing","ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest","ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67"],"labels":{"org.opencontainers.image.created":"2025-07-20T17:01:45.166Z","org.opencontainers.image.description":"","org.opencontainers.image.licenses":"","org.opencontainers.image.revision":"5142a677bcb5df094e9f365f1b1fafa9afe30030","org.opencontainers.image.source":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.title":"architecture-pro-cinemaabyss","org.opencontainers.image.url":"https://github.com/Felix-neko/architecture-pro-cinemaabyss","org.opencontainers.image.version":"sandboxing"}}
+2025-07-20T17:01:45.1945610Z   DOCKER_METADATA_OUTPUT_BAKE_FILE: /tmp/docker-actions-toolkit-8M62Pb/docker-metadata-action-bake.json
+2025-07-20T17:01:45.1946053Z ##[endgroup]
+2025-07-20T17:01:45.3353588Z ##[group]GitHub Actions runtime token ACs
+2025-07-20T17:01:45.3366861Z refs/heads/sandboxing: read/write
+2025-07-20T17:01:45.3367523Z refs/heads/main: read
+2025-07-20T17:01:45.3368847Z ##[endgroup]
+2025-07-20T17:01:45.3369583Z ##[group]Docker info
+2025-07-20T17:01:45.3420852Z [command]/usr/bin/docker version
+2025-07-20T17:01:45.3603668Z Client: Docker Engine - Community
+2025-07-20T17:01:45.3605351Z  Version:           28.0.4
+2025-07-20T17:01:45.3605719Z  API version:       1.48
+2025-07-20T17:01:45.3606082Z  Go version:        go1.23.7
+2025-07-20T17:01:45.3606444Z  Git commit:        b8034c0
+2025-07-20T17:01:45.3606833Z  Built:             Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:45.3607275Z  OS/Arch:           linux/amd64
+2025-07-20T17:01:45.3607640Z  Context:           default
+2025-07-20T17:01:45.3607868Z
+2025-07-20T17:01:45.3608021Z Server: Docker Engine - Community
+2025-07-20T17:01:45.3608402Z  Engine:
+2025-07-20T17:01:45.3608682Z   Version:          28.0.4
+2025-07-20T17:01:45.3609046Z   API version:      1.48 (minimum version 1.24)
+2025-07-20T17:01:45.3609439Z   Go version:       go1.23.7
+2025-07-20T17:01:45.3609747Z   Git commit:       6430e49
+2025-07-20T17:01:45.3610085Z   Built:            Tue Mar 25 15:07:16 2025
+2025-07-20T17:01:45.3610476Z   OS/Arch:          linux/amd64
+2025-07-20T17:01:45.3610806Z   Experimental:     false
+2025-07-20T17:01:45.3611122Z  containerd:
+2025-07-20T17:01:45.3611381Z   Version:          1.7.27
+2025-07-20T17:01:45.3611763Z   GitCommit:        05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:45.3612178Z  runc:
+2025-07-20T17:01:45.3612426Z   Version:          1.2.5
+2025-07-20T17:01:45.3612739Z   GitCommit:        v1.2.5-0-g59923ef
+2025-07-20T17:01:45.3613099Z  docker-init:
+2025-07-20T17:01:45.3613358Z   Version:          0.19.0
+2025-07-20T17:01:45.3613672Z   GitCommit:        de40ad0
+2025-07-20T17:01:45.3654038Z [command]/usr/bin/docker info
+2025-07-20T17:01:45.3991329Z Client: Docker Engine - Community
+2025-07-20T17:01:45.3991793Z  Version:    28.0.4
+2025-07-20T17:01:45.3992112Z  Context:    default
+2025-07-20T17:01:45.3992385Z  Debug Mode: false
+2025-07-20T17:01:45.3992675Z  Plugins:
+2025-07-20T17:01:45.3992965Z   buildx: Docker Buildx (Docker Inc.)
+2025-07-20T17:01:45.3993362Z     Version:  v0.25.0
+2025-07-20T17:01:45.3993821Z     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+2025-07-20T17:01:45.3994638Z   compose: Docker Compose (Docker Inc.)
+2025-07-20T17:01:45.3995040Z     Version:  v2.36.2
+2025-07-20T17:01:45.3995456Z     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+2025-07-20T17:01:45.3995818Z
+2025-07-20T17:01:45.3995931Z Server:
+2025-07-20T17:01:45.3996183Z  Containers: 1
+2025-07-20T17:01:45.3996457Z   Running: 1
+2025-07-20T17:01:45.3996712Z   Paused: 0
+2025-07-20T17:01:45.3996973Z   Stopped: 0
+2025-07-20T17:01:45.3997226Z  Images: 1
+2025-07-20T17:01:45.3997493Z  Server Version: 28.0.4
+2025-07-20T17:01:45.3997809Z  Storage Driver: overlay2
+2025-07-20T17:01:45.3998142Z   Backing Filesystem: extfs
+2025-07-20T17:01:45.3998476Z   Supports d_type: true
+2025-07-20T17:01:45.3998789Z   Using metacopy: false
+2025-07-20T17:01:45.3999101Z   Native Overlay Diff: false
+2025-07-20T17:01:45.3999444Z   userxattr: false
+2025-07-20T17:01:45.3999748Z  Logging Driver: json-file
+2025-07-20T17:01:45.4000408Z  Cgroup Driver: systemd
+2025-07-20T17:01:45.4000713Z  Cgroup Version: 2
+2025-07-20T17:01:45.4001000Z  Plugins:
+2025-07-20T17:01:45.4001331Z   Volume: local
+2025-07-20T17:01:45.4001643Z   Network: bridge host ipvlan macvlan null overlay
+2025-07-20T17:01:45.4002231Z   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+2025-07-20T17:01:45.4002761Z  Swarm: inactive
+2025-07-20T17:01:45.4003081Z  Runtimes: io.containerd.runc.v2 runc
+2025-07-20T17:01:45.4003475Z  Default Runtime: runc
+2025-07-20T17:01:45.4003784Z  Init Binary: docker-init
+2025-07-20T17:01:45.4004208Z  containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+2025-07-20T17:01:45.4004856Z  runc version: v1.2.5-0-g59923ef
+2025-07-20T17:01:45.4005207Z  init version: de40ad0
+2025-07-20T17:01:45.4005509Z  Security Options:
+2025-07-20T17:01:45.4005789Z   apparmor
+2025-07-20T17:01:45.4006024Z   seccomp
+2025-07-20T17:01:45.4006277Z    Profile: builtin
+2025-07-20T17:01:45.4006558Z   cgroupns
+2025-07-20T17:01:45.4006844Z  Kernel Version: 6.11.0-1018-azure
+2025-07-20T17:01:45.4007232Z  Operating System: Ubuntu 24.04.2 LTS
+2025-07-20T17:01:45.4007813Z  OSType: linux
+2025-07-20T17:01:45.4008086Z  Architecture: x86_64
+2025-07-20T17:01:45.4008356Z  CPUs: 4
+2025-07-20T17:01:45.4008596Z  Total Memory: 15.62GiB
+2025-07-20T17:01:45.4008890Z  Name: pkrvmq0rgcvqdmg
+2025-07-20T17:01:45.4009209Z  ID: 59ce2f9e-8373-49df-b904-c97e78d80d7f
+2025-07-20T17:01:45.4009612Z  Docker Root Dir: /var/lib/docker
+2025-07-20T17:01:45.4009967Z  Debug Mode: false
+2025-07-20T17:01:45.4010263Z  Username: githubactions
+2025-07-20T17:01:45.4010592Z  Experimental: false
+2025-07-20T17:01:45.4010889Z  Insecure Registries:
+2025-07-20T17:01:45.4011212Z   ::1/128
+2025-07-20T17:01:45.4011441Z   127.0.0.0/8
+2025-07-20T17:01:45.4011724Z  Live Restore Enabled: false
+2025-07-20T17:01:45.4011958Z
+2025-07-20T17:01:45.4017131Z ##[endgroup]
+2025-07-20T17:01:45.4017649Z ##[group]Proxy configuration
+2025-07-20T17:01:45.4021142Z No proxy configuration found
+2025-07-20T17:01:45.4021787Z ##[endgroup]
+2025-07-20T17:01:45.4457712Z ##[group]Buildx version
+2025-07-20T17:01:45.4478919Z [command]/usr/bin/docker buildx version
+2025-07-20T17:01:45.4850183Z github.com/docker/buildx v0.25.0 faaea65da4ba0e58a13cd9cadcb950c51cf3b3c9
+2025-07-20T17:01:45.4880132Z ##[endgroup]
+2025-07-20T17:01:45.8778150Z [command]/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /tmp/docker-actions-toolkit-uKA03t/iidfile --label org.opencontainers.image.created=2025-07-20T17:01:45.166Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=5142a677bcb5df094e9f365f1b1fafa9afe30030 --label org.opencontainers.image.source=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.title=architecture-pro-cinemaabyss --label org.opencontainers.image.url=https://github.com/Felix-neko/architecture-pro-cinemaabyss --label org.opencontainers.image.version=sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest --tag ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67 --metadata-file /tmp/docker-actions-toolkit-uKA03t/metadata-file --push ./src/microservices/proxy
+2025-07-20T17:01:46.2078646Z #0 building with "builder-fb0caa2e-b341-4470-b725-6e57dadbe123" instance using docker-container driver
+2025-07-20T17:01:46.2079422Z
+2025-07-20T17:01:46.2079619Z #1 [internal] load build definition from Dockerfile
+2025-07-20T17:01:46.2080076Z #1 transferring dockerfile: 886B done
+2025-07-20T17:01:46.2080429Z #1 DONE 0.0s
+2025-07-20T17:01:46.2080650Z
+2025-07-20T17:01:46.2080868Z #2 [auth] library/kong:pull token for registry-1.docker.io
+2025-07-20T17:01:46.2081304Z #2 DONE 0.0s
+2025-07-20T17:01:46.2081467Z
+2025-07-20T17:01:46.2081668Z #3 [internal] load metadata for docker.io/library/kong:3.9
+2025-07-20T17:01:46.8353636Z #3 DONE 0.9s
+2025-07-20T17:01:47.0004563Z
+2025-07-20T17:01:47.0004841Z #4 [internal] load .dockerignore
+2025-07-20T17:01:47.0005272Z #4 transferring context: 2B done
+2025-07-20T17:01:47.0005616Z #4 DONE 0.0s
+2025-07-20T17:01:47.0005783Z
+2025-07-20T17:01:47.0005912Z #5 [internal] load build context
+2025-07-20T17:01:47.0006253Z #5 DONE 0.0s
+2025-07-20T17:01:47.0006407Z
+2025-07-20T17:01:47.0006915Z #6 [1/3] FROM docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f
+2025-07-20T17:01:47.0008045Z #6 resolve docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f done
+2025-07-20T17:01:47.0008806Z #6 DONE 0.0s
+2025-07-20T17:01:47.0008988Z
+2025-07-20T17:01:47.0009158Z #7 importing cache manifest from gha:13223623531842276908
+2025-07-20T17:01:47.0142680Z #7 DONE 0.2s
+2025-07-20T17:01:47.1725054Z
+2025-07-20T17:01:47.1725611Z #5 [internal] load build context
+2025-07-20T17:01:47.1726408Z #5 transferring context: 7.48kB done
+2025-07-20T17:01:47.1726844Z #5 DONE 0.0s
+2025-07-20T17:01:47.1727057Z
+2025-07-20T17:01:47.1727768Z #6 [1/3] FROM docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f
+2025-07-20T17:01:47.1728561Z #6 sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d 1.16kB / 1.16kB 0.1s done
+2025-07-20T17:01:47.3476716Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 23.07MB / 90.68MB 0.3s
+2025-07-20T17:01:47.3477892Z #6 sha256:0343162e8c8e163a460b10a48d88d2825965b97e7ab1e7e054fc1f4f2a11704f 130B / 130B 0.2s done
+2025-07-20T17:01:47.3478949Z #6 sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 0B / 29.72MB 0.2s
+2025-07-20T17:01:47.4979823Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 40.89MB / 90.68MB 0.5s
+2025-07-20T17:01:47.4980942Z #6 sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 14.68MB / 29.72MB 0.3s
+2025-07-20T17:01:47.6473945Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 58.50MB / 90.68MB 0.6s
+2025-07-20T17:01:47.6477369Z #6 sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 29.72MB / 29.72MB 0.5s done
+2025-07-20T17:01:47.6481806Z #6 extracting sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927
+2025-07-20T17:01:47.7973992Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 71.30MB / 90.68MB 0.8s
+2025-07-20T17:01:48.0973162Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 81.79MB / 90.68MB 1.1s
+2025-07-20T17:01:48.2149229Z #6 extracting sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 0.7s done
+2025-07-20T17:01:48.3881419Z #6 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 90.68MB / 90.68MB 1.2s done
+2025-07-20T17:01:48.3883101Z #6 extracting sha256:0343162e8c8e163a460b10a48d88d2825965b97e7ab1e7e054fc1f4f2a11704f 0.0s done
+2025-07-20T17:01:48.3885179Z #6 extracting sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555
+2025-07-20T17:01:50.0497625Z #6 extracting sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 1.8s done
+2025-07-20T17:01:50.0498222Z #6 DONE 3.0s
+2025-07-20T17:01:50.2067945Z
+2025-07-20T17:01:50.2068707Z #6 [1/3] FROM docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f
+2025-07-20T17:01:50.2069449Z #6 extracting sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d done
+2025-07-20T17:01:50.2069887Z #6 DONE 3.0s
+2025-07-20T17:01:50.2069992Z
+2025-07-20T17:01:50.2070133Z #8 [2/3] COPY kong.yml.template /etc/kong/kong.yml.template
+2025-07-20T17:01:50.8382673Z #8 DONE 0.8s
+2025-07-20T17:01:50.9900014Z
+2025-07-20T17:01:50.9901130Z #9 [3/3] COPY --chmod=0755 kong-entrypoint.sh /usr/local/bin/kong-entrypoint.sh
+2025-07-20T17:01:50.9901825Z #9 DONE 0.0s
+2025-07-20T17:01:50.9902024Z
+2025-07-20T17:01:50.9902290Z #10 [auth] felix-neko/architecture-pro-cinemaabyss/proxy-service:pull,push token for ghcr.io
+2025-07-20T17:01:51.1408045Z #10 DONE 0.0s
+2025-07-20T17:01:51.1408313Z
+2025-07-20T17:01:51.1408500Z #11 exporting to image
+2025-07-20T17:01:51.1408872Z #11 exporting layers 0.0s done
+2025-07-20T17:01:51.1409517Z #11 exporting manifest sha256:c78684d166cbf459a2509f420b353ea5b09e2a1680cfae03bf0273568244c7ae done
+2025-07-20T17:01:51.1410498Z #11 exporting config sha256:3cfbfd90f6aea880daf2048b9b4a89c53e108b3150f5f5e6a576452531ebc96e done
+2025-07-20T17:01:51.1411554Z #11 exporting attestation manifest sha256:be4c1f4e2a7fffddbb2cb59d6ad59fcc9941057a3d8e33fb00d8157307ac4388 done
+2025-07-20T17:01:51.1412634Z #11 exporting manifest list sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d done
+2025-07-20T17:01:51.1413323Z #11 pushing layers
+2025-07-20T17:01:52.5778818Z #11 pushing layers 1.7s done
+2025-07-20T17:01:52.5779884Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d
+2025-07-20T17:01:53.9069013Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d 1.3s done
+2025-07-20T17:01:54.1604275Z #11 pushing layers 0.3s done
+2025-07-20T17:01:54.1605705Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d
+2025-07-20T17:01:54.7189164Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d 0.6s done
+2025-07-20T17:01:54.9568504Z #11 pushing layers 0.2s done
+2025-07-20T17:01:54.9569678Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d
+2025-07-20T17:01:55.5662852Z #11 pushing manifest for ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67@sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d 0.6s done
+2025-07-20T17:01:55.5664046Z #11 DONE 4.7s
+2025-07-20T17:01:55.5664263Z
+2025-07-20T17:01:55.5664613Z #12 exporting to GitHub Actions Cache
+2025-07-20T17:01:55.5665160Z #12 preparing build cache for export
+2025-07-20T17:01:55.8194154Z #12 writing layer sha256:082c8e08c4e9a5021731282a1e41312152813688b45dca70eb06dbd2cde6d1f9
+2025-07-20T17:01:56.3055966Z #12 writing layer sha256:082c8e08c4e9a5021731282a1e41312152813688b45dca70eb06dbd2cde6d1f9 0.5s done
+2025-07-20T17:01:56.4716325Z #12 writing layer sha256:9b13f91346746d39dd9703d47160aef64901aa3ae954ba6e9c228857536d2cd4
+2025-07-20T17:01:56.7327138Z #12 writing layer sha256:9b13f91346746d39dd9703d47160aef64901aa3ae954ba6e9c228857536d2cd4 0.3s done
+2025-07-20T17:01:57.2494886Z #12 preparing build cache for export 1.7s done
+2025-07-20T17:01:57.2496085Z #12 DONE 1.7s
+2025-07-20T17:01:57.2787817Z
+2025-07-20T17:01:57.2788251Z #13 resolving provenance for metadata file
+2025-07-20T17:01:57.2788623Z #13 DONE 0.0s
+2025-07-20T17:01:57.2855475Z ##[group]ImageID
+2025-07-20T17:01:57.2855989Z sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d
+2025-07-20T17:01:57.2859011Z ##[endgroup]
+2025-07-20T17:01:57.2859464Z ##[group]Digest
+2025-07-20T17:01:57.2859907Z sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d
+2025-07-20T17:01:57.2860694Z ##[endgroup]
+2025-07-20T17:01:57.2861145Z ##[group]Metadata
+2025-07-20T17:01:57.2861413Z {
+2025-07-20T17:01:57.2861672Z   "buildx.build.provenance": {
+2025-07-20T17:01:57.2862123Z     "buildType": "https://mobyproject.org/buildkit@v1",
+2025-07-20T17:01:57.2862581Z     "materials": [
+2025-07-20T17:01:57.2862841Z       {
+2025-07-20T17:01:57.2863158Z         "uri": "pkg:docker/kong@3.9?platform=linux%2Famd64",
+2025-07-20T17:01:57.2863573Z         "digest": {
+2025-07-20T17:01:57.2864084Z           "sha256": "239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f"
+2025-07-20T17:01:57.2864903Z         }
+2025-07-20T17:01:57.2865434Z       }
+2025-07-20T17:01:57.2865665Z     ],
+2025-07-20T17:01:57.2865867Z     "invocation": {
+2025-07-20T17:01:57.2866060Z       "configSource": {},
+2025-07-20T17:01:57.2866253Z       "parameters": {
+2025-07-20T17:01:57.2866463Z         "frontend": "dockerfile.v0",
+2025-07-20T17:01:57.2866678Z         "args": {
+2025-07-20T17:01:57.2866950Z           "label:org.opencontainers.image.created": "2025-07-20T17:01:45.166Z",
+2025-07-20T17:01:57.2867318Z           "label:org.opencontainers.image.description": "",
+2025-07-20T17:01:57.2867629Z           "label:org.opencontainers.image.licenses": "",
+2025-07-20T17:01:57.2868037Z           "label:org.opencontainers.image.revision": "5142a677bcb5df094e9f365f1b1fafa9afe30030",
+2025-07-20T17:01:57.2868623Z           "label:org.opencontainers.image.source": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:57.2869192Z           "label:org.opencontainers.image.title": "architecture-pro-cinemaabyss",
+2025-07-20T17:01:57.2869724Z           "label:org.opencontainers.image.url": "https://github.com/Felix-neko/architecture-pro-cinemaabyss",
+2025-07-20T17:01:57.2870331Z           "label:org.opencontainers.image.version": "sandboxing"
+2025-07-20T17:01:57.2870602Z         },
+2025-07-20T17:01:57.2870755Z         "locals": [
+2025-07-20T17:01:57.2870915Z           {
+2025-07-20T17:01:57.2871072Z             "name": "context"
+2025-07-20T17:01:57.2871263Z           },
+2025-07-20T17:01:57.2871405Z           {
+2025-07-20T17:01:57.2871564Z             "name": "dockerfile"
+2025-07-20T17:01:57.2871750Z           }
+2025-07-20T17:01:57.2871896Z         ]
+2025-07-20T17:01:57.2872034Z       },
+2025-07-20T17:01:57.2872184Z       "environment": {
+2025-07-20T17:01:57.2872368Z         "platform": "linux/amd64"
+2025-07-20T17:01:57.2872568Z       }
+2025-07-20T17:01:57.2872706Z     }
+2025-07-20T17:01:57.2872847Z   },
+2025-07-20T17:01:57.2873314Z   "buildx.build.ref": "builder-fb0caa2e-b341-4470-b725-6e57dadbe123/builder-fb0caa2e-b341-4470-b725-6e57dadbe1230/q3zdm3d3378i9c15nucrxdf93",
+2025-07-20T17:01:57.2873881Z   "containerimage.descriptor": {
+2025-07-20T17:01:57.2874158Z     "mediaType": "application/vnd.oci.image.index.v1+json",
+2025-07-20T17:01:57.2874862Z     "digest": "sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d",
+2025-07-20T17:01:57.2875227Z     "size": 856
+2025-07-20T17:01:57.2875400Z   },
+2025-07-20T17:01:57.2875737Z   "containerimage.digest": "sha256:6afe61fc11d5513240310a1f997ec0b194d01f6862c15dd74debf1c0e88c679d",
+2025-07-20T17:01:57.2877162Z   "image.name": "ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sandboxing,ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest,ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:sha-5142a67"
+2025-07-20T17:01:57.2878026Z }
+2025-07-20T17:01:57.2878301Z ##[endgroup]
+2025-07-20T17:01:57.2973350Z Post job cleanup.
+2025-07-20T17:01:57.4256412Z ##[group]Removing temp folder /tmp/docker-actions-toolkit-uKA03t
+2025-07-20T17:01:57.4269956Z ##[endgroup]
+2025-07-20T17:01:57.4376087Z Post job cleanup.
+2025-07-20T17:01:57.5671494Z ##[group]Removing temp folder /tmp/docker-actions-toolkit-nyFxUi
+2025-07-20T17:01:57.5685763Z ##[endgroup]
+2025-07-20T17:01:57.5795000Z Post job cleanup.
+2025-07-20T17:01:57.7076080Z ##[group]Removing temp folder /tmp/docker-actions-toolkit-FwCtdR
+2025-07-20T17:01:57.7090553Z ##[endgroup]
+2025-07-20T17:01:57.7196927Z Post job cleanup.
+2025-07-20T17:01:57.8490058Z ##[group]Removing temp folder /tmp/docker-actions-toolkit-iii2xo
+2025-07-20T17:01:57.8504346Z ##[endgroup]
+2025-07-20T17:01:57.8610666Z Post job cleanup.
+2025-07-20T17:01:57.9567187Z [command]/usr/bin/docker logout ghcr.io
+2025-07-20T17:01:57.9685223Z Removing login credentials for ghcr.io
+2025-07-20T17:01:57.9812497Z Post job cleanup.
+2025-07-20T17:01:58.1098886Z ##[group]Removing builder
+2025-07-20T17:01:58.1898575Z [command]/usr/bin/docker buildx rm builder-fb0caa2e-b341-4470-b725-6e57dadbe123
+2025-07-20T17:01:59.3996062Z builder-fb0caa2e-b341-4470-b725-6e57dadbe123 removed
+2025-07-20T17:01:59.4029229Z ##[endgroup]
+2025-07-20T17:01:59.4029722Z ##[group]Cleaning up certificates
+2025-07-20T17:01:59.4037502Z ##[endgroup]
+2025-07-20T17:01:59.4154204Z Post job cleanup.
+2025-07-20T17:01:59.4870444Z [command]/usr/bin/git version
+2025-07-20T17:01:59.4900596Z git version 2.50.1
+2025-07-20T17:01:59.4941907Z Temporarily overriding HOME='/home/runner/work/_temp/4e500739-7024-4052-bc7a-09c861e9fc97' before making global git config changes
+2025-07-20T17:01:59.4942976Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-20T17:01:59.4946176Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:01:59.4977589Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-20T17:01:59.5005497Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-20T17:01:59.5224165Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-20T17:01:59.5242641Z http.https://github.com/.extraheader
+2025-07-20T17:01:59.5253813Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-07-20T17:01:59.5280342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-20T17:01:59.5590642Z Cleaning up orphan processes

@@ -144,15 +144,15 @@ class EventServiceAPI(FastAPI):
 
     async def process_payment_event(self, payment_event: PaymentEvent):
         """Process payment event and log it"""
-        logging.info(f"Processing payment event: {payment_event.model_dump()}")
+        logging.info(f"Processing payment event: {payment_event}")
 
     async def process_user_event(self, user_event: UserEvent):
         """Process user event and log it"""
-        logging.info(f"Processing user event: {user_event.model_dump()}")
+        logging.info(f"Processing user event: {user_event}")
 
     async def process_movie_event(self, movie_event: MovieEvent):
         """Process movie event and log it"""
-        logging.info(f"Processing movie event: {movie_event.model_dump()}")
+        logging.info(f"Processing movie event: {movie_event}")
 
     async def _consume_movie_events(self):
         """Background task to consume movie events"""

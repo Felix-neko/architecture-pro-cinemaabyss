@@ -1,7 +1,5 @@
 
-#minikube delete
-
-#minikube start --vm-driver=vmware --cpus=4 --memory=32g --disk-size=40g
+minikube start --vm-driver=vmware --cpus=4 --memory=32g --disk-size=40g
 minikube addons enable metrics-server
 minikube addons enable dashboard
 minikube addons enable default-storageclass

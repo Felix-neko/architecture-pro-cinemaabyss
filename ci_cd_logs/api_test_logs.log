@@ -1,0 +1,1908 @@
+2025-07-20T17:00:27.7173925Z Current runner version: '2.326.0'
+2025-07-20T17:00:27.7206502Z ##[group]Runner Image Provisioner
+2025-07-20T17:00:27.7207638Z Hosted Compute Agent
+2025-07-20T17:00:27.7208642Z Version: 20250711.363
+2025-07-20T17:00:27.7209594Z Commit: 6785254374ce925a23743850c1cb91912ce5c14c
+2025-07-20T17:00:27.7210684Z Build Date: 2025-07-11T20:04:25Z
+2025-07-20T17:00:27.7211701Z ##[endgroup]
+2025-07-20T17:00:27.7212722Z ##[group]Operating System
+2025-07-20T17:00:27.7213640Z Ubuntu
+2025-07-20T17:00:27.7214432Z 24.04.2
+2025-07-20T17:00:27.7215259Z LTS
+2025-07-20T17:00:27.7215997Z ##[endgroup]
+2025-07-20T17:00:27.7216873Z ##[group]Runner Image
+2025-07-20T17:00:27.7217811Z Image: ubuntu-24.04
+2025-07-20T17:00:27.7218596Z Version: 20250710.1.0
+2025-07-20T17:00:27.7220359Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250710.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-07-20T17:00:27.7223367Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250710.1
+2025-07-20T17:00:27.7225233Z ##[endgroup]
+2025-07-20T17:00:27.7227195Z ##[group]GITHUB_TOKEN Permissions
+2025-07-20T17:00:27.7229849Z Contents: read
+2025-07-20T17:00:27.7230748Z Metadata: read
+2025-07-20T17:00:27.7231518Z Packages: read
+2025-07-20T17:00:27.7232876Z ##[endgroup]
+2025-07-20T17:00:27.7235778Z Secret source: Actions
+2025-07-20T17:00:27.7236982Z Prepare workflow directory
+2025-07-20T17:00:27.7712459Z Prepare all required actions
+2025-07-20T17:00:27.7770752Z Getting action download info
+2025-07-20T17:00:27.9985836Z ##[group]Download immutable action package 'actions/checkout@v3'
+2025-07-20T17:00:27.9986944Z Version: 3.6.0
+2025-07-20T17:00:27.9987916Z Digest: sha256:942562b9c7d4b1f2557f1da21f4d3eb4eb4fd01f2ad78b2a6e187d1b193e0a0f
+2025-07-20T17:00:27.9989055Z Source commit SHA: f43a0e5ff2bd294095638e18286ca9a3d1956744
+2025-07-20T17:00:27.9989838Z ##[endgroup]
+2025-07-20T17:00:28.1112453Z ##[group]Download immutable action package 'actions/setup-node@v3'
+2025-07-20T17:00:28.1113368Z Version: 3.9.1
+2025-07-20T17:00:28.1114072Z Digest: sha256:d8c8dbd6e63927801f9de42620f961a361b03be6034dcc11e83ca01f50cb9f40
+2025-07-20T17:00:28.1115029Z Source commit SHA: 3235b876344d2a9aa001b8d1453c930bba69e610
+2025-07-20T17:00:28.1115701Z ##[endgroup]
+2025-07-20T17:00:28.4556992Z Complete job name: Run API Tests
+2025-07-20T17:00:28.5203643Z ##[group]Run actions/checkout@v3
+2025-07-20T17:00:28.5204432Z with:
+2025-07-20T17:00:28.5204894Z   repository: Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.5205617Z   token: ***
+2025-07-20T17:00:28.5205983Z   ssh-strict: true
+2025-07-20T17:00:28.5206386Z   persist-credentials: true
+2025-07-20T17:00:28.5206811Z   clean: true
+2025-07-20T17:00:28.5207209Z   sparse-checkout-cone-mode: true
+2025-07-20T17:00:28.5207675Z   fetch-depth: 1
+2025-07-20T17:00:28.5208042Z   fetch-tags: false
+2025-07-20T17:00:28.5208412Z   lfs: false
+2025-07-20T17:00:28.5208807Z   submodules: false
+2025-07-20T17:00:28.5209196Z   set-safe-directory: true
+2025-07-20T17:00:28.5209800Z ##[endgroup]
+2025-07-20T17:00:28.6037250Z Syncing repository: Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.6039089Z ##[group]Getting Git version info
+2025-07-20T17:00:28.6040010Z Working directory is '/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss'
+2025-07-20T17:00:28.6041228Z [command]/usr/bin/git version
+2025-07-20T17:00:28.6092724Z git version 2.50.1
+2025-07-20T17:00:28.6119693Z ##[endgroup]
+2025-07-20T17:00:28.6135758Z Temporarily overriding HOME='/home/runner/work/_temp/1a1f1596-4684-4f0d-86fa-889bacc2a89f' before making global git config changes
+2025-07-20T17:00:28.6138106Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-20T17:00:28.6140531Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.6172338Z Deleting the contents of '/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss'
+2025-07-20T17:00:28.6175616Z ##[group]Initializing the repository
+2025-07-20T17:00:28.6179968Z [command]/usr/bin/git init /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.6269671Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-07-20T17:00:28.6270632Z hint: is subject to change. To configure the initial branch name to use in all
+2025-07-20T17:00:28.6271488Z hint: of your new repositories, which will suppress this warning, call:
+2025-07-20T17:00:28.6272540Z hint:
+2025-07-20T17:00:28.6273322Z hint: 	git config --global init.defaultBranch <name>
+2025-07-20T17:00:28.6274225Z hint:
+2025-07-20T17:00:28.6275220Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-07-20T17:00:28.6276545Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-07-20T17:00:28.6277218Z hint:
+2025-07-20T17:00:28.6277585Z hint: 	git branch -m <name>
+2025-07-20T17:00:28.6278005Z hint:
+2025-07-20T17:00:28.6278875Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-07-20T17:00:28.6280113Z Initialized empty Git repository in /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss/.git/
+2025-07-20T17:00:28.6282530Z [command]/usr/bin/git remote add origin https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.6325022Z ##[endgroup]
+2025-07-20T17:00:28.6325723Z ##[group]Disabling automatic garbage collection
+2025-07-20T17:00:28.6327431Z [command]/usr/bin/git config --local gc.auto 0
+2025-07-20T17:00:28.6352535Z ##[endgroup]
+2025-07-20T17:00:28.6353213Z ##[group]Setting up auth
+2025-07-20T17:00:28.6357272Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-20T17:00:28.6382541Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-20T17:00:28.6645232Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-20T17:00:28.6670141Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-20T17:00:28.6887183Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-07-20T17:00:28.6919119Z ##[endgroup]
+2025-07-20T17:00:28.6919848Z ##[group]Fetching the repository
+2025-07-20T17:00:28.6928916Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +5142a677bcb5df094e9f365f1b1fafa9afe30030:refs/remotes/origin/sandboxing
+2025-07-20T17:00:28.8951170Z remote: Enumerating objects: 101, done.
+2025-07-20T17:00:28.8952470Z remote: Counting objects:   0% (1/101)
+2025-07-20T17:00:28.8953304Z remote: Counting objects:   1% (2/101)
+2025-07-20T17:00:28.8954299Z remote: Counting objects:   2% (3/101)
+2025-07-20T17:00:28.8955258Z remote: Counting objects:   3% (4/101)
+2025-07-20T17:00:28.8956204Z remote: Counting objects:   4% (5/101)
+2025-07-20T17:00:28.8957007Z remote: Counting objects:   5% (6/101)
+2025-07-20T17:00:28.8957595Z remote: Counting objects:   6% (7/101)
+2025-07-20T17:00:28.8958162Z remote: Counting objects:   7% (8/101)
+2025-07-20T17:00:28.8958723Z remote: Counting objects:   8% (9/101)
+2025-07-20T17:00:28.8959287Z remote: Counting objects:   9% (10/101)
+2025-07-20T17:00:28.8959850Z remote: Counting objects:  10% (11/101)
+2025-07-20T17:00:28.8960405Z remote: Counting objects:  11% (12/101)
+2025-07-20T17:00:28.8960953Z remote: Counting objects:  12% (13/101)
+2025-07-20T17:00:28.8961500Z remote: Counting objects:  13% (14/101)
+2025-07-20T17:00:28.8962057Z remote: Counting objects:  14% (15/101)
+2025-07-20T17:00:28.8962860Z remote: Counting objects:  15% (16/101)
+2025-07-20T17:00:28.8963659Z remote: Counting objects:  16% (17/101)
+2025-07-20T17:00:28.8964217Z remote: Counting objects:  17% (18/101)
+2025-07-20T17:00:28.8964770Z remote: Counting objects:  18% (19/101)
+2025-07-20T17:00:28.8965340Z remote: Counting objects:  19% (20/101)
+2025-07-20T17:00:28.8965893Z remote: Counting objects:  20% (21/101)
+2025-07-20T17:00:28.8966452Z remote: Counting objects:  21% (22/101)
+2025-07-20T17:00:28.8966999Z remote: Counting objects:  22% (23/101)
+2025-07-20T17:00:28.8967554Z remote: Counting objects:  23% (24/101)
+2025-07-20T17:00:28.8968113Z remote: Counting objects:  24% (25/101)
+2025-07-20T17:00:28.8968671Z remote: Counting objects:  25% (26/101)
+2025-07-20T17:00:28.8969227Z remote: Counting objects:  26% (27/101)
+2025-07-20T17:00:28.8969773Z remote: Counting objects:  27% (28/101)
+2025-07-20T17:00:28.8970328Z remote: Counting objects:  28% (29/101)
+2025-07-20T17:00:28.8970879Z remote: Counting objects:  29% (30/101)
+2025-07-20T17:00:28.8971439Z remote: Counting objects:  30% (31/101)
+2025-07-20T17:00:28.8971991Z remote: Counting objects:  31% (32/101)
+2025-07-20T17:00:28.8972782Z remote: Counting objects:  32% (33/101)
+2025-07-20T17:00:28.8973371Z remote: Counting objects:  33% (34/101)
+2025-07-20T17:00:28.8973918Z remote: Counting objects:  34% (35/101)
+2025-07-20T17:00:28.8974471Z remote: Counting objects:  35% (36/101)
+2025-07-20T17:00:28.8975021Z remote: Counting objects:  36% (37/101)
+2025-07-20T17:00:28.8975569Z remote: Counting objects:  37% (38/101)
+2025-07-20T17:00:28.8976119Z remote: Counting objects:  38% (39/101)
+2025-07-20T17:00:28.8976662Z remote: Counting objects:  39% (40/101)
+2025-07-20T17:00:28.8977255Z remote: Counting objects:  40% (41/101)
+2025-07-20T17:00:28.8977802Z remote: Counting objects:  41% (42/101)
+2025-07-20T17:00:28.8978353Z remote: Counting objects:  42% (43/101)
+2025-07-20T17:00:28.8978910Z remote: Counting objects:  43% (44/101)
+2025-07-20T17:00:28.8979454Z remote: Counting objects:  44% (45/101)
+2025-07-20T17:00:28.8979996Z remote: Counting objects:  45% (46/101)
+2025-07-20T17:00:28.8980683Z remote: Counting objects:  46% (47/101)
+2025-07-20T17:00:28.8981235Z remote: Counting objects:  47% (48/101)
+2025-07-20T17:00:28.8981775Z remote: Counting objects:  48% (49/101)
+2025-07-20T17:00:28.8982502Z remote: Counting objects:  49% (50/101)
+2025-07-20T17:00:28.8983100Z remote: Counting objects:  50% (51/101)
+2025-07-20T17:00:28.8983700Z remote: Counting objects:  51% (52/101)
+2025-07-20T17:00:28.8984274Z remote: Counting objects:  52% (53/101)
+2025-07-20T17:00:28.8984817Z remote: Counting objects:  53% (54/101)
+2025-07-20T17:00:28.8985360Z remote: Counting objects:  54% (55/101)
+2025-07-20T17:00:28.8985900Z remote: Counting objects:  55% (56/101)
+2025-07-20T17:00:28.8986446Z remote: Counting objects:  56% (57/101)
+2025-07-20T17:00:28.8986984Z remote: Counting objects:  57% (58/101)
+2025-07-20T17:00:28.8987529Z remote: Counting objects:  58% (59/101)
+2025-07-20T17:00:28.8988080Z remote: Counting objects:  59% (60/101)
+2025-07-20T17:00:28.8988632Z remote: Counting objects:  60% (61/101)
+2025-07-20T17:00:28.8989176Z remote: Counting objects:  61% (62/101)
+2025-07-20T17:00:28.8989712Z remote: Counting objects:  62% (63/101)
+2025-07-20T17:00:28.8990257Z remote: Counting objects:  63% (64/101)
+2025-07-20T17:00:28.8990802Z remote: Counting objects:  64% (65/101)
+2025-07-20T17:00:28.8991336Z remote: Counting objects:  65% (66/101)
+2025-07-20T17:00:28.8991876Z remote: Counting objects:  66% (67/101)
+2025-07-20T17:00:28.8992694Z remote: Counting objects:  67% (68/101)
+2025-07-20T17:00:28.8993245Z remote: Counting objects:  68% (69/101)
+2025-07-20T17:00:28.8993929Z remote: Counting objects:  69% (70/101)
+2025-07-20T17:00:28.8994475Z remote: Counting objects:  70% (71/101)
+2025-07-20T17:00:28.8995025Z remote: Counting objects:  71% (72/101)
+2025-07-20T17:00:28.8995564Z remote: Counting objects:  72% (73/101)
+2025-07-20T17:00:28.8996114Z remote: Counting objects:  73% (74/101)
+2025-07-20T17:00:28.8996660Z remote: Counting objects:  74% (75/101)
+2025-07-20T17:00:28.8997209Z remote: Counting objects:  75% (76/101)
+2025-07-20T17:00:28.8997743Z remote: Counting objects:  76% (77/101)
+2025-07-20T17:00:28.8998282Z remote: Counting objects:  77% (78/101)
+2025-07-20T17:00:28.8998814Z remote: Counting objects:  78% (79/101)
+2025-07-20T17:00:28.8999352Z remote: Counting objects:  79% (80/101)
+2025-07-20T17:00:28.8999894Z remote: Counting objects:  80% (81/101)
+2025-07-20T17:00:28.9000430Z remote: Counting objects:  81% (82/101)
+2025-07-20T17:00:28.9000975Z remote: Counting objects:  82% (83/101)
+2025-07-20T17:00:28.9001523Z remote: Counting objects:  83% (84/101)
+2025-07-20T17:00:28.9002067Z remote: Counting objects:  84% (85/101)
+2025-07-20T17:00:28.9002890Z remote: Counting objects:  85% (86/101)
+2025-07-20T17:00:28.9003670Z remote: Counting objects:  86% (87/101)
+2025-07-20T17:00:28.9004602Z remote: Counting objects:  87% (88/101)
+2025-07-20T17:00:28.9005579Z remote: Counting objects:  88% (89/101)
+2025-07-20T17:00:28.9006631Z remote: Counting objects:  89% (90/101)
+2025-07-20T17:00:28.9007592Z remote: Counting objects:  90% (91/101)
+2025-07-20T17:00:28.9008237Z remote: Counting objects:  91% (92/101)
+2025-07-20T17:00:28.9008888Z remote: Counting objects:  92% (93/101)
+2025-07-20T17:00:28.9009748Z remote: Counting objects:  93% (94/101)
+2025-07-20T17:00:28.9010852Z remote: Counting objects:  94% (95/101)
+2025-07-20T17:00:28.9011578Z remote: Counting objects:  95% (96/101)
+2025-07-20T17:00:28.9012351Z remote: Counting objects:  96% (97/101)
+2025-07-20T17:00:28.9013181Z remote: Counting objects:  97% (98/101)
+2025-07-20T17:00:28.9013926Z remote: Counting objects:  98% (99/101)
+2025-07-20T17:00:28.9015211Z remote: Counting objects:  99% (100/101)
+2025-07-20T17:00:28.9016377Z remote: Counting objects: 100% (101/101)
+2025-07-20T17:00:28.9017136Z remote: Counting objects: 100% (101/101), done.
+2025-07-20T17:00:28.9017747Z remote: Compressing objects:   1% (1/83)
+2025-07-20T17:00:28.9018333Z remote: Compressing objects:   2% (2/83)
+2025-07-20T17:00:28.9018905Z remote: Compressing objects:   3% (3/83)
+2025-07-20T17:00:28.9019455Z remote: Compressing objects:   4% (4/83)
+2025-07-20T17:00:28.9020003Z remote: Compressing objects:   6% (5/83)
+2025-07-20T17:00:28.9020570Z remote: Compressing objects:   7% (6/83)
+2025-07-20T17:00:28.9021138Z remote: Compressing objects:   8% (7/83)
+2025-07-20T17:00:28.9021709Z remote: Compressing objects:   9% (8/83)
+2025-07-20T17:00:28.9022407Z remote: Compressing objects:  10% (9/83)
+2025-07-20T17:00:28.9023059Z remote: Compressing objects:  12% (10/83)
+2025-07-20T17:00:28.9024113Z remote: Compressing objects:  13% (11/83)
+2025-07-20T17:00:28.9024689Z remote: Compressing objects:  14% (12/83)
+2025-07-20T17:00:28.9025249Z remote: Compressing objects:  15% (13/83)
+2025-07-20T17:00:28.9025867Z remote: Compressing objects:  16% (14/83)
+2025-07-20T17:00:28.9026422Z remote: Compressing objects:  18% (15/83)
+2025-07-20T17:00:28.9026986Z remote: Compressing objects:  19% (16/83)
+2025-07-20T17:00:28.9027540Z remote: Compressing objects:  20% (17/83)
+2025-07-20T17:00:28.9028355Z remote: Compressing objects:  21% (18/83)
+2025-07-20T17:00:28.9029221Z remote: Compressing objects:  22% (19/83)
+2025-07-20T17:00:28.9029807Z remote: Compressing objects:  24% (20/83)
+2025-07-20T17:00:28.9030540Z remote: Compressing objects:  25% (21/83)
+2025-07-20T17:00:28.9031109Z remote: Compressing objects:  26% (22/83)
+2025-07-20T17:00:28.9031666Z remote: Compressing objects:  27% (23/83)
+2025-07-20T17:00:28.9032494Z remote: Compressing objects:  28% (24/83)
+2025-07-20T17:00:28.9033087Z remote: Compressing objects:  30% (25/83)
+2025-07-20T17:00:28.9033643Z remote: Compressing objects:  31% (26/83)
+2025-07-20T17:00:28.9034209Z remote: Compressing objects:  32% (27/83)
+2025-07-20T17:00:28.9034767Z remote: Compressing objects:  33% (28/83)
+2025-07-20T17:00:28.9035326Z remote: Compressing objects:  34% (29/83)
+2025-07-20T17:00:28.9035894Z remote: Compressing objects:  36% (30/83)
+2025-07-20T17:00:28.9036769Z remote: Compressing objects:  37% (31/83)
+2025-07-20T17:00:28.9037402Z remote: Compressing objects:  38% (32/83)
+2025-07-20T17:00:28.9037967Z remote: Compressing objects:  39% (33/83)
+2025-07-20T17:00:28.9038537Z remote: Compressing objects:  40% (34/83)
+2025-07-20T17:00:28.9039120Z remote: Compressing objects:  42% (35/83)
+2025-07-20T17:00:28.9039726Z remote: Compressing objects:  43% (36/83)
+2025-07-20T17:00:28.9040281Z remote: Compressing objects:  44% (37/83)
+2025-07-20T17:00:28.9040848Z remote: Compressing objects:  45% (38/83)
+2025-07-20T17:00:28.9041533Z remote: Compressing objects:  46% (39/83)
+2025-07-20T17:00:28.9042288Z remote: Compressing objects:  48% (40/83)
+2025-07-20T17:00:28.9042929Z remote: Compressing objects:  49% (41/83)
+2025-07-20T17:00:28.9043489Z remote: Compressing objects:  50% (42/83)
+2025-07-20T17:00:28.9044162Z remote: Compressing objects:  51% (43/83)
+2025-07-20T17:00:28.9044733Z remote: Compressing objects:  53% (44/83)
+2025-07-20T17:00:28.9045292Z remote: Compressing objects:  54% (45/83)
+2025-07-20T17:00:28.9045857Z remote: Compressing objects:  55% (46/83)
+2025-07-20T17:00:28.9046420Z remote: Compressing objects:  56% (47/83)
+2025-07-20T17:00:28.9047070Z remote: Compressing objects:  57% (48/83)
+2025-07-20T17:00:28.9047861Z remote: Compressing objects:  59% (49/83)
+2025-07-20T17:00:28.9049144Z remote: Compressing objects:  60% (50/83)
+2025-07-20T17:00:28.9050283Z remote: Compressing objects:  61% (51/83)
+2025-07-20T17:00:28.9051347Z remote: Compressing objects:  62% (52/83)
+2025-07-20T17:00:28.9051955Z remote: Compressing objects:  63% (53/83)
+2025-07-20T17:00:28.9052689Z remote: Compressing objects:  65% (54/83)
+2025-07-20T17:00:28.9053268Z remote: Compressing objects:  66% (55/83)
+2025-07-20T17:00:28.9053837Z remote: Compressing objects:  67% (56/83)
+2025-07-20T17:00:28.9054400Z remote: Compressing objects:  68% (57/83)
+2025-07-20T17:00:28.9054967Z remote: Compressing objects:  69% (58/83)
+2025-07-20T17:00:28.9055534Z remote: Compressing objects:  71% (59/83)
+2025-07-20T17:00:28.9056109Z remote: Compressing objects:  72% (60/83)
+2025-07-20T17:00:28.9056784Z remote: Compressing objects:  73% (61/83)
+2025-07-20T17:00:28.9057963Z remote: Compressing objects:  74% (62/83)
+2025-07-20T17:00:28.9058966Z remote: Compressing objects:  75% (63/83)
+2025-07-20T17:00:28.9059718Z remote: Compressing objects:  77% (64/83)
+2025-07-20T17:00:28.9060728Z remote: Compressing objects:  78% (65/83)
+2025-07-20T17:00:28.9061696Z remote: Compressing objects:  79% (66/83)
+2025-07-20T17:00:28.9062877Z remote: Compressing objects:  80% (67/83)
+2025-07-20T17:00:28.9063667Z remote: Compressing objects:  81% (68/83)
+2025-07-20T17:00:28.9064550Z remote: Compressing objects:  83% (69/83)
+2025-07-20T17:00:28.9065497Z remote: Compressing objects:  84% (70/83)
+2025-07-20T17:00:28.9066259Z remote: Compressing objects:  85% (71/83)
+2025-07-20T17:00:28.9067127Z remote: Compressing objects:  86% (72/83)
+2025-07-20T17:00:28.9068148Z remote: Compressing objects:  87% (73/83)
+2025-07-20T17:00:28.9068708Z remote: Compressing objects:  89% (74/83)
+2025-07-20T17:00:28.9069411Z remote: Compressing objects:  90% (75/83)
+2025-07-20T17:00:28.9070004Z remote: Compressing objects:  91% (76/83)
+2025-07-20T17:00:28.9070571Z remote: Compressing objects:  92% (77/83)
+2025-07-20T17:00:28.9071136Z remote: Compressing objects:  93% (78/83)
+2025-07-20T17:00:28.9071692Z remote: Compressing objects:  95% (79/83)
+2025-07-20T17:00:28.9072528Z remote: Compressing objects:  96% (80/83)
+2025-07-20T17:00:28.9073114Z remote: Compressing objects:  97% (81/83)
+2025-07-20T17:00:28.9073682Z remote: Compressing objects:  98% (82/83)
+2025-07-20T17:00:28.9074316Z remote: Compressing objects: 100% (83/83)
+2025-07-20T17:00:28.9075019Z remote: Compressing objects: 100% (83/83), done.
+2025-07-20T17:00:28.9075632Z Receiving objects:   0% (1/101)
+2025-07-20T17:00:28.9076086Z Receiving objects:   1% (2/101)
+2025-07-20T17:00:28.9076538Z Receiving objects:   2% (3/101)
+2025-07-20T17:00:28.9076982Z Receiving objects:   3% (4/101)
+2025-07-20T17:00:28.9077415Z Receiving objects:   4% (5/101)
+2025-07-20T17:00:28.9077864Z Receiving objects:   5% (6/101)
+2025-07-20T17:00:28.9078360Z Receiving objects:   6% (7/101)
+2025-07-20T17:00:28.9079182Z Receiving objects:   7% (8/101)
+2025-07-20T17:00:28.9079797Z Receiving objects:   8% (9/101)
+2025-07-20T17:00:28.9080251Z Receiving objects:   9% (10/101)
+2025-07-20T17:00:28.9080706Z Receiving objects:  10% (11/101)
+2025-07-20T17:00:28.9081237Z Receiving objects:  11% (12/101)
+2025-07-20T17:00:28.9082010Z Receiving objects:  12% (13/101)
+2025-07-20T17:00:28.9082932Z Receiving objects:  13% (14/101)
+2025-07-20T17:00:28.9083717Z Receiving objects:  14% (15/101)
+2025-07-20T17:00:28.9084388Z Receiving objects:  15% (16/101)
+2025-07-20T17:00:28.9085246Z Receiving objects:  16% (17/101)
+2025-07-20T17:00:28.9086147Z Receiving objects:  17% (18/101)
+2025-07-20T17:00:28.9087066Z Receiving objects:  18% (19/101)
+2025-07-20T17:00:28.9087971Z Receiving objects:  19% (20/101)
+2025-07-20T17:00:28.9088649Z Receiving objects:  20% (21/101)
+2025-07-20T17:00:28.9089110Z Receiving objects:  21% (22/101)
+2025-07-20T17:00:28.9089739Z Receiving objects:  22% (23/101)
+2025-07-20T17:00:28.9090214Z Receiving objects:  23% (24/101)
+2025-07-20T17:00:28.9090673Z Receiving objects:  24% (25/101)
+2025-07-20T17:00:28.9091127Z Receiving objects:  25% (26/101)
+2025-07-20T17:00:28.9091809Z Receiving objects:  26% (27/101)
+2025-07-20T17:00:28.9092752Z Receiving objects:  27% (28/101)
+2025-07-20T17:00:28.9093386Z Receiving objects:  28% (29/101)
+2025-07-20T17:00:28.9094155Z Receiving objects:  29% (30/101)
+2025-07-20T17:00:28.9094981Z Receiving objects:  30% (31/101)
+2025-07-20T17:00:28.9095583Z Receiving objects:  31% (32/101)
+2025-07-20T17:00:28.9096203Z Receiving objects:  32% (33/101)
+2025-07-20T17:00:28.9096801Z Receiving objects:  33% (34/101)
+2025-07-20T17:00:28.9097512Z Receiving objects:  34% (35/101)
+2025-07-20T17:00:28.9098293Z Receiving objects:  35% (36/101)
+2025-07-20T17:00:28.9099047Z Receiving objects:  36% (37/101)
+2025-07-20T17:00:28.9099934Z Receiving objects:  37% (38/101)
+2025-07-20T17:00:28.9100833Z Receiving objects:  38% (39/101)
+2025-07-20T17:00:28.9101716Z Receiving objects:  39% (40/101)
+2025-07-20T17:00:28.9102624Z Receiving objects:  40% (41/101)
+2025-07-20T17:00:28.9103096Z Receiving objects:  41% (42/101)
+2025-07-20T17:00:28.9103544Z Receiving objects:  42% (43/101)
+2025-07-20T17:00:28.9104004Z Receiving objects:  43% (44/101)
+2025-07-20T17:00:28.9104459Z Receiving objects:  44% (45/101)
+2025-07-20T17:00:28.9104916Z Receiving objects:  45% (46/101)
+2025-07-20T17:00:28.9105362Z Receiving objects:  46% (47/101)
+2025-07-20T17:00:28.9105840Z Receiving objects:  47% (48/101)
+2025-07-20T17:00:28.9106291Z Receiving objects:  48% (49/101)
+2025-07-20T17:00:28.9106734Z Receiving objects:  49% (50/101)
+2025-07-20T17:00:28.9107180Z Receiving objects:  50% (51/101)
+2025-07-20T17:00:28.9107804Z Receiving objects:  51% (52/101)
+2025-07-20T17:00:28.9108255Z Receiving objects:  52% (53/101)
+2025-07-20T17:00:28.9108704Z Receiving objects:  53% (54/101)
+2025-07-20T17:00:28.9109150Z Receiving objects:  54% (55/101)
+2025-07-20T17:00:28.9109614Z Receiving objects:  55% (56/101)
+2025-07-20T17:00:28.9110056Z Receiving objects:  56% (57/101)
+2025-07-20T17:00:28.9110497Z Receiving objects:  57% (58/101)
+2025-07-20T17:00:28.9110942Z Receiving objects:  58% (59/101)
+2025-07-20T17:00:28.9111385Z Receiving objects:  59% (60/101)
+2025-07-20T17:00:28.9111817Z Receiving objects:  60% (61/101)
+2025-07-20T17:00:28.9112629Z Receiving objects:  61% (62/101)
+2025-07-20T17:00:28.9113089Z Receiving objects:  62% (63/101)
+2025-07-20T17:00:28.9113540Z Receiving objects:  63% (64/101)
+2025-07-20T17:00:28.9113983Z Receiving objects:  64% (65/101)
+2025-07-20T17:00:28.9114419Z Receiving objects:  65% (66/101)
+2025-07-20T17:00:28.9114863Z Receiving objects:  66% (67/101)
+2025-07-20T17:00:28.9115422Z Receiving objects:  67% (68/101)
+2025-07-20T17:00:28.9116039Z Receiving objects:  68% (69/101)
+2025-07-20T17:00:28.9116489Z Receiving objects:  69% (70/101)
+2025-07-20T17:00:28.9117122Z Receiving objects:  70% (71/101)
+2025-07-20T17:00:28.9117886Z Receiving objects:  71% (72/101)
+2025-07-20T17:00:28.9118694Z Receiving objects:  72% (73/101)
+2025-07-20T17:00:28.9119360Z Receiving objects:  73% (74/101)
+2025-07-20T17:00:28.9119872Z Receiving objects:  74% (75/101)
+2025-07-20T17:00:28.9120327Z Receiving objects:  75% (76/101)
+2025-07-20T17:00:28.9120944Z Receiving objects:  76% (77/101)
+2025-07-20T17:00:28.9121723Z Receiving objects:  77% (78/101)
+2025-07-20T17:00:28.9122727Z Receiving objects:  78% (79/101)
+2025-07-20T17:00:28.9123586Z Receiving objects:  79% (80/101)
+2025-07-20T17:00:28.9124343Z Receiving objects:  80% (81/101)
+2025-07-20T17:00:28.9124943Z Receiving objects:  81% (82/101)
+2025-07-20T17:00:28.9125717Z Receiving objects:  82% (83/101)
+2025-07-20T17:00:28.9126608Z Receiving objects:  83% (84/101)
+2025-07-20T17:00:28.9127522Z Receiving objects:  84% (85/101)
+2025-07-20T17:00:28.9128341Z Receiving objects:  85% (86/101)
+2025-07-20T17:00:28.9129111Z Receiving objects:  86% (87/101)
+2025-07-20T17:00:28.9129897Z Receiving objects:  87% (88/101)
+2025-07-20T17:00:28.9130952Z Receiving objects:  88% (89/101)
+2025-07-20T17:00:28.9131652Z Receiving objects:  89% (90/101)
+2025-07-20T17:00:28.9132366Z Receiving objects:  90% (91/101)
+2025-07-20T17:00:28.9133144Z Receiving objects:  91% (92/101)
+2025-07-20T17:00:28.9133994Z Receiving objects:  92% (93/101)
+2025-07-20T17:00:28.9134766Z Receiving objects:  93% (94/101)
+2025-07-20T17:00:28.9135591Z Receiving objects:  94% (95/101)
+2025-07-20T17:00:28.9136410Z Receiving objects:  95% (96/101)
+2025-07-20T17:00:28.9137364Z Receiving objects:  96% (97/101)
+2025-07-20T17:00:28.9138554Z remote: Total 101 (delta 19), reused 62 (delta 11), pack-reused 0 (from 0)
+2025-07-20T17:00:28.9139961Z Receiving objects:  97% (98/101)
+2025-07-20T17:00:28.9140896Z Receiving objects:  98% (99/101)
+2025-07-20T17:00:28.9141786Z Receiving objects:  99% (100/101)
+2025-07-20T17:00:28.9142785Z Receiving objects: 100% (101/101)
+2025-07-20T17:00:28.9143790Z Receiving objects: 100% (101/101), 105.74 KiB | 11.75 MiB/s, done.
+2025-07-20T17:00:28.9144919Z Resolving deltas:   0% (0/19)
+2025-07-20T17:00:28.9145740Z Resolving deltas:   5% (1/19)
+2025-07-20T17:00:28.9146517Z Resolving deltas:  10% (2/19)
+2025-07-20T17:00:28.9147224Z Resolving deltas:  15% (3/19)
+2025-07-20T17:00:28.9147676Z Resolving deltas:  21% (4/19)
+2025-07-20T17:00:28.9148397Z Resolving deltas:  26% (5/19)
+2025-07-20T17:00:28.9149124Z Resolving deltas:  31% (6/19)
+2025-07-20T17:00:28.9149866Z Resolving deltas:  36% (7/19)
+2025-07-20T17:00:28.9150593Z Resolving deltas:  42% (8/19)
+2025-07-20T17:00:28.9151355Z Resolving deltas:  47% (9/19)
+2025-07-20T17:00:28.9152081Z Resolving deltas:  52% (10/19)
+2025-07-20T17:00:28.9152978Z Resolving deltas:  57% (11/19)
+2025-07-20T17:00:28.9153718Z Resolving deltas:  63% (12/19)
+2025-07-20T17:00:28.9168661Z Resolving deltas:  68% (13/19)
+2025-07-20T17:00:28.9169125Z Resolving deltas:  73% (14/19)
+2025-07-20T17:00:28.9169581Z Resolving deltas:  78% (15/19)
+2025-07-20T17:00:28.9170213Z Resolving deltas:  84% (16/19)
+2025-07-20T17:00:28.9170971Z Resolving deltas:  89% (17/19)
+2025-07-20T17:00:28.9171694Z Resolving deltas:  94% (18/19)
+2025-07-20T17:00:28.9172559Z Resolving deltas: 100% (19/19)
+2025-07-20T17:00:28.9173164Z Resolving deltas: 100% (19/19), done.
+2025-07-20T17:00:28.9224118Z From https://github.com/Felix-neko/architecture-pro-cinemaabyss
+2025-07-20T17:00:28.9225107Z  * [new ref]         5142a677bcb5df094e9f365f1b1fafa9afe30030 -> origin/sandboxing
+2025-07-20T17:00:28.9249410Z ##[endgroup]
+2025-07-20T17:00:28.9250583Z ##[group]Determining the checkout info
+2025-07-20T17:00:28.9251993Z ##[endgroup]
+2025-07-20T17:00:28.9253331Z ##[group]Checking out the ref
+2025-07-20T17:00:28.9257303Z [command]/usr/bin/git checkout --progress --force -B sandboxing refs/remotes/origin/sandboxing
+2025-07-20T17:00:28.9346629Z Switched to a new branch 'sandboxing'
+2025-07-20T17:00:28.9349839Z branch 'sandboxing' set up to track 'origin/sandboxing'.
+2025-07-20T17:00:28.9356136Z ##[endgroup]
+2025-07-20T17:00:28.9387880Z [command]/usr/bin/git log -1 --format='%H'
+2025-07-20T17:00:28.9407993Z '5142a677bcb5df094e9f365f1b1fafa9afe30030'
+2025-07-20T17:00:28.9589922Z ##[group]Run docker compose --version
+2025-07-20T17:00:28.9590542Z [36;1mdocker compose --version[0m
+2025-07-20T17:00:28.9621841Z shell: /usr/bin/bash -e {0}
+2025-07-20T17:00:28.9622574Z ##[endgroup]
+2025-07-20T17:00:31.3849779Z Usage:  docker compose [OPTIONS] COMMAND
+2025-07-20T17:00:31.3850282Z
+2025-07-20T17:00:31.3850545Z Define and run multi-container applications with Docker
+2025-07-20T17:00:31.3850973Z
+2025-07-20T17:00:31.3851123Z Options:
+2025-07-20T17:00:31.3851600Z       --all-resources              Include all resources, even those not
+2025-07-20T17:00:31.3852919Z                                    used by services
+2025-07-20T17:00:31.3853604Z       --ansi string                Control when to print ANSI control
+2025-07-20T17:00:31.3854775Z                                    characters ("never"|"always"|"auto")
+2025-07-20T17:00:31.3855140Z                                    (default "auto")
+2025-07-20T17:00:31.3855629Z       --compatibility              Run compose in backward compatibility mode
+2025-07-20T17:00:31.3856041Z       --dry-run                    Execute command in dry run mode
+2025-07-20T17:00:31.3856491Z       --env-file stringArray       Specify an alternate environment file
+2025-07-20T17:00:31.3856926Z   -f, --file stringArray           Compose configuration files
+2025-07-20T17:00:31.3857343Z       --parallel int               Control max parallelism, -1 for
+2025-07-20T17:00:31.3857720Z                                    unlimited (default -1)
+2025-07-20T17:00:31.3858103Z       --profile stringArray        Specify a profile to enable
+2025-07-20T17:00:31.3858531Z       --progress string            Set type of progress output (auto,
+2025-07-20T17:00:31.3917425Z                                    tty, plain, json, quiet) (default "auto")
+2025-07-20T17:00:31.3918265Z       --project-directory string   Specify an alternate working directory
+2025-07-20T17:00:31.3919083Z                                    (default: the path of the, first
+2025-07-20T17:00:31.3919693Z                                    specified, Compose file)
+2025-07-20T17:00:31.3920345Z   -p, --project-name string        Project name
+2025-07-20T17:00:31.3920810Z
+2025-07-20T17:00:31.3921009Z Commands:
+2025-07-20T17:00:31.3921646Z   attach      Attach local standard input, output, and error streams to a service's running container
+2025-07-20T17:00:31.3922687Z   build       Build or rebuild services
+2025-07-20T17:00:31.3923301Z   commit      Create a new image from a service container's changes
+2025-07-20T17:00:31.3924146Z   config      Parse, resolve and render compose file in canonical format
+2025-07-20T17:00:31.3925064Z   cp          Copy files/folders between a service container and the local filesystem
+2025-07-20T17:00:31.3926348Z   create      Creates containers for a service
+2025-07-20T17:00:31.3926942Z   down        Stop and remove containers, networks
+2025-07-20T17:00:31.3927544Z   events      Receive real time events from containers
+2025-07-20T17:00:31.3928257Z   exec        Execute a command in a running container
+2025-07-20T17:00:31.3928944Z   export      Export a service container's filesystem as a tar archive
+2025-07-20T17:00:31.3929660Z   images      List images used by the created containers
+2025-07-20T17:00:31.3930241Z   kill        Force stop service containers
+2025-07-20T17:00:31.3930787Z   logs        View output from containers
+2025-07-20T17:00:31.3931322Z   ls          List running compose projects
+2025-07-20T17:00:31.3931857Z   pause       Pause services
+2025-07-20T17:00:31.3933094Z   port        Print the public port for a port binding
+2025-07-20T17:00:31.3933719Z   ps          List containers
+2025-07-20T17:00:31.3934209Z   publish     Publish compose application
+2025-07-20T17:00:31.3934798Z   pull        Pull service images
+2025-07-20T17:00:31.3935267Z   push        Push service images
+2025-07-20T17:00:31.3935797Z   restart     Restart service containers
+2025-07-20T17:00:31.3936284Z   rm          Removes stopped service containers
+2025-07-20T17:00:31.3936879Z   run         Run a one-off command on a service
+2025-07-20T17:00:31.3937200Z   scale       Scale services
+2025-07-20T17:00:31.3937456Z   start       Start services
+2025-07-20T17:00:31.3937801Z   stats       Display a live stream of container(s) resource usage statistics
+2025-07-20T17:00:31.3938176Z   stop        Stop services
+2025-07-20T17:00:31.3938440Z   top         Display the running processes
+2025-07-20T17:00:31.3938734Z   unpause     Unpause services
+2025-07-20T17:00:31.3938998Z   up          Create and start containers
+2025-07-20T17:00:31.3939331Z   version     Show the Docker Compose version information
+2025-07-20T17:00:31.3939729Z   wait        Block until containers of all (or specified) services stop.
+2025-07-20T17:00:31.3940261Z   watch       Watch build context for service and rebuild/refresh containers when files are updated
+2025-07-20T17:00:31.3940610Z
+2025-07-20T17:00:31.3940829Z Run 'docker compose COMMAND --help' for more information on a command.
+2025-07-20T17:00:31.3973492Z ##[group]Run docker compose up -d
+2025-07-20T17:00:31.3973876Z [36;1mdocker compose up -d[0m
+2025-07-20T17:00:31.3974148Z [36;1m# Wait for services to be ready[0m
+2025-07-20T17:00:31.3974486Z [36;1mecho "Waiting for services to be ready..."[0m
+2025-07-20T17:00:31.3974803Z [36;1msleep 120[0m
+2025-07-20T17:00:31.4003184Z shell: /usr/bin/bash -e {0}
+2025-07-20T17:00:31.4003473Z ##[endgroup]
+2025-07-20T17:00:31.4724373Z time="2025-07-20T17:00:31Z" level=warning msg="/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+2025-07-20T17:00:31.4957219Z  kafka-ui Pulling
+2025-07-20T17:00:31.4957860Z  kafka Pulling
+2025-07-20T17:00:31.4958119Z  zookeeper Pulling
+2025-07-20T17:00:31.4958969Z  postgres Pulling
+2025-07-20T17:00:31.7238464Z  131f1a26eef0 Pulling fs layer
+2025-07-20T17:00:31.7240319Z  16b78ed2e822 Pulling fs layer
+2025-07-20T17:00:31.7241144Z  e7233e20a08e Pulling fs layer
+2025-07-20T17:00:31.7246316Z  9b9cbc4e490c Pulling fs layer
+2025-07-20T17:00:31.7246815Z  f7352f1ba78a Pulling fs layer
+2025-07-20T17:00:31.7247300Z  e06c925589f1 Pulling fs layer
+2025-07-20T17:00:31.7247739Z  3a498372ace6 Pulling fs layer
+2025-07-20T17:00:31.7248188Z  2ea0fca7e4a4 Pulling fs layer
+2025-07-20T17:00:31.7248632Z  c33c6c0781fc Pulling fs layer
+2025-07-20T17:00:31.7249083Z  45f1197956c6 Pulling fs layer
+2025-07-20T17:00:31.7249509Z  1dcef6fb6396 Pulling fs layer
+2025-07-20T17:00:31.7249894Z  2ea0fca7e4a4 Waiting
+2025-07-20T17:00:31.7250143Z  c33c6c0781fc Waiting
+2025-07-20T17:00:31.7250379Z  45f1197956c6 Waiting
+2025-07-20T17:00:31.7250802Z  1dcef6fb6396 Waiting
+2025-07-20T17:00:31.7251513Z  9b9cbc4e490c Waiting
+2025-07-20T17:00:31.7251862Z  f7352f1ba78a Waiting
+2025-07-20T17:00:31.7252084Z  e06c925589f1 Waiting
+2025-07-20T17:00:31.7252584Z  3a498372ace6 Waiting
+2025-07-20T17:00:31.7337726Z  a3ed95caeb02 Pulling fs layer
+2025-07-20T17:00:31.7338754Z  ef38b711a50f Pulling fs layer
+2025-07-20T17:00:31.7339267Z  e057c74597c7 Pulling fs layer
+2025-07-20T17:00:31.7339943Z  666c214f6385 Pulling fs layer
+2025-07-20T17:00:31.7340459Z  c3d6a96f1ffc Pulling fs layer
+2025-07-20T17:00:31.7340892Z  3fe26a83e0ca Pulling fs layer
+2025-07-20T17:00:31.7341220Z  3d3a7dd3a3b1 Pulling fs layer
+2025-07-20T17:00:31.7341524Z  a3ed95caeb02 Waiting
+2025-07-20T17:00:31.7341772Z  f8cc938abe5f Pulling fs layer
+2025-07-20T17:00:31.7342072Z  9978b75f7a58 Pulling fs layer
+2025-07-20T17:00:31.7342643Z  4d4dbcc8f8cc Pulling fs layer
+2025-07-20T17:00:31.7342982Z  ef38b711a50f Waiting
+2025-07-20T17:00:31.7343221Z  8b130a9baa49 Pulling fs layer
+2025-07-20T17:00:31.7343490Z  6b9611650a73 Pulling fs layer
+2025-07-20T17:00:31.7343728Z  e057c74597c7 Waiting
+2025-07-20T17:00:31.7343961Z  5df5aac51927 Pulling fs layer
+2025-07-20T17:00:31.7344207Z  76eea4448d9b Pulling fs layer
+2025-07-20T17:00:31.7344451Z  666c214f6385 Waiting
+2025-07-20T17:00:31.7344683Z  8b66990876c6 Pulling fs layer
+2025-07-20T17:00:31.7344930Z  f0dd38204b6f Pulling fs layer
+2025-07-20T17:00:31.7345175Z  c3d6a96f1ffc Waiting
+2025-07-20T17:00:31.7345390Z  3fe26a83e0ca Waiting
+2025-07-20T17:00:31.7345613Z  3d3a7dd3a3b1 Waiting
+2025-07-20T17:00:31.7345828Z  f8cc938abe5f Waiting
+2025-07-20T17:00:31.7346047Z  9978b75f7a58 Waiting
+2025-07-20T17:00:31.7346261Z  4d4dbcc8f8cc Waiting
+2025-07-20T17:00:31.7346480Z  76eea4448d9b Waiting
+2025-07-20T17:00:31.7346690Z  8b130a9baa49 Waiting
+2025-07-20T17:00:31.7346909Z  8b66990876c6 Waiting
+2025-07-20T17:00:31.7347119Z  6b9611650a73 Waiting
+2025-07-20T17:00:31.7347330Z  5df5aac51927 Waiting
+2025-07-20T17:00:31.7347551Z  f0dd38204b6f Waiting
+2025-07-20T17:00:31.7922282Z  0ce1dd7918a4 Pulling fs layer
+2025-07-20T17:00:31.7923288Z  396900a6066f Pulling fs layer
+2025-07-20T17:00:31.7923974Z  f86135b615e8 Pulling fs layer
+2025-07-20T17:00:31.7924457Z  7efc01291e39 Pulling fs layer
+2025-07-20T17:00:31.7924753Z  03798d644f93 Pulling fs layer
+2025-07-20T17:00:31.7925417Z  61256e5d038d Pulling fs layer
+2025-07-20T17:00:31.7925725Z  4f27eecc6d58 Pulling fs layer
+2025-07-20T17:00:31.7926122Z  0ce1dd7918a4 Waiting
+2025-07-20T17:00:31.7926463Z  f86135b615e8 Waiting
+2025-07-20T17:00:31.7926686Z  61256e5d038d Waiting
+2025-07-20T17:00:31.7927041Z  7efc01291e39 Waiting
+2025-07-20T17:00:31.7927258Z  03798d644f93 Waiting
+2025-07-20T17:00:31.7927476Z  4f27eecc6d58 Waiting
+2025-07-20T17:00:31.7927697Z  396900a6066f Waiting
+2025-07-20T17:00:31.8063499Z  16b78ed2e822 Downloading [==========================>                        ]     934B/1.732kB
+2025-07-20T17:00:31.8064485Z  16b78ed2e822 Downloading [==================================================>]  1.732kB/1.732kB
+2025-07-20T17:00:31.8064970Z  16b78ed2e822 Verifying Checksum
+2025-07-20T17:00:31.8065381Z  16b78ed2e822 Download complete
+2025-07-20T17:00:31.8256202Z  131f1a26eef0 Downloading [>                                                  ]  403.9kB/39.62MB
+2025-07-20T17:00:31.8287728Z  3da95a905ed5 Pulling fs layer
+2025-07-20T17:00:31.8288252Z  19f0ef5c05c1 Pulling fs layer
+2025-07-20T17:00:31.8288693Z  12d7c798daac Pulling fs layer
+2025-07-20T17:00:31.8289107Z  4a8cf8876eaf Pulling fs layer
+2025-07-20T17:00:31.8289445Z  49c81de484d4 Pulling fs layer
+2025-07-20T17:00:31.8289925Z  3da95a905ed5 Waiting
+2025-07-20T17:00:31.8290180Z  6daa5c145afb Pulling fs layer
+2025-07-20T17:00:31.8290446Z  031df4666a4c Pulling fs layer
+2025-07-20T17:00:31.8290703Z  fcbd6877eb57 Pulling fs layer
+2025-07-20T17:00:31.8290951Z  19f0ef5c05c1 Waiting
+2025-07-20T17:00:31.8291190Z  ab9fab465df4 Pulling fs layer
+2025-07-20T17:00:31.8291437Z  1fccaae8d989 Pulling fs layer
+2025-07-20T17:00:31.8291680Z  12d7c798daac Waiting
+2025-07-20T17:00:31.8292396Z  4a8cf8876eaf Waiting
+2025-07-20T17:00:31.8292652Z  49c81de484d4 Waiting
+2025-07-20T17:00:31.8292872Z  6daa5c145afb Waiting
+2025-07-20T17:00:31.8293108Z  a64e2dbebcef Pulling fs layer
+2025-07-20T17:00:31.8293363Z  8e1f84547c99 Pulling fs layer
+2025-07-20T17:00:31.8293641Z  031df4666a4c Waiting
+2025-07-20T17:00:31.8293871Z  cc714a87c02e Pulling fs layer
+2025-07-20T17:00:31.8294123Z  d99f8490c972 Pulling fs layer
+2025-07-20T17:00:31.8294361Z  fcbd6877eb57 Waiting
+2025-07-20T17:00:31.8294584Z  ab9fab465df4 Waiting
+2025-07-20T17:00:31.8294804Z  1fccaae8d989 Waiting
+2025-07-20T17:00:31.8295015Z  a64e2dbebcef Waiting
+2025-07-20T17:00:31.8295228Z  8e1f84547c99 Waiting
+2025-07-20T17:00:31.8295433Z  cc714a87c02e Waiting
+2025-07-20T17:00:31.8295648Z  d99f8490c972 Waiting
+2025-07-20T17:00:31.8391673Z  e7233e20a08e Downloading [>                                                  ]  526.8kB/231.7MB
+2025-07-20T17:00:31.9141386Z  9b9cbc4e490c Downloading [>                                                  ]  77.39kB/7.34MB
+2025-07-20T17:00:31.9291064Z  131f1a26eef0 Downloading [=================>                                 ]  14.07MB/39.62MB
+2025-07-20T17:00:31.9411553Z  e7233e20a08e Downloading [===>                                               ]  14.93MB/231.7MB
+2025-07-20T17:00:31.9760846Z  9b9cbc4e490c Verifying Checksum
+2025-07-20T17:00:31.9762414Z  9b9cbc4e490c Download complete
+2025-07-20T17:00:32.0295850Z  131f1a26eef0 Downloading [===========================>                       ]  22.12MB/39.62MB
+2025-07-20T17:00:32.0467112Z  e7233e20a08e Downloading [========>                                          ]  40.51MB/231.7MB
+2025-07-20T17:00:32.0623475Z  f7352f1ba78a Downloading [==>                                                ]     933B/19.76kB
+2025-07-20T17:00:32.0625684Z  f7352f1ba78a Downloading [==================================================>]  19.76kB/19.76kB
+2025-07-20T17:00:32.0627010Z  f7352f1ba78a Verifying Checksum
+2025-07-20T17:00:32.0630038Z  f7352f1ba78a Download complete
+2025-07-20T17:00:32.1303521Z  131f1a26eef0 Downloading [==============================================>    ]   36.6MB/39.62MB
+2025-07-20T17:00:32.1461870Z  131f1a26eef0 Verifying Checksum
+2025-07-20T17:00:32.1469562Z  131f1a26eef0 Download complete
+2025-07-20T17:00:32.1479922Z  e7233e20a08e Downloading [===========>                                       ]  55.49MB/231.7MB
+2025-07-20T17:00:32.1527497Z  e06c925589f1 Downloading [>                                                  ]    364kB/35.54MB
+2025-07-20T17:00:32.2494289Z  e7233e20a08e Downloading [===============>                                   ]  70.98MB/231.7MB
+2025-07-20T17:00:32.2572066Z  e06c925589f1 Downloading [================>                                  ]  11.91MB/35.54MB
+2025-07-20T17:00:32.3140530Z  3a498372ace6 Downloading [==========================================>        ]     935B/1.101kB
+2025-07-20T17:00:32.3141326Z  3a498372ace6 Downloading [==================================================>]  1.101kB/1.101kB
+2025-07-20T17:00:32.3142015Z  3a498372ace6 Download complete
+2025-07-20T17:00:32.3580066Z  e06c925589f1 Downloading [==================================>                ]  24.16MB/35.54MB
+2025-07-20T17:00:32.3716105Z  e7233e20a08e Downloading [==================>                                ]  85.38MB/231.7MB
+2025-07-20T17:00:32.3908310Z  2ea0fca7e4a4 Downloading [==================================================>]     131B/131B
+2025-07-20T17:00:32.3928963Z  2ea0fca7e4a4 Verifying Checksum
+2025-07-20T17:00:32.3936448Z  2ea0fca7e4a4 Download complete
+2025-07-20T17:00:32.4160105Z  131f1a26eef0 Extracting [>                                                  ]    426kB/39.62MB
+2025-07-20T17:00:32.4413016Z  e06c925589f1 Verifying Checksum
+2025-07-20T17:00:32.4414691Z  e06c925589f1 Download complete
+2025-07-20T17:00:32.4719830Z  e7233e20a08e Downloading [====================>                              ]  95.01MB/231.7MB
+2025-07-20T17:00:32.4746821Z  c33c6c0781fc Downloading [==================================================>]     168B/168B
+2025-07-20T17:00:32.4748959Z  c33c6c0781fc Verifying Checksum
+2025-07-20T17:00:32.4749453Z  c33c6c0781fc Download complete
+2025-07-20T17:00:32.5185702Z  131f1a26eef0 Extracting [=========>                                         ]  7.668MB/39.62MB
+2025-07-20T17:00:32.5499766Z  1dcef6fb6396 Downloading [==============>                                    ]     934B/3.214kB
+2025-07-20T17:00:32.5503079Z  1dcef6fb6396 Downloading [==================================================>]  3.214kB/3.214kB
+2025-07-20T17:00:32.5506874Z  1dcef6fb6396 Verifying Checksum
+2025-07-20T17:00:32.5507727Z  1dcef6fb6396 Download complete
+2025-07-20T17:00:32.5652649Z  45f1197956c6 Downloading [>                                                  ]    536kB/87.7MB
+2025-07-20T17:00:32.5769992Z  e7233e20a08e Downloading [=======================>                           ]  111.1MB/231.7MB
+2025-07-20T17:00:32.6206833Z  131f1a26eef0 Extracting [=================>                                 ]  13.63MB/39.62MB
+2025-07-20T17:00:32.6222825Z  a3ed95caeb02 Downloading [==================================================>]      32B/32B
+2025-07-20T17:00:32.6223695Z  a3ed95caeb02 Download complete
+2025-07-20T17:00:32.6228222Z  a3ed95caeb02 Extracting [==================================================>]      32B/32B
+2025-07-20T17:00:32.6237651Z  a3ed95caeb02 Extracting [==================================================>]      32B/32B
+2025-07-20T17:00:32.6332860Z  a3ed95caeb02 Pull complete
+2025-07-20T17:00:32.6734564Z  45f1197956c6 Downloading [=====>                                             ]    9.1MB/87.7MB
+2025-07-20T17:00:32.6789014Z  e7233e20a08e Downloading [============================>                      ]  131.3MB/231.7MB
+2025-07-20T17:00:32.7247796Z  ef38b711a50f Downloading [>                                                  ]  540.7kB/67.5MB
+2025-07-20T17:00:32.7357715Z  131f1a26eef0 Extracting [========================>                          ]  19.17MB/39.62MB
+2025-07-20T17:00:32.7799238Z  e7233e20a08e Downloading [===============================>                   ]  144.7MB/231.7MB
+2025-07-20T17:00:32.7907849Z  45f1197956c6 Downloading [=======>                                           ]  13.38MB/87.7MB
+2025-07-20T17:00:32.8260987Z  ef38b711a50f Downloading [=============>                                     ]  18.12MB/67.5MB
+2025-07-20T17:00:32.8419530Z  131f1a26eef0 Extracting [==========================>                        ]   21.3MB/39.62MB
+2025-07-20T17:00:32.8868180Z  e7233e20a08e Downloading [================================>                  ]    150MB/231.7MB
+2025-07-20T17:00:32.8909963Z  45f1197956c6 Downloading [===========>                                       ]  20.84MB/87.7MB
+2025-07-20T17:00:32.9263370Z  ef38b711a50f Downloading [============================>                      ]   37.8MB/67.5MB
+2025-07-20T17:00:32.9429228Z  131f1a26eef0 Extracting [==================================>                ]  27.26MB/39.62MB
+2025-07-20T17:00:32.9913876Z  45f1197956c6 Downloading [==================>                                ]  32.58MB/87.7MB
+2025-07-20T17:00:32.9962264Z  e7233e20a08e Downloading [=================================>                 ]  155.4MB/231.7MB
+2025-07-20T17:00:33.0264974Z  ef38b711a50f Downloading [======================================>            ]  51.69MB/67.5MB
+2025-07-20T17:00:33.0916395Z  45f1197956c6 Downloading [=====================>                             ]  36.84MB/87.7MB
+2025-07-20T17:00:33.0964381Z  e7233e20a08e Downloading [==================================>                ]  161.8MB/231.7MB
+2025-07-20T17:00:33.1150284Z  ef38b711a50f Verifying Checksum
+2025-07-20T17:00:33.1151431Z  ef38b711a50f Download complete
+2025-07-20T17:00:33.1327432Z  ef38b711a50f Extracting [>                                                  ]  557.1kB/67.5MB
+2025-07-20T17:00:33.1580349Z  131f1a26eef0 Extracting [======================================>            ]  30.24MB/39.62MB
+2025-07-20T17:00:33.1973249Z  e7233e20a08e Downloading [=====================================>             ]    172MB/231.7MB
+2025-07-20T17:00:33.1979690Z  45f1197956c6 Downloading [==========================>                        ]  46.98MB/87.7MB
+2025-07-20T17:00:33.2170849Z  e057c74597c7 Downloading [>                                                  ]     933B/71.5kB
+2025-07-20T17:00:33.2223403Z  e057c74597c7 Downloading [==================================================>]   71.5kB/71.5kB
+2025-07-20T17:00:33.2227680Z  e057c74597c7 Verifying Checksum
+2025-07-20T17:00:33.2228442Z  e057c74597c7 Download complete
+2025-07-20T17:00:33.2826427Z  131f1a26eef0 Extracting [=======================================>           ]  31.52MB/39.62MB
+2025-07-20T17:00:33.2976631Z  e7233e20a08e Downloading [=======================================>           ]  184.3MB/231.7MB
+2025-07-20T17:00:33.2988124Z  45f1197956c6 Downloading [==================================>                ]  60.82MB/87.7MB
+2025-07-20T17:00:33.3215867Z  666c214f6385 Downloading [==================================================>]     366B/366B
+2025-07-20T17:00:33.3216677Z  666c214f6385 Verifying Checksum
+2025-07-20T17:00:33.3216998Z  666c214f6385 Download complete
+2025-07-20T17:00:33.3807029Z  ef38b711a50f Extracting [==>                                                ]  3.342MB/67.5MB
+2025-07-20T17:00:33.3915853Z  131f1a26eef0 Extracting [===========================================>       ]  34.08MB/39.62MB
+2025-07-20T17:00:33.4086259Z  45f1197956c6 Downloading [=====================================>             ]  65.63MB/87.7MB
+2025-07-20T17:00:33.4111648Z  e7233e20a08e Downloading [===========================================>       ]  201.9MB/231.7MB
+2025-07-20T17:00:33.4339383Z  c3d6a96f1ffc Downloading [==================================================>]     681B/681B
+2025-07-20T17:00:33.4350786Z  c3d6a96f1ffc Verifying Checksum
+2025-07-20T17:00:33.4351258Z  c3d6a96f1ffc Download complete
+2025-07-20T17:00:33.4914945Z  ef38b711a50f Extracting [====>                                              ]  6.685MB/67.5MB
+2025-07-20T17:00:33.4951622Z  131f1a26eef0 Extracting [==============================================>    ]  37.06MB/39.62MB
+2025-07-20T17:00:33.5131640Z  45f1197956c6 Downloading [===========================================>       ]  75.79MB/87.7MB
+2025-07-20T17:00:33.5149392Z  e7233e20a08e Downloading [===============================================>   ]  218.4MB/231.7MB
+2025-07-20T17:00:33.5280846Z  3fe26a83e0ca Downloading [==================================================>]     265B/265B
+2025-07-20T17:00:33.5285163Z  3fe26a83e0ca Verifying Checksum
+2025-07-20T17:00:33.5288191Z  3fe26a83e0ca Download complete
+2025-07-20T17:00:33.5660293Z  e7233e20a08e Verifying Checksum
+2025-07-20T17:00:33.5660757Z  e7233e20a08e Download complete
+2025-07-20T17:00:33.5841744Z  45f1197956c6 Download complete
+2025-07-20T17:00:33.6166612Z  ef38b711a50f Extracting [========>                                          ]  11.14MB/67.5MB
+2025-07-20T17:00:33.6204401Z  131f1a26eef0 Extracting [=================================================> ]  39.19MB/39.62MB
+2025-07-20T17:00:33.6332950Z  131f1a26eef0 Extracting [==================================================>]  39.62MB/39.62MB
+2025-07-20T17:00:33.6629220Z  9978b75f7a58 Downloading [==================================================>]     110B/110B
+2025-07-20T17:00:33.6630594Z  9978b75f7a58 Verifying Checksum
+2025-07-20T17:00:33.6631980Z  9978b75f7a58 Download complete
+2025-07-20T17:00:33.6655836Z  f8cc938abe5f Downloading [==================================================>]     361B/361B
+2025-07-20T17:00:33.6656948Z  3d3a7dd3a3b1 Downloading [>                                                  ]  530.9kB/109.9MB
+2025-07-20T17:00:33.6657555Z  f8cc938abe5f Verifying Checksum
+2025-07-20T17:00:33.6658959Z  f8cc938abe5f Download complete
+2025-07-20T17:00:33.6826417Z  131f1a26eef0 Pull complete
+2025-07-20T17:00:33.6843648Z  16b78ed2e822 Extracting [==================================================>]  1.732kB/1.732kB
+2025-07-20T17:00:33.6847753Z  16b78ed2e822 Extracting [==================================================>]  1.732kB/1.732kB
+2025-07-20T17:00:33.7297253Z  16b78ed2e822 Pull complete
+2025-07-20T17:00:33.7359971Z  ef38b711a50f Extracting [===========>                                       ]  15.04MB/67.5MB
+2025-07-20T17:00:33.7534206Z  4d4dbcc8f8cc Downloading [===================================>               ]     934B/1.312kB
+2025-07-20T17:00:33.7535795Z  4d4dbcc8f8cc Downloading [==================================================>]  1.312kB/1.312kB
+2025-07-20T17:00:33.7543326Z  4d4dbcc8f8cc Verifying Checksum
+2025-07-20T17:00:33.7543973Z  4d4dbcc8f8cc Download complete
+2025-07-20T17:00:33.8310565Z  6b9611650a73 Downloading [>                                                  ]  1.369kB/70.85kB
+2025-07-20T17:00:33.9905196Z  6b9611650a73 Downloading [=>                                                 ]  2.738kB/70.85kB
+2025-07-20T17:00:33.9906105Z  6b9611650a73 Downloading [==================================================>]  70.85kB/70.85kB
+2025-07-20T17:00:33.9906767Z  6b9611650a73 Verifying Checksum
+2025-07-20T17:00:33.9917927Z  6b9611650a73 Download complete
+2025-07-20T17:00:33.9921179Z  8b130a9baa49 Downloading [>                                                  ]  380.4kB/37.17MB
+2025-07-20T17:00:33.9926678Z  3d3a7dd3a3b1 Downloading [==>                                                ]  4.791MB/109.9MB
+2025-07-20T17:00:34.1348334Z  8b130a9baa49 Downloading [=========================>                         ]  18.89MB/37.17MB
+2025-07-20T17:00:34.1359970Z  3d3a7dd3a3b1 Downloading [=======>                                           ]  16.01MB/109.9MB
+2025-07-20T17:00:34.1816434Z  5df5aac51927 Downloading [>                                                  ]  380.4kB/37.21MB
+2025-07-20T17:00:34.2363778Z  8b130a9baa49 Downloading [=============================>                     ]   22.3MB/37.17MB
+2025-07-20T17:00:34.2434245Z  3d3a7dd3a3b1 Downloading [=======>                                           ]  17.09MB/109.9MB
+2025-07-20T17:00:34.4389016Z  5df5aac51927 Downloading [=====================>                             ]  16.17MB/37.21MB
+2025-07-20T17:00:34.4392317Z  3d3a7dd3a3b1 Downloading [========>                                          ]  17.62MB/109.9MB
+2025-07-20T17:00:34.4434535Z  8b130a9baa49 Downloading [====================================>              ]  27.21MB/37.17MB
+2025-07-20T17:00:34.4532055Z  ef38b711a50f Extracting [============>                                      ]  16.71MB/67.5MB
+2025-07-20T17:00:34.5851053Z  5df5aac51927 Downloading [============================>                      ]  21.07MB/37.21MB
+2025-07-20T17:00:34.5851971Z  3d3a7dd3a3b1 Downloading [=========>                                         ]  21.35MB/109.9MB
+2025-07-20T17:00:34.5888443Z  8b130a9baa49 Downloading [=========================================>         ]  30.98MB/37.17MB
+2025-07-20T17:00:34.6129599Z  ef38b711a50f Extracting [============>                                      ]  17.27MB/67.5MB
+2025-07-20T17:00:34.6346282Z  8b130a9baa49 Verifying Checksum
+2025-07-20T17:00:34.6358186Z  8b130a9baa49 Download complete
+2025-07-20T17:00:34.6834569Z  5df5aac51927 Verifying Checksum
+2025-07-20T17:00:34.6835082Z  5df5aac51927 Download complete
+2025-07-20T17:00:34.6891070Z  3d3a7dd3a3b1 Downloading [=================>                                 ]  38.38MB/109.9MB
+2025-07-20T17:00:34.7200782Z  76eea4448d9b Downloading [==================================================>]     740B/740B
+2025-07-20T17:00:34.7278145Z  76eea4448d9b Verifying Checksum
+2025-07-20T17:00:34.7278764Z  76eea4448d9b Download complete
+2025-07-20T17:00:34.7745352Z  8b66990876c6 Downloading [==================================================>]     709B/709B
+2025-07-20T17:00:34.7745912Z  8b66990876c6 Verifying Checksum
+2025-07-20T17:00:34.7746164Z  8b66990876c6 Download complete
+2025-07-20T17:00:34.7916561Z  3d3a7dd3a3b1 Downloading [===================>                               ]  43.21MB/109.9MB
+2025-07-20T17:00:34.8196916Z  f0dd38204b6f Downloading [==================================================>]     314B/314B
+2025-07-20T17:00:34.8197678Z  f0dd38204b6f Verifying Checksum
+2025-07-20T17:00:34.8197975Z  f0dd38204b6f Download complete
+2025-07-20T17:00:34.8927186Z  3d3a7dd3a3b1 Downloading [=====================>                             ]   47.5MB/109.9MB
+2025-07-20T17:00:34.8955294Z  ef38b711a50f Extracting [================>                                  ]  21.73MB/67.5MB
+2025-07-20T17:00:34.9001746Z  e7233e20a08e Extracting [>                                                  ]  557.1kB/231.7MB
+2025-07-20T17:00:34.9077613Z  0ce1dd7918a4 Downloading [>                                                  ]  28.31kB/2.827MB
+2025-07-20T17:00:34.9366877Z  0ce1dd7918a4 Verifying Checksum
+2025-07-20T17:00:34.9367748Z  0ce1dd7918a4 Download complete
+2025-07-20T17:00:34.9373320Z  0ce1dd7918a4 Extracting [>                                                  ]  32.77kB/2.827MB
+2025-07-20T17:00:34.9376190Z  396900a6066f Downloading [>                                                  ]  531.9kB/63.73MB
+2025-07-20T17:00:34.9958973Z  3d3a7dd3a3b1 Downloading [===============================>                   ]  69.82MB/109.9MB
+2025-07-20T17:00:35.0007197Z  ef38b711a50f Extracting [=================>                                 ]  23.95MB/67.5MB
+2025-07-20T17:00:35.0068894Z  e7233e20a08e Extracting [==>                                                ]  10.58MB/231.7MB
+2025-07-20T17:00:35.0394175Z  396900a6066f Downloading [==========>                                        ]   13.9MB/63.73MB
+2025-07-20T17:00:35.0466357Z  0ce1dd7918a4 Extracting [====>                                              ]  262.1kB/2.827MB
+2025-07-20T17:00:35.1002660Z  3d3a7dd3a3b1 Downloading [=========================================>         ]  91.25MB/109.9MB
+2025-07-20T17:00:35.1101517Z  e7233e20a08e Extracting [===>                                               ]   15.6MB/231.7MB
+2025-07-20T17:00:35.1384867Z  0ce1dd7918a4 Extracting [==================================================>]  2.827MB/2.827MB
+2025-07-20T17:00:35.1421340Z  396900a6066f Downloading [=======================>                           ]  29.37MB/63.73MB
+2025-07-20T17:00:35.1446542Z  f86135b615e8 Downloading [>                                                  ]     933B/75.19kB
+2025-07-20T17:00:35.1463966Z  f86135b615e8 Downloading [==================================================>]  75.19kB/75.19kB
+2025-07-20T17:00:35.1468406Z  f86135b615e8 Verifying Checksum
+2025-07-20T17:00:35.1469572Z  f86135b615e8 Download complete
+2025-07-20T17:00:35.1470332Z  ef38b711a50f Extracting [==================>                                ]  25.62MB/67.5MB
+2025-07-20T17:00:35.2013619Z  3d3a7dd3a3b1 Downloading [============================================>      ]  98.74MB/109.9MB
+2025-07-20T17:00:35.2152856Z  0ce1dd7918a4 Pull complete
+2025-07-20T17:00:35.2205456Z  e7233e20a08e Extracting [====>                                              ]  20.05MB/231.7MB
+2025-07-20T17:00:35.2217278Z  7efc01291e39 Downloading [=====================================>             ]     934B/1.242kB
+2025-07-20T17:00:35.2225471Z  7efc01291e39 Downloading [==================================================>]  1.242kB/1.242kB
+2025-07-20T17:00:35.2226103Z  7efc01291e39 Verifying Checksum
+2025-07-20T17:00:35.2226497Z  7efc01291e39 Download complete
+2025-07-20T17:00:35.2449097Z  396900a6066f Downloading [==================================>                ]  43.78MB/63.73MB
+2025-07-20T17:00:35.2575696Z  ef38b711a50f Extracting [=====================>                             ]  28.41MB/67.5MB
+2025-07-20T17:00:35.3010337Z  03798d644f93 Downloading [==================================================>]     115B/115B
+2025-07-20T17:00:35.3011798Z  03798d644f93 Download complete
+2025-07-20T17:00:35.3019057Z  3d3a7dd3a3b1 Downloading [=================================================> ]  109.9MB/109.9MB
+2025-07-20T17:00:35.3021719Z  3d3a7dd3a3b1 Verifying Checksum
+2025-07-20T17:00:35.3022892Z  3d3a7dd3a3b1 Download complete
+2025-07-20T17:00:35.3458456Z  396900a6066f Downloading [=======================================>           ]  50.74MB/63.73MB
+2025-07-20T17:00:35.4024958Z  4f27eecc6d58 Downloading [>                                                  ]  531.9kB/87.82MB
+2025-07-20T17:00:35.4076073Z  61256e5d038d Downloading [==================================================>]     119B/119B
+2025-07-20T17:00:35.4079883Z  61256e5d038d Verifying Checksum
+2025-07-20T17:00:35.4080543Z  61256e5d038d Download complete
+2025-07-20T17:00:35.4470621Z  396900a6066f Downloading [================================================>  ]   61.4MB/63.73MB
+2025-07-20T17:00:35.4473782Z  ef38b711a50f Extracting [======================>                            ]  30.08MB/67.5MB
+2025-07-20T17:00:35.4800940Z  396900a6066f Verifying Checksum
+2025-07-20T17:00:35.4804357Z  396900a6066f Download complete
+2025-07-20T17:00:35.5027760Z  4f27eecc6d58 Downloading [=======>                                           ]  12.32MB/87.82MB
+2025-07-20T17:00:35.5444474Z  3da95a905ed5 Downloading [>                                                  ]  298.4kB/28.23MB
+2025-07-20T17:00:35.5817540Z  19f0ef5c05c1 Downloading [=======================================>           ]     934B/1.17kB
+2025-07-20T17:00:35.5818465Z  19f0ef5c05c1 Downloading [==================================================>]   1.17kB/1.17kB
+2025-07-20T17:00:35.5821815Z  19f0ef5c05c1 Verifying Checksum
+2025-07-20T17:00:35.5823074Z  19f0ef5c05c1 Download complete
+2025-07-20T17:00:35.5908216Z  ef38b711a50f Extracting [=======================>                           ]  31.75MB/67.5MB
+2025-07-20T17:00:35.5974073Z  e7233e20a08e Extracting [=====>                                             ]   23.4MB/231.7MB
+2025-07-20T17:00:35.6057813Z  4f27eecc6d58 Downloading [============>                                      ]  21.41MB/87.82MB
+2025-07-20T17:00:35.6076497Z  396900a6066f Extracting [>                                                  ]  557.1kB/63.73MB
+2025-07-20T17:00:35.6457117Z  3da95a905ed5 Downloading [==================>                                ]  10.62MB/28.23MB
+2025-07-20T17:00:35.6832804Z  12d7c798daac Downloading [>                                                  ]  45.88kB/4.534MB
+2025-07-20T17:00:35.7010245Z  ef38b711a50f Extracting [========================>                          ]  32.87MB/67.5MB
+2025-07-20T17:00:35.7047587Z  e7233e20a08e Extracting [======>                                            ]  29.52MB/231.7MB
+2025-07-20T17:00:35.7120757Z  4f27eecc6d58 Downloading [====================>                              ]  35.26MB/87.82MB
+2025-07-20T17:00:35.7270618Z  396900a6066f Extracting [===>                                               ]  4.456MB/63.73MB
+2025-07-20T17:00:35.7273814Z  12d7c798daac Verifying Checksum
+2025-07-20T17:00:35.7274608Z  12d7c798daac Download complete
+2025-07-20T17:00:35.7289756Z  3da95a905ed5 Verifying Checksum
+2025-07-20T17:00:35.7290455Z  3da95a905ed5 Download complete
+2025-07-20T17:00:35.7879404Z  3da95a905ed5 Extracting [>                                                  ]  294.9kB/28.23MB
+2025-07-20T17:00:35.8037177Z  ef38b711a50f Extracting [=========================>                         ]  33.98MB/67.5MB
+2025-07-20T17:00:35.8128634Z  e7233e20a08e Extracting [=======>                                           ]  36.21MB/231.7MB
+2025-07-20T17:00:35.8171703Z  4a8cf8876eaf Downloading [>                                                  ]  14.48kB/1.447MB
+2025-07-20T17:00:35.8202556Z  4f27eecc6d58 Downloading [============================>                      ]  49.67MB/87.82MB
+2025-07-20T17:00:35.8368865Z  396900a6066f Extracting [======>                                            ]  8.913MB/63.73MB
+2025-07-20T17:00:35.8426241Z  49c81de484d4 Downloading [>                                                  ]  81.75kB/8.066MB
+2025-07-20T17:00:35.8481397Z  4a8cf8876eaf Download complete
+2025-07-20T17:00:35.8947587Z  3da95a905ed5 Extracting [=====>                                             ]  3.244MB/28.23MB
+2025-07-20T17:00:35.9051905Z  ef38b711a50f Extracting [=========================>                         ]  35.09MB/67.5MB
+2025-07-20T17:00:35.9209707Z  e7233e20a08e Extracting [=========>                                         ]  44.56MB/231.7MB
+2025-07-20T17:00:35.9218628Z  4f27eecc6d58 Downloading [================================>                  ]  56.62MB/87.82MB
+2025-07-20T17:00:35.9286382Z  6daa5c145afb Downloading [>                                                  ]  13.11kB/1.196MB
+2025-07-20T17:00:35.9374945Z  49c81de484d4 Verifying Checksum
+2025-07-20T17:00:35.9376008Z  49c81de484d4 Download complete
+2025-07-20T17:00:35.9556068Z  396900a6066f Extracting [==========>                                        ]  12.81MB/63.73MB
+2025-07-20T17:00:35.9764780Z  6daa5c145afb Downloading [==================================================>]  1.196MB/1.196MB
+2025-07-20T17:00:35.9767853Z  6daa5c145afb Verifying Checksum
+2025-07-20T17:00:35.9775124Z  6daa5c145afb Download complete
+2025-07-20T17:00:35.9967111Z  3da95a905ed5 Extracting [=========>                                         ]  5.603MB/28.23MB
+2025-07-20T17:00:36.0179647Z  ef38b711a50f Extracting [============================>                      ]  37.88MB/67.5MB
+2025-07-20T17:00:36.0185185Z  031df4666a4c Downloading [==================================================>]     116B/116B
+2025-07-20T17:00:36.0185836Z  031df4666a4c Verifying Checksum
+2025-07-20T17:00:36.0191510Z  031df4666a4c Download complete
+2025-07-20T17:00:36.0234485Z  4f27eecc6d58 Downloading [=========================================>         ]  73.69MB/87.82MB
+2025-07-20T17:00:36.0286995Z  e7233e20a08e Extracting [==========>                                        ]  50.69MB/231.7MB
+2025-07-20T17:00:36.0619415Z  396900a6066f Extracting [=============>                                     ]  16.71MB/63.73MB
+2025-07-20T17:00:36.0693859Z  fcbd6877eb57 Downloading [==============>                                    ]     934B/3.139kB
+2025-07-20T17:00:36.0699475Z  fcbd6877eb57 Downloading [==================================================>]  3.139kB/3.139kB
+2025-07-20T17:00:36.0709827Z  fcbd6877eb57 Verifying Checksum
+2025-07-20T17:00:36.0710521Z  fcbd6877eb57 Download complete
+2025-07-20T17:00:36.1027117Z  3da95a905ed5 Extracting [==============>                                    ]  8.258MB/28.23MB
+2025-07-20T17:00:36.1226994Z  ab9fab465df4 Downloading [>                                                  ]  526.8kB/108.6MB
+2025-07-20T17:00:36.1286196Z  4f27eecc6d58 Downloading [============================================>      ]  79.03MB/87.82MB
+2025-07-20T17:00:36.1366513Z  e7233e20a08e Extracting [============>                                      ]  59.05MB/231.7MB
+2025-07-20T17:00:36.1587574Z  1fccaae8d989 Downloading [====>                                              ]     934B/9.522kB
+2025-07-20T17:00:36.1589663Z  1fccaae8d989 Downloading [==================================================>]  9.522kB/9.522kB
+2025-07-20T17:00:36.1594799Z  1fccaae8d989 Verifying Checksum
+2025-07-20T17:00:36.1595215Z  1fccaae8d989 Download complete
+2025-07-20T17:00:36.1834145Z  396900a6066f Extracting [================>                                  ]  20.61MB/63.73MB
+2025-07-20T17:00:36.2009015Z  ef38b711a50f Extracting [=============================>                     ]  40.11MB/67.5MB
+2025-07-20T17:00:36.2253704Z  ab9fab465df4 Downloading [===========>                                       ]  24.62MB/108.6MB
+2025-07-20T17:00:36.2358100Z  3da95a905ed5 Extracting [================>                                  ]  9.437MB/28.23MB
+2025-07-20T17:00:36.2393120Z  e7233e20a08e Extracting [=============>                                     ]  64.06MB/231.7MB
+2025-07-20T17:00:36.2470371Z  4f27eecc6d58 Downloading [================================================>  ]  84.93MB/87.82MB
+2025-07-20T17:00:36.2608350Z  4f27eecc6d58 Verifying Checksum
+2025-07-20T17:00:36.2608987Z  4f27eecc6d58 Download complete
+2025-07-20T17:00:36.2711715Z  a64e2dbebcef Downloading [==================================================>]     128B/128B
+2025-07-20T17:00:36.2727130Z  a64e2dbebcef Verifying Checksum
+2025-07-20T17:00:36.2728664Z  a64e2dbebcef Download complete
+2025-07-20T17:00:36.2846582Z  396900a6066f Extracting [==================>                                ]   23.4MB/63.73MB
+2025-07-20T17:00:36.3256977Z  ab9fab465df4 Downloading [=====================>                             ]  47.57MB/108.6MB
+2025-07-20T17:00:36.3372330Z  3da95a905ed5 Extracting [==================>                                ]  10.62MB/28.23MB
+2025-07-20T17:00:36.3461103Z  e7233e20a08e Extracting [==============>                                    ]  69.07MB/231.7MB
+2025-07-20T17:00:36.3523385Z  8e1f84547c99 Downloading [==================================================>]     167B/167B
+2025-07-20T17:00:36.3533598Z  8e1f84547c99 Verifying Checksum
+2025-07-20T17:00:36.3534026Z  8e1f84547c99 Download complete
+2025-07-20T17:00:36.3658321Z  cc714a87c02e Downloading [=======>                                           ]     934B/5.926kB
+2025-07-20T17:00:36.3663947Z  cc714a87c02e Downloading [==================================================>]  5.926kB/5.926kB
+2025-07-20T17:00:36.3664883Z  cc714a87c02e Verifying Checksum
+2025-07-20T17:00:36.3665768Z  cc714a87c02e Download complete
+2025-07-20T17:00:36.3710610Z  ef38b711a50f Extracting [==============================>                    ]  40.67MB/67.5MB
+2025-07-20T17:00:36.4006139Z  396900a6066f Extracting [=====================>                             ]   27.3MB/63.73MB
+2025-07-20T17:00:36.4347062Z  ab9fab465df4 Downloading [=================================>                 ]   73.7MB/108.6MB
+2025-07-20T17:00:36.4377389Z  3da95a905ed5 Extracting [======================>                            ]  12.98MB/28.23MB
+2025-07-20T17:00:36.4401117Z  d99f8490c972 Downloading [==================================================>]     184B/184B
+2025-07-20T17:00:36.4405784Z  d99f8490c972 Verifying Checksum
+2025-07-20T17:00:36.4406673Z  d99f8490c972 Download complete
+2025-07-20T17:00:36.4457879Z  e7233e20a08e Extracting [================>                                  ]   75.2MB/231.7MB
+2025-07-20T17:00:36.4826755Z  ef38b711a50f Extracting [==============================>                    ]  41.22MB/67.5MB
+2025-07-20T17:00:36.5061152Z  396900a6066f Extracting [========================>                          ]  31.75MB/63.73MB
+2025-07-20T17:00:36.5393576Z  ab9fab465df4 Downloading [======================================>            ]  83.87MB/108.6MB
+2025-07-20T17:00:36.5401336Z  3da95a905ed5 Extracting [=============================>                     ]  16.81MB/28.23MB
+2025-07-20T17:00:36.5515720Z  e7233e20a08e Extracting [==================>                                ]  83.56MB/231.7MB
+2025-07-20T17:00:36.5971001Z  ef38b711a50f Extracting [==============================>                    ]  41.78MB/67.5MB
+2025-07-20T17:00:36.6247850Z  396900a6066f Extracting [===========================>                       ]  35.65MB/63.73MB
+2025-07-20T17:00:36.6400492Z  ab9fab465df4 Downloading [============================================>      ]   96.2MB/108.6MB
+2025-07-20T17:00:36.6468961Z  3da95a905ed5 Extracting [====================================>              ]  20.64MB/28.23MB
+2025-07-20T17:00:36.6549770Z  e7233e20a08e Extracting [===================>                               ]  91.91MB/231.7MB
+2025-07-20T17:00:36.7047167Z  ab9fab465df4 Verifying Checksum
+2025-07-20T17:00:36.7047657Z  ab9fab465df4 Download complete
+2025-07-20T17:00:36.7098199Z  ef38b711a50f Extracting [===============================>                   ]  42.34MB/67.5MB
+2025-07-20T17:00:36.7323636Z  396900a6066f Extracting [===============================>                   ]  39.55MB/63.73MB
+2025-07-20T17:00:36.7556190Z  e7233e20a08e Extracting [=====================>                             ]  100.3MB/231.7MB
+2025-07-20T17:00:36.7729466Z  3da95a905ed5 Extracting [=========================================>         ]  23.59MB/28.23MB
+2025-07-20T17:00:36.8117862Z  ef38b711a50f Extracting [===============================>                   ]  42.89MB/67.5MB
+2025-07-20T17:00:36.8396358Z  396900a6066f Extracting [==================================>                ]  44.56MB/63.73MB
+2025-07-20T17:00:36.8605067Z  e7233e20a08e Extracting [======================>                            ]  102.5MB/231.7MB
+2025-07-20T17:00:36.9433842Z  396900a6066f Extracting [======================================>            ]  49.02MB/63.73MB
+2025-07-20T17:00:36.9599673Z  ef38b711a50f Extracting [================================>                  ]  44.01MB/67.5MB
+2025-07-20T17:00:36.9643246Z  e7233e20a08e Extracting [=======================>                           ]  108.6MB/231.7MB
+2025-07-20T17:00:36.9777471Z  3da95a905ed5 Extracting [==========================================>        ]  23.89MB/28.23MB
+2025-07-20T17:00:37.0520514Z  396900a6066f Extracting [=========================================>         ]  52.92MB/63.73MB
+2025-07-20T17:00:37.0616576Z  ef38b711a50f Extracting [=================================>                 ]  45.68MB/67.5MB
+2025-07-20T17:00:37.0644682Z  e7233e20a08e Extracting [========================>                          ]  113.1MB/231.7MB
+2025-07-20T17:00:37.0847815Z  3da95a905ed5 Extracting [==============================================>    ]  26.25MB/28.23MB
+2025-07-20T17:00:37.1529979Z  396900a6066f Extracting [=============================================>     ]  57.93MB/63.73MB
+2025-07-20T17:00:37.1695253Z  e7233e20a08e Extracting [=========================>                         ]  118.1MB/231.7MB
+2025-07-20T17:00:37.1773950Z  ef38b711a50f Extracting [==================================>                ]  46.79MB/67.5MB
+2025-07-20T17:00:37.1953230Z  3da95a905ed5 Extracting [===============================================>   ]  26.84MB/28.23MB
+2025-07-20T17:00:37.2578855Z  396900a6066f Extracting [=================================================> ]  62.95MB/63.73MB
+2025-07-20T17:00:37.2758746Z  e7233e20a08e Extracting [==========================>                        ]  123.7MB/231.7MB
+2025-07-20T17:00:37.3222519Z  3da95a905ed5 Extracting [================================================>  ]  27.13MB/28.23MB
+2025-07-20T17:00:37.3361599Z  ef38b711a50f Extracting [===================================>               ]  47.91MB/67.5MB
+2025-07-20T17:00:37.3803734Z  e7233e20a08e Extracting [============================>                      ]  129.8MB/231.7MB
+2025-07-20T17:00:37.4573034Z  ef38b711a50f Extracting [=====================================>             ]  50.14MB/67.5MB
+2025-07-20T17:00:37.4820787Z  e7233e20a08e Extracting [=============================>                     ]  135.4MB/231.7MB
+2025-07-20T17:00:37.5176275Z  396900a6066f Extracting [==================================================>]  63.73MB/63.73MB
+2025-07-20T17:00:37.5622323Z  ef38b711a50f Extracting [=====================================>             ]  51.25MB/67.5MB
+2025-07-20T17:00:37.5822942Z  e7233e20a08e Extracting [==============================>                    ]  139.3MB/231.7MB
+2025-07-20T17:00:37.6334157Z  3da95a905ed5 Extracting [================================================>  ]  27.43MB/28.23MB
+2025-07-20T17:00:37.6867419Z  e7233e20a08e Extracting [===============================>                   ]  144.3MB/231.7MB
+2025-07-20T17:00:37.7158895Z  ef38b711a50f Extracting [======================================>            ]  52.36MB/67.5MB
+2025-07-20T17:00:37.7869334Z  e7233e20a08e Extracting [================================>                  ]  149.3MB/231.7MB
+2025-07-20T17:00:37.8051766Z  3da95a905ed5 Extracting [==================================================>]  28.23MB/28.23MB
+2025-07-20T17:00:37.8907403Z  e7233e20a08e Extracting [=================================>                 ]  156.5MB/231.7MB
+2025-07-20T17:00:37.9813029Z  ef38b711a50f Extracting [=======================================>           ]  53.48MB/67.5MB
+2025-07-20T17:00:37.9934810Z  e7233e20a08e Extracting [==================================>                ]  160.4MB/231.7MB
+2025-07-20T17:00:38.0386825Z  3da95a905ed5 Pull complete
+2025-07-20T17:00:38.1005716Z  19f0ef5c05c1 Extracting [==================================================>]   1.17kB/1.17kB
+2025-07-20T17:00:38.1007258Z  19f0ef5c05c1 Extracting [==================================================>]   1.17kB/1.17kB
+2025-07-20T17:00:38.1113941Z  e7233e20a08e Extracting [===================================>               ]  165.4MB/231.7MB
+2025-07-20T17:00:38.1264035Z  ef38b711a50f Extracting [========================================>          ]  54.59MB/67.5MB
+2025-07-20T17:00:38.2659771Z  ef38b711a50f Extracting [========================================>          ]  55.15MB/67.5MB
+2025-07-20T17:00:38.2743126Z  e7233e20a08e Extracting [===================================>               ]    166MB/231.7MB
+2025-07-20T17:00:38.4892456Z  19f0ef5c05c1 Pull complete
+2025-07-20T17:00:38.4976323Z  e7233e20a08e Extracting [===================================>               ]  166.6MB/231.7MB
+2025-07-20T17:00:38.5036305Z  ef38b711a50f Extracting [=========================================>         ]  55.71MB/67.5MB
+2025-07-20T17:00:38.5426473Z  12d7c798daac Extracting [>                                                  ]  65.54kB/4.534MB
+2025-07-20T17:00:38.6242515Z  ef38b711a50f Extracting [==========================================>        ]  56.82MB/67.5MB
+2025-07-20T17:00:38.6444056Z  12d7c798daac Extracting [===============================>                   ]  2.884MB/4.534MB
+2025-07-20T17:00:38.7836560Z  12d7c798daac Extracting [=================================>                 ]   3.08MB/4.534MB
+2025-07-20T17:00:38.9376350Z  12d7c798daac Extracting [=================================================> ]  4.522MB/4.534MB
+2025-07-20T17:00:38.9444444Z  e7233e20a08e Extracting [====================================>              ]  167.7MB/231.7MB
+2025-07-20T17:00:38.9485375Z  ef38b711a50f Extracting [==========================================>        ]  57.38MB/67.5MB
+2025-07-20T17:00:38.9524270Z  12d7c798daac Extracting [==================================================>]  4.534MB/4.534MB
+2025-07-20T17:00:39.0456574Z  e7233e20a08e Extracting [====================================>              ]  168.2MB/231.7MB
+2025-07-20T17:00:39.1936190Z  e7233e20a08e Extracting [====================================>              ]  168.8MB/231.7MB
+2025-07-20T17:00:39.2965819Z  e7233e20a08e Extracting [====================================>              ]  170.5MB/231.7MB
+2025-07-20T17:00:39.6346879Z  e7233e20a08e Extracting [====================================>              ]    171MB/231.7MB
+2025-07-20T17:00:39.7622037Z  e7233e20a08e Extracting [======================================>            ]  178.3MB/231.7MB
+2025-07-20T17:00:39.8773373Z  e7233e20a08e Extracting [======================================>            ]  179.9MB/231.7MB
+2025-07-20T17:00:40.0909490Z  396900a6066f Pull complete
+2025-07-20T17:00:40.0934852Z  f86135b615e8 Extracting [=====================>                             ]  32.77kB/75.19kB
+2025-07-20T17:00:40.0944084Z  f86135b615e8 Extracting [==================================================>]  75.19kB/75.19kB
+2025-07-20T17:00:40.0948024Z  f86135b615e8 Extracting [==================================================>]  75.19kB/75.19kB
+2025-07-20T17:00:40.1457154Z  12d7c798daac Pull complete
+2025-07-20T17:00:40.1530131Z  4a8cf8876eaf Extracting [=>                                                 ]  32.77kB/1.447MB
+2025-07-20T17:00:40.1567068Z  f86135b615e8 Pull complete
+2025-07-20T17:00:40.1607734Z  7efc01291e39 Extracting [==================================================>]  1.242kB/1.242kB
+2025-07-20T17:00:40.1608527Z  7efc01291e39 Extracting [==================================================>]  1.242kB/1.242kB
+2025-07-20T17:00:40.1746946Z  7efc01291e39 Pull complete
+2025-07-20T17:00:40.1765790Z  03798d644f93 Extracting [==================================================>]     115B/115B
+2025-07-20T17:00:40.1767937Z  03798d644f93 Extracting [==================================================>]     115B/115B
+2025-07-20T17:00:40.1942789Z  03798d644f93 Pull complete
+2025-07-20T17:00:40.1966087Z  61256e5d038d Extracting [==================================================>]     119B/119B
+2025-07-20T17:00:40.1967612Z  61256e5d038d Extracting [==================================================>]     119B/119B
+2025-07-20T17:00:40.2101225Z  e7233e20a08e Extracting [=======================================>           ]    181MB/231.7MB
+2025-07-20T17:00:40.2139008Z  4a8cf8876eaf Extracting [==================================================>]  1.447MB/1.447MB
+2025-07-20T17:00:40.2166631Z  61256e5d038d Pull complete
+2025-07-20T17:00:40.2275526Z  4f27eecc6d58 Extracting [>                                                  ]  557.1kB/87.82MB
+2025-07-20T17:00:40.2452343Z  4a8cf8876eaf Pull complete
+2025-07-20T17:00:40.2486056Z  49c81de484d4 Extracting [>                                                  ]   98.3kB/8.066MB
+2025-07-20T17:00:40.3272802Z  ef38b711a50f Extracting [===========================================>       ]  59.05MB/67.5MB
+2025-07-20T17:00:40.3293202Z  4f27eecc6d58 Extracting [=======>                                           ]  13.37MB/87.82MB
+2025-07-20T17:00:40.3541437Z  49c81de484d4 Extracting [==================>                                ]  3.047MB/8.066MB
+2025-07-20T17:00:40.4297214Z  4f27eecc6d58 Extracting [===============>                                   ]  26.74MB/87.82MB
+2025-07-20T17:00:40.4316794Z  ef38b711a50f Extracting [============================================>      ]  60.16MB/67.5MB
+2025-07-20T17:00:40.4549043Z  e7233e20a08e Extracting [=======================================>           ]  181.6MB/231.7MB
+2025-07-20T17:00:40.4832019Z  49c81de484d4 Extracting [=============================>                     ]  4.719MB/8.066MB
+2025-07-20T17:00:40.5341354Z  4f27eecc6d58 Extracting [=====================>                             ]  38.44MB/87.82MB
+2025-07-20T17:00:40.5409018Z  ef38b711a50f Extracting [===============================================>   ]  64.62MB/67.5MB
+2025-07-20T17:00:40.5674148Z  e7233e20a08e Extracting [=======================================>           ]  182.7MB/231.7MB
+2025-07-20T17:00:40.6087104Z  49c81de484d4 Extracting [====================================>              ]  5.898MB/8.066MB
+2025-07-20T17:00:40.6357788Z  4f27eecc6d58 Extracting [============================>                      ]  49.58MB/87.82MB
+2025-07-20T17:00:40.6906505Z  ef38b711a50f Extracting [=================================================> ]  66.85MB/67.5MB
+2025-07-20T17:00:40.7073760Z  49c81de484d4 Extracting [==================================================>]  8.066MB/8.066MB
+2025-07-20T17:00:40.7227427Z  e7233e20a08e Extracting [=======================================>           ]  184.4MB/231.7MB
+2025-07-20T17:00:40.7375137Z  4f27eecc6d58 Extracting [==================================>                ]  61.28MB/87.82MB
+2025-07-20T17:00:40.8358918Z  e7233e20a08e Extracting [========================================>          ]  185.5MB/231.7MB
+2025-07-20T17:00:40.8410619Z  4f27eecc6d58 Extracting [=========================================>         ]  72.97MB/87.82MB
+2025-07-20T17:00:40.8444587Z  49c81de484d4 Pull complete
+2025-07-20T17:00:40.8467530Z  6daa5c145afb Extracting [=>                                                 ]  32.77kB/1.196MB
+2025-07-20T17:00:40.9058824Z  6daa5c145afb Extracting [==================================================>]  1.196MB/1.196MB
+2025-07-20T17:00:40.9209010Z  6daa5c145afb Extracting [==================================================>]  1.196MB/1.196MB
+2025-07-20T17:00:40.9417240Z  4f27eecc6d58 Extracting [===============================================>   ]  84.12MB/87.82MB
+2025-07-20T17:00:40.9434373Z  e7233e20a08e Extracting [========================================>          ]  187.2MB/231.7MB
+2025-07-20T17:00:40.9603940Z  ef38b711a50f Extracting [=================================================> ]   67.4MB/67.5MB
+2025-07-20T17:00:40.9733754Z  4f27eecc6d58 Extracting [==================================================>]  87.82MB/87.82MB
+2025-07-20T17:00:40.9861411Z  6daa5c145afb Pull complete
+2025-07-20T17:00:40.9894214Z  4f27eecc6d58 Pull complete
+2025-07-20T17:00:40.9901778Z  031df4666a4c Extracting [==================================================>]     116B/116B
+2025-07-20T17:00:40.9923836Z  031df4666a4c Extracting [==================================================>]     116B/116B
+2025-07-20T17:00:41.0074964Z  kafka-ui Pulled
+2025-07-20T17:00:41.0099123Z  031df4666a4c Pull complete
+2025-07-20T17:00:41.0115704Z  fcbd6877eb57 Extracting [==================================================>]  3.139kB/3.139kB
+2025-07-20T17:00:41.0121406Z  fcbd6877eb57 Extracting [==================================================>]  3.139kB/3.139kB
+2025-07-20T17:00:41.0163838Z  ef38b711a50f Extracting [==================================================>]   67.5MB/67.5MB
+2025-07-20T17:00:41.0250003Z  fcbd6877eb57 Pull complete
+2025-07-20T17:00:41.0700425Z  e7233e20a08e Extracting [========================================>          ]  188.3MB/231.7MB
+2025-07-20T17:00:41.1139156Z  ab9fab465df4 Extracting [>                                                  ]  557.1kB/108.6MB
+2025-07-20T17:00:41.1169117Z  ef38b711a50f Pull complete
+2025-07-20T17:00:41.1183911Z  e057c74597c7 Extracting [======================>                            ]  32.77kB/71.5kB
+2025-07-20T17:00:41.1189489Z  e057c74597c7 Extracting [==================================================>]   71.5kB/71.5kB
+2025-07-20T17:00:41.1229026Z  e057c74597c7 Extracting [==================================================>]   71.5kB/71.5kB
+2025-07-20T17:00:41.1413820Z  e057c74597c7 Pull complete
+2025-07-20T17:00:41.1434539Z  666c214f6385 Extracting [==================================================>]     366B/366B
+2025-07-20T17:00:41.1435269Z  666c214f6385 Extracting [==================================================>]     366B/366B
+2025-07-20T17:00:41.1594867Z  666c214f6385 Pull complete
+2025-07-20T17:00:41.1616542Z  c3d6a96f1ffc Extracting [==================================================>]     681B/681B
+2025-07-20T17:00:41.1629212Z  c3d6a96f1ffc Extracting [==================================================>]     681B/681B
+2025-07-20T17:00:41.1757866Z  c3d6a96f1ffc Pull complete
+2025-07-20T17:00:41.1777540Z  3fe26a83e0ca Extracting [==================================================>]     265B/265B
+2025-07-20T17:00:41.1782077Z  3fe26a83e0ca Extracting [==================================================>]     265B/265B
+2025-07-20T17:00:41.2040431Z  e7233e20a08e Extracting [========================================>          ]  189.4MB/231.7MB
+2025-07-20T17:00:41.2072481Z  3fe26a83e0ca Pull complete
+2025-07-20T17:00:41.2168819Z  ab9fab465df4 Extracting [==>                                                ]  6.128MB/108.6MB
+2025-07-20T17:00:41.3294034Z  e7233e20a08e Extracting [=========================================>         ]  190.5MB/231.7MB
+2025-07-20T17:00:41.3332293Z  ab9fab465df4 Extracting [===>                                               ]  8.356MB/108.6MB
+2025-07-20T17:00:41.4189249Z  3d3a7dd3a3b1 Extracting [>                                                  ]  557.1kB/109.9MB
+2025-07-20T17:00:41.4370586Z  ab9fab465df4 Extracting [=====>                                             ]  11.14MB/108.6MB
+2025-07-20T17:00:41.4378759Z  e7233e20a08e Extracting [=========================================>         ]  191.6MB/231.7MB
+2025-07-20T17:00:41.5234280Z  3d3a7dd3a3b1 Extracting [=>                                                 ]  2.785MB/109.9MB
+2025-07-20T17:00:41.5500950Z  ab9fab465df4 Extracting [======>                                            ]  14.48MB/108.6MB
+2025-07-20T17:00:41.5567806Z  e7233e20a08e Extracting [=========================================>         ]  193.3MB/231.7MB
+2025-07-20T17:00:41.6279141Z  3d3a7dd3a3b1 Extracting [===>                                               ]  7.799MB/109.9MB
+2025-07-20T17:00:41.6565607Z  ab9fab465df4 Extracting [========>                                          ]  18.38MB/108.6MB
+2025-07-20T17:00:41.6848085Z  e7233e20a08e Extracting [=========================================>         ]  194.4MB/231.7MB
+2025-07-20T17:00:41.7288187Z  3d3a7dd3a3b1 Extracting [=====>                                             ]  12.81MB/109.9MB
+2025-07-20T17:00:41.7594759Z  ab9fab465df4 Extracting [=========>                                         ]  21.17MB/108.6MB
+2025-07-20T17:00:41.8169117Z  e7233e20a08e Extracting [==========================================>        ]  195.5MB/231.7MB
+2025-07-20T17:00:41.8397728Z  3d3a7dd3a3b1 Extracting [========>                                          ]  18.94MB/109.9MB
+2025-07-20T17:00:41.8647994Z  ab9fab465df4 Extracting [============>                                      ]  26.18MB/108.6MB
+2025-07-20T17:00:41.9309047Z  e7233e20a08e Extracting [==========================================>        ]  196.6MB/231.7MB
+2025-07-20T17:00:41.9509420Z  3d3a7dd3a3b1 Extracting [==========>                                        ]   23.4MB/109.9MB
+2025-07-20T17:00:41.9726387Z  ab9fab465df4 Extracting [===============>                                   ]  33.42MB/108.6MB
+2025-07-20T17:00:42.0613326Z  3d3a7dd3a3b1 Extracting [============>                                      ]  27.85MB/109.9MB
+2025-07-20T17:00:42.0728218Z  ab9fab465df4 Extracting [==================>                                ]  40.67MB/108.6MB
+2025-07-20T17:00:42.0741039Z  e7233e20a08e Extracting [==========================================>        ]  197.8MB/231.7MB
+2025-07-20T17:00:42.1687648Z  3d3a7dd3a3b1 Extracting [================>                                  ]  35.65MB/109.9MB
+2025-07-20T17:00:42.1773358Z  ab9fab465df4 Extracting [======================>                            ]  47.91MB/108.6MB
+2025-07-20T17:00:42.2638699Z  e7233e20a08e Extracting [==========================================>        ]  198.9MB/231.7MB
+2025-07-20T17:00:42.2688751Z  3d3a7dd3a3b1 Extracting [======================>                            ]  49.02MB/109.9MB
+2025-07-20T17:00:42.2990942Z  ab9fab465df4 Extracting [========================>                          ]  52.92MB/108.6MB
+2025-07-20T17:00:42.3710997Z  3d3a7dd3a3b1 Extracting [=============================>                     ]  65.73MB/109.9MB
+2025-07-20T17:00:42.3997913Z  ab9fab465df4 Extracting [=========================>                         ]  56.26MB/108.6MB
+2025-07-20T17:00:42.4295133Z  e7233e20a08e Extracting [===========================================>       ]    200MB/231.7MB
+2025-07-20T17:00:42.4774183Z  3d3a7dd3a3b1 Extracting [===============================>                   ]  68.52MB/109.9MB
+2025-07-20T17:00:42.5064393Z  ab9fab465df4 Extracting [============================>                      ]  61.83MB/108.6MB
+2025-07-20T17:00:42.5841857Z  e7233e20a08e Extracting [===========================================>       ]  201.1MB/231.7MB
+2025-07-20T17:00:42.6079630Z  ab9fab465df4 Extracting [================================>                  ]  70.19MB/108.6MB
+2025-07-20T17:00:42.6217465Z  3d3a7dd3a3b1 Extracting [===============================>                   ]  69.63MB/109.9MB
+2025-07-20T17:00:42.7110260Z  ab9fab465df4 Extracting [===================================>               ]  77.99MB/108.6MB
+2025-07-20T17:00:42.7525904Z  e7233e20a08e Extracting [===========================================>       ]  202.8MB/231.7MB
+2025-07-20T17:00:42.8124885Z  3d3a7dd3a3b1 Extracting [================================>                  ]  70.75MB/109.9MB
+2025-07-20T17:00:42.8167738Z  ab9fab465df4 Extracting [=======================================>           ]  85.23MB/108.6MB
+2025-07-20T17:00:42.8737818Z  e7233e20a08e Extracting [===========================================>       ]  203.9MB/231.7MB
+2025-07-20T17:00:42.9326480Z  3d3a7dd3a3b1 Extracting [================================>                  ]  72.42MB/109.9MB
+2025-07-20T17:00:42.9372689Z  ab9fab465df4 Extracting [==========================================>        ]  93.03MB/108.6MB
+2025-07-20T17:00:42.9964008Z  e7233e20a08e Extracting [============================================>      ]    205MB/231.7MB
+2025-07-20T17:00:43.0537741Z  ab9fab465df4 Extracting [===========================================>       ]   94.7MB/108.6MB
+2025-07-20T17:00:43.0741555Z  3d3a7dd3a3b1 Extracting [=================================>                 ]  74.09MB/109.9MB
+2025-07-20T17:00:43.1038062Z  e7233e20a08e Extracting [============================================>      ]  208.3MB/231.7MB
+2025-07-20T17:00:43.1577587Z  ab9fab465df4 Extracting [=============================================>     ]  98.04MB/108.6MB
+2025-07-20T17:00:43.1835217Z  3d3a7dd3a3b1 Extracting [====================================>              ]  79.66MB/109.9MB
+2025-07-20T17:00:43.2286782Z  e7233e20a08e Extracting [=============================================>     ]    210MB/231.7MB
+2025-07-20T17:00:43.2680505Z  ab9fab465df4 Extracting [=============================================>     ]  99.16MB/108.6MB
+2025-07-20T17:00:43.3302082Z  e7233e20a08e Extracting [=============================================>     ]  212.2MB/231.7MB
+2025-07-20T17:00:43.3821491Z  ab9fab465df4 Extracting [==============================================>    ]  101.9MB/108.6MB
+2025-07-20T17:00:43.4335204Z  e7233e20a08e Extracting [===============================================>   ]  218.4MB/231.7MB
+2025-07-20T17:00:43.4658041Z  3d3a7dd3a3b1 Extracting [=====================================>             ]  81.89MB/109.9MB
+2025-07-20T17:00:43.5339010Z  ab9fab465df4 Extracting [===============================================>   ]  103.6MB/108.6MB
+2025-07-20T17:00:43.5394637Z  e7233e20a08e Extracting [================================================>  ]  224.5MB/231.7MB
+2025-07-20T17:00:43.6100062Z  3d3a7dd3a3b1 Extracting [=====================================>             ]     83MB/109.9MB
+2025-07-20T17:00:43.6450663Z  e7233e20a08e Extracting [=================================================> ]  230.6MB/231.7MB
+2025-07-20T17:00:43.6704541Z  e7233e20a08e Extracting [==================================================>]  231.7MB/231.7MB
+2025-07-20T17:00:43.6920626Z  ab9fab465df4 Extracting [================================================>  ]  105.3MB/108.6MB
+2025-07-20T17:00:43.7179554Z  3d3a7dd3a3b1 Extracting [======================================>            ]  84.12MB/109.9MB
+2025-07-20T17:00:44.2346189Z  3d3a7dd3a3b1 Extracting [=======================================>           ]  85.79MB/109.9MB
+2025-07-20T17:00:44.3343019Z  ab9fab465df4 Extracting [=================================================> ]    107MB/108.6MB
+2025-07-20T17:00:44.4380290Z  3d3a7dd3a3b1 Extracting [=======================================>           ]  86.34MB/109.9MB
+2025-07-20T17:00:44.5938870Z  3d3a7dd3a3b1 Extracting [=======================================>           ]   86.9MB/109.9MB
+2025-07-20T17:00:44.6985516Z  ab9fab465df4 Extracting [=================================================> ]  107.5MB/108.6MB
+2025-07-20T17:00:44.8973837Z  ab9fab465df4 Extracting [=================================================> ]  108.1MB/108.6MB
+2025-07-20T17:00:45.0165839Z  3d3a7dd3a3b1 Extracting [=======================================>           ]  87.46MB/109.9MB
+2025-07-20T17:00:45.0276721Z  ab9fab465df4 Extracting [==================================================>]  108.6MB/108.6MB
+2025-07-20T17:00:45.0284588Z  ab9fab465df4 Extracting [==================================================>]  108.6MB/108.6MB
+2025-07-20T17:00:45.1484890Z  e7233e20a08e Pull complete
+2025-07-20T17:00:45.1513600Z  9b9cbc4e490c Extracting [>                                                  ]   98.3kB/7.34MB
+2025-07-20T17:00:45.1867662Z  ab9fab465df4 Pull complete
+2025-07-20T17:00:45.1886613Z  1fccaae8d989 Extracting [==================================================>]  9.522kB/9.522kB
+2025-07-20T17:00:45.1888834Z  1fccaae8d989 Extracting [==================================================>]  9.522kB/9.522kB
+2025-07-20T17:00:45.2116865Z  3d3a7dd3a3b1 Extracting [========================================>          ]  88.01MB/109.9MB
+2025-07-20T17:00:45.2117682Z  1fccaae8d989 Pull complete
+2025-07-20T17:00:45.2129895Z  a64e2dbebcef Extracting [==================================================>]     128B/128B
+2025-07-20T17:00:45.2140078Z  a64e2dbebcef Extracting [==================================================>]     128B/128B
+2025-07-20T17:00:45.2295103Z  a64e2dbebcef Pull complete
+2025-07-20T17:00:45.2311161Z  8e1f84547c99 Extracting [==================================================>]     167B/167B
+2025-07-20T17:00:45.2314394Z  8e1f84547c99 Extracting [==================================================>]     167B/167B
+2025-07-20T17:00:45.2439403Z  8e1f84547c99 Pull complete
+2025-07-20T17:00:45.2456513Z  cc714a87c02e Extracting [==================================================>]  5.926kB/5.926kB
+2025-07-20T17:00:45.2457557Z  cc714a87c02e Extracting [==================================================>]  5.926kB/5.926kB
+2025-07-20T17:00:45.2552331Z  9b9cbc4e490c Extracting [================================================>  ]  7.078MB/7.34MB
+2025-07-20T17:00:45.2622366Z  cc714a87c02e Pull complete
+2025-07-20T17:00:45.2642513Z  d99f8490c972 Extracting [==================================================>]     184B/184B
+2025-07-20T17:00:45.2643638Z  d99f8490c972 Extracting [==================================================>]     184B/184B
+2025-07-20T17:00:45.2655541Z  9b9cbc4e490c Extracting [==================================================>]   7.34MB/7.34MB
+2025-07-20T17:00:45.2817417Z  9b9cbc4e490c Pull complete
+2025-07-20T17:00:45.2826807Z  d99f8490c972 Pull complete
+2025-07-20T17:00:45.2835710Z  f7352f1ba78a Extracting [==================================================>]  19.76kB/19.76kB
+2025-07-20T17:00:45.2837838Z  f7352f1ba78a Extracting [==================================================>]  19.76kB/19.76kB
+2025-07-20T17:00:45.2904057Z  postgres Pulled
+2025-07-20T17:00:45.3063683Z  f7352f1ba78a Pull complete
+2025-07-20T17:00:45.3138403Z  e06c925589f1 Extracting [>                                                  ]  360.4kB/35.54MB
+2025-07-20T17:00:45.4149748Z  e06c925589f1 Extracting [============================>                      ]  20.55MB/35.54MB
+2025-07-20T17:00:45.4825336Z  e06c925589f1 Extracting [==================================================>]  35.54MB/35.54MB
+2025-07-20T17:00:45.5058102Z  e06c925589f1 Pull complete
+2025-07-20T17:00:45.5074154Z  3a498372ace6 Extracting [==================================================>]  1.101kB/1.101kB
+2025-07-20T17:00:45.5077254Z  3a498372ace6 Extracting [==================================================>]  1.101kB/1.101kB
+2025-07-20T17:00:45.5199295Z  3a498372ace6 Pull complete
+2025-07-20T17:00:45.5213717Z  2ea0fca7e4a4 Extracting [==================================================>]     131B/131B
+2025-07-20T17:00:45.5216769Z  2ea0fca7e4a4 Extracting [==================================================>]     131B/131B
+2025-07-20T17:00:45.5293552Z  2ea0fca7e4a4 Pull complete
+2025-07-20T17:00:45.5309507Z  c33c6c0781fc Extracting [==================================================>]     168B/168B
+2025-07-20T17:00:45.5311549Z  c33c6c0781fc Extracting [==================================================>]     168B/168B
+2025-07-20T17:00:45.5391603Z  c33c6c0781fc Pull complete
+2025-07-20T17:00:45.5761989Z  45f1197956c6 Extracting [>                                                  ]  557.1kB/87.7MB
+2025-07-20T17:00:45.6782540Z  45f1197956c6 Extracting [==========>                                        ]  18.94MB/87.7MB
+2025-07-20T17:00:45.7785155Z  45f1197956c6 Extracting [========================>                          ]  43.45MB/87.7MB
+2025-07-20T17:00:45.8812354Z  45f1197956c6 Extracting [=======================================>           ]  69.07MB/87.7MB
+2025-07-20T17:00:45.9041809Z  3d3a7dd3a3b1 Extracting [========================================>          ]  88.57MB/109.9MB
+2025-07-20T17:00:45.9857856Z  45f1197956c6 Extracting [===============================================>   ]  83.56MB/87.7MB
+2025-07-20T17:00:46.0541906Z  45f1197956c6 Extracting [==================================================>]   87.7MB/87.7MB
+2025-07-20T17:00:46.0718340Z  3d3a7dd3a3b1 Extracting [=================================================> ]  109.7MB/109.9MB
+2025-07-20T17:00:46.1217326Z  45f1197956c6 Pull complete
+2025-07-20T17:00:46.1227960Z  1dcef6fb6396 Extracting [==================================================>]  3.214kB/3.214kB
+2025-07-20T17:00:46.1233161Z  1dcef6fb6396 Extracting [==================================================>]  3.214kB/3.214kB
+2025-07-20T17:00:46.1388228Z  1dcef6fb6396 Pull complete
+2025-07-20T17:00:46.1443224Z  kafka Pulled
+2025-07-20T17:00:46.1569721Z  3d3a7dd3a3b1 Extracting [==================================================>]  109.9MB/109.9MB
+2025-07-20T17:00:46.2014250Z  3d3a7dd3a3b1 Pull complete
+2025-07-20T17:00:46.2119307Z  f8cc938abe5f Extracting [==================================================>]     361B/361B
+2025-07-20T17:00:46.2123183Z  f8cc938abe5f Extracting [==================================================>]     361B/361B
+2025-07-20T17:00:46.2208011Z  f8cc938abe5f Pull complete
+2025-07-20T17:00:46.2218897Z  9978b75f7a58 Extracting [==================================================>]     110B/110B
+2025-07-20T17:00:46.2223131Z  9978b75f7a58 Extracting [==================================================>]     110B/110B
+2025-07-20T17:00:46.2294363Z  9978b75f7a58 Pull complete
+2025-07-20T17:00:46.2305665Z  4d4dbcc8f8cc Extracting [==================================================>]  1.312kB/1.312kB
+2025-07-20T17:00:46.2308716Z  4d4dbcc8f8cc Extracting [==================================================>]  1.312kB/1.312kB
+2025-07-20T17:00:46.2398098Z  4d4dbcc8f8cc Pull complete
+2025-07-20T17:00:46.2517616Z  8b130a9baa49 Extracting [>                                                  ]  393.2kB/37.17MB
+2025-07-20T17:00:46.3524199Z  8b130a9baa49 Extracting [=======================================>           ]  29.49MB/37.17MB
+2025-07-20T17:00:46.3802398Z  8b130a9baa49 Extracting [==================================================>]  37.17MB/37.17MB
+2025-07-20T17:00:46.3955833Z  8b130a9baa49 Pull complete
+2025-07-20T17:00:46.3965908Z  6b9611650a73 Extracting [=======================>                           ]  32.77kB/70.85kB
+2025-07-20T17:00:46.3971569Z  6b9611650a73 Extracting [==================================================>]  70.85kB/70.85kB
+2025-07-20T17:00:46.3976856Z  6b9611650a73 Extracting [==================================================>]  70.85kB/70.85kB
+2025-07-20T17:00:46.4054833Z  6b9611650a73 Pull complete
+2025-07-20T17:00:46.4282927Z  5df5aac51927 Extracting [>                                                  ]  393.2kB/37.21MB
+2025-07-20T17:00:46.5316951Z  5df5aac51927 Extracting [=============================>                     ]  22.02MB/37.21MB
+2025-07-20T17:00:46.6543770Z  5df5aac51927 Extracting [=======================================>           ]   29.1MB/37.21MB
+2025-07-20T17:00:46.7692326Z  5df5aac51927 Extracting [============================================>      ]  33.42MB/37.21MB
+2025-07-20T17:00:46.8707459Z  5df5aac51927 Extracting [==============================================>    ]   34.6MB/37.21MB
+2025-07-20T17:00:47.0040359Z  5df5aac51927 Extracting [================================================>  ]  35.78MB/37.21MB
+2025-07-20T17:00:47.0585730Z  5df5aac51927 Extracting [==================================================>]  37.21MB/37.21MB
+2025-07-20T17:00:47.1051270Z  5df5aac51927 Pull complete
+2025-07-20T17:00:47.1062595Z  76eea4448d9b Extracting [==================================================>]     740B/740B
+2025-07-20T17:00:47.1067189Z  76eea4448d9b Extracting [==================================================>]     740B/740B
+2025-07-20T17:00:47.1173898Z  76eea4448d9b Pull complete
+2025-07-20T17:00:47.1192872Z  8b66990876c6 Extracting [==================================================>]     709B/709B
+2025-07-20T17:00:47.1195904Z  8b66990876c6 Extracting [==================================================>]     709B/709B
+2025-07-20T17:00:47.1307080Z  8b66990876c6 Pull complete
+2025-07-20T17:00:47.1323588Z  f0dd38204b6f Extracting [==================================================>]     314B/314B
+2025-07-20T17:00:47.1325042Z  f0dd38204b6f Extracting [==================================================>]     314B/314B
+2025-07-20T17:00:47.1444731Z  f0dd38204b6f Pull complete
+2025-07-20T17:00:47.1496419Z  zookeeper Pulled
+2025-07-20T17:00:47.1509740Z Compose can now delegate builds to bake for better performance.
+2025-07-20T17:00:47.1510343Z  To do so, set COMPOSE_BAKE=true.
+2025-07-20T17:00:47.5069090Z #0 building with "default" instance using docker driver
+2025-07-20T17:00:47.5069544Z
+2025-07-20T17:00:47.5069745Z #1 [monolith internal] load build definition from Dockerfile
+2025-07-20T17:00:47.5070153Z #1 transferring dockerfile: 601B done
+2025-07-20T17:00:47.5070377Z #1 DONE 0.0s
+2025-07-20T17:00:47.5070478Z
+2025-07-20T17:00:47.5070637Z #2 [movies-service internal] load build definition from Dockerfile
+2025-07-20T17:00:47.5070979Z #2 transferring dockerfile: 619B done
+2025-07-20T17:00:47.5071201Z #2 DONE 0.0s
+2025-07-20T17:00:47.5071301Z
+2025-07-20T17:00:47.5071457Z #3 [events-service internal] load build definition from Dockerfile
+2025-07-20T17:00:47.5071778Z #3 transferring dockerfile: 579B done
+2025-07-20T17:00:47.5071998Z #3 DONE 0.0s
+2025-07-20T17:00:47.5072283Z
+2025-07-20T17:00:47.5072503Z #4 [events-service auth] library/python:pull token for registry-1.docker.io
+2025-07-20T17:00:47.5072837Z #4 DONE 0.0s
+2025-07-20T17:00:47.5072930Z
+2025-07-20T17:00:47.5073107Z #5 [monolith auth] library/golang:pull token for registry-1.docker.io
+2025-07-20T17:00:47.5073414Z #5 DONE 0.0s
+2025-07-20T17:00:47.5073509Z
+2025-07-20T17:00:47.5073661Z #6 [monolith auth] library/alpine:pull token for registry-1.docker.io
+2025-07-20T17:00:47.5073954Z #6 DONE 0.0s
+2025-07-20T17:00:47.5074049Z
+2025-07-20T17:00:47.5074251Z #7 [movies-service internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:00:47.6131610Z #7 ...
+2025-07-20T17:00:47.6131853Z
+2025-07-20T17:00:47.6132433Z #8 [events-service internal] load metadata for ghcr.io/astral-sh/uv:latest
+2025-07-20T17:00:47.6132801Z #8 DONE 0.3s
+2025-07-20T17:00:47.7141745Z
+2025-07-20T17:00:47.7143290Z #9 [events-service internal] load metadata for docker.io/library/python:3.11-slim
+2025-07-20T17:00:47.7144203Z #9 DONE 0.4s
+2025-07-20T17:00:47.7144361Z
+2025-07-20T17:00:47.7144615Z #10 [events-service internal] load .dockerignore
+2025-07-20T17:00:47.7145468Z #10 transferring context: 2B done
+2025-07-20T17:00:47.7145804Z #10 DONE 0.0s
+2025-07-20T17:00:47.7145909Z
+2025-07-20T17:00:47.7146456Z #11 [events-service internal] load build context
+2025-07-20T17:00:47.8183385Z #11 transferring context: 19.88kB done
+2025-07-20T17:00:47.8184736Z #11 DONE 0.0s
+2025-07-20T17:00:47.8185143Z
+2025-07-20T17:00:47.8185648Z #12 [movies-service internal] load metadata for docker.io/library/alpine:latest
+2025-07-20T17:00:47.8186512Z #12 DONE 0.4s
+2025-07-20T17:00:47.8186829Z
+2025-07-20T17:00:47.8187268Z #7 [monolith internal] load metadata for docker.io/library/golang:1.23-alpine
+2025-07-20T17:00:47.8190023Z #7 DONE 0.4s
+2025-07-20T17:00:47.8190170Z
+2025-07-20T17:00:47.8190273Z #13 [monolith internal] load .dockerignore
+2025-07-20T17:00:47.8190838Z #13 transferring context: 2B done
+2025-07-20T17:00:47.8191065Z #13 DONE 0.0s
+2025-07-20T17:00:47.8191196Z
+2025-07-20T17:00:47.8191304Z #14 [movies-service internal] load .dockerignore
+2025-07-20T17:00:47.8191583Z #14 transferring context: 2B done
+2025-07-20T17:00:47.8191813Z #14 DONE 0.0s
+2025-07-20T17:00:47.8191914Z
+2025-07-20T17:00:47.8192025Z #15 [monolith internal] load build context
+2025-07-20T17:00:47.8192622Z #15 transferring context: 13.69kB done
+2025-07-20T17:00:47.8192861Z #15 DONE 0.0s
+2025-07-20T17:00:47.8192954Z
+2025-07-20T17:00:47.8193055Z #16 [movies-service internal] load build context
+2025-07-20T17:00:47.8193336Z #16 transferring context: 5.72kB done
+2025-07-20T17:00:47.8193558Z #16 DONE 0.0s
+2025-07-20T17:00:47.8193658Z
+2025-07-20T17:00:47.8194094Z #17 [monolith stage-1 1/4] FROM docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
+2025-07-20T17:00:47.8195012Z #17 resolve docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 done
+2025-07-20T17:00:47.9186787Z #17 sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 9.22kB / 9.22kB done
+2025-07-20T17:00:47.9187842Z #17 sha256:eafc1edb577d2e9b458664a15f23ea1c370214193226069eb22921169fc7e43f 1.02kB / 1.02kB done
+2025-07-20T17:00:47.9188808Z #17 sha256:9234e8fb04c47cfe0f49931e4ac7eb76fa904e33b7f8576aec0501c085f02516 581B / 581B done
+2025-07-20T17:00:47.9189719Z #17 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0B / 3.80MB 0.1s
+2025-07-20T17:00:48.0197310Z #17 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 3.80MB / 3.80MB 0.2s done
+2025-07-20T17:00:48.0200387Z #17 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8
+2025-07-20T17:00:48.1313244Z #17 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0.2s done
+2025-07-20T17:00:48.2394288Z #17 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0.2s done
+2025-07-20T17:00:48.2395361Z #17 DONE 0.4s
+2025-07-20T17:00:48.2395684Z
+2025-07-20T17:00:48.2396446Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:48.2399314Z #18 resolve docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a 0.0s done
+2025-07-20T17:00:48.2400544Z #18 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 3.80MB / 3.80MB 0.2s done
+2025-07-20T17:00:48.2401553Z #18 sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a 10.30kB / 10.30kB done
+2025-07-20T17:00:48.2403463Z #18 sha256:cf956b65299c780e1035dcb13aa755a9ad08a3aa09b8cb54d66e61c8273fb828 1.92kB / 1.92kB done
+2025-07-20T17:00:48.2404605Z #18 sha256:4eaf648244b4b707c448cd1dade081eb534689801fd49e2d306a4fc849972af7 2.08kB / 2.08kB done
+2025-07-20T17:00:48.2405760Z #18 sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711 282.43kB / 282.43kB 0.2s done
+2025-07-20T17:00:48.2406927Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 24.12MB / 74.06MB 0.4s
+2025-07-20T17:00:48.2409920Z #18 sha256:ee9845387c02a126a1445919d1bdd58a0d336ffb6b4264f3f4eba77a3713cee5 125B / 125B 0.3s done
+2025-07-20T17:00:48.2411355Z #18 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B 0.3s done
+2025-07-20T17:00:48.2414546Z #18 extracting sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711
+2025-07-20T17:00:48.3443646Z #18 ...
+2025-07-20T17:00:48.3446181Z
+2025-07-20T17:00:48.3449420Z #19 [events-service] FROM ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd
+2025-07-20T17:00:48.3458530Z #19 resolve ghcr.io/astral-sh/uv:latest@sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd done
+2025-07-20T17:00:48.3459777Z #19 sha256:5778d479c0fd7995fedd44614570f38a9d849256851f2786c451c220d7bd8ccd 2.19kB / 2.19kB done
+2025-07-20T17:00:48.3460854Z #19 sha256:50fbd66ab876ddb7a725f4d2014a59aa31da0b69933f787b8cfba7291ea5494f 669B / 669B done
+2025-07-20T17:00:48.3461979Z #19 sha256:17e78f54c0b5781830f82ba149a80ea94cc3693fee24f3f0d902996e894e2462 1.29kB / 1.29kB done
+2025-07-20T17:00:48.3463712Z #19 sha256:0a1924118ff80fe7249e9e70be4ec51d9dc2432dc37d4cd4fb7bf9c575f12673 19.04MB / 19.04MB 0.1s done
+2025-07-20T17:00:48.3464878Z #19 sha256:6e51fd89ece4545c4f42d08ff0855c081617358f192d3428a10b08b2c43792bf 98B / 98B 0.1s done
+2025-07-20T17:00:48.3465990Z #19 extracting sha256:0a1924118ff80fe7249e9e70be4ec51d9dc2432dc37d4cd4fb7bf9c575f12673 0.4s done
+2025-07-20T17:00:48.3467052Z #19 extracting sha256:6e51fd89ece4545c4f42d08ff0855c081617358f192d3428a10b08b2c43792bf done
+2025-07-20T17:00:48.3467768Z #19 DONE 0.6s
+2025-07-20T17:00:48.3467947Z
+2025-07-20T17:00:48.3468728Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:48.3470153Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 34.60MB / 74.06MB 0.5s
+2025-07-20T17:00:48.3471646Z #18 extracting sha256:2fc78e6fe7654b64c7c9a8471a8ee068730ab2925eefac92a3b976d4d8e9e711 0.1s done
+2025-07-20T17:00:48.4617275Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 48.23MB / 74.06MB 0.6s
+2025-07-20T17:00:48.5643464Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 68.16MB / 74.06MB 0.8s
+2025-07-20T17:00:48.6640508Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 74.06MB / 74.06MB 0.8s done
+2025-07-20T17:00:48.6642929Z #18 extracting sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1
+2025-07-20T17:00:48.7993408Z #18 sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 74.06MB / 74.06MB 0.8s done
+2025-07-20T17:00:49.2586277Z #18 ...
+2025-07-20T17:00:49.2587083Z
+2025-07-20T17:00:49.2587754Z #20 [movies-service stage-1 2/4] RUN apk --no-cache add ca-certificates
+2025-07-20T17:00:49.2588708Z #20 0.197 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/main/x86_64/APKINDEX.tar.gz
+2025-07-20T17:00:49.2590850Z #20 0.306 fetch https://dl-cdn.alpinelinux.org/alpine/v3.22/community/x86_64/APKINDEX.tar.gz
+2025-07-20T17:00:49.2594269Z #20 0.691 (1/1) Installing ca-certificates (20250619-r0)
+2025-07-20T17:00:49.2594818Z #20 0.733 Executing busybox-1.37.0-r18.trigger
+2025-07-20T17:00:49.2595310Z #20 0.741 Executing ca-certificates-20250619-r0.trigger
+2025-07-20T17:00:49.2595783Z #20 0.803 OK: 8 MiB in 17 packages
+2025-07-20T17:00:49.2596140Z #20 DONE 1.0s
+2025-07-20T17:00:49.2596313Z
+2025-07-20T17:00:49.2596493Z #21 [movies-service stage-1 3/4] WORKDIR /root/
+2025-07-20T17:00:49.2596906Z #21 DONE 0.0s
+2025-07-20T17:00:49.2597068Z
+2025-07-20T17:00:49.2598641Z #22 [events-service stage-0 1/6] FROM docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30
+2025-07-20T17:00:49.2602521Z #22 resolve docker.io/library/python:3.11-slim@sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30 0.0s done
+2025-07-20T17:00:49.2603829Z #22 extracting sha256:483d0dd375188d7d3b2d66116d5974d2b67e6988c6146eb2c6a3e2bc33a92121 0.2s done
+2025-07-20T17:00:49.2604902Z #22 sha256:139020233cc412efe4c8135b0efe1c7569dc8b28ddd88bddb109b764f8977e30 9.13kB / 9.13kB done
+2025-07-20T17:00:49.2606237Z #22 sha256:153bae509ec02c9ac789e2e35f3cbe94be446b59c3afcfbbc88c96a344d2eb73 1.75kB / 1.75kB done
+2025-07-20T17:00:49.2607338Z #22 sha256:0b14a859cdba15104c5f194ef813fcccbf2749d74bc7be4550c06a0fc0d482e6 5.37kB / 5.37kB done
+2025-07-20T17:00:49.2608436Z #22 sha256:483d0dd375188d7d3b2d66116d5974d2b67e6988c6146eb2c6a3e2bc33a92121 3.51MB / 3.51MB 0.1s done
+2025-07-20T17:00:49.2609579Z #22 sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1 16.21MB / 16.21MB 0.2s done
+2025-07-20T17:00:49.2610691Z #22 sha256:471797cdda8c4cd4a9795c8cb56078e627b3fc7486fd8574804ec7d5f1676b9b 249B / 249B 0.2s done
+2025-07-20T17:00:49.2611762Z #22 extracting sha256:02a5d22e0d6f85a6ac1c7fb356e9eed39a981decd1fac1205a31f31f4cb010f1 1.0s done
+2025-07-20T17:00:49.2612986Z #22 extracting sha256:471797cdda8c4cd4a9795c8cb56078e627b3fc7486fd8574804ec7d5f1676b9b done
+2025-07-20T17:00:49.2613693Z #22 DONE 1.5s
+2025-07-20T17:00:49.2613852Z
+2025-07-20T17:00:49.2614020Z #23 [events-service stage-0 2/6] WORKDIR /app
+2025-07-20T17:00:49.2614438Z #23 DONE 0.0s
+2025-07-20T17:00:49.2614604Z
+2025-07-20T17:00:49.2615315Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:49.3614105Z #18 ...
+2025-07-20T17:00:49.3615811Z
+2025-07-20T17:00:49.3616412Z #24 [events-service stage-0 3/6] COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+2025-07-20T17:00:49.3618227Z #24 DONE 0.1s
+2025-07-20T17:00:49.3619495Z
+2025-07-20T17:00:49.3622598Z #25 [events-service stage-0 4/6] COPY pyproject.toml ./
+2025-07-20T17:00:49.3623086Z #25 DONE 0.0s
+2025-07-20T17:00:49.3623253Z
+2025-07-20T17:00:49.3625833Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:50.0844419Z #18 ...
+2025-07-20T17:00:50.0844651Z
+2025-07-20T17:00:50.0844825Z #26 [events-service stage-0 5/6] RUN uv sync
+2025-07-20T17:00:50.0845465Z #26 0.315 Using CPython 3.11.13 interpreter at: /usr/local/bin/python3
+2025-07-20T17:00:50.0846075Z #26 0.315 Creating virtual environment at: .venv
+2025-07-20T17:00:50.0846549Z #26 0.534 Resolved 20 packages in 216ms
+2025-07-20T17:00:50.0846988Z #26 0.578 Downloading pydantic-core (1.9MiB)
+2025-07-20T17:00:50.0847400Z #26 0.579 Downloading aiokafka (1.1MiB)
+2025-07-20T17:00:50.0847790Z #26 0.623  Downloading pydantic-core
+2025-07-20T17:00:50.0848175Z #26 0.684  Downloading aiokafka
+2025-07-20T17:00:50.0848565Z #26 0.684 Prepared 18 packages in 147ms
+2025-07-20T17:00:50.0848985Z #26 0.699 Installed 18 packages in 14ms
+2025-07-20T17:00:50.0849370Z #26 0.699  + aiokafka==0.12.0
+2025-07-20T17:00:50.0849735Z #26 0.699  + annotated-types==0.7.0
+2025-07-20T17:00:50.0850137Z #26 0.699  + anyio==4.9.0
+2025-07-20T17:00:50.0850397Z #26 0.699  + async-timeout==5.0.1
+2025-07-20T17:00:50.0850625Z #26 0.699  + click==8.2.1
+2025-07-20T17:00:50.0850824Z #26 0.699  + fastapi==0.116.1
+2025-07-20T17:00:50.0851172Z #26 0.699  + h11==0.16.0
+2025-07-20T17:00:50.0851503Z #26 0.699  + idna==3.10
+2025-07-20T17:00:50.0851792Z #26 0.699  + packaging==25.0
+2025-07-20T17:00:50.0852090Z #26 0.699  + pydantic==2.11.7
+2025-07-20T17:00:50.0852699Z #26 0.699  + pydantic-core==2.33.2
+2025-07-20T17:00:50.0853118Z #26 0.699  + pydantic-settings==2.10.1
+2025-07-20T17:00:50.0853517Z #26 0.699  + python-dotenv==1.1.1
+2025-07-20T17:00:50.0853900Z #26 0.700  + sniffio==1.3.1
+2025-07-20T17:00:50.0854246Z #26 0.700  + starlette==0.47.1
+2025-07-20T17:00:50.0854636Z #26 0.700  + typing-extensions==4.14.1
+2025-07-20T17:00:50.0855066Z #26 0.700  + typing-inspection==0.4.1
+2025-07-20T17:00:50.0855463Z #26 0.700  + uvicorn==0.35.0
+2025-07-20T17:00:50.0855813Z #26 DONE 0.8s
+2025-07-20T17:00:50.0856003Z
+2025-07-20T17:00:50.0856305Z #27 [events-service stage-0 6/6] COPY events_service/ ./events_service/
+2025-07-20T17:00:50.0856879Z #27 DONE 0.0s
+2025-07-20T17:00:50.0857046Z
+2025-07-20T17:00:50.0858028Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:51.1677041Z #18 ...
+2025-07-20T17:00:51.1677300Z
+2025-07-20T17:00:51.1677434Z #28 [events-service] exporting to image
+2025-07-20T17:00:51.1677721Z #28 exporting layers 0.9s done
+2025-07-20T17:00:51.1678220Z #28 writing image sha256:1a73ed7a7e614493ea87bccab371356269956d5df2db41aac6cf48ed720ce311 done
+2025-07-20T17:00:51.1678943Z #28 naming to docker.io/library/architecture-pro-cinemaabyss-events-service done
+2025-07-20T17:00:51.1679499Z #28 DONE 0.9s
+2025-07-20T17:00:51.1679678Z
+2025-07-20T17:00:51.1679908Z #29 [events-service] resolving provenance for metadata file
+2025-07-20T17:00:51.1680365Z #29 DONE 0.0s
+2025-07-20T17:00:51.1680492Z
+2025-07-20T17:00:51.1680914Z #18 [movies-service builder 1/6] FROM docker.io/library/golang:1.23-alpine@sha256:ddcd26ec6b109c838725a1d93e3bec6d8b9c47f1fdc696b58820c63c70349c9a
+2025-07-20T17:00:53.4208726Z #18 extracting sha256:8037d4fff50b9fcb3d713c38dcc78c15425c515aba6c9fe186a7ecb251ab64e1 4.6s done
+2025-07-20T17:00:53.5969791Z #18 extracting sha256:ee9845387c02a126a1445919d1bdd58a0d336ffb6b4264f3f4eba77a3713cee5
+2025-07-20T17:00:53.8173234Z #18 extracting sha256:ee9845387c02a126a1445919d1bdd58a0d336ffb6b4264f3f4eba77a3713cee5 done
+2025-07-20T17:00:53.8174057Z #18 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 done
+2025-07-20T17:00:53.8174604Z #18 DONE 5.9s
+2025-07-20T17:00:53.8174718Z
+2025-07-20T17:00:53.8174826Z #30 [movies-service builder 2/6] WORKDIR /app
+2025-07-20T17:00:53.8175079Z #30 DONE 0.0s
+2025-07-20T17:00:53.8175182Z
+2025-07-20T17:00:53.8175336Z #31 [monolith builder 3/6] COPY go.mod ./
+2025-07-20T17:00:53.8175614Z #31 DONE 0.0s
+2025-07-20T17:00:53.8176030Z
+2025-07-20T17:00:53.8176212Z #32 [movies-service builder 3/6] COPY go.mod ./
+2025-07-20T17:00:53.8176462Z #32 DONE 0.0s
+2025-07-20T17:00:53.8176558Z
+2025-07-20T17:00:53.8176668Z #33 [movies-service builder 4/6] RUN go mod download
+2025-07-20T17:00:53.9799664Z #33 DONE 0.3s
+2025-07-20T17:00:53.9799928Z
+2025-07-20T17:00:53.9800119Z #34 [monolith builder 4/6] RUN go mod download
+2025-07-20T17:00:54.1498235Z #34 ...
+2025-07-20T17:00:54.1499046Z
+2025-07-20T17:00:54.1499615Z #35 [movies-service builder 5/6] COPY . .
+2025-07-20T17:00:54.1522577Z #35 DONE 0.0s
+2025-07-20T17:00:54.1980511Z
+2025-07-20T17:00:54.1981853Z #34 [monolith builder 4/6] RUN go mod download
+2025-07-20T17:00:54.1985728Z #34 DONE 0.5s
+2025-07-20T17:00:54.1985915Z
+2025-07-20T17:00:54.1986453Z #36 [movies-service builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o movies-service .
+2025-07-20T17:00:54.3772641Z #36 ...
+2025-07-20T17:00:54.3773893Z
+2025-07-20T17:00:54.3774536Z #37 [monolith builder 5/6] COPY . .
+2025-07-20T17:00:54.3774957Z #37 DONE 0.0s
+2025-07-20T17:00:54.5274446Z
+2025-07-20T17:00:54.5275588Z #38 [monolith builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o monolith .
+2025-07-20T17:01:10.9977193Z #38 ...
+2025-07-20T17:01:10.9977428Z
+2025-07-20T17:01:10.9977947Z #36 [movies-service builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o movies-service .
+2025-07-20T17:01:10.9978409Z #36 DONE 17.0s
+2025-07-20T17:01:11.2022562Z
+2025-07-20T17:01:11.2023035Z #38 [monolith builder 6/6] RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o monolith .
+2025-07-20T17:01:11.2023587Z #38 DONE 16.8s
+2025-07-20T17:01:11.2023726Z
+2025-07-20T17:01:12.1613655Z #39 [monolith stage-1 4/4] COPY --from=builder /app/monolith .
+2025-07-20T17:01:12.1614201Z #39 DONE 0.0s
+2025-07-20T17:01:12.1614381Z
+2025-07-20T17:01:12.1614695Z #40 [movies-service stage-1 4/4] COPY --from=builder /app/movies-service .
+2025-07-20T17:01:12.1615292Z #40 DONE 0.0s
+2025-07-20T17:01:12.1615424Z
+2025-07-20T17:01:12.1615518Z #41 [movies-service] exporting to image
+2025-07-20T17:01:12.1615761Z #41 exporting layers
+2025-07-20T17:01:12.1616056Z #41 exporting layers 1.0s done
+2025-07-20T17:01:12.1616678Z #41 writing image sha256:7f2a99c24096877038eb365990c6015e2faa8c9f0f41a8535ab85fc018f96549 done
+2025-07-20T17:01:12.1617229Z #41 naming to docker.io/library/architecture-pro-cinemaabyss-movies-service done
+2025-07-20T17:01:12.1617590Z #41 DONE 1.0s
+2025-07-20T17:01:12.1617694Z
+2025-07-20T17:01:12.1617777Z #42 [monolith] exporting to image
+2025-07-20T17:01:12.1617994Z #42 exporting layers 1.0s done
+2025-07-20T17:01:12.1618369Z #42 writing image sha256:9a2d4a1ccff06439f4f821118709117e5785ae8b70ee891fc3110db68c335e3c done
+2025-07-20T17:01:12.1618874Z #42 naming to docker.io/library/architecture-pro-cinemaabyss-monolith done
+2025-07-20T17:01:12.1619208Z #42 DONE 1.0s
+2025-07-20T17:01:12.1619305Z
+2025-07-20T17:01:12.1619436Z #43 [monolith] resolving provenance for metadata file
+2025-07-20T17:01:12.1619692Z #43 DONE 0.0s
+2025-07-20T17:01:12.1619788Z
+2025-07-20T17:01:12.1619917Z #44 [movies-service] resolving provenance for metadata file
+2025-07-20T17:01:12.1620182Z #44 DONE 0.0s
+2025-07-20T17:01:12.1620277Z
+2025-07-20T17:01:12.1620432Z #45 [proxy-service internal] load build definition from Dockerfile
+2025-07-20T17:01:12.1620747Z #45 transferring dockerfile: 886B done
+2025-07-20T17:01:12.1620959Z #45 DONE 0.0s
+2025-07-20T17:01:12.1621048Z
+2025-07-20T17:01:12.1621222Z #46 [proxy-service auth] library/kong:pull token for registry-1.docker.io
+2025-07-20T17:01:12.3104840Z #46 DONE 0.0s
+2025-07-20T17:01:12.3105035Z
+2025-07-20T17:01:12.3105288Z #47 [proxy-service internal] load metadata for docker.io/library/kong:3.9
+2025-07-20T17:01:12.5010230Z #47 DONE 0.4s
+2025-07-20T17:01:12.6172567Z
+2025-07-20T17:01:12.6173202Z #48 [proxy-service internal] load .dockerignore
+2025-07-20T17:01:12.6173560Z #48 transferring context: 2B done
+2025-07-20T17:01:12.6173780Z #48 DONE 0.0s
+2025-07-20T17:01:12.6173895Z
+2025-07-20T17:01:12.6174314Z #49 [proxy-service internal] load build context
+2025-07-20T17:01:12.6174585Z #49 transferring context: 7.48kB done
+2025-07-20T17:01:12.6174808Z #49 DONE 0.0s
+2025-07-20T17:01:12.6174904Z
+2025-07-20T17:01:12.6175472Z #50 [proxy-service 1/3] FROM docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f
+2025-07-20T17:01:12.6176272Z #50 resolve docker.io/library/kong:3.9@sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f done
+2025-07-20T17:01:12.6176955Z #50 sha256:05e572f60b3908160bfb02f7b62185ff721e258714c2cc79108ed5ebe5d7b49b 5.94kB / 5.94kB done
+2025-07-20T17:01:12.6177948Z #50 sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 4.19MB / 29.72MB 0.1s
+2025-07-20T17:01:12.6179027Z #50 sha256:0343162e8c8e163a460b10a48d88d2825965b97e7ab1e7e054fc1f4f2a11704f 130B / 130B 0.1s done
+2025-07-20T17:01:12.6179642Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 0B / 90.68MB 0.1s
+2025-07-20T17:01:12.6180242Z #50 sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d 0B / 1.16kB 0.1s
+2025-07-20T17:01:12.6180851Z #50 sha256:239292ac8d8dd4ba910862bec5595d2f84ddb9201430af1004e3b008af00917f 2.60kB / 2.60kB done
+2025-07-20T17:01:12.6181465Z #50 sha256:c625c79ce89a43a09d36db3ce25e3577ffd6009a7ed69b583d656bab5f012e69 1.71kB / 1.71kB done
+2025-07-20T17:01:12.8166238Z #50 sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 29.72MB / 29.72MB 0.3s done
+2025-07-20T17:01:12.8167242Z #50 sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d 1.16kB / 1.16kB 0.1s done
+2025-07-20T17:01:12.9166606Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 14.68MB / 90.68MB 0.4s
+2025-07-20T17:01:12.9168958Z #50 extracting sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927
+2025-07-20T17:01:13.0709824Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 24.12MB / 90.68MB 0.5s
+2025-07-20T17:01:13.1711678Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 37.75MB / 90.68MB 0.6s
+2025-07-20T17:01:13.2742616Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 55.50MB / 90.68MB 0.7s
+2025-07-20T17:01:13.4167449Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 78.64MB / 90.68MB 0.9s
+2025-07-20T17:01:13.5718578Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 90.68MB / 90.68MB 1.0s
+2025-07-20T17:01:13.7008684Z #50 sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 90.68MB / 90.68MB 1.0s done
+2025-07-20T17:01:13.8073109Z #50 extracting sha256:32f112e3802cadcab3543160f4d2aa607b3cc1c62140d57b4f5441384f40e927 0.9s done
+2025-07-20T17:01:13.8074276Z #50 extracting sha256:0343162e8c8e163a460b10a48d88d2825965b97e7ab1e7e054fc1f4f2a11704f
+2025-07-20T17:01:13.9888569Z #50 extracting sha256:0343162e8c8e163a460b10a48d88d2825965b97e7ab1e7e054fc1f4f2a11704f done
+2025-07-20T17:01:13.9889625Z #50 extracting sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 0.1s
+2025-07-20T17:01:16.4872351Z #50 extracting sha256:d01202502f62a0f885d04bb1b7ecde06ed23d1d318dc3bcb781d49eced60e555 2.5s done
+2025-07-20T17:01:16.8790975Z #50 extracting sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d
+2025-07-20T17:01:17.0843609Z #50 extracting sha256:027dbe0d188ef00ab513d742bc09027dcea4606ded3dc1d63bcffe85c2dddf9d done
+2025-07-20T17:01:17.0844385Z #50 DONE 4.4s
+2025-07-20T17:01:17.0844577Z
+2025-07-20T17:01:17.0844895Z #51 [proxy-service 2/3] COPY kong.yml.template /etc/kong/kong.yml.template
+2025-07-20T17:01:17.0845480Z #51 DONE 0.0s
+2025-07-20T17:01:17.0845646Z
+2025-07-20T17:01:17.0846054Z #52 [proxy-service 3/3] COPY --chmod=0755 kong-entrypoint.sh /usr/local/bin/kong-entrypoint.sh
+2025-07-20T17:01:17.0846720Z #52 DONE 0.0s
+2025-07-20T17:01:17.0846890Z
+2025-07-20T17:01:17.0847049Z #53 [proxy-service] exporting to image
+2025-07-20T17:01:17.3543038Z #53 exporting layers 0.4s done
+2025-07-20T17:01:17.3796605Z #53 writing image sha256:175e6bc4c58640f3b71e24c0e3d4f0a05971122b3a99360129ade8eb62c0135c done
+2025-07-20T17:01:17.3797749Z #53 naming to docker.io/library/architecture-pro-cinemaabyss-proxy-service done
+2025-07-20T17:01:17.3798336Z #53 DONE 0.4s
+2025-07-20T17:01:17.3798485Z
+2025-07-20T17:01:17.3798687Z #54 [proxy-service] resolving provenance for metadata file
+2025-07-20T17:01:17.3798969Z #54 DONE 0.0s
+2025-07-20T17:01:17.3799216Z  events-service  Built
+2025-07-20T17:01:17.3799774Z  monolith  Built
+2025-07-20T17:01:17.3800106Z  movies-service  Built
+2025-07-20T17:01:17.3800306Z  proxy-service  Built
+2025-07-20T17:01:17.3809048Z  Network cinemaabyss-network  Creating
+2025-07-20T17:01:17.4142649Z  Network cinemaabyss-network  Created
+2025-07-20T17:01:17.4147027Z  Volume "architecture-pro-cinemaabyss_postgres-data"  Creating
+2025-07-20T17:01:17.4159253Z  Volume "architecture-pro-cinemaabyss_postgres-data"  Created
+2025-07-20T17:01:17.4164215Z  Container cinemaabyss-zookeeper  Creating
+2025-07-20T17:01:17.4164783Z  Container cinemaabyss-postgres  Creating
+2025-07-20T17:01:17.4459484Z  Container cinemaabyss-postgres  Created
+2025-07-20T17:01:17.4460109Z  Container monolith  Creating
+2025-07-20T17:01:17.4460536Z  Container movies-service  Creating
+2025-07-20T17:01:17.4484239Z  Container cinemaabyss-zookeeper  Created
+2025-07-20T17:01:17.4484734Z  Container cinemaabyss-kafka  Creating
+2025-07-20T17:01:17.4746438Z  Container movies-service  Created
+2025-07-20T17:01:17.4747959Z  Container monolith  Created
+2025-07-20T17:01:17.4800490Z  Container cinemaabyss-kafka  Created
+2025-07-20T17:01:17.4801959Z  Container events-service  Creating
+2025-07-20T17:01:17.4802656Z  Container cinemaabyss-kafka-ui  Creating
+2025-07-20T17:01:17.4954655Z  Container events-service  Created
+2025-07-20T17:01:17.4955411Z  Container proxy-service  Creating
+2025-07-20T17:01:17.4969431Z  Container cinemaabyss-kafka-ui  Created
+2025-07-20T17:01:17.5085547Z  Container proxy-service  Created
+2025-07-20T17:01:17.5100677Z  Container cinemaabyss-zookeeper  Starting
+2025-07-20T17:01:17.5101718Z  Container cinemaabyss-postgres  Starting
+2025-07-20T17:01:17.8418551Z  Container cinemaabyss-postgres  Started
+2025-07-20T17:01:17.8419079Z  Container cinemaabyss-postgres  Waiting
+2025-07-20T17:01:17.8419858Z  Container cinemaabyss-postgres  Waiting
+2025-07-20T17:01:17.8420648Z  Container cinemaabyss-zookeeper  Started
+2025-07-20T17:01:17.8421095Z  Container cinemaabyss-kafka  Starting
+2025-07-20T17:01:18.0326883Z  Container cinemaabyss-kafka  Started
+2025-07-20T17:01:18.0328265Z  Container cinemaabyss-kafka  Waiting
+2025-07-20T17:01:18.0328852Z  Container cinemaabyss-kafka  Waiting
+2025-07-20T17:01:25.0345131Z  Container cinemaabyss-kafka  Healthy
+2025-07-20T17:01:25.0351321Z  Container cinemaabyss-kafka-ui  Starting
+2025-07-20T17:01:25.0352045Z  Container cinemaabyss-kafka  Healthy
+2025-07-20T17:01:25.0352657Z  Container events-service  Starting
+2025-07-20T17:01:25.1782024Z  Container events-service  Started
+2025-07-20T17:01:25.1958546Z  Container cinemaabyss-kafka-ui  Started
+2025-07-20T17:01:28.3445315Z  Container cinemaabyss-postgres  Healthy
+2025-07-20T17:01:28.3446480Z  Container cinemaabyss-postgres  Healthy
+2025-07-20T17:01:28.3460791Z  Container movies-service  Starting
+2025-07-20T17:01:28.3461263Z  Container monolith  Starting
+2025-07-20T17:01:28.6148838Z  Container monolith  Started
+2025-07-20T17:01:28.6590867Z  Container movies-service  Started
+2025-07-20T17:01:28.6592030Z  Container proxy-service  Starting
+2025-07-20T17:01:28.9473285Z  Container proxy-service  Started
+2025-07-20T17:01:28.9524810Z Waiting for services to be ready...
+2025-07-20T17:03:28.9676409Z ##[group]Run actions/setup-node@v3
+2025-07-20T17:03:28.9676848Z with:
+2025-07-20T17:03:28.9677135Z   node-version: 18
+2025-07-20T17:03:28.9677444Z   cache: npm
+2025-07-20T17:03:28.9677858Z   cache-dependency-path: tests/postman/package-lock.json
+2025-07-20T17:03:28.9678389Z   always-auth: false
+2025-07-20T17:03:28.9678717Z   check-latest: false
+2025-07-20T17:03:28.9679227Z   token: ***
+2025-07-20T17:03:28.9679826Z ##[endgroup]
+2025-07-20T17:03:29.2635401Z Found in cache @ /opt/hostedtoolcache/node/18.20.8/x64
+2025-07-20T17:03:29.2636186Z ##[group]Environment details
+2025-07-20T17:03:31.3405629Z node: v18.20.8
+2025-07-20T17:03:31.3405974Z npm: 10.8.2
+2025-07-20T17:03:31.3406232Z yarn: 1.22.22
+2025-07-20T17:03:31.3407164Z ##[endgroup]
+2025-07-20T17:03:31.3423093Z [command]/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+2025-07-20T17:03:31.6511467Z /home/runner/.npm
+2025-07-20T17:03:31.8034264Z Cache hit for: node-cache-Linux-npm-c25b5a6583bc0ead247637873ab0b394ee3bf8d9f41e138cb1de89331cad4e47
+2025-07-20T17:03:32.0459780Z Received 10733343 of 10733343 (100.0%), 58.8 MBs/sec
+2025-07-20T17:03:32.0460332Z Cache Size: ~10 MB (10733343 B)
+2025-07-20T17:03:32.0492934Z [command]/usr/bin/tar -xf /home/runner/work/_temp/81406c91-15ae-4fcf-bc4d-66844f9cb3fe/cache.tzst -P -C /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss --use-compress-program unzstd
+2025-07-20T17:03:32.0954475Z Cache restored successfully
+2025-07-20T17:03:32.0978557Z Cache restored from key: node-cache-Linux-npm-c25b5a6583bc0ead247637873ab0b394ee3bf8d9f41e138cb1de89331cad4e47
+2025-07-20T17:03:32.1101970Z ##[group]Run npm install
+2025-07-20T17:03:32.1102523Z [36;1mnpm install[0m
+2025-07-20T17:03:32.1139364Z shell: /usr/bin/bash -e {0}
+2025-07-20T17:03:32.1139588Z ##[endgroup]
+2025-07-20T17:03:34.9526230Z npm warn deprecated har-validator@5.1.5: this library is no longer supported
+2025-07-20T17:03:35.0464594Z npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+2025-07-20T17:03:35.0466940Z npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+2025-07-20T17:03:36.2335498Z
+2025-07-20T17:03:36.2336522Z added 123 packages, and audited 124 packages in 4s
+2025-07-20T17:03:36.2337027Z
+2025-07-20T17:03:36.2337355Z 9 packages are looking for funding
+2025-07-20T17:03:36.2337964Z   run `npm fund` for details
+2025-07-20T17:03:36.2481657Z
+2025-07-20T17:03:36.2482359Z 8 vulnerabilities (3 moderate, 5 high)
+2025-07-20T17:03:36.2482720Z
+2025-07-20T17:03:36.2483114Z To address all issues (including breaking changes), run:
+2025-07-20T17:03:36.2483649Z   npm audit fix --force
+2025-07-20T17:03:36.2483884Z
+2025-07-20T17:03:36.2484081Z Run `npm audit` for details.
+2025-07-20T17:03:36.2760395Z ##[group]Run docker compose up -d
+2025-07-20T17:03:36.2760693Z [36;1m[0m
+2025-07-20T17:03:36.2760869Z [36;1mdocker compose up -d[0m
+2025-07-20T17:03:36.2761101Z [36;1m# Wait for services to be ready[0m
+2025-07-20T17:03:36.2761383Z [36;1mecho "Waiting for services to be ready..."[0m
+2025-07-20T17:03:36.2761659Z [36;1msleep 15[0m
+2025-07-20T17:03:36.2761852Z [36;1m# Build the Docker image[0m
+2025-07-20T17:03:36.2764642Z [36;1mdocker build -t cinemaabyss-api-tests .[0m
+2025-07-20T17:03:36.2764918Z [36;1m[0m
+2025-07-20T17:03:36.2765085Z [36;1m# Run the tests in Docker[0m
+2025-07-20T17:03:36.2765528Z [36;1mdocker run --network=cinemaabyss-network -v "$(pwd)/reports:/app/reports" cinemaabyss-api-tests[0m
+2025-07-20T17:03:36.2793542Z shell: /usr/bin/bash -e {0}
+2025-07-20T17:03:36.2793764Z ##[endgroup]
+2025-07-20T17:03:36.3331486Z time="2025-07-20T17:03:36Z" level=warning msg="/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+2025-07-20T17:03:36.3444222Z  Container cinemaabyss-zookeeper  Running
+2025-07-20T17:03:36.3448753Z  Container cinemaabyss-postgres  Running
+2025-07-20T17:03:36.3449348Z  Container movies-service  Running
+2025-07-20T17:03:36.3449993Z  Container cinemaabyss-kafka  Running
+2025-07-20T17:03:36.3450435Z  Container monolith  Running
+2025-07-20T17:03:36.3451233Z  Container cinemaabyss-kafka-ui  Running
+2025-07-20T17:03:36.3451754Z  Container events-service  Running
+2025-07-20T17:03:36.3452413Z  Container proxy-service  Running
+2025-07-20T17:03:36.3461381Z  Container cinemaabyss-postgres  Waiting
+2025-07-20T17:03:36.3461863Z  Container cinemaabyss-kafka  Waiting
+2025-07-20T17:03:36.3462412Z  Container cinemaabyss-postgres  Waiting
+2025-07-20T17:03:36.3462739Z  Container cinemaabyss-kafka  Waiting
+2025-07-20T17:03:36.8485057Z  Container cinemaabyss-postgres  Healthy
+2025-07-20T17:03:36.8486116Z  Container cinemaabyss-kafka  Healthy
+2025-07-20T17:03:36.8486836Z  Container cinemaabyss-kafka  Healthy
+2025-07-20T17:03:36.8487859Z  Container cinemaabyss-postgres  Healthy
+2025-07-20T17:03:36.8531679Z Waiting for services to be ready...
+2025-07-20T17:03:54.5446237Z #0 building with "default" instance using docker driver
+2025-07-20T17:03:54.5446547Z
+2025-07-20T17:03:54.5446750Z #1 [internal] load build definition from Dockerfile
+2025-07-20T17:03:54.5448620Z #1 transferring dockerfile: 361B done
+2025-07-20T17:03:54.5448911Z #1 DONE 0.0s
+2025-07-20T17:03:54.5449021Z
+2025-07-20T17:03:54.5449249Z #2 [auth] library/node:pull token for registry-1.docker.io
+2025-07-20T17:03:54.5449558Z #2 DONE 0.0s
+2025-07-20T17:03:54.5449661Z
+2025-07-20T17:03:54.5449901Z #3 [internal] load metadata for docker.io/library/node:18-alpine
+2025-07-20T17:03:54.7038698Z #3 DONE 0.3s
+2025-07-20T17:03:54.8147126Z
+2025-07-20T17:03:54.8148134Z #4 [internal] load .dockerignore
+2025-07-20T17:03:54.8149430Z #4 transferring context: 2B done
+2025-07-20T17:03:54.8150556Z #4 DONE 0.0s
+2025-07-20T17:03:54.8150757Z
+2025-07-20T17:03:54.8152347Z #5 [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-07-20T17:03:54.8154132Z #5 resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 0.0s done
+2025-07-20T17:03:54.8155711Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+2025-07-20T17:03:54.9210392Z #5 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0B / 40.01MB 0.1s
+2025-07-20T17:03:54.9211925Z #5 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0B / 1.26MB 0.1s
+2025-07-20T17:03:54.9213469Z #5 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 0B / 446B 0.1s
+2025-07-20T17:03:54.9214794Z #5 sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e 7.67kB / 7.67kB done
+2025-07-20T17:03:54.9216461Z #5 sha256:929b04d7c782f04f615cf785488fed452b6569f87c73ff666ad553a7554f0006 1.72kB / 1.72kB done
+2025-07-20T17:03:54.9217834Z #5 sha256:ee77c6cd7c1886ecc802ad6cedef3a8ec1ea27d1fb96162bf03dd3710839b8da 6.18kB / 6.18kB done
+2025-07-20T17:03:54.9219214Z #5 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.1s done
+2025-07-20T17:03:55.0221471Z #5 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 10.49MB / 40.01MB 0.2s
+2025-07-20T17:03:55.0227235Z #5 sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 1.26MB / 1.26MB 0.1s done
+2025-07-20T17:03:55.0228672Z #5 sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 446B / 446B 0.1s done
+2025-07-20T17:03:55.1305258Z #5 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.2s done
+2025-07-20T17:03:55.1308040Z #5 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 29.36MB / 40.01MB 0.4s
+2025-07-20T17:03:55.2303518Z #5 sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 40.01MB / 40.01MB 0.5s done
+2025-07-20T17:03:55.3711721Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 0.1s
+2025-07-20T17:03:55.5746069Z #5 ...
+2025-07-20T17:03:55.5746296Z
+2025-07-20T17:03:55.5746531Z #6 [internal] load build context
+2025-07-20T17:03:55.5747225Z #6 transferring context: 39.87MB 0.7s done
+2025-07-20T17:03:55.5747673Z #6 DONE 0.7s
+2025-07-20T17:03:55.5748153Z
+2025-07-20T17:03:55.5748882Z #5 [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+2025-07-20T17:03:56.3446247Z #5 extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161b2b5a3d0e 1.1s done
+2025-07-20T17:03:56.6134112Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3
+2025-07-20T17:03:56.7393943Z #5 extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d26702d6e3 0.0s done
+2025-07-20T17:03:56.7395269Z #5 extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80df5a2e0549 done
+2025-07-20T17:03:56.7395987Z #5 DONE 2.0s
+2025-07-20T17:03:56.7396171Z
+2025-07-20T17:03:56.7396336Z #7 [2/5] WORKDIR /app
+2025-07-20T17:03:56.7396860Z #7 DONE 0.0s
+2025-07-20T17:03:56.7396980Z
+2025-07-20T17:03:56.7397132Z #8 [3/5] COPY package*.json ./
+2025-07-20T17:03:56.7397359Z #8 DONE 0.0s
+2025-07-20T17:03:56.8910198Z
+2025-07-20T17:03:56.8910733Z #9 [4/5] RUN npm install
+2025-07-20T17:03:58.2762911Z #9 1.536 npm warn deprecated har-validator@5.1.5: this library is no longer supported
+2025-07-20T17:03:58.3936892Z #9 1.653 npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+2025-07-20T17:03:58.5441299Z #9 1.653 npm warn deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+2025-07-20T17:03:59.8215272Z #9 3.081
+2025-07-20T17:03:59.8215700Z #9 3.081 added 123 packages, and audited 124 packages in 3s
+2025-07-20T17:03:59.9582537Z #9 3.081
+2025-07-20T17:03:59.9583002Z #9 3.081 9 packages are looking for funding
+2025-07-20T17:03:59.9583703Z #9 3.081   run `npm fund` for details
+2025-07-20T17:03:59.9584094Z #9 3.094
+2025-07-20T17:03:59.9584539Z #9 3.094 8 vulnerabilities (3 moderate, 5 high)
+2025-07-20T17:03:59.9585026Z #9 3.094
+2025-07-20T17:03:59.9585550Z #9 3.094 To address all issues (including breaking changes), run:
+2025-07-20T17:03:59.9586196Z #9 3.094   npm audit fix --force
+2025-07-20T17:03:59.9586609Z #9 3.094
+2025-07-20T17:03:59.9587021Z #9 3.094 Run `npm audit` for details.
+2025-07-20T17:03:59.9587484Z #9 3.096 npm notice
+2025-07-20T17:03:59.9588168Z #9 3.096 npm notice New major version of npm available! 10.8.2 -> 11.4.2
+2025-07-20T17:03:59.9589475Z #9 3.096 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+2025-07-20T17:03:59.9590402Z #9 3.096 npm notice To update run: npm install -g npm@11.4.2
+2025-07-20T17:03:59.9590943Z #9 3.096 npm notice
+2025-07-20T17:03:59.9591246Z #9 DONE 3.2s
+2025-07-20T17:04:00.1094889Z
+2025-07-20T17:04:00.1095329Z #10 [5/5] COPY . .
+2025-07-20T17:04:01.5171794Z #10 DONE 1.6s
+2025-07-20T17:04:01.6713313Z
+2025-07-20T17:04:01.6714142Z #11 exporting to image
+2025-07-20T17:04:01.6714912Z #11 exporting layers
+2025-07-20T17:04:02.5998916Z #11 exporting layers 1.1s done
+2025-07-20T17:04:02.6228568Z #11 writing image sha256:d64befa914e2bc410adf6b4624d02950a2f8bd54c1cd30e4e0106d0f30780379 done
+2025-07-20T17:04:02.6229534Z #11 naming to docker.io/library/cinemaabyss-api-tests done
+2025-07-20T17:04:02.6229945Z #11 DONE 1.1s
+2025-07-20T17:04:03.3107883Z Running tests against docker environment...
+2025-07-20T17:04:03.3303145Z newman: could not find "htmlextra" reporter
+2025-07-20T17:04:03.3303761Z   ensure that the reporter is installed in the same directory as newman
+2025-07-20T17:04:03.3304182Z   please install reporter using npm
+2025-07-20T17:04:03.3304360Z
+2025-07-20T17:04:03.5290374Z newman
+2025-07-20T17:04:03.5290538Z
+2025-07-20T17:04:03.5290653Z CinemaAbyss API Tests
+2025-07-20T17:04:03.5319914Z
+2025-07-20T17:04:03.5320479Z ❏ Monolith Service
+2025-07-20T17:04:03.5320858Z ↳ Health Check
+2025-07-20T17:04:03.6593968Z   GET http://monolith:8080/health [200 OK, 124B, 17ms]
+2025-07-20T17:04:03.6776828Z   ✓  Status code is 200
+2025-07-20T17:04:03.6846521Z
+2025-07-20T17:04:03.6846794Z ↳ Get All Users
+2025-07-20T17:04:03.7954547Z   GET http://monolith:8080/api/users [200 OK, 279B, 4ms]
+2025-07-20T17:04:03.8009397Z   ✓  Status code is 200
+2025-07-20T17:04:03.8014814Z   ✓  Response is an array
+2025-07-20T17:04:03.8064384Z
+2025-07-20T17:04:03.8065034Z ↳ Create User
+2025-07-20T17:04:03.9207156Z   POST http://monolith:8080/api/users [201 Created, 181B, 4ms]
+2025-07-20T17:04:03.9254626Z   ✓  Status code is 201
+2025-07-20T17:04:03.9260374Z   ✓  Response has id
+2025-07-20T17:04:03.9307148Z
+2025-07-20T17:04:03.9307539Z ↳ Get User by ID
+2025-07-20T17:04:04.0394046Z   GET http://monolith:8080/api/users?id=4 [200 OK, 176B, 2ms]
+2025-07-20T17:04:04.0439591Z   ✓  Status code is 200
+2025-07-20T17:04:04.0445301Z   ✓  User ID matches
+2025-07-20T17:04:04.0476910Z
+2025-07-20T17:04:04.0477293Z ↳ Get All Movies
+2025-07-20T17:04:04.1623351Z   GET http://monolith:8080/api/movies [200 OK, 1.38kB, 7ms]
+2025-07-20T17:04:04.1657739Z   ✓  Status code is 200
+2025-07-20T17:04:04.1663465Z   ✓  Response is an array
+2025-07-20T17:04:04.1708323Z
+2025-07-20T17:04:04.1708657Z ↳ Create Movie
+2025-07-20T17:04:04.2801448Z   POST http://monolith:8080/api/movies [201 Created, 245B, 3ms]
+2025-07-20T17:04:04.2850962Z   ✓  Status code is 201
+2025-07-20T17:04:04.2856519Z   ✓  Response has id
+2025-07-20T17:04:04.2901240Z
+2025-07-20T17:04:04.2901692Z ↳ Get Movie by ID
+2025-07-20T17:04:04.3989579Z   GET http://monolith:8080/api/movies?id=6 [200 OK, 240B, 3ms]
+2025-07-20T17:04:04.4031568Z   ✓  Status code is 200
+2025-07-20T17:04:04.4034650Z   ✓  Movie ID matches
+2025-07-20T17:04:04.4078874Z
+2025-07-20T17:04:04.4079197Z ↳ Create Payment
+2025-07-20T17:04:04.5180422Z   POST http://monolith:8080/api/payments [201 Created, 193B, 4ms]
+2025-07-20T17:04:04.5234322Z   ✓  Status code is 201
+2025-07-20T17:04:04.5238267Z   ✓  Response has id
+2025-07-20T17:04:04.5284948Z
+2025-07-20T17:04:04.5285443Z ↳ Get Payment by ID
+2025-07-20T17:04:04.6368702Z   GET http://monolith:8080/api/payments?id=4 [200 OK, 185B, 3ms]
+2025-07-20T17:04:04.6411990Z   ✓  Status code is 200
+2025-07-20T17:04:04.6415736Z   ✓  Payment ID matches
+2025-07-20T17:04:04.6465372Z
+2025-07-20T17:04:04.6465799Z ↳ Create Subscription
+2025-07-20T17:04:04.7558192Z   POST http://monolith:8080/api/subscriptions [201 Created, 233B, 3ms]
+2025-07-20T17:04:04.7601933Z   ✓  Status code is 201
+2025-07-20T17:04:04.7605924Z   ✓  Response has id
+2025-07-20T17:04:04.7648208Z
+2025-07-20T17:04:04.7648601Z ↳ Get Subscription by ID
+2025-07-20T17:04:04.8736412Z   GET http://monolith:8080/api/subscriptions?id=4 [200 OK, 228B, 2ms]
+2025-07-20T17:04:04.8776683Z   ✓  Status code is 200
+2025-07-20T17:04:04.8780583Z   ✓  Subscription ID matches
+2025-07-20T17:04:04.8820493Z
+2025-07-20T17:04:04.8820760Z ❏ Movies Microservice
+2025-07-20T17:04:04.8821016Z ↳ Health Check
+2025-07-20T17:04:04.9898905Z   GET http://movies-service:8081/api/movies/health [200 OK, 124B, 2ms]
+2025-07-20T17:04:04.9941515Z   ✓  Status code is 200
+2025-07-20T17:04:04.9945131Z   ✓  Status is true
+2025-07-20T17:04:04.9993402Z
+2025-07-20T17:04:04.9993711Z ↳ Get All Movies
+2025-07-20T17:04:05.1125665Z   GET http://movies-service:8081/api/movies [200 OK, 1.51kB, 8ms]
+2025-07-20T17:04:05.1165936Z   ✓  Status code is 200
+2025-07-20T17:04:05.1168851Z   ✓  Response is an array
+2025-07-20T17:04:05.1208935Z
+2025-07-20T17:04:05.1209234Z ↳ Create Movie
+2025-07-20T17:04:05.2311822Z   POST http://movies-service:8081/api/movies [201 Created, 282B, 3ms]
+2025-07-20T17:04:05.2362769Z   ✓  Status code is 201
+2025-07-20T17:04:05.2366820Z   ✓  Response has id
+2025-07-20T17:04:05.2407055Z
+2025-07-20T17:04:05.2407298Z ↳ Get Movie by ID
+2025-07-20T17:04:05.3498669Z   GET http://movies-service:8081/api/movies?id=7 [200 OK, 277B, 3ms]
+2025-07-20T17:04:05.3562649Z   ✓  Status code is 200
+2025-07-20T17:04:05.3566282Z   ✓  Movie ID matches
+2025-07-20T17:04:05.3619195Z
+2025-07-20T17:04:05.3619459Z ❏ Events Microservice
+2025-07-20T17:04:05.3619732Z ↳ Health Check
+2025-07-20T17:04:05.4718128Z   GET http://events-service:8082/api/events/health [200 OK, 140B, 4ms]
+2025-07-20T17:04:05.4779266Z   ✓  Status code is 200
+2025-07-20T17:04:05.4782483Z   ✓  Status is true
+2025-07-20T17:04:05.4820667Z
+2025-07-20T17:04:05.4820917Z ↳ Create Movie Event
+2025-07-20T17:04:05.6007908Z   POST http://events-service:8082/api/events/movie [201 Created, 303B, 13ms]
+2025-07-20T17:04:05.6072516Z   ✓  Status code is 201
+2025-07-20T17:04:05.6079232Z   ✓  Response has status success
+2025-07-20T17:04:05.6118567Z
+2025-07-20T17:04:05.6118916Z ↳ Create User Event
+2025-07-20T17:04:05.7234463Z   POST http://events-service:8082/api/events/user [201 Created, 293B, 5ms]
+2025-07-20T17:04:05.7277841Z   ✓  Status code is 201
+2025-07-20T17:04:05.7281907Z   ✓  Response has status success
+2025-07-20T17:04:05.7321095Z
+2025-07-20T17:04:05.7321400Z ↳ Create Payment Event
+2025-07-20T17:04:05.8436263Z   POST http://events-service:8082/api/events/payment [201 Created, 315B, 6ms]
+2025-07-20T17:04:05.8488170Z   ✓  Status code is 201
+2025-07-20T17:04:05.8493708Z   ✓  Response has status success
+2025-07-20T17:04:05.8543942Z
+2025-07-20T17:04:05.8544170Z ❏ Proxy Service
+2025-07-20T17:04:05.8544516Z ↳ Health Check
+2025-07-20T17:04:05.9646282Z   GET http://proxy-service:8000/health [200 OK, 674B, 4ms]
+2025-07-20T17:04:05.9685322Z   ✓  Status code is 200
+2025-07-20T17:04:05.9723344Z
+2025-07-20T17:04:05.9723685Z ↳ Get All Movies via Proxy
+2025-07-20T17:04:06.0813782Z   GET http://proxy-service:8000/api/movies [200 OK, 2.23kB, 4ms]
+2025-07-20T17:04:06.0855515Z   ✓  Status code is 200
+2025-07-20T17:04:06.0859083Z   ✓  Response is an array
+2025-07-20T17:04:06.0898238Z
+2025-07-20T17:04:06.0898580Z ↳ Get All Users via Proxy
+2025-07-20T17:04:06.1997923Z   GET http://proxy-service:8000/api/users [200 OK, 897B, 3ms]
+2025-07-20T17:04:06.2045183Z   ✓  Status code is 200
+2025-07-20T17:04:06.2049327Z   ✓  Response is an array
+2025-07-20T17:04:06.2257985Z
+2025-07-20T17:04:06.2259201Z ┌─────────────────────────┬─────────────────┬─────────────────┐
+2025-07-20T17:04:06.2260837Z │                         │        executed │          failed │
+2025-07-20T17:04:06.2261645Z ├─────────────────────────┼─────────────────┼─────────────────┤
+2025-07-20T17:04:06.2262722Z │              iterations │               1 │               0 │
+2025-07-20T17:04:06.2263533Z ├─────────────────────────┼─────────────────┼─────────────────┤
+2025-07-20T17:04:06.2264813Z │                requests │              22 │               0 │
+2025-07-20T17:04:06.2265584Z ├─────────────────────────┼─────────────────┼─────────────────┤
+2025-07-20T17:04:06.2266543Z │            test-scripts │              22 │               0 │
+2025-07-20T17:04:06.2267249Z ├─────────────────────────┼─────────────────┼─────────────────┤
+2025-07-20T17:04:06.2267959Z │      prerequest-scripts │               0 │               0 │
+2025-07-20T17:04:06.2268777Z ├─────────────────────────┼─────────────────┼─────────────────┤
+2025-07-20T17:04:06.2269557Z │              assertions │              42 │               0 │
+2025-07-20T17:04:06.2270355Z ├─────────────────────────┴─────────────────┴─────────────────┤
+2025-07-20T17:04:06.2271108Z │ total run duration: 2.6s                                    │
+2025-07-20T17:04:06.2271900Z ├─────────────────────────────────────────────────────────────┤
+2025-07-20T17:04:06.2272844Z │ total data received: 6.35kB (approx)                        │
+2025-07-20T17:04:06.2273686Z ├─────────────────────────────────────────────────────────────┤
+2025-07-20T17:04:06.2274486Z │ average response time: 4ms [min: 2ms, max: 17ms, s.d.: 3ms] │
+2025-07-20T17:04:06.2275356Z └─────────────────────────────────────────────────────────────┘
+2025-07-20T17:04:06.2275853Z Newman run completed!
+2025-07-20T17:04:06.2276222Z Total requests: 22
+2025-07-20T17:04:06.2276575Z Failed requests: 0
+2025-07-20T17:04:06.2276915Z Total assertions: 42
+2025-07-20T17:04:06.2277279Z Failed assertions: 0
+2025-07-20T17:04:06.3050321Z ##[group]Run docker compose down
+2025-07-20T17:04:06.3050663Z [36;1mdocker compose down[0m
+2025-07-20T17:04:06.3079456Z shell: /usr/bin/bash -e {0}
+2025-07-20T17:04:06.3079682Z ##[endgroup]
+2025-07-20T17:04:06.3680216Z time="2025-07-20T17:04:06Z" level=warning msg="/home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+2025-07-20T17:04:06.3739588Z  Container cinemaabyss-kafka-ui  Stopping
+2025-07-20T17:04:06.3740605Z  Container proxy-service  Stopping
+2025-07-20T17:04:08.5255491Z  Container cinemaabyss-kafka-ui  Stopped
+2025-07-20T17:04:08.5256807Z  Container cinemaabyss-kafka-ui  Removing
+2025-07-20T17:04:08.5308343Z  Container cinemaabyss-kafka-ui  Removed
+2025-07-20T17:04:16.6258225Z  Container proxy-service  Stopped
+2025-07-20T17:04:16.6258764Z  Container proxy-service  Removing
+2025-07-20T17:04:16.6332359Z  Container proxy-service  Removed
+2025-07-20T17:04:16.6332885Z  Container movies-service  Stopping
+2025-07-20T17:04:16.6333384Z  Container events-service  Stopping
+2025-07-20T17:04:16.6333814Z  Container monolith  Stopping
+2025-07-20T17:04:16.7699974Z  Container movies-service  Stopped
+2025-07-20T17:04:16.7700604Z  Container movies-service  Removing
+2025-07-20T17:04:16.7790807Z  Container movies-service  Removed
+2025-07-20T17:04:16.7856796Z  Container monolith  Stopped
+2025-07-20T17:04:16.7857277Z  Container monolith  Removing
+2025-07-20T17:04:16.7928572Z  Container monolith  Removed
+2025-07-20T17:04:16.7929122Z  Container cinemaabyss-postgres  Stopping
+2025-07-20T17:04:16.9029049Z  Container events-service  Stopped
+2025-07-20T17:04:16.9030378Z  Container events-service  Removing
+2025-07-20T17:04:16.9280746Z  Container cinemaabyss-postgres  Stopped
+2025-07-20T17:04:16.9282064Z  Container cinemaabyss-postgres  Removing
+2025-07-20T17:04:16.9347971Z  Container cinemaabyss-postgres  Removed
+2025-07-20T17:04:16.9350571Z  Container events-service  Removed
+2025-07-20T17:04:16.9351089Z  Container cinemaabyss-kafka  Stopping
+2025-07-20T17:04:21.0681593Z  Container cinemaabyss-kafka  Stopped
+2025-07-20T17:04:21.0683954Z  Container cinemaabyss-kafka  Removing
+2025-07-20T17:04:21.0734298Z  Container cinemaabyss-kafka  Removed
+2025-07-20T17:04:21.0734871Z  Container cinemaabyss-zookeeper  Stopping
+2025-07-20T17:04:31.1955877Z  Container cinemaabyss-zookeeper  Stopped
+2025-07-20T17:04:31.1956509Z  Container cinemaabyss-zookeeper  Removing
+2025-07-20T17:04:31.2010864Z  Container cinemaabyss-zookeeper  Removed
+2025-07-20T17:04:31.2017153Z  Network cinemaabyss-network  Removing
+2025-07-20T17:04:31.2875346Z  Network cinemaabyss-network  Removed
+2025-07-20T17:04:31.2973223Z Post job cleanup.
+2025-07-20T17:04:31.4457522Z Cache hit occurred on the primary key node-cache-Linux-npm-c25b5a6583bc0ead247637873ab0b394ee3bf8d9f41e138cb1de89331cad4e47, not saving cache.
+2025-07-20T17:04:31.4587799Z Post job cleanup.
+2025-07-20T17:04:31.5284015Z [command]/usr/bin/git version
+2025-07-20T17:04:31.5317141Z git version 2.50.1
+2025-07-20T17:04:31.5359542Z Temporarily overriding HOME='/home/runner/work/_temp/b83dea48-dcc7-419c-87b1-425e72b98552' before making global git config changes
+2025-07-20T17:04:31.5361299Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-20T17:04:31.5364765Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-pro-cinemaabyss/architecture-pro-cinemaabyss
+2025-07-20T17:04:31.5394087Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-20T17:04:31.5422368Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-20T17:04:31.5644855Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-20T17:04:31.5664894Z http.https://github.com/.extraheader
+2025-07-20T17:04:31.5676102Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-07-20T17:04:31.5702627Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-20T17:04:31.6039499Z Cleaning up orphan processes
