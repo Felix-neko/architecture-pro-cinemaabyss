@@ -1,4 +1,13 @@
 @startuml
+
+!pragma layout smetana true
+
+skinparam horizontalSpacing 10
+skinparam verticalSpacing   10
+
+skinparam ComponentPadding 8
+skinparam PackagePadding   8
+
 '!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include ../../../C4-PlantUML/C4_Container.puml
 
@@ -12,6 +21,8 @@
 !include DEVICONS/redis.puml
 !include FONTAWESOME/exchange_alt.puml
 !include FONTAWESOME/database.puml
+
+
 
 AddElementTag("third-party", $bgColor="#f5f5f5", $borderColor="DarkGray", $fontColor="Black", $legendText="Компоненты сторонних производителей")
 
@@ -93,6 +104,13 @@ Rel(video_storage_service, video_storage_db, "")
 ' Внешние сервисы
 System_Boundary(external_services, "Внешние сервисы") {
 
+  System_Ext(external_auth_services, "Внешние сервисы аутентификации", "<<external>>") {
+    Container_Ext(google_auth_service, "Google-аутентификатор")
+    Container_Ext(vk_auth_service, "ВК-аутентификатор")
+    Container_Ext(tg_auth_service, "TG-аутентификатор")
+  }
+
+  Rel(auth_service, external_auth_services, "REST", "HTTPS")
 
     System_Ext(external_video_content_services, "Внешние онлайн-кинотеатры", <<external>>) {
         Container_Ext(netflix_video_content_service, "Netflix")
