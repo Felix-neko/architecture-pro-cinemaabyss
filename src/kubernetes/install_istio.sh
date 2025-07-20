@@ -12,5 +12,3 @@ helm install istio-ingressgateway istio/gateway -n istio-system
 helm install istiod istio/istiod -n istio-system --wait
 kubectl label namespace cinemaabyss istio-injection=enabled --overwrite
 kubectl get namespace -L istio-injection
-
-kubectl apply -f ${SCRIPT_DIR}/circuit-breaker-config.yaml -n cinemaabyss
