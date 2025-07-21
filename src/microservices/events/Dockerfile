@@ -22,7 +22,7 @@ COPY events_service/ ./events_service/
 ENV PYTHONPATH=/app
 ENV HOST=0.0.0.0
 ENV PORT=8082
-ENV KAFKA_URL=kafka:29092
+ENV KAFKA_URL=kafka:9092
 
 
 # Health check

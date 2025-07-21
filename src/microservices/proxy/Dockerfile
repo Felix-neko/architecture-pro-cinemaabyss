@@ -20,5 +20,9 @@ ENV KONG_DATABASE=off \
 # Устанавливаем entrypoint
 ENTRYPOINT ["bash", "/usr/local/bin/kong-entrypoint.sh"]
 
+ENV MONOLITH_SERVICE_URL=monolith:8080
+ENV MOVIES_SERVICE_URL=movies-service:8081
+ENV EVENTS_SERVICE_URL=events-service:8002
+
 # Открываем нужные порты
 EXPOSE 8000 8443 8001 8002 8444
