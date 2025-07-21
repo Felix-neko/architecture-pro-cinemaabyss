@@ -25,7 +25,41 @@ spec:
     spec:
       containers:
       - name: proxy-service
-        ..... тут
+        image: ghcr.io/felix-neko/architecture-pro-cinemaabyss/proxy-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: PORT
+          value: "{{ .Values.proxyService.service.targetPort }}"
+        - name: MONOLITH_SERVICE_URL
+          value: "monolith:8080"
+        - name: MOVIES_SERVICE_URL
+          value: "movies-service:8081"
+        - name: EVENTS_SERVICE_URL
+          value: "events-service:8082"
+        - name: MOVIES_MIGRATION_PERCENT
+          valueFrom:
+            configMapKeyRef:
+              name: cinemaabyss-config
+              key: MOVIES_MIGRATION_PERCENT
+        resources:
+          {{- toYaml .Values.proxyService.resources | nindent 10 }}
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.proxyService.service.targetPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: {{ .Values.proxyService.service.targetPort }}
+          initialDelaySeconds: 15
+          periodSeconds: 20
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: dockerconfigjson
 ---
 apiVersion: v1
 kind: Service
@@ -38,5 +72,9 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
-    ... и тут
+    app: proxy-service
+  ports:
+  - port: 8000  # Порт, на котором сервис будет доступен внутри кластера
+    targetPort: 8000  # Порт, на котором работает ваше приложение внутри пода
+  type: ClusterIP
 {{- end }}

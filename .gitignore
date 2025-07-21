@@ -56,12 +56,7 @@ kubeconfig
 .env.production.local
 *.env
 
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+
 
 # Build artifacts
 dist/
@@ -154,3 +149,5 @@ go.work
 
 # Postman tests reports
 tests/postman/reports/
+/src/microservices/events/.venv/
+/src/microservices/events/uv.lock

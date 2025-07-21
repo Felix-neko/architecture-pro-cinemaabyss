@@ -1,0 +1,99 @@
+/bin/bash /home/felix/Projects/yandex_swa_pro/architecture-pro-cinemaabyss/src/kubernetes/stress_with_fortio.sh
+service/fortio unchanged
+deployment.apps/fortio-deploy unchanged
+{"ts":1753040529.524481,"level":"info","r":1,"file":"logger.go","line":298,"msg":"Log level is now 3 Warning (was 2 Info)"}
+Fortio 1.69.5 running at 0 queries per second, 4->4 procs, for 500 calls: http://movies-service:8081/api/movies
+Starting at max qps with 50 thread(s) [gomax 4] for exactly 500 calls (10 per thread + 0)
+Ended after 11.557284721s : 500 calls. qps=43.263
+Aggregated Function Time : count 500 avg 1.1133671 +/- 0.3588 min 0.063058797 max 1.994709013 sum 556.683564
+# range, mid point, percentile, count
+>= 0.0630588 <= 0.07 , 0.0665294 , 0.40, 2
+> 0.09 <= 0.1 , 0.095 , 0.60, 1
+> 0.25 <= 0.3 , 0.275 , 1.00, 2
+> 0.3 <= 0.35 , 0.325 , 2.00, 5
+> 0.35 <= 0.4 , 0.375 , 2.20, 1
+> 0.4 <= 0.45 , 0.425 , 3.00, 4
+> 0.45 <= 0.5 , 0.475 , 4.40, 7
+> 0.5 <= 0.6 , 0.55 , 8.20, 19
+> 0.6 <= 0.7 , 0.65 , 16.80, 43
+> 0.7 <= 0.8 , 0.75 , 20.80, 20
+> 0.8 <= 0.9 , 0.85 , 26.40, 28
+> 0.9 <= 1 , 0.95 , 37.40, 55
+> 1 <= 1.99471 , 1.49735 , 100.00, 313
+# target 50% 1.20021
+# target 75% 1.59746
+# target 90% 1.83581
+# target 99% 1.97882
+# target 99.9% 1.99312
+Error cases : no data
+# Socket and IP used for each connection:
+[0]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000193707 +/- 0 min 0.000193707 max 0.000193707 sum 0.000193707
+[1]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001592278 +/- 0 min 0.001592278 max 0.001592278 sum 0.001592278
+[2]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001455923 +/- 0 min 0.001455923 max 0.001455923 sum 0.001455923
+[3]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.00136258 +/- 0 min 0.00136258 max 0.00136258 sum 0.00136258
+[4]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.00112431 +/- 0 min 0.00112431 max 0.00112431 sum 0.00112431
+[5]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001020967 +/- 0 min 0.001020967 max 0.001020967 sum 0.001020967
+[6]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000944614 +/- 0 min 0.000944614 max 0.000944614 sum 0.000944614
+[7]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000883932 +/- 0 min 0.000883932 max 0.000883932 sum 0.000883932
+[8]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000777388 +/- 0 min 0.000777388 max 0.000777388 sum 0.000777388
+[9]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000696735 +/- 0 min 0.000696735 max 0.000696735 sum 0.000696735
+[10]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001329428 +/- 0 min 0.001329428 max 0.001329428 sum 0.001329428
+[11]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001255165 +/- 0 min 0.001255165 max 0.001255165 sum 0.001255165
+[12]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001158842 +/- 0 min 0.001158842 max 0.001158842 sum 0.001158842
+[13]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001037708 +/- 0 min 0.001037708 max 0.001037708 sum 0.001037708
+[14]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000961985 +/- 0 min 0.000961985 max 0.000961985 sum 0.000961985
+[15]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000858221 +/- 0 min 0.000858221 max 0.000858221 sum 0.000858221
+[16]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000766068 +/- 0 min 0.000766068 max 0.000766068 sum 0.000766068
+[17]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000592181 +/- 0 min 0.000592181 max 0.000592181 sum 0.000592181
+[18]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000475737 +/- 0 min 0.000475737 max 0.000475737 sum 0.000475737
+[19]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000357873 +/- 0 min 0.000357873 max 0.000357873 sum 0.000357873
+[20]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000192527 +/- 0 min 0.000192527 max 0.000192527 sum 0.000192527
+[21]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000127305 +/- 0 min 0.000127305 max 0.000127305 sum 0.000127305
+[22]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001740113 +/- 0 min 0.001740113 max 0.001740113 sum 0.001740113
+[23]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001412191 +/- 0 min 0.001412191 max 0.001412191 sum 0.001412191
+[24]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001122981 +/- 0 min 0.001122981 max 0.001122981 sum 0.001122981
+[25]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000971845 +/- 0 min 0.000971845 max 0.000971845 sum 0.000971845
+[26]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000861611 +/- 0 min 0.000861611 max 0.000861611 sum 0.000861611
+[27]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001412601 +/- 0 min 0.001412601 max 0.001412601 sum 0.001412601
+[28]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001137121 +/- 0 min 0.001137121 max 0.001137121 sum 0.001137121
+[29]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000898152 +/- 0 min 0.000898152 max 0.000898152 sum 0.000898152
+[30]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000691485 +/- 0 min 0.000691485 max 0.000691485 sum 0.000691485
+[31]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000308751 +/- 0 min 0.000308751 max 0.000308751 sum 0.000308751
+[32]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000170226 +/- 0 min 0.000170226 max 0.000170226 sum 0.000170226
+[33]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001582198 +/- 0 min 0.001582198 max 0.001582198 sum 0.001582198
+[34]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 8.0113e-05 +/- 0 min 8.0113e-05 max 8.0113e-05 sum 8.0113e-05
+[35]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 8.2493e-05 +/- 0 min 8.2493e-05 max 8.2493e-05 sum 8.2493e-05
+[36]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 7.5042e-05 +/- 0 min 7.5042e-05 max 7.5042e-05 sum 7.5042e-05
+[37]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000290341 +/- 0 min 0.000290341 max 0.000290341 sum 0.000290341
+[38]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000235159 +/- 0 min 0.000235159 max 0.000235159 sum 0.000235159
+[39]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000157306 +/- 0 min 0.000157306 max 0.000157306 sum 0.000157306
+[40]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 8.1393e-05 +/- 0 min 8.1393e-05 max 8.1393e-05 sum 8.1393e-05
+[41]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000196998 +/- 0 min 0.000196998 max 0.000196998 sum 0.000196998
+[42]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 6.0902e-05 +/- 0 min 6.0902e-05 max 6.0902e-05 sum 6.0902e-05
+[43]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000168526 +/- 0 min 0.000168526 max 0.000168526 sum 0.000168526
+[44]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 7.9103e-05 +/- 0 min 7.9103e-05 max 7.9103e-05 sum 7.9103e-05
+[45]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000217207 +/- 0 min 0.000217207 max 0.000217207 sum 0.000217207
+[46]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000100564 +/- 0 min 0.000100564 max 0.000100564 sum 0.000100564
+[47]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 4.8022e-05 +/- 0 min 4.8022e-05 max 4.8022e-05 sum 4.8022e-05
+[48]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.000111774 +/- 0 min 0.000111774 max 0.000111774 sum 0.000111774
+[49]   1 socket used, resolved to 10.101.237.25:8081, connection timing : count 1 avg 0.001078429 +/- 0 min 0.001078429 max 0.001078429 sum 0.001078429
+Connection time (s) : count 50 avg 0.00069076242 +/- 0.0005139 min 4.8022e-05 max 0.001740113 sum 0.034538121
+Sockets used: 50 (for perfect keepalive, would be 50)
+Uniform: false, Jitter: false, Catchup allowed: true
+IP addresses distribution:
+10.101.237.25:8081: 50
+Code 200 : 500 (100.0 %)
+Response Header Sizes : count 500 avg 161.608 +/- 0.5003 min 160 max 162 sum 80804
+Response Body/Total Sizes : count 500 avg 1428.608 +/- 0.5003 min 1427 max 1429 sum 714304
+All done 500 calls (plus 0 warmup) 1113.367 ms avg, 43.3 qps
+-------------
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.circuit_breakers.default.remaining_pending: 4294967295
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.circuit_breakers.default.rq_pending_open: 0
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.circuit_breakers.high.rq_pending_open: 0
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.upstream_rq_pending_active: 0
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.upstream_rq_pending_failure_eject: 0
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.upstream_rq_pending_overflow: 0
+cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.upstream_rq_pending_total: 50
+
+Process finished with exit code 0
+

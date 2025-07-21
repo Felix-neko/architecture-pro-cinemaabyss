@@ -1,0 +1,202 @@
+@startuml
+
+!pragma layout smetana true
+top to bottom direction
+
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+'!include ../../../C4-PlantUML/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/python.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS/react.puml
+!include FONTAWESOME/users.puml
+!include FONTAWESOME/mobile_alt.puml
+!include DEVICONS/redis.puml
+!include FONTAWESOME/exchange_alt.puml
+!include FONTAWESOME/database.puml
+
+skinparam noteTextAlignment left
+
+AddElementTag("third-party", $bgColor="#f5f5f5", $borderColor="DarkGray", $fontColor="Black", $legendText="Компоненты сторонних производителей")
+
+
+title Онлайн-кинотеатр: диаграмма контейнеров
+
+Person(user, "Пользователь", "Пользователь/администратор")
+
+System_Boundary(frontend_systems, "Фронтэнд-системы") {
+    Container(web_app, "Веб-приложение", "JavaScript, React", $sprite="react")
+    Container(phone_app, "Мобильное приложение", "React Native", $sprite="mobile_alt")
+}
+System_Boundary(server_systems, Серверные системы на Kubernetes-кластере) {
+    Container(api_gateway, "API-шлюз")
+    Rel(web_app, api_gateway, "REST", "HTTPS")
+    Rel(phone_app, api_gateway, "REST", "HTTPS")
+
+    Container(auth_service, "Сервис аутентификации и авторизации юзеров")
+    Rel(api_gateway, auth_service, "REST", "HTTPS")
+    note as auth_service_note
+        Умеет аутентифицировать пользователей,
+        в т.ч. через внешние сервисы.
+        Раздаёт информацию о ролях пользователя.
+
+        Раздаёт прочую информацию о пользователе
+        (имя, аватарка и т.д.)
+    end note
+    auth_service_note .. auth_service
+
+
+    System_Boundary(bff_system, "BFF-сервисы") {
+        Container(bff_mobile, "BFF Mobile", для телефонов)
+        Container(bff_web, "BFF Web", для веб-сайта)
+    }
+
+    Rel(api_gateway, bff_mobile, "REST", "HTTP")
+    Rel(api_gateway, bff_web, "REST", "HTTP")
+    bff_system --> auth_service : REST, HTTP
+
+
+    Container(movie_info_service, "Сервис информации о фильмах")
+    Rel(bff_system, movie_info_service, "REST", "HTTP")
+
+
+    Container(recommendation_service, "Сервис рекомендаций")
+    Rel(bff_system, recommendation_service, "REST", "HTTP")
+
+    note as recommendation_service_note
+        Предобрабатывает данные
+        для запроса во внешний сервис рекомендаций,
+        кэширует рекомендации.
+    end note
+    recommendation_service . recommendation_service_note
+
+
+    Container(video_service, "Сервис видеоконтента")
+    Rel(bff_system, video_service, "REST", "HTTP")
+    Container(video_storage_service, "Сервис хранения видеоконтента")
+    Rel(video_service, video_storage_service, "REST", "HTTP")
+
+
+    Container(subscription_service, "Сервис подписок")
+    Rel(auth_service, subscription_service, "REST", "HTTP")
+    Rel(bff_system, subscription_service, "REST", "HTTP")
+
+
+    note as subscription_service_note
+        Сообщает, какие подписки у пользователя
+        валидны и когда закончатся.
+    end note
+    subscription_service_note . subscription_service
+
+    Container(payment_service, "Сервис оплаты")
+    Rel(bff_system, payment_service, "REST", "HTTP")
+
+    ContainerQueue(kafka_broker, "Kafka-брокер", third-party, $tags=third-party)
+    Rel(kafka_broker, subscription_service, "")
+    Rel(payment_service, kafka_broker, "")
+    movie_info_service <--> kafka_broker
+}
+
+    note as payment_service_note
+        Проводит платежи через внешние севисы оплаты.
+        Скидывает информацию о поступивших/непоступивших
+        рекуррентных платежах в kafka,
+        чтобы сервис подписок продлил подписки.
+    end note
+    payment_service .. payment_service_note
+
+note as bff_system_note
+    Делают запросы к низлежащим сервисам.
+
+    Если нужно -- собирают данные из нескольких сервисов,
+    чтобы запросить другой сервис.
+
+    Например, перед тем, как чтобы запросить сервис рекомендаций о том,
+    что показать юзеру, нужно:
+    - запросить описание фильма (сервис информации о фильме);
+    - запросить оценки, слайки и комиенты юзера (там же, но другой эндпоинт);
+    - запросить
+
+end note
+bff_system_note ... bff_system
+
+
+ContainerDb(video_storage_db, "Внутреннее хранилище видеоконтента", "S3, third-party", $tags=third-party)
+Rel(video_storage_service, video_storage_db, "")
+
+
+note as movie_info_service_note
+    Содержит описания фильмов, оценки и комментарии и комментарии.
+
+    База информации о фильмах может пополняться не только вручную,
+    но и через парсинг кинотеатров-партнёров.
+
+    Добавление комментов и оценок происходит через создание Kafka-событий,
+    чтобы запись в базу шла в отдельном потоке.
+end note
+movie_info_service_note .. movie_info_service
+
+note as video_service_note
+    Умеет создавать видеоплееры для встраивания в приложение/веб-сайт,
+    различные для разных кинотеатров-партнёров.
+end note
+video_service_note .... video_service
+
+
+note as video_storage_service_note
+    На случай, если нужно транслировать не только партнёрский,
+    но и собственный внутренний контент.
+
+    Умеет читать данные из S3 и раздавать HLS-видеопоток.
+end note
+video_storage_service_note .. video_storage_service
+
+
+' Принудительное разделение между серверными системами и внешними сервисами
+server_systems -[hidden]down-> video_storage_db
+video_storage_db -[hidden]down-> external_services
+
+Rel(user, web_app, "")
+Rel(user, phone_app, "")
+
+' Внешние сервисы - перенесены в конец для лучшего контроля layout'а
+System_Boundary(external_services, "Внешние сервисы") {
+
+  System_Ext(external_auth_services, "Внешние сервисы аутентификации", "<<external>>") {
+    Container_Ext(google_auth_service, "Google-аутентификатор")
+    Container_Ext(vk_auth_service, "ВК-аутентификатор")
+    Container_Ext(tg_auth_service, "TG-аутентификатор")
+  }
+
+  Rel(auth_service, external_auth_services, "REST", "HTTPS")
+
+    System_Ext(external_video_content_services, "Внешние онлайн-кинотеатры", <<external>>) {
+        Container_Ext(netflix_video_content_service, "Netflix")
+        Container_Ext(amazon_prome_video_content_service, "Amazon Prime")
+        Container_Ext(tencent_video_content_service, "Tencent")
+        Container_Ext(ivi_video_content_service, "ИВИ")
+        Container_Ext(okko_video_content_service, "ОККО")
+        Container_Ext(wink_video_content_service, "Wink")
+    }
+
+    System_Ext(external_payment_processing_services, "Внешние сервисы обработки платежей", "<<external>>") {
+        Container_Ext(stripe_payment_processor, "Stipe")
+        Container_Ext(robokassa_payment_processor, "РобоКасса")
+        Container_Ext(cloudpayments_payment_processor, "CloudPayments")
+    }
+
+    Container_Ext(external_recommendation_system, "Внешний сервис рекомендаций", "<<external>>")
+}
+
+' Связи с внешними сервисами
+Rel(video_service, external_video_content_services, "REST", "HTTPS")
+Rel(movie_info_service, external_video_content_services, "REST", "HTTPS")
+Rel(payment_service, external_payment_processing_services, "REST", "HTTPS")
+Rel(recommendation_service, external_recommendation_system, "REST", "HTTPS")
+
+SHOW_LEGEND()
+
+@enduml

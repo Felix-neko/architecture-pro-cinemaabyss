@@ -33,31 +33,44 @@ services:
 
   # Kafka
   kafka:
-    image: wurstmeister/kafka:2.13-2.7.0
+    image: confluentinc/cp-kafka:7.0.1
     container_name: cinemaabyss-kafka
     depends_on:
       - zookeeper
     ports:
       - "9092:9092"
+      - "29092:29092"
     environment:
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      # PLAINTEXT: для внутренних подключений, PLAINTEXT_HOST: для внешних
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_CREATE_TOPICS: "movie-events:1:1,user-events:1:1,payment-events:1:1"
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - cinemaabyss-network
 
+    healthcheck:
+      # Use the built‑in kafka-topics.sh to list topics
+      test: "/usr/bin/kafka-topics --bootstrap-server localhost:29092 --list"
+      interval: 30s        # how often to run
+      timeout: 10s         # max time for each check
+      retries: 3           # consecutive failures before unhealthy
+      start_period: 20s    # grace period after container start
   # Monolith Service
   monolith:
     build:
       context: ./src/monolith
       dockerfile: Dockerfile
-    container_name: cinemaabyss-monolith
+    container_name: monolith
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
@@ -71,9 +84,10 @@ services:
     build:
       context: ./src/microservices/movies
       dockerfile: Dockerfile
-    container_name: cinemaabyss-movies-service
+    container_name: movies-service
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8081:8081"
     environment:
@@ -87,51 +101,79 @@ services:
     build:
       context: ./src/microservices/events
       dockerfile: Dockerfile
-    container_name: cinemaabyss-events-service
+    container_name: events-service
     depends_on:
-      - postgres
-      - kafka
+      kafka:
+        condition: service_healthy
     ports:
       - "8082:8082"
     environment:
+      HOST: "0.0.0.0"
       PORT: 8082
-      KAFKA_BROKERS: kafka:9092
+      KAFKA_URL: kafka:29092
     networks:
       - cinemaabyss-network
 
-  # Proxy Service (API Gateway)
   proxy-service:
     build:
       context: ./src/microservices/proxy
       dockerfile: Dockerfile
-    container_name: cinemaabyss-proxy-service
+    container_name: proxy-service
     depends_on:
       - monolith
       - movies-service
       - events-service
-    ports:
-      - "8000:8000"
     environment:
-      PORT: 8000
-      MONOLITH_URL: http://monolith:8080
-      MOVIES_SERVICE_URL: http://movies-service:8081
-      EVENTS_SERVICE_URL: http://events-service:8082
-      GRADUAL_MIGRATION: "true"
-      MOVIES_MIGRATION_PERCENT: "50"
+      MOVIES_MIGRATION_PERCENT: "${MOVIES_MIGRATION_PERCENT:-30}"
+      MONOLITH_SERVICE_URL: "monolith:8080"
+      MOVIES_SERVICE_URL: "movies-service:8081"
+      EVENTS_SERVICE_URL: "events-service:8082"
+    ports:
+      - "8000:8000"  # Proxy HTTP
+      - "8443:8443"  # Proxy HTTPS
+      - "8001:8001"  # Admin API
+      - "8002:8002"  # Kong Manager OSS Web UI
+      - "8444:8444"  # Admin API HTTPS
     networks:
       - cinemaabyss-network
+    restart: unless-stopped
+
+#   # Пример старого сервиса для тестирования
+#   test-old-movie-service:
+#     image: nginx:alpine
+#     container_name: test-old-movie-service
+#     ports:
+#       - "8201:80"  # Direct access to old movie service
+#     volumes:
+#       - ./old_movies_response.html:/usr/share/nginx/html/index.html:ro
+#     networks:
+#       - cinemaabyss-network
+#     restart: unless-stopped
+#
+#   # Пример нового сервиса для тестирования
+#   test-new-movie-service:
+#     image: nginx:alpine
+#     container_name: test-new-movie-service
+#     ports:
+#       - "8202:80"  # Direct access to new movie service
+#     volumes:
+#       - ./new_movies_response.html:/usr/share/nginx/html/index.html:ro
+#     networks:
+#       - cinemaabyss-network
+#     restart: unless-stopped
 
   # Kafka UI for monitoring Kafka
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: cinemaabyss-kafka-ui
     depends_on:
-      - kafka
+      kafka:
+        condition: service_healthy
     ports:
       - "8090:8080"
     environment:
       KAFKA_CLUSTERS_0_NAME: cinemaabyss
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
     networks:
       - cinemaabyss-network

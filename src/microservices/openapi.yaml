@@ -1,0 +1,394 @@
+openapi: 3.1.0
+info:
+  title: Event Service
+  description: Сервис kafka-событий
+  version: 0.1.0
+paths:
+  /api/events/health:
+    get:
+      tags:
+      - health
+      summary: Health Check
+      description: Проверка состояния сервиса
+      operationId: health_check_api_events_health_get
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthCheckResponseInfo"
+  /api/events/movie:
+    post:
+      tags:
+      - events
+      summary: Register Movie Event
+      description: Регистрация события фильма
+      operationId: register_movie_event_api_events_movie_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MovieEvent"
+        required: true
+      responses:
+        "201":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MovieEventRegisterResponseInfo"
+        "422":
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /api/events/user:
+    post:
+      tags:
+      - events
+      summary: Register User Event
+      description: Регистрация события пользователя
+      operationId: register_user_event_api_events_user_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserEvent"
+        required: true
+      responses:
+        "201":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserEventRegisterResponseInfo"
+        "422":
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+  /api/events/payment:
+    post:
+      tags:
+      - events
+      summary: Register Payment Event
+      description: Регистрация события платежа
+      operationId: register_payment_event_api_events_payment_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentEvent"
+        required: true
+      responses:
+        "201":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentEventRegisterResponseInfo"
+        "422":
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    HealthCheckResponseInfo:
+      properties:
+        status:
+          type: boolean
+          title: Status
+          description: Работает ли сервис
+          default: true
+          examples:
+          - true
+      type: object
+      title: HealthCheckResponseInfo
+      description: Ответ на запрос работоспособности сервиса
+    MovieEvent:
+      properties:
+        movie_id:
+          type: integer
+          title: Movie Id
+          description: Идентификатор фильма
+          examples:
+          - 1
+        title:
+          type: string
+          title: Title
+          description: Название фильма
+          examples:
+          - Inception
+        action:
+          type: string
+          title: Action
+          description: Действие с фильмом
+          examples:
+          - viewed
+        user_id:
+          anyOf:
+          - type: integer
+          - type: "null"
+          title: User Id
+          description: Идентификатор пользователя (опционально)
+          examples:
+          - 1
+        rating:
+          anyOf:
+          - type: number
+          - type: "null"
+          title: Rating
+          description: Рейтинг (опционально)
+          examples:
+          - 8.5
+        genres:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: "null"
+          title: Genres
+          description: Жанры фильма (опционально)
+          examples:
+          - - Sci-Fi
+            - Action
+        description:
+          anyOf:
+          - type: string
+          - type: "null"
+          title: Description
+          description: Описание фильма (опционально)
+          examples:
+          - A mind-bending thriller
+      type: object
+      required:
+      - movie_id
+      - title
+      - action
+      title: MovieEvent
+      description: "Событие: действие с метаинформацией о фильме"
+    MovieEventRegisterResponseInfo:
+      properties:
+        status:
+          type: string
+          title: Status
+          description: Статус операции
+          examples:
+          - success
+        partition:
+          type: integer
+          title: Partition
+          description: Партиция Kafka
+          examples:
+          - 0
+        offset:
+          type: integer
+          title: Offset
+          description: Смещение в партиции Kafka
+          examples:
+          - 42
+        event:
+          $ref: "#/components/schemas/MovieEvent"
+          description: Данные события фильма
+      type: object
+      required:
+      - status
+      - partition
+      - offset
+      - event
+      title: MovieEventRegisterResponseInfo
+      description: Ответ на регистрацию события фильма
+    PaymentEvent:
+      properties:
+        payment_id:
+          type: integer
+          title: Payment Id
+          description: Идентификатор платежа
+          examples:
+          - 1
+        user_id:
+          type: integer
+          title: User Id
+          description: Идентификатор пользователя
+          examples:
+          - 1
+        amount:
+          type: number
+          title: Amount
+          description: Сумма платежа
+          examples:
+          - 9.99
+        status:
+          type: string
+          title: Status
+          description: Статус платежа
+          examples:
+          - completed
+        timestamp:
+          type: string
+          title: Timestamp
+          description: Время платежа
+          examples:
+          - 2023-01-15T14:30:00Z
+        method_type:
+          anyOf:
+          - type: string
+          - type: "null"
+          title: Method Type
+          description: Тип метода оплаты (опционально)
+          examples:
+          - credit_card
+      type: object
+      required:
+      - payment_id
+      - user_id
+      - amount
+      - status
+      - timestamp
+      title: PaymentEvent
+      description: "Событие: создание платежа"
+    PaymentEventRegisterResponseInfo:
+      properties:
+        status:
+          type: string
+          title: Status
+          description: Статус операции
+          examples:
+          - success
+        partition:
+          type: integer
+          title: Partition
+          description: Партиция Kafka
+          examples:
+          - 0
+        offset:
+          type: integer
+          title: Offset
+          description: Смещение в партиции Kafka
+          examples:
+          - 42
+        event:
+          $ref: "#/components/schemas/PaymentEvent"
+          description: Данные события платежа
+      type: object
+      required:
+      - status
+      - partition
+      - offset
+      - event
+      title: PaymentEventRegisterResponseInfo
+      description: Ответ на регистрацию события платежа
+    UserEvent:
+      properties:
+        user_id:
+          type: integer
+          title: User Id
+          description: Идентификатор пользователя
+          examples:
+          - 1
+        username:
+          anyOf:
+          - type: string
+          - type: "null"
+          title: Username
+          description: Имя пользователя (опционально)
+          examples:
+          - john_doe
+        email:
+          anyOf:
+          - type: string
+          - type: "null"
+          title: Email
+          description: Email пользователя (опционально)
+          examples:
+          - john.doe@example.com
+        action:
+          type: string
+          title: Action
+          description: Действие пользователя
+          examples:
+          - registered
+        timestamp:
+          type: string
+          title: Timestamp
+          description: Время события
+          examples:
+          - 2023-01-15T14:30:00Z
+      type: object
+      required:
+      - user_id
+      - action
+      - timestamp
+      title: UserEvent
+      description: "Событие: создание пользователя"
+    UserEventRegisterResponseInfo:
+      properties:
+        status:
+          type: string
+          title: Status
+          description: Статус операции
+          examples:
+          - success
+        partition:
+          type: integer
+          title: Partition
+          description: Партиция Kafka
+          examples:
+          - 0
+        offset:
+          type: integer
+          title: Offset
+          description: Смещение в партиции Kafka
+          examples:
+          - 42
+        event:
+          $ref: "#/components/schemas/UserEvent"
+          description: Данные события пользователя
+      type: object
+      required:
+      - status
+      - partition
+      - offset
+      - event
+      title: UserEventRegisterResponseInfo
+      description: Ответ на регистрацию события пользователя
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+tags:
+- name: events
+  description: Эндпоинты для регистрации событий
+- name: health
+  description: Проверки работоспособности

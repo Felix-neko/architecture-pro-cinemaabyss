@@ -1,0 +1,138 @@
+# Generated with Claude Sonnet 4
+# Istio API версия для сетевых ресурсов (DestinationRule и VirtualService)
+apiVersion: networking.istio.io/v1alpha3
+# Тип ресурса Kubernetes - DestinationRule определяет политики трафика для сервиса
+kind: DestinationRule
+# Метаданные ресурса Kubernetes
+metadata:
+  # Уникальное имя DestinationRule в namespace
+  name: monolith-circuit-breaker
+# Спецификация DestinationRule - основная конфигурация
+spec:
+  # Целевой хост (сервис) к которому применяются политики трафика
+  host: monolith
+  # Политики трафика для данного сервиса
+  trafficPolicy:
+    # Настройки пула соединений для управления ресурсами
+    connectionPool:
+      # TCP-уровень настроек соединений
+      tcp:
+        # Максимальное количество TCP соединений к upstream сервису
+        maxConnections: 100 # Maximum number of TCP connections
+        # Таймаут на установление TCP соединения
+        connectTimeout: 30ms
+      # HTTP-уровень настроек соединений
+      http:
+        # Максимальное количество HTTP запросов на одно соединение (HTTP/1.1)
+        maxRequestsPerConnection: 10
+        # Максимальное количество ожидающих HTTP/1.1 запросов в очереди
+        http1MaxPendingRequests: 1
+        # Максимальное количество повторных попыток при неудачных запросах
+        maxRetries: 3
+    # Обнаружение проблемных экземпляров сервиса (circuit breaker логика)
+    outlierDetection:
+      # Количество последовательных 5xx ошибок для исключения экземпляра
+      consecutive5xxErrors: 5
+      # Интервал анализа для обнаружения проблемных экземпляров
+      interval: 30s
+      # Базовое время исключения проблемного экземпляра из балансировки
+      baseEjectionTime: 30s
+      # Максимальный процент экземпляров, которые могут быть исключены одновременно
+      maxEjectionPercent: 100
+    # Алгоритм балансировки нагрузки между экземплярами сервиса
+    loadBalancer:
+      # Простой алгоритм round-robin (по очереди)
+      simple: ROUND_ROBIN
+---
+# Второй DestinationRule для movies-service с аналогичными настройками
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  # Имя правила для movies-service
+  name: movies-service-circuit-breaker
+spec:
+  # Целевой сервис movies-service
+  host: movies-service
+  # Идентичные политики трафика как для monolith
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        # Максимум 100 TCP соединений к movies-service
+        maxConnections: 100
+        # 30мс таймаут на подключение
+        connectTimeout: 30ms
+      http:
+        # 10 запросов на соединение максимум
+        maxRequestsPerConnection: 10
+        # 1 запрос в очереди ожидания максимум
+        http1MaxPendingRequests: 1
+        # До 3 повторных попыток
+        maxRetries: 3
+    outlierDetection:
+      # 5 последовательных 5xx ошибок для исключения
+      consecutive5xxErrors: 5
+      # Проверка каждые 30 секунд
+      interval: 30s
+      # Исключение на 30 секунд минимум
+      baseEjectionTime: 30s
+      # Можно исключить до 100% экземпляров
+      maxEjectionPercent: 100
+    loadBalancer:
+      # Round-robin балансировка
+      simple: ROUND_ROBIN
+---
+# VirtualService для определения политик retry на уровне маршрутизации
+# VirtualService for Monolith to define retry policies
+apiVersion: networking.istio.io/v1alpha3
+# Тип ресурса для управления маршрутизацией трафика
+kind: VirtualService
+metadata:
+  # Имя VirtualService для monolith
+  name: monolith-vs
+spec:
+  # Список хостов к которым применяется данный VirtualService
+  hosts:
+    # Применяется к сервису monolith
+    - monolith
+  # HTTP маршруты и их конфигурация
+  http:
+    # Единственный маршрут (catch-all)
+    - route:
+        # Назначение трафика
+        - destination:
+            # Целевой хост для перенаправления
+            host: monolith
+      # Политика повторных попыток для данного маршрута
+      retries:
+        # Максимальное количество попыток (включая первоначальную)
+        attempts: 3
+        # Таймаут на каждую отдельную попытку
+        perTryTimeout: 2s
+        # Условия при которых выполняется retry
+        retryOn: gateway-error,connect-failure,refused-stream
+---
+# VirtualService для movies-service с аналогичными retry политиками
+# VirtualService for Movies Service to define retry policies
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  # Имя VirtualService для movies-service
+  name: movies-service-vs
+spec:
+  hosts:
+    # Применяется к сервису movies-service
+    - movies-service
+  http:
+    # Единственный HTTP маршрут
+    - route:
+        - destination:
+            # Перенаправление на movies-service
+            host: movies-service
+      # Политики повторных попыток
+      retries:
+        # Максимум 3 попытки
+        attempts: 3
+        # 2 секунды на каждую попытку
+        perTryTimeout: 2s
+        # Retry при ошибках шлюза, подключения или отказе потока
+        retryOn: gateway-error,connect-failure,refused-stream
